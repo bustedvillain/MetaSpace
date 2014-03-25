@@ -1,0 +1,221 @@
+<?php
+/**
+ * Función que genera combo de grupos pertenecientes a un tutor
+ * @param type $idTutor
+ */
+function generarComboGruposTutor($idTutor)
+{
+    if(!is_numeric($idTutor))
+        return NULL;
+    
+    $sql = new Query('SG');
+    $sql->sql = "SELECT DISTINCT r_c_g.id_grupo as id, nombre_grupo
+        FROM rel_curso_tutor r_c_t
+        JOIN rel_curso_grupo r_c_g
+                ON r_c_t.id_rel_curso_grupo = r_c_t.id_rel_curso_grupo
+        JOIN grupo gp
+                ON gp.id_grupo = r_c_g.id_grupo
+        WHERE r_c_t.id_tutor = ".$idTutor."
+        AND gp.status = 1
+        ORDER BY nombre_grupo ASC";
+    
+    $resultadoConsulta = $sql->select('obj');
+    
+    $HTML = "";
+    if($resultadoConsulta )
+    {
+        foreach ($resultadoConsulta as $grupo) 
+        {
+            $HTML .='<option value="'.$grupo->id.'">'.$grupo->nombre_grupo.'</option>';
+        }
+    }
+    else
+    {
+        $HTML .='<option value="-1">No se tiene grupos asignados</option>';
+    }
+    return $HTML;
+}
+/**
+ * Función que retorna alumnos pertenecientes a un Grupo
+ * @param type $idGrupo
+ */
+function obtenerAlumnos($idGrupo)
+{
+    if(!is_numeric($idGrupo))
+        return NULL;
+    
+    $sql = new Query('SG');
+    $sql->sql = "SELECT dp.id_datos_personales as id, al.id_alumno,nombre_pila|| ' '||primer_apellido||' '||segundo_apellido as nombre 		
+        FROM grupo_alumno gp
+        JOIN alumnos al
+                ON al.id_alumno = gp.id_alumno
+        JOIN datos_personales dp
+                ON  dp.id_datos_personales = al.id_datos_personales
+        WHERE gp.id_grupo = ".$idGrupo."
+        AND al.status = 1
+        ";
+    return( $resultado = $sql->select() );
+
+}
+/**
+ * Función que retorna JSON de la consulta obtenerAlumnos()
+ * @param type $idGrupo
+ * @return type
+ */
+function regresaJSONGRUPOS($idGrupo)
+{
+    return json_encode(obtenerAlumnos($idGrupo));
+}
+/**
+ * Función que retorna todos los padres pertenecientes a un grupo.
+ * @param type $idGrupo
+ */
+function obtenerPadresGrupo($idGrupo)
+{
+    if(!is_numeric($idGrupo))
+        return NULL;
+    
+    $sql = new Query('SG');
+    $sql->sql = "SELECT DISTINCT dp.id_datos_personales as id,nombre_pila|| ' '||primer_apellido||' '||segundo_apellido as nombre 		
+        FROM grupo_alumno gp
+        JOIN alumnos al
+                ON al.id_alumno = gp.id_alumno
+        JOIN padres pd
+		ON pd.id_padre = al.id_padre
+	JOIN datos_personales dp
+                ON  dp.id_datos_personales = pd.id_datos_personales
+        WHERE gp.id_grupo =".$idGrupo."
+        AND al.status = 1
+        AND pd.status = 1";
+    return( $resultado = $sql->select() );
+}
+/**
+ * Función que retorna JSON de la consulta obtenerPadresGrupo()
+ * @param type $idGrupo
+ * @return type
+ */   
+function regresaJSONPadresGrupo($idGrupo)
+{
+    return json_encode(obtenerPadresGrupo($idGrupo));
+}
+
+/**
+ * Función que genera listado de Grupos relacionados a un curso abierto
+ * @param type $idCursoAbierto
+ */
+function generarListadoGrupos($idCursoAbierto = null)
+{
+//    if( !is_numeric($idCursoAbierto) )
+//        return NULL;
+    
+    $sql = new Query('SG');
+    if(isset($idCursoAbierto)){
+        $sql->sql = "SELECT DISTINCT r_c_g.id_grupo as id,
+                    coalesce(ins.nombre_institucion, 'Sin Institucion')||' - '||coalesce(esc.nombre_escuela , ' ')||' - '||gp.nombre_grupo as grupo
+                FROM rel_curso_grupo r_c_g 
+                JOIN grupo gp
+                        ON gp.id_grupo = r_c_g.id_grupo
+                JOIN escuelas esc
+                        ON esc.id_escuela = gp.id_escuela
+                LEFT JOIN  instituciones ins
+                        ON ins.id_institucion = esc.id_institucion
+                WHERE r_c_g.id_curso_abierto  = ".$idCursoAbierto."
+                AND gp.status   = 1
+                AND ins.status  = 1
+                ORDER BY grupo ASC";
+    }else{
+        $idTutor = obtenerIDTabla();
+        $sql->sql = <<<sql
+        select distinct(g.id_grupo) as id, coalesce(ins.nombre_institucion, 'Sin Institucion')||' - '||coalesce(esc.nombre_escuela , ' ')||' - '||g.nombre_grupo as grupo
+        from rel_curso_grupo rcg
+        left join rel_curso_tutor rct
+                on rcg.id_rel_curso_grupo = rct.id_rel_curso_grupo
+        left join grupo g
+            on g.id_grupo = rcg.id_grupo
+        left JOIN escuelas esc
+                ON esc.id_escuela = g.id_escuela
+        LEFT JOIN  instituciones ins
+                ON ins.id_institucion = esc.id_institucion
+        where rct.id_tutor = $idTutor
+sql;
+    }
+    
+    
+    $resultadoConsulta = $sql->select('obj');
+    $HTML = " ";
+    if($resultadoConsulta)
+    {
+        
+        $par = 0;
+        foreach ($resultadoConsulta as $grupo) 
+        {
+           $textoPar = ($par)? 'gpar':'gimpar';
+           $HTML .= '<li class="'.$textoPar.'"><a href="grupos_dos.php?idGrupo='.$grupo->id.'&idCursoAbierto='.$idCursoAbierto.'">'.$grupo->grupo.'</a></li>';
+           $par =  ~$par;
+        }
+        
+    }
+    echo $HTML;
+}
+/**
+ * Función que genera listado de alumnos pertenencientes a un grupo.
+ * @param type $idGrupo
+ * @return null
+ */
+function generarListdoGrupos($idGrupo)
+{
+    if( !is_numeric($idGrupo) )
+        return NULL;
+    
+    $resultado  = consultaAlumnosGrupos($idGrupo);
+    $HTML = "";
+    if($resultado)
+    {
+        $contador = 1;
+        $par      = 0;
+        foreach ($resultado as $alumno) 
+        {
+            $textoPar = ($par)? 'gpar':'gimpar';
+            $HTML .= '<li class="'.$textoPar.'"><a href="#">'.$contador++.'. '.$alumno->Nombre.'</a></li>';
+            $par =  ~$par;
+        }
+        
+    }
+    echo $HTML;
+}
+/**
+ * Función que consulta todos los alumnos pertenecientes a un grupo
+ * retornando #,Nombre Completo ordenado
+ * @param type $idGrupo
+ * @return type
+ */
+function consultaAlumnosGrupos($idGrupo)
+{
+    $sql = new Query('SG');
+    $sql->sql = "SELECT
+        row_number() OVER (ORDER BY coalesce(dp.primer_apellido,' ')||' '||coalesce(dp.segundo_apellido,' ')||' '||coalesce(dp.nombre_pila,' ') ASC) as \"No\",
+        coalesce(dp.primer_apellido,' ')||' '||coalesce(dp.segundo_apellido,' ')||' '||coalesce(dp.nombre_pila,' ') as \"Nombre\"
+        FROM grupo_alumno gp
+        JOIN alumnos al
+                ON al.id_alumno = gp.id_alumno
+        JOIN datos_personales dp 
+                ON dp.id_datos_personales = al.id_datos_personales
+        WHERE gp.id_grupo = ".$idGrupo."
+        AND al.status = 1
+        ORDER BY primer_apellido ASC";
+    
+    return $resultado = $sql->select('obj');
+}
+/**
+ * Función que descarga lista en PDF de alumnos pertenecientes a un Grupo
+ * @param type $idGrupo
+ */
+function descargaListaPDFAlumnos($idGrupo)
+{
+    $grupo       = consultaUnGrupo($idGrupo);
+    $nombreGrupo = $grupo->nombre_grupo;
+    $matriz      = consultaAlumnosGrupos($idGrupo);
+  
+    descargarPDF('Lista Alumnos', $matriz, $nombreGrupo);
+}
+?>

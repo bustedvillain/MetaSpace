@@ -1,0 +1,170 @@
+/* CSS Document */
+
+
+
+.form {
+	width: 305px;
+	height: 50px;
+	line-height: 50px;
+	display:block;
+	float:left;
+	margin: 0px 0px 20px;
+}
+
+.form_largo {
+	width: 305px;
+	height: 90px;
+	line-height: 50px;
+	display:block;
+	float:left;
+	margin: 0px 0px 20px;
+}
+
+.recordar {
+width: 305px;
+height: 20px;
+line-height: 20px;
+float:left;
+
+
+}
+
+input[type='checkbox'] {
+	width: 50px;
+	height: 20px;
+	border: 0px solid #ccc;
+	background-color:#ff9000;
+	padding: 0px;	
+	margin: 0px;
+	font-family: 'Dosis', Arial, serif;
+	font-weight: 500;
+	font-size: 16px;
+	
+}
+
+input {
+	border: 1px solid #3a3a3a;
+	width: 290px;
+	height: 38px;
+	background-color:#ececec;
+	padding: 5px;
+	-moz-border-radius: 5px; /* Firefox */
+	-webkit-border-radius: 5px; /* Google Chrome y Safari */
+	border-radius: 5px; /* CSS3 (Opera 10.5, IE 9 y est&aacute;ndar a ser soportado por todos los futuros navegadores) */
+	font-family: 'Dosis', Arial, serif;
+	font-weight: 500;
+	font-size: 22px;
+	color: #000;
+	
+}
+
+select {
+	border: 1px solid #3a3a3a;
+	background-color:#ececec;
+	padding: 5px;
+	margin: 10px 0px;
+	-moz-border-radius: 5px; /* Firefox */
+	-webkit-border-radius: 5px; /* Google Chrome y Safari */
+	border-radius: 5px; /* CSS3 (Opera 10.5, IE 9 y est&aacute;ndar a ser soportado por todos los futuros navegadores) */
+}
+
+textarea {
+	border: 1px solid #3a3a3a;
+	background-color:#ececec;
+	padding: 5px;
+	margin: 0px;
+	width: 290px;
+	resize: none;
+	-moz-border-radius: 5px; /* Firefox */
+	-webkit-border-radius: 5px; /* Google Chrome y Safari */
+	border-radius: 5px; /* CSS3 (Opera 10.5, IE 9 y est&aacute;ndar a ser soportado por todos los futuros navegadores) */
+	font-family: 'Dosis', Arial, serif;
+	font-weight: 500;
+	font-size: 22px;
+	color: #000;
+}
+
+
+#validacion {
+	margin-top: 40px;
+	padding-top: 10px;
+	width: 840px;
+	float:left;
+	font-size: 18px;
+}
+
+
+#tabla_contacto {
+	font-family:Arial, Helvetica, sans-serif
+	font-size: 20px;
+	color: #758737;
+	margin: 5px;
+	border: 1px solid #c4c4c4;
+	text-align:center;
+}
+#tabla_contacto tr td {
+	padding: 5px 0px 1px 8px;
+}
+
+#tabla_contacto tr td span {
+	padding: 0px;
+	margin: 0px;
+	font-family: "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	color:#CC0033;
+}
+
+
+input[type="submit"] {
+	width: 100px;
+	border: 0px solid #ccc;
+	font-family: 'Dosis', Arial, serif;
+	font-weight: 500;
+	font-size: 18px;
+	padding: 2px;
+	color:#fff;
+	float: right;	
+	-moz-border-radius: 18px; /* Firefox */
+	-webkit-border-radius: 18px; /* Google Chrome y Safari */
+	border-radius: 18px; /* CSS3 (Opera 10.5, IE 9 y est&aacute;ndar a ser soportado por todos los futuros navegadores) */ 
+}
+
+.btn_borrar {
+	border: 1px solid #ccc;
+	background-color:#f5f5f5;
+	padding: 5px 10px;	
+	font-family: 'Yanone Kaffeesatz', Arial, serif;
+	font-weight: 200;
+	font-size: 22px;
+	color:#333; 
+}
+
+
+p.alerta{border:1px solid gold;width:660px;margin:10px auto;padding:10px;text-align:center;font-family:Arial;font-size:13px}
+
+legend {background:#ccc;padding:10px;font-size:13px;font-weight:bold}
+fieldset {border: 1px dotted #ccc;padding:10px}
+form legend, form label {color: #333;}
+
+
+fieldset p {padding: 5px 10px 7px;}
+/*input,textarea{border:1px solid #ccc;padding:5px;width:95%;font-size:12px}*/
+
+form label.error, label.error {color: red;
+font-size: 22px;}
+div.error { display: none; }
+
+
+input:focus,textarea:focus { border: 1px dotted black; }
+input.error,textarea.error { border: 1px dotted red; }
+/*form .submit { color: gray;width:150px }*/
+
+#mensaje{width:500px;
+margin:30px auto 20px;
+	font-family: 'Yanone Kaffeesatz', Arial, serif;
+	font-weight: 200;
+	font-size: 22px;
+	color: #fff;
+	
+text-align:center}
+

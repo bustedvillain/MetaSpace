@@ -1,0 +1,423 @@
+@charset "utf-8";
+/* CSS Document */
+/*
+VISTA ALUMNO
+
+Naranja:	#ff9000;
+
+VISTA PADRE
+
+Verde:	#02dc02;
+
+VISTA TUTOR
+
+Azul:	#04b7f9;
+
+
+*/
+
+
+/* ################### INTRO ############### */
+.color_naranja {
+	color: #ff9000;
+}
+
+.color_verde {
+	color: #02dc02;
+}
+
+.color_azul {
+	color: #04b7f9;
+}
+
+body {
+	padding: 0px;
+	margin:0px;
+	font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+}
+
+#intro_container {
+	width: 1024px;
+	margin: 0 auto;
+}
+
+#intro_titulo {
+	width: 100%;
+	height: 174px;
+	float:left;
+}
+
+#intro_titulo h2 {
+	margin: 50px 0px;
+	width: 100%;
+	font-family: 'Dosis', Arial, serif;
+	font-weight: 500;
+	font-size: 24px;
+	color: #468cb5;
+	text-align:center;
+}
+
+
+#intro_logo {
+	width: 469px;
+	height: 296px;
+	background-image:url(../img/intro_logo.gif);
+	float:left;
+	position:relative;
+}
+
+
+
+
+/*#intro_login {
+	width: 535px;
+	height: 296px;
+	background-image:url(../img/intro_login.gif);
+	float:left;
+}*/
+
+#intro_general {
+	width: 535px;
+	height: 380px;
+	/*background-image:url(../img/intro_contacto.gif);*/
+	position: relative;
+	margin: 0px 0px 20px 0px;
+	float:left;
+}
+
+#intro_general h3 {
+	width: 100%;
+	height: 50px;
+	line-height: 50px;
+	font-family: 'Dosis', Arial, serif;
+	font-weight: 500;
+	font-size: 27px;
+}
+
+.overflow {
+	overflow-y: scroll;
+}
+
+#intro_general p {
+	width: 480px;
+	margin: 0px 0px 10px;
+	font-family: 'Dosis', Arial, serif;
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 120%;
+	color: #3a3a3a;
+	text-align:justify;
+}
+
+#intro_login_form {
+	width: 310px;
+	height: 240px;
+	/*border: 1px solid blue;*/
+	margin: 50px 0px 0px 65px;
+}
+
+#intro_contacto_form {
+	width: 310px;
+	height: 240px;
+	margin: 20px 0px 0px 65px;
+}
+
+#intro_reenvio_clave {
+	width: 310px;
+	height: 20px;
+	text-align: right;
+}
+
+#intro_reenvio_clave a {
+	text-decoration:none;
+	color: #000;
+}
+
+#footer {
+	width: 100%;
+	height: 50px;
+	float:left;
+}
+
+#legal {
+	width: 750px;
+	height: 50px;
+	line-height: 50px;
+	float:left;
+}
+
+#legal ul {
+	margin: 0 0 0 450px;
+}
+
+#legal ul li {
+	float:left;
+	margin: 0px 5px;
+}
+
+#legal ul li a {
+	font-size:14px;
+	border-bottom: 1px solid #ff9000;
+	text-decoration:none;
+	color: #000;
+}
+
+#intro_nav {
+	width: 313px;
+	height: 70px;
+	position:absolute;
+	top: 210px;
+	left: 90px;
+}
+
+
+#intro_nav_nosotros, #intro_nav_servicios, #intro_nav_contacto,  #intro_nav_login   {
+	width:78px;
+	height: 70px;
+	float:left;
+}
+
+#intro_nav_nosotros a, #intro_nav_nosotros a:visited  {
+	width:78px;
+	height: 70px;
+	display:block;
+	background-image:url(../img/intro_nav.gif);
+	background-position: center 0px;
+
+}
+
+
+#intro_nav_nosotros a:hover, #intro_nav_nosotros a:active, #intro_nav_nosotros span {
+	width:78px;
+	height: 70px;
+	display:block;
+	background-image:url(../img/intro_nav.gif);
+	background-position: center -70px;
+}
+
+
+#intro_nav_servicios a, #intro_nav_servicios a:visited {
+	width:78px;
+	height: 70px;
+	display:block;
+	background-image:url(../img/intro_nav.gif);
+	background-position: center -140px;
+
+}
+
+
+#intro_nav_servicios a:hover, #intro_nav_servicios a:active, #intro_nav_servicios span {
+	width:78px;
+	height: 70px;
+	display:block;
+	background-image:url(../img/intro_nav.gif);
+	background-position: center -210px;
+}
+
+#intro_nav_contacto a, #intro_nav_contacto a:visited {
+	width:78px;
+	height: 70px;
+	display:block;
+	background-image:url(../img/intro_nav.gif);
+	background-position: center -280px;
+
+}
+
+
+#intro_nav_contacto a:hover, #intro_nav_contacto a:active, #intro_nav_contacto span {
+	width:78px;
+	height: 70px;
+	display:block;
+	background-image:url(../img/intro_nav.gif);
+	background-position: center -350px;
+}
+
+#intro_nav_login a, #intro_nav_login a:visited {
+	width:78px;
+	height: 70px;
+	display:block;
+	background-image:url(../img/intro_nav.gif);
+	background-position: center -420px;
+
+}
+
+
+#intro_nav_login a:hover, #intro_nav_login a:active, #intro_nav_login span {
+	width:78px;
+	height: 70px;
+	display:block;
+	background-image:url(../img/intro_nav.gif);
+	background-position: center -490px;
+}
+
+
+
+
+/* ################### FORMULARIOS ############### */
+
+
+.form {
+	width: 305px;
+	height: 50px;
+	line-height: 50px;
+	display:block;
+	float:left;
+	margin: 0px 0px 20px;
+}
+
+.form_largo {
+	width: 305px;
+	height: 90px;
+	line-height: 50px;
+	display:block;
+	float:left;
+	margin: 0px 0px 20px;
+}
+
+.recordar {
+	width: 305px;
+	height: 20px;
+	line-height: 20px;
+	float:left;
+
+
+}
+
+input[type='checkbox'] {
+	width: 50px;
+	height: 20px;
+	border: 0px solid #ccc;
+	background-color:#ff9000;
+	padding: 0px;	
+	margin: 0px;
+	font-family: 'Dosis', Arial, serif;
+	font-weight: 500;
+	font-size: 16px;
+	
+}
+
+input {
+	border: 1px solid #3a3a3a;
+	width: 290px;
+	height: 38px;
+	background-color:#ececec;
+	padding: 5px;
+	-moz-border-radius: 5px; /* Firefox */
+	-webkit-border-radius: 5px; /* Google Chrome y Safari */
+	border-radius: 5px; /* CSS3 (Opera 10.5, IE 9 y est&aacute;ndar a ser soportado por todos los futuros navegadores) */
+	font-family: 'Dosis', Arial, serif;
+	font-weight: 500;
+	font-size: 22px;
+	color: #000;
+}
+
+select {
+	border: 1px solid #3a3a3a;
+	background-color:#ececec;
+	padding: 5px;
+	margin: 10px 0px;
+	-moz-border-radius: 5px; /* Firefox */
+	-webkit-border-radius: 5px; /* Google Chrome y Safari */
+	border-radius: 5px; /* CSS3 (Opera 10.5, IE 9 y est&aacute;ndar a ser soportado por todos los futuros navegadores) */
+}
+
+textarea {
+	border: 1px solid #3a3a3a;
+	background-color:#ececec;
+	padding: 5px;
+	margin: 0px;
+	width: 290px;
+	resize: none;
+	-moz-border-radius: 5px; /* Firefox */
+	-webkit-border-radius: 5px; /* Google Chrome y Safari */
+	border-radius: 5px; /* CSS3 (Opera 10.5, IE 9 y est&aacute;ndar a ser soportado por todos los futuros navegadores) */
+	font-family: 'Dosis', Arial, serif;
+	font-weight: 500;
+	font-size: 22px;
+	color: #000;
+}
+
+input[type="submit"] {
+	width: 100px;
+	border: 0px solid #ccc;
+	font-family: 'Dosis', Arial, serif;
+	font-weight: 500;
+	font-size: 18px;
+	padding: 2px;
+	color:#fff;
+	float: right;	
+	-moz-border-radius: 18px; /* Firefox */
+	-webkit-border-radius: 18px; /* Google Chrome y Safari */
+	border-radius: 18px; /* CSS3 (Opera 10.5, IE 9 y est&aacute;ndar a ser soportado por todos los futuros navegadores) */ 
+}
+
+#validacion {
+	margin-top: 40px;
+	padding-top: 10px;
+	width: 840px;
+	float:left;
+	font-size: 18px;
+}
+
+
+#tabla_contacto {
+	font-family:Arial, Helvetica, sans-serif
+	font-size: 20px;
+	color: #758737;
+	margin: 5px;
+	border: 1px solid #c4c4c4;
+	text-align:center;
+}
+#tabla_contacto tr td {
+	padding: 5px 0px 1px 8px;
+}
+
+#tabla_contacto tr td span {
+	padding: 0px;
+	margin: 0px;
+	font-family: "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	color:#CC0033;
+}
+
+.btn_borrar {
+	border: 1px solid #ccc;
+	background-color:#f5f5f5;
+	padding: 5px 10px;	
+	font-family: 'Yanone Kaffeesatz', Arial, serif;
+	font-weight: 200;
+	font-size: 22px;
+	color:#333; 
+}
+
+
+p.alerta{border:1px solid gold;width:660px;margin:10px auto;padding:10px;text-align:center;font-family:Arial;font-size:13px}
+
+legend {background:#ccc;padding:10px;font-size:13px;font-weight:bold}
+fieldset {border: 1px dotted #ccc;padding:10px}
+form legend, form label {color: #333;}
+
+
+fieldset p {padding: 5px 10px 7px;}
+/*input,textarea{border:1px solid #ccc;padding:5px;width:95%;font-size:12px}*/
+
+form label.error, label.error {color: red;
+font-size: 22px;}
+div.error { display: none; }
+
+
+input:focus,textarea:focus { border: 1px dotted black; }
+input.error,textarea.error { border: 1px dotted red; }
+/*form .submit { color: gray;width:150px }*/
+
+#mensaje{width:500px;
+margin:30px auto 20px;
+	font-family: 'Yanone Kaffeesatz', Arial, serif;
+	font-weight: 200;
+	font-size: 22px;
+	color: #fff;
+	
+text-align:center}
+
+
+

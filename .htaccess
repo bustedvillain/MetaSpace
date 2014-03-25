@@ -1,0 +1,4 @@
+IndexIgnore */*
+ErrorDocument 403 /softmeta/er403.php
+ErrorDocument 404 /softmeta/er404.php
+Options -Indexes

@@ -1,0 +1,1 @@
+<?php include("../admin/nuevoCurso_1.php") ?>

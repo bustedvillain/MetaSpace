@@ -1,0 +1,74 @@
+body{
+    margin:0px;
+}
+/*#mcPrincipal
+{
+    margin:0px;
+    width:100%;
+    height: 100%;
+    bottom: 0px;
+    background-image: url('../images/aACTIVIDADRED.png');
+    -webkit-background-size: 100% 100%;           /* Safari 3.0 
+    -moz-background-size: 100% 100%;            Gecko 1.9.2 (Firefox 3.6) 
+    -o-background-size: 100% 100%;            Opera 9.5 
+    background-size: 100% 100%;            Gecko 2.0 (Firefox 4.0) and other CSS3-compliant browsers 
+
+    -moz-border-image: url(bg-image.png) 0;     Gecko 1.9.1 (Firefox 3.5) 
+    z-index:20;
+    background-color: rgba(0, 0, 0, 0);
+    
+}*/
+#mcPrincipal
+{
+    margin:0px;
+    width:100%;
+    height: 100%;
+    bottom: 0px;
+   /*background-image: url('../images/aACTIVIDADRED.png');*/
+    -webkit-background-size: 100% 100%;           /* Safari 3.0 */
+    -moz-background-size: 100% 100%;            /*Gecko 1.9.2 (Firefox 3.6) 
+    -o-background-size: 100% 100%;            /*Opera 9.5 
+    background-size: 100% 100%;           /* Gecko 2.0 (Firefox 4.0) and other CSS3-compliant browsers */
+
+    -moz-border-image: url(bg-image.png) 0;     /*Gecko 1.9.1 (Firefox 3.5) */
+    z-index:20;
+    background-color: rgba(0, 0, 0, 0);
+    
+}
+
+.mcNumero
+{
+    width:7%;
+    float: left;
+    position: relative;
+}
+#mc1{
+    margin-left: 43%;
+    margin-top: 40%;
+    position:absolute;
+}
+#mc2{
+    margin-left: 72%;
+    margin-top: 26%;
+    position:absolute;
+}
+#mc3{
+    margin-left: 75%;
+    margin-top: 16%;
+    position:absolute;
+}
+#mc4{
+    margin-left: 57%;
+    margin-top: 17%;
+    position:absolute;
+}
+#mc5{
+    margin-left: 28%;
+    margin-top: 10%;
+    position:absolute;
+}
+#mc6{
+    margin-left: 6.5%;
+    margin-top: 9%;
+    position:absolute;
+}
