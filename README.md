@@ -1,4 +1,4 @@
 softmeta
 ========
-
-Espacio Digital de Softmeta para e-blue
+Código Fuente
+Espacio Digital de para el Aprendizaje Autónomo: MetaSpace

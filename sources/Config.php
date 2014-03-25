@@ -19,31 +19,13 @@
 //   2013-09-24         JMNG                 1.0
 
 /**
- * Servidor de Quality
- */
-//Configuracion de Moodle
-//define("DB_NAME_MOD","softmeta");
-//define("USER_MOD","softmeta");
-//define("PASS_MOD","s0ftm3t6-.");
-//define("HOST_MOD","192.168.57.41");
-//define("PORT_MOD","5432");
-
-//Configuracion de Sistema de Gestion
-//define("DB_NAME_SG","softmeta_sgi");
-//define("USER_SG","softmeta");
-//define("PASS_SG","s0ftm3t6-.");
-//define("HOST_SG","192.168.57.41");
-//define("PORT_SG","5432");
-//define ("IP_SERVER_PUBLIC",'http://148.208.235.5/');
-
-/**
- * Servidor de Desarrollo
+ * Servidor de Producción
  */
 //Configuracion de Moodle
 define("DB_NAME_MOD","softmeta");
 define("USER_MOD","softmeta");
 define("PASS_MOD","s0ftm3t6-.");
-define("HOST_MOD","192.168.57.161");
+define("HOST_MOD","201.149.45.116");
 define("PORT_MOD","5432");
 
 
@@ -51,10 +33,10 @@ define("PORT_MOD","5432");
 define("DB_NAME_SG","softmeta_sgi");
 define("USER_SG","softmeta");
 define("PASS_SG","s0ftm3t6-.");
-define("HOST_SG","192.168.57.161");
+define("HOST_SG","201.149.45.116");
 define("PORT_SG","5432");
 
-define ("IP_SERVER_PUBLIC",'http://200.56.86.68:8501/');
+define ("IP_SERVER_PUBLIC",'http://201.149.45.116/');
 
 
 //Confuración de la plantilla
