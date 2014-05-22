@@ -19,6 +19,8 @@ include("Funciones.Admin.Grupos.php");
 include("Funciones.Admin.Grupos.2.php");
 //Alta masiva
 include("Funciones.Admin.AltaMasiva.php");
+//Habilidades
+include("Funciones.Admin.Habilidades.php");
 
 
 /**

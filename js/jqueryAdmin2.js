@@ -180,7 +180,7 @@ function llenaComboGradoEscolar(idNivel) {
                 $("#comboGradoEscolares option[value=" + idGradoEscolar + "]").attr("selected", true);
                 cambioGrado = false;
             }
-        }else{
+        } else {
             $("#comboGradoEscolares").empty();
             $("#comboGradoEscolares").append("<option>Sin grados disponibles</option>");
         }
