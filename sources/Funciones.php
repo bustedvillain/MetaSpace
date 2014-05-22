@@ -47,6 +47,8 @@ include ("Funciones.Frontweb.Alumno.php");
 include ("Funciones.Frontweb.Tutor.php");
 include ("Funciones.Frontweb.Padre.php");
 include ("Funciones.Frontweb.Tutor2");
+//Core de Mensajes
+include("Funciones.Core.Mensajes.php");
 require_once 'Query.php';
 /**
  * CHANGE CONTROL 2.00
@@ -57,7 +59,7 @@ require_once 'Query.php';
 include ("Funciones.Checkup.php");
 
 
-define("VERSION", "v1.0.4");
+
 /*
  * Archivo de funiones generales, hace llamado las funciones de todos los desarrolladores
  */
@@ -442,191 +444,6 @@ function descomprimeZIP($id_unidad, $nombreArchivo) {
 //Elimina el .zip
     unlink(UNIDADES_PATH . "/" . $nombreArchivo);
 }
-/**
- * Devuelve true si una unidad tiene series
- * @param type $idUnidad
- * @return boolean
- */
-function unidadEnAlgunaSerie($idUnidad) {
-
-    $query = new Query("SG");
-    $query->sql = "select id_serie_aer from serie_aer where id_unidad = $idUnidad";
-    $series = $query->select("obj");
-    if ($query->numRegistros() > 0) {
-        return true;
-    } else {
-        return false;
-    }
-}
-/**
- * Devuelve los cursos Moodle para el linkeo de series API
- * @param type $idCursoSG
- */
-function cursosMoodleParaSerie($idCursoSG) {
-//Crea objeto para realizar consultas al sistema de gestion
-    $query = new Query("SG");
-//Query a Moodle
-    $query->sql = "SELECT * from unidades where id_curso=$idCursoSG and status = 1 and url_unidad is not null";
-    $resultado = $query->select("obj");
-
-    if ($resultado) {
-        foreach ($resultado as $topico) {
-            if (!unidadEnAlgunaSerie($topico->id_unidad))
-                $boton = '<a class="btn btn-info" data-toggle="modal" href="#verModalLinkeo" onclick="llenaModalLinkeo(\'' . $topico->id_unidad . '\');">Agregar informaci&oacute;n de series';
-            else
-                $boton = '<a class="btn btn-success" data-toggle="modal" href="#verModalLinkeo" onclick="llenaModalLinkeoEditar(\'' . $topico->id_unidad . '\');">Editar informaci&oacute;n de series';
-            echo <<<HTML
-            <div class="well">
-                <h5>$topico->nombre_unidad </h5> $boton </a> 
-            </div>
-HTML;
-        }
-    } else {
-        echo "<h3 class='text-warning'>No hay t&oacute;picos en este curso.</h3>";
-    }
-}
-/**
- * Imprime los options del combo de habilidades activas
- * @return string
- */
-function comboHabilidades() {
-
-    $query = new Query("SG");
-
-    $query->sql = "SELECT * from habilidades where status = 1";
-    $habilidades = $query->select("obj");
-    $var = "";
-    if ($habilidades) {
-        foreach ($habilidades as $hab) {
-//            echo<<<hab
-//        <option value = "$hab->id_habilidad">$hab->nombre_habilidad</option>
-//hab;  
-
-            $ns = ($hab->nombre_habilidad);
-            $var = $var . "<option value = '$hab->id_habilidad'>$ns</option>";
-        }
-    }
-    return $var;
-}
-/**
- * Imprime un combo de habilidades dejando seleccionada la que se pida
- * @param type $idSelected
- * @return string
- */
-function comboHabilidadesConSelected($idSelected) {
-
-    $query = new Query("SG");
-
-    $query->sql = "SELECT * from habilidades where status = 1";
-    $habilidades = $query->select("obj");
-    $var = "";
-    if ($habilidades) {
-        foreach ($habilidades as $hab) {
-//            echo<<<hab
-//        <option value = "$hab->id_habilidad">$hab->nombre_habilidad</option>
-//hab;
-            $ns = html_entity_decode($hab->nombre_habilidad);
-            if ($idSelected == $hab->id_habilidad) {
-                $var = $var . "<option value = '$hab->id_habilidad' selected='selected'>$ns</option>";
-            } else {
-                $var = $var . "<option value = '$hab->id_habilidad'>$ns</option>";
-            }
-        }
-    }
-    return $var;
-}
-/**
- * Imprime los options de los tipos de elementos
- * @return string
- */
-function comboTipoElemento() {
-
-    $query = new Query("SG");
-
-    $query->sql = "SELECT * from tipo_elemento where status = 1";
-    $tiposE = $query->select("obj");
-    $var = "";
-    if ($tiposE) {
-        foreach ($tiposE as $te) {
-            $var = $var . "<option value = '$te->id_tipo_elemento'>$te->nombre_tipo</option>";
-//            echo<<<hab
-//        <option value = "$te->id_tipo_elemento">$te->nombre_tipo</option>
-//hab;
-        }
-    } else {
-        echo <<<html
-            <option value="">No hay tipos de elementos</option>
-html;
-    }
-    return $var;
-}
-
-/**
- * Genera un combo box con los padres registrados en la base de datos
- */
-function comboPadres() {
-    $query = new Query("SG");
-
-    $query->sql = "SELECT  p.id_padre, dp.nombre_pila, dp.primer_apellido, dp.segundo_apellido FROM padres p, datos_personales dp where p.id_datos_personales=dp.id_datos_personales and p.status = 1";
-    $padres = $query->select("obj");
-
-    echo <<<combo
-        <option value="">Seleccione un Padre</option>
-combo;
-    if ($padres) {
-
-        foreach ($padres as $padre) {
-            echo <<<HTML
-                <option value="$padre->id_padre">$padre->nombre_pila $padre->primer_apellido $padre->segundo_apellido</option>
-HTML;
-        }
-    }
-}
-
-/**
- * Function que genera opciones de un combo de los
- * profesores de aula en la base de datos
- */
-function comboProfesoresAula() {
-    $query = new Query("SG");
-
-    $query->sql = "SELECT  p.id_profesor_aula, dp.nombre_pila, dp.primer_apellido, dp.segundo_apellido FROM profesores_aula p, datos_personales dp where p.id_datos_personales=dp.id_datos_personales and p.status = 1";
-    $profesores = $query->select("obj");
-
-    echo <<<combo
-        <option value="">Seleccione un Profesor de Aula</option>
-combo;
-    if ($profesores) {
-        foreach ($profesores as $profesor) {
-            echo <<<HTML
-                <option value="$profesor->id_profesor_aula">$profesor->nombre_pila $profesor->primer_apellido $profesor->segundo_apellido</option>
-HTML;
-        }
-    }
-}
-
-/**
- * Funcion que genera un combo con las empresas registradas
- * en la base de datos
- */
-function comboEmpresas() {
-    $query = new Query("SG");
-
-    $query->sql = "SELECT  id_empresa, nombre_empresa FROM empresa where status = 1";
-    $empresas = $query->select("obj");
-
-    if ($empresas) {
-        foreach ($empresas as $empresa) {
-            echo <<<HTML
-                <option value="$empresa->id_empresa">$empresa->nombre_empresa</option>
-HTML;
-        }
-    } else {
-        echo <<<html
-            <option value=''>No hay empresas disponibles</option>
-html;
-    }
-}
 
 /**
  * Funcion que recibe un post y de todos los atributos genera un arreglo para los campos
@@ -732,27 +549,6 @@ function destripaPostEdicion($POST, $delimitador = NULL, $tablas = NULL) {
     }
 
     return $sets;
-}
-/**
- * Imprime los options del combo de roles de un tutor
- */
-function comboRolesTutores() {
-    $query = new Query("SG");
-
-    $query->sql = "SELECT  id_rol_tutor, nombre FROM rol_tutor where status = 1";
-    $roles = $query->select("obj");
-
-    if ($roles) {
-        foreach ($roles as $rol) {
-            echo <<<HTML
-                <option value="$rol->id_rol_tutor">$rol->nombre</option>
-HTML;
-        }
-    } else {
-        echo <<<html
-            <option value="">No hay roles</option>
-html;
-    }
 }
 
 /**
@@ -882,115 +678,6 @@ function redirect_post($url, array $data, array $headers = null) {
     }
 }
 
-//Inicia control de cambios #3
-/**
- * Verifica en caso de que exista una cookie para construir la sesión o iniciar normalmente
- * @return boolean
- */
-function verificaCookieTipo() {
-    if (isset($_COOKIE["smTipo"])) {
-        $tipo = -1;
-        switch ($_COOKIE["smTipo"]) {
-            case "alumno":
-                $tipo = 0;
-                break;
-            case "Junior":
-                $tipo = 1;
-                break;
-            case "Senior":
-                $tipo = 1;
-                break;
-            case "Coordinador":
-                $tipo = 1;
-                break;
-            case "profesorAula":
-                $tipo = 2;
-                break;
-            case "padre":
-                $tipo = 3;
-                break;
-            case "gestorContenidos":
-                $tipo = 4;
-                break;
-            case "administrador":
-                $tipo = 5;
-                break;
-        }
-        llenaSesionAuth($_COOKIE["smIdDatosPersonales"]);
-        llenaArregloSesion($tipo, $_COOKIE["smNombre"], $_COOKIE["smIdDatosPersonales"], $_COOKIE["smIdPorTabla"], date("H:i:s"));
-//        header("Location:../../admin/index.php");
-        return true;
-    } else {
-//        header("Location:../../index.php");
-        return false;
-    }
-}
-
-//Inicia control de cambios #6
-/**
- * Redirecciona de manera diferente si hay cookies o no creadas
- * @param type $rutaLarga
- * @param type $rutaCorta
- * @param type $prefijo
- */
-function locationConCookie($rutaLarga, $rutaCorta, $prefijo = "") {
-    if (isset($_COOKIE["smTipo"])) {
-        header('Location:' . $prefijo . $rutaCorta);
-    } else {
-        header('Location:' . $prefijo . $rutaLarga . $rutaCorta);
-    }
-}
-
-/**
- * Devuelve una ruta para redireccionar dependiendo si existe o no cookie
- * @param type $rutaLarga
- * @param type $rutaCorta
- * @param type $prefijo
- * @return type
- */
-function rutaConCookie($rutaLarga, $rutaCorta, $prefijo = "") {
-    if (isset($_COOKIE["smTipo"])) {
-        return $prefijo . $rutaCorta;
-    } else {
-        return $prefijo . $rutaLarga . $rutaCorta;
-    }
-}
-
-//termina control de cambios #6
-/**
- * Crea los registros en el arreglo de sesión para hacer log in en moodle
- * @param type $idDatosPersonales
- */
-function llenaSesionAuth($idDatosPersonales) {
-    require_once 'Query.php';
-    $sql = new Query("SG");
-    $sql->sql = "
-                select *
-                from datos_personales
-                where id_datos_personales = " . $idDatosPersonales . "
-            ";
-    $listaUsuarios = $sql->select("obj");
-    if (!empty($listaUsuarios)) {
-        foreach ($listaUsuarios as $us) {
-            $_SESSION['userMail'] = $us->nombre_usuario;
-            $_SESSION['pass'] = nDCrypt($us->contrasena);
-        }
-    }
-}
-
-//Finaliza control de cambios #3
-/**
- * Determina si existe una sesión valida creada
- * @return boolean
- */
-function existeSession() {
-    if (esAlumno() || esJr() || esSenior() ||
-            esCoordinador() || esProfesorAula() || esPadre() || esGestorContenido() || esAdministrador())
-        return true;
-    else
-        return false;
-}
-
 /**
  * Función que hace uso de la funcion mail para el envio de correo.
  * NOTA: Es posible enviar correo por SMTP via GMAIL, es necesario
@@ -1028,6 +715,7 @@ correo;
     else
         return false;
 }
+
 /**
  * Devuelve el correo de contacto actual en variables.ini
  * @return type
@@ -1041,63 +729,9 @@ function obtenerValorCorreoContacto() {
  * Obtener la inactividad en nuestro sistema
  * @return type
  */
-function obtenerValorInactividadAdministrador() {
-    $arrayConfig = parse_ini_file("Variables.ini");
-    return $arrayConfig['inactividadAdministrador'];
-}
-
-/**
- * Obtener la inactividad en nuestro sistema
- * @return type
- */
-function obtenerValorInactividadGestor() {
-    $arrayConfig = parse_ini_file("Variables.ini");
-    return $arrayConfig['inactividadGestor'];
-}
-
-/**
- * Obtener la inactividad en nuestro sistema
- * @return type
- */
-function obtenerValorInactividadTutores() {
-    $arrayConfig = parse_ini_file("Variables.ini");
-    return $arrayConfig['inactividadTutores'];
-}
-
-/**
- * Obtener la inactividad en nuestro sistema
- * @return type
- */
-function obtenerValorInactividadPadre() {
-    $arrayConfig = parse_ini_file("Variables.ini");
-    return $arrayConfig['inactividadPadre'];
-}
-
-/**
- * Obtener la inactividad en nuestro sistema
- * @return type
- */
-function obtenerValorInactividadAlumno() {
-    $arrayConfig = parse_ini_file("Variables.ini");
-    return $arrayConfig['inactividadAlumno'];
-}
-
-/**
- * Obtener la inactividad en nuestro sistema
- * @return type
- */
 function obtenerToken() {
     $arrayConfig = parse_ini_file("Variables.ini");
     return $arrayConfig['tokenMoodle'];
-}
-/**
- * Obtiene el color en el archivo pedido
- * @param type $ruta
- * @return type
- */
-function obtenerColor($ruta) {
-    $arrayConfig = parse_ini_file($ruta);
-    return $arrayConfig['colorCalif'];
 }
 
 /**
@@ -1218,13 +852,6 @@ function validaFortaleza($contrasena) {
     }
 }
 
-//Inicia control de cambios #7
-function nombreLogout() {
-    $html = '  <b><a href="../../logout.php"> Cerrar Sesi&oacute;n</a></b>';
-    if (isset($_SESSION['nombre']))
-        echo $_SESSION['nombre'] . $html;
-}
-
 //Termina control de cambios #7
 //function validaContrasena($contrasena){
 //    if(ctype_)
@@ -1274,66 +901,6 @@ function guardaImagen($titulo) {
 //    return $ruta;
 }
 
-/**
- * Retorna el tiempo de sesio que tiene configurado por sesion
- * @return type
- */
-function retornaTiempoDeSesionPorSesion() {
-    switch (obtenerTipo()) {
-        case "administrador":
-            return obtenerValorInactividadAdministrador();
-            break;
-        case "gestorContenidos":
-            return obtenerValorInactividadGestor();
-            break;
-        case "Junior":
-        case "Senior":
-        case "Coordinador":
-            return obtenerValorInactividadTutores();
-            break;
-        case "alumno":
-            return obtenerValorInactividadAlumno();
-            break;
-        case "padre":
-            return obtenerValorInactividadPadre();
-            break;
-    }
-}
-/**
- * Imprime un script y lo ejecuta para saber el tiempo máximo por sesión
- */
-function imprimeScriptDeTiempoMaxSesion() {
-    $tiempo = retornaTiempoDeSesionPorSesion();
-    echo <<<html
-    <script type="text/javascript">
-        tiempoMaxSesion = $tiempo;
-        fw = true;
-    </script>
-html;
-}
 
-/**
- * Funcion que recibe una fecha y la retorna en el formato adecuado
- * para insertarla en la base de datos PostgreSql
- * @param type $fecha
- * @return boolean
- */
-function preparaFechaBaseDatos($fecha) {    
-    if (preg_match("/([0-9]{2})\/([0-9]{2})\/([0-9]{4})/", $fecha, $matches)) {
-        //dd/mm/yyyy
-        return $matches[3]."-".$matches[2]."-".$matches[1];
-    } else if (preg_match("/([0-9]{2})\-([0-9]{2})\-([0-9]{4})/", $fecha, $matches)) {
-        //dd-mm-yyyy
-        return $matches[3]."-".$matches[2]."-".$matches[1];
-    } else if (preg_match("/([0-9]{4})\-([0-9]{2})\-([0-9]{2})/", $fecha, $matches)) {
-        //yyyy-mm-dd
-        return $fecha;
-    } else if (preg_match("/([0-9]{4})\/([0-9]{2})\/([0-9]{2})/", $fecha, $matches)) {
-        //yyyy/mm/dd
-        return $matches[1]."-".$matches[2]."-".$matches[3];
-    } else {
-        return false;
-    }
-}
 
 ?>

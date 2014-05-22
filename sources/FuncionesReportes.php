@@ -670,6 +670,14 @@ SQL;
     $resultado = $query->select("obj");
     return $resultado;
 }
+
+/**
+ * CHANGE CONTROL 1.1.0
+ * FECHA DE MODIFICACION: 22 DE MAYO DEL 2014
+ * AUTOR: JOSE MANUEL NIETO GOMEZ
+ * OBJETIVO: CAMBIOS ESTETICOS
+ */
+
 /**
  * Crea la tabla para la subida de reportes
  * @param type $idTutor
@@ -683,7 +691,7 @@ function tablaParaReportes($idTutor) {
                     <th>Escuela</th>
                     <th>Empresa</th>
                     <th>Curso</th>
-                    <th>Curso Abierto</th>
+                    <th>Curso Publicado</th>
                     <th>Grupo</th>
                     <th>Tipo Reporte</th>
                     <th>Subir</th>
@@ -700,7 +708,7 @@ html;
                     <th>Escuela</th>
                     <th>Empresa</th>
                     <th>Curso</th>
-                    <th>Curso Abierto</th>
+                    <th>Curso Publicado</th>
                     <th>Grupo</th>
                     <th>Tipo Reporte</th>
                     <th>Subir</th>
@@ -753,7 +761,7 @@ HTML;
             echo <<<HTML
                     </select>
                 </td>
-                <td><button class="btn btn-primary" type="submit" >Subir/Generar Reporte</button></td>  
+                <td><button class="btn btn-primary" type="submit" >Subir/Generar</button></td>  
             </form>
             </tr>
 HTML;

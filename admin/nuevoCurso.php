@@ -1,4 +1,11 @@
-<?php include("../sources/Funciones.php");  verificarSesionAdminOGestor();?>
+<?php include("../sources/Funciones.php");  verificarSesionAdminOGestor();
+/**
+ * CHANGE CONTROL 1.1.0
+ * AUTOR: JOSE MANUEL NIETO GOMEZ
+ * FECHA DE MODIFICACIÓN: 21 DE MAYO DE 2014
+ * OBJETIVO: CAMBIOS ESTETICOS
+ */
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -16,7 +23,7 @@
             <!-- Main hero unit for a primary marketing message or call to action -->
             <div class="hero-unit">
                 <h1>Vincular Curso</h1>
-                <p>A continuaci&oacute;n se muestran los cursos creados en Moodle, seleccione uno para vincularlo al sistema de gesti&oacute;n.</p>
+                <p>A continuaci&oacute;n se muestran los cursos creados en la secci&oacute; de recursos, seleccione uno para vincularlo.</p>
             </div>  
             
             <ul class="breadcrumb">
@@ -40,10 +47,7 @@
                 </tbody>
             </table>
 
-            
-
-            
-                
+     
             <?php include("../template/footer.php"); ?>
 
         </div> <!-- /container -->

@@ -1,5 +1,12 @@
 <?php include("../sources/Funciones.php"); verificarSesionAdminOGestor();
 
+/**
+ * CHANGE CONTROL 1.1.0
+ * AUTOR: JOSE MANUEL NIETO GOMEZ
+ * FECHA DE MODIFICACIÓN: 21 DE MAYO DE 2014
+ * OBJETIVO: CAMBIOS ESTETICOS
+ */
+
 if(!isset($_GET["id"])){
     header("cursosAbiertos.php");
 }
@@ -22,22 +29,22 @@ $cursoAbierto = consultaCursoAbierto($_GET["id"]);
 
             <!-- Main hero unit for a primary marketing message or call to action -->
             <div class="hero-unit">
-                <h1>Enrolar Grupos</h1>
-                <p>Seleccione los grupos que desea enrolar al curso</p>
+                <h1>Asignaci&oacute;n de Grupos</h1>
+                <p>Seleccione los grupos que desea asignar al curso. Posteriormente asigne Tutores.</p>
             </div>
             
             <ul class="breadcrumb">
-                <li><a href="cursosAbiertos.php">Cursos Abiertos</a> <span class="divider">/</span></li>
-                <li class="active">Enrolar Grupos</li>
+                <li><a href="cursosAbiertos.php">Cursos Publicados</a> <span class="divider">/</span></li>
+                <li class="active">Asignar Grupos</li>
             </ul>
             <input type="hidden" id="enrolar" value=""/>
             <form action="gdaEnrolarGrupo.php" id="frmRelCursoGrupo" method="POST">
                 <input type="hidden" name="idCursoAbierto" value ="<?php echo $_GET["id"]?>"/>
                 <input type="hidden" id ="cambio" name="cambio" value ="0"/>
                 <fieldset>
-                    <legend>Curso a Enrolar</legend>
+                    <legend>Curso a Asignar</legend>
                     
-                    <p><b>Curso Abierto:</b>  <?php echo $cursoAbierto["nombre_curso_abierto"]; ?>  </p>
+                    <p><b>Curso Publicado:</b>  <?php echo $cursoAbierto["nombre_curso_abierto"]; ?>  </p>
                     <p><b>Descipci&oacute;n:</b> <?php echo $cursoAbierto["descripcion"]; ?></p>
 
                     <legend>Grupos</legend>
@@ -69,7 +76,8 @@ $cursoAbierto = consultaCursoAbierto($_GET["id"]);
                             </select>
                         </div>
                     </div>
-                    <p>A continuaci&oacute;n se muestran los grupos disponibles para enrolar en el curso, seleccione los grupos que desea enrolar y de click en '->', si desea remover alguno de los seleccionados, de click en el grupo y al boton de '<-'.</p>
+                    <p>A continuaci&oacute;n se muestran los grupos disponibles para asignar en el curso. </p>
+                    <p>Seleccione los grupos disponibles y dé click en 'Agregar' para asignarlos. Si desea remover grupos asignados, seleccionelos y dé click en 'Quitar'.</p>
                     
                     <br/><br/>
                     <div class="divGrupo">
@@ -81,11 +89,11 @@ $cursoAbierto = consultaCursoAbierto($_GET["id"]);
                     </div>
 
                     <div class="botones">
-                        <button type="button" class="btn btn-success" id="btn-add">-></button><br>
-                        <button type="button" class="btn btn-info" id="btn-remove"><-</button>
+                        <button type="button" class="btn btn-success" id="btn-add">Agregar</button><br>
+                        <button type="button" class="btn btn-info" id="btn-remove">Quitar</button>
                     </div>
                     <div class="divGrupo">
-                        <p>Grupos Seleccionados:</p>
+                        <p>Grupos Asignados:</p>
                         <select class="grupo2" name="grupos[]" id="select-to" multiple size="15"></select>                                            
                     </div>
 

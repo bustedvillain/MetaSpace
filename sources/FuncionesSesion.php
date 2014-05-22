@@ -870,4 +870,204 @@ function consultaUltimaEntradaSitio($idDatosPersonales) {
         return null;
     }
 }
+
+//Inicia control de cambios #3
+/**
+ * Verifica en caso de que exista una cookie para construir la sesión o iniciar normalmente
+ * @return boolean
+ */
+function verificaCookieTipo() {
+    if (isset($_COOKIE["smTipo"])) {
+        $tipo = -1;
+        switch ($_COOKIE["smTipo"]) {
+            case "alumno":
+                $tipo = 0;
+                break;
+            case "Junior":
+                $tipo = 1;
+                break;
+            case "Senior":
+                $tipo = 1;
+                break;
+            case "Coordinador":
+                $tipo = 1;
+                break;
+            case "profesorAula":
+                $tipo = 2;
+                break;
+            case "padre":
+                $tipo = 3;
+                break;
+            case "gestorContenidos":
+                $tipo = 4;
+                break;
+            case "administrador":
+                $tipo = 5;
+                break;
+        }
+        llenaSesionAuth($_COOKIE["smIdDatosPersonales"]);
+        llenaArregloSesion($tipo, $_COOKIE["smNombre"], $_COOKIE["smIdDatosPersonales"], $_COOKIE["smIdPorTabla"], date("H:i:s"));
+//        header("Location:../../admin/index.php");
+        return true;
+    } else {
+//        header("Location:../../index.php");
+        return false;
+    }
+}
+
+//Inicia control de cambios #6
+/**
+ * Redirecciona de manera diferente si hay cookies o no creadas
+ * @param type $rutaLarga
+ * @param type $rutaCorta
+ * @param type $prefijo
+ */
+function locationConCookie($rutaLarga, $rutaCorta, $prefijo = "") {
+    if (isset($_COOKIE["smTipo"])) {
+        header('Location:' . $prefijo . $rutaCorta);
+    } else {
+        header('Location:' . $prefijo . $rutaLarga . $rutaCorta);
+    }
+}
+
+/**
+ * Devuelve una ruta para redireccionar dependiendo si existe o no cookie
+ * @param type $rutaLarga
+ * @param type $rutaCorta
+ * @param type $prefijo
+ * @return type
+ */
+function rutaConCookie($rutaLarga, $rutaCorta, $prefijo = "") {
+    if (isset($_COOKIE["smTipo"])) {
+        return $prefijo . $rutaCorta;
+    } else {
+        return $prefijo . $rutaLarga . $rutaCorta;
+    }
+}
+
+//termina control de cambios #6
+/**
+ * Crea los registros en el arreglo de sesión para hacer log in en moodle
+ * @param type $idDatosPersonales
+ */
+function llenaSesionAuth($idDatosPersonales) {
+    require_once 'Query.php';
+    $sql = new Query("SG");
+    $sql->sql = "
+                select *
+                from datos_personales
+                where id_datos_personales = " . $idDatosPersonales . "
+            ";
+    $listaUsuarios = $sql->select("obj");
+    if (!empty($listaUsuarios)) {
+        foreach ($listaUsuarios as $us) {
+            $_SESSION['userMail'] = $us->nombre_usuario;
+            $_SESSION['pass'] = nDCrypt($us->contrasena);
+        }
+    }
+}
+
+//Finaliza control de cambios #3
+/**
+ * Determina si existe una sesión valida creada
+ * @return boolean
+ */
+function existeSession() {
+    if (esAlumno() || esJr() || esSenior() ||
+            esCoordinador() || esProfesorAula() || esPadre() || esGestorContenido() || esAdministrador())
+        return true;
+    else
+        return false;
+}
+
+/**
+ * Obtener la inactividad en nuestro sistema
+ * @return type
+ */
+function obtenerValorInactividadAdministrador() {
+    $arrayConfig = parse_ini_file("Variables.ini");
+    return $arrayConfig['inactividadAdministrador'];
+}
+
+/**
+ * Obtener la inactividad en nuestro sistema
+ * @return type
+ */
+function obtenerValorInactividadGestor() {
+    $arrayConfig = parse_ini_file("Variables.ini");
+    return $arrayConfig['inactividadGestor'];
+}
+
+/**
+ * Obtener la inactividad en nuestro sistema
+ * @return type
+ */
+function obtenerValorInactividadTutores() {
+    $arrayConfig = parse_ini_file("Variables.ini");
+    return $arrayConfig['inactividadTutores'];
+}
+
+/**
+ * Obtener la inactividad en nuestro sistema
+ * @return type
+ */
+function obtenerValorInactividadPadre() {
+    $arrayConfig = parse_ini_file("Variables.ini");
+    return $arrayConfig['inactividadPadre'];
+}
+
+/**
+ * Obtener la inactividad en nuestro sistema
+ * @return type
+ */
+function obtenerValorInactividadAlumno() {
+    $arrayConfig = parse_ini_file("Variables.ini");
+    return $arrayConfig['inactividadAlumno'];
+}
+
+//Inicia control de cambios #7
+function nombreLogout() {
+    $html = '  <b><a href="../../logout.php"> Cerrar Sesi&oacute;n</a></b>';
+    if (isset($_SESSION['nombre']))
+        echo $_SESSION['nombre'] . $html;
+}
+
+
+/**
+ * Retorna el tiempo de sesio que tiene configurado por sesion
+ * @return type
+ */
+function retornaTiempoDeSesionPorSesion() {
+    switch (obtenerTipo()) {
+        case "administrador":
+            return obtenerValorInactividadAdministrador();
+            break;
+        case "gestorContenidos":
+            return obtenerValorInactividadGestor();
+            break;
+        case "Junior":
+        case "Senior":
+        case "Coordinador":
+            return obtenerValorInactividadTutores();
+            break;
+        case "alumno":
+            return obtenerValorInactividadAlumno();
+            break;
+        case "padre":
+            return obtenerValorInactividadPadre();
+            break;
+    }
+}
+/**
+ * Imprime un script y lo ejecuta para saber el tiempo máximo por sesión
+ */
+function imprimeScriptDeTiempoMaxSesion() {
+    $tiempo = retornaTiempoDeSesionPorSesion();
+    echo <<<html
+    <script type="text/javascript">
+        tiempoMaxSesion = $tiempo;
+        fw = true;
+    </script>
+html;
+}
 ?>

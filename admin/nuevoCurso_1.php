@@ -7,6 +7,12 @@
 //Autor:Omar Nava
 //Objetivo: Cambiar etiqueta de plantilla
 //03-ene-2014
+/**
+ * CHANGE CONTROL 1.1.0
+ * AUTOR: JOSE MANUEL NIETO GOMEZ
+ * FECHA DE MODIFICACIÓN: 21 DE MAYO DE 2014
+ * OBJETIVO: CAMBIOS ESTETICOS
+ */
 include("../sources/Funciones.php");
 verificarSesionAdminOGestor();
 
@@ -32,7 +38,7 @@ if (isset($_GET["id"])) {
                 <!-- Main hero unit for a primary marketing message or call to action -->
                 <div class="hero-unit">
                     <h1>Vinculaci&oacute;n</h1>
-                    <p>Vinculaci&oacute;n de curso de Moodle con el sistema de gesti&oacute;n. Los campos marcados con (*) son obligatorios.</p>
+                    <p>Vinculaci&oacute;n de curso con sistema de gesti&oacute;n. Los campos marcados con (*) son obligatorios.</p>
                 </div> 
 
                 <ul class="breadcrumb">
@@ -100,24 +106,24 @@ if (isset($_GET["id"])) {
                         <legend>Equivalencias Num&eacute;ricas</legend>
                         <p class="text-info">Asigne las equivalencias num&eacute;ricas relacionadas a las calificaciones/premios. El Rango 1 hace referencia al m&aacute;s bajo; desde 1 hasta el valor que usted especifique. El rango 4 es la calificaci&oacute;n m&aacute;xima.</p>
                         <div class="input-append">
-                            <label>Rango 1:</label>
+                            <label>Insuficiente:</label>
                             <b>De</b><input type="text" value="1" disabled/> a <input type="text" name="equivalencias_numericas/rango1" required id="rango1" value=""/>
                         </div>
                         <br>
                         <div class="input-append">
-                            <label>Rango 2:</label>
+                            <label>Suficiente:</label>
                             De <input type="text" value="" disabled id="repRango1"/> a <input type="text" name="equivalencias_numericas/rango2" required id="rango2" value=""/>
                             <label class="text-error" id="errorRango2"></label>
                         </div>
                         <br>
                         <div class="input-append">
-                            <label>Rango 3:</label>
+                            <label>Bien:</label>
                             De <input type="text" value="" disabled id="repRango2"/> a <input type="text" name="equivalencias_numericas/rango3" required id="rango3" value=""/>
                             <label class="text-error" id="errorRango3"></label>
                         </div>
                         <br>
                         <div class="input-append">
-                            <label>Rango 4:</label>
+                            <label>Muy Bien:</label>
                             De <input type="text" value="" disabled id="repRango3"/> a <input type="text" name="equivalencias_numericas/rango4" readonly id="rango4" value="100"/>
                             <label class="text-error" id="errorRango4"></label>
                         </div>

@@ -65,12 +65,12 @@ if ($_POST["id_curso_abierto"]) {
 
                 <!-- Main hero unit for a primary marketing message or call to action -->
                 <ul class="breadcrumb">
-                    <li><a href="cursosAbiertos.php">Cursos Abiertos</a> <span class="divider">/</span></li>
-                    <li class="active">Enrolar Grupos <span class="divider">/</span></li>
-                    <li class="active">Asignar Tutores  <span class="divider">/</span></li>
+                    <li><a href="cursosAbiertos.php">Cursos Publicados</a> <span class="divider">/</span></li>
+                    <li><a href="enrolarGrupo.php?id=<?=$idCursoAbierto?>">Asignar Grupos</a> <span class="divider">/</span></li>
+                    <li><a href="enrolarTutores.php.php?id=$idCursoAbierto">Asignar Tutores</a> <span class="divider">/</span></li>
                     <li class="active">Tutores asignados</li>
                 </ul>
-                <div class="hero-unit">
+                <div class="hero-unit" id="listo" style="display:none;">
                     <h1>Tutores Asignados Correctamente</h1>
                     <img src="../img/ok.png"/>
                 </div>
@@ -148,7 +148,7 @@ iframe;
 //                $c = $contador -2;
                 echo <<<iframe
                      <div class="smCargando">
-                        <div class="alert alert-success"><h4><img src="../img/loading.gif" style="width: 4%;"/>&nbsp;&nbsp;&nbsp;Estamos vinculando con moodle, espere por favor.</h4></div>
+                        <div class="alert alert-success"><h4><img src="../img/loading.gif" style="width: 4%;"/>&nbsp;&nbsp;&nbsp;Asignando Tutores, espere por favor.</h4></div>
                      </div>
                      <script type="text/javascript">
                         $("#frameGrupos$contador").load(function(){

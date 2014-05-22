@@ -19,8 +19,7 @@ include("Funciones.Admin.Grupos.php");
 include("Funciones.Admin.Grupos.2.php");
 //Alta masiva
 include("Funciones.Admin.AltaMasiva.php");
-//Core de Mensajes
-include("Funciones.Core.Mensajes.php");
+
 
 /**
  * Si no hay sesión del administrador se redirecciona a login

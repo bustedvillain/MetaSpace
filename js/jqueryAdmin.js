@@ -1529,12 +1529,12 @@ function sonFechasIguales(fecha,fecha2)
         for (i = 0; i < datos.topicos.length; i++) {
             //Titulo
             $("#edita_contenido").append("<tr>");
-            $("#edita_contenido").append("<td><b>Unidad " + datos.topicos[i].no_unidad + "</b></td><td></td>");
+            $("#edita_contenido").append("<td><b>Bloque " + datos.topicos[i].no_unidad + "</b></td><td></td>");
             $("#edita_contenido").append("</tr>");
 
             //Nombre de la unidad
             $("#edita_contenido").append("<tr>");
-            $("#edita_contenido").append("<td>Nombre Unidad:</td>");
+            $("#edita_contenido").append("<td>Nombre Bloque:</td>");
             $("#edita_contenido").append("<td><input type='text' name='nombre_unidad[]' value='" + datos.topicos[i].nombre_unidad + "'/></td>")
             $("#edita_contenido").append("</tr>");
 
@@ -1858,12 +1858,12 @@ function sonFechasIguales(fecha,fecha2)
         for (i = 0; i < datos.fechas_unidades.length; i++) {
             //Titulo
             $("#ver_fecha_unidades").append("<tr>");
-            $("#ver_fecha_unidades").append("<td><b>Unidad " + datos.fechas_unidades[i].no_unidad + "</b></td><td></td>");
+            $("#ver_fecha_unidades").append("<td><b>Bloque " + datos.fechas_unidades[i].no_unidad + "</b></td><td></td>");
             $("#ver_fecha_unidades").append("</tr>");
 
             //Nombre de la unidad
             $("#ver_fecha_unidades").append("<tr>");
-            $("#ver_fecha_unidades").append("<td>Nombre Unidad:</td>");
+            $("#ver_fecha_unidades").append("<td>Nombre Bloque:</td>");
             $("#ver_fecha_unidades").append("<td>" + datos.fechas_unidades[i].nombre_unidad + "</td>");
             $("#ver_fecha_unidades").append("</tr>");
 
@@ -1923,12 +1923,12 @@ function sonFechasIguales(fecha,fecha2)
         for (i = 0; i < datos.fechas_unidades.length; i++) {
             //Titulo
             $("#editar_fechas_unidades").append("<tr>");
-            $("#editar_fechas_unidades").append("<td><b>Unidad " + datos.fechas_unidades[i].no_unidad + "</b></td><td></td>");
+            $("#editar_fechas_unidades").append("<td><b>Bloque " + datos.fechas_unidades[i].no_unidad + "</b></td><td></td>");
             $("#editar_fechas_unidades").append("</tr>");
 
             //Nombre de la unidad
             $("#editar_fechas_unidades").append("<tr>");
-            $("#editar_fechas_unidades").append("<td>Nombre Unidad:</td>");
+            $("#editar_fechas_unidades").append("<td>Nombre Bloque:</td>");
             $("#editar_fechas_unidades").append("<td>" + datos.fechas_unidades[i].nombre_unidad + "</td>");
             $("#editar_fechas_unidades").append("</tr>");
 

@@ -81,8 +81,10 @@ if ($_POST) {
                 <!-- Main hero unit for a primary marketing message or call to action -->
                 <div class="hero-unit">
                     <!--<h1>Curso abierto correctamente</h1>-->
-                    <h1>Inserci&oacute;n Exitosa</h1>
+                    <h1>Curso Publicado Exitosamente</h1>
                     <img src="../img/ok.png"/>
+                    <h3>Para continuar: <a href="cursosAbiertos.php" class="btn btn-success">Asignar Grupos</a></h3>
+                    
                 </div>
 
 

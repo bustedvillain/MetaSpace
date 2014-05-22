@@ -344,4 +344,28 @@ function optionsComboPadreDeTutores($idAlumno) {
 htm;
     }
 }
+
+
+/**
+ * Genera un combo box con los padres registrados en la base de datos
+ */
+function comboPadres() {
+    $query = new Query("SG");
+
+    $query->sql = "SELECT  p.id_padre, dp.nombre_pila, dp.primer_apellido, dp.segundo_apellido FROM padres p, datos_personales dp where p.id_datos_personales=dp.id_datos_personales and p.status = 1";
+    $padres = $query->select("obj");
+
+    echo <<<combo
+        <option value="">Seleccione un Padre</option>
+combo;
+    if ($padres) {
+
+        foreach ($padres as $padre) {
+            echo <<<HTML
+                <option value="$padre->id_padre">$padre->nombre_pila $padre->primer_apellido $padre->segundo_apellido</option>
+HTML;
+        }
+    }
+}
+
 ?>

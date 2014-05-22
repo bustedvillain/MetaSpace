@@ -15,7 +15,7 @@ if ($_GET["id_curso_abierto"]) {
     if($_GET["admin"]){
         $breadCrumb = <<<breadcrumb
              <ul class="breadcrumb">
-                <li><a href="cursosAbiertos.php">Cursos Abiertos</a><span class="divider">/</span></li>
+                <li><a href="cursosAbiertos.php">Cursos Publicados</a><span class="divider">/</span></li>
                 <li><a href="verTutoresCurso.php?id=$idCursoAbierto">Tutores en el Curso</a><span class="divider">/</span></li>
                 <li class="active">Administrar Tutores</li>
             </ul>   
@@ -23,8 +23,8 @@ breadcrumb;
     }else{
         $breadCrumb = <<<breadcrumb
              <ul class="breadcrumb">
-                <li><a href="cursosAbiertos.php">Cursos</a> <span class="divider">/</span></li>
-                <li class="active">Enrolar Grupos <span class="divider">/</span></li>
+                <li><a href="cursosAbiertos.php">Cursos Publicados</a> <span class="divider">/</span></li>
+                <li><a href="enrolarGrupo.php?id=$idCursoAbierto">Asignar Grupos</a> <span class="divider">/</span></li>
                 <li class="active">Asignar Tutores</li>
             </ul>  
 breadcrumb;
@@ -52,13 +52,16 @@ breadcrumb;
 
                 <!--breadcrumb-->
                 <?php echo $breadCrumb; ?>
-
-                <h3>Curso Abierto: <b class="text-info"><?php // echo getNombreCursoAbierto($idCursoAbierto);  ?></b></h3>
+                
+                <h3>Curso: <b class="text-info"><?php echo getNombreCurso($idCursoAbierto);  ?></b></h3>
+                <h3>Curso Publicado: <b class="text-info"><?php echo getNombreCursoAbierto($idCursoAbierto);  ?></b></h3>
 
                 <form action="gdaEnrolarTutores.php" method="post" id="formEnrolarTutores">
                     <fieldset>
                         <legend>Coordinadores de Tutores</legend>
-                        <p class="text-warning">A continuaci&oacute;n se muestran los Coordinadores de Tutures disponibles para enrolar en los grupos, seleccione los tutores que desea enrolar y de click en '->', si desea remover alguno de los seleccionados, de click en el nombre y al boton de '<-'.</p>
+                        <p class="text-warning">A continuaci&oacute;n se muestran los Coordinadores de Tutures disponibles para asignar en los grupos.</p>
+                        <p class="text-warning">Seleccione los tutores disponibles y dé click en 'Agregar' para asignarlos. Si desea remover tutores asignados, seleccionelos y dé click en 'Quitar'.</p>
+                        
                         <p class="text-error">Recuerda que es obligatorio contar con al menos un Coordinador de Tutores por curso.</p>
 
                         <br/><br/>
@@ -69,11 +72,11 @@ breadcrumb;
                             </select>
                         </div>
                         <div class="botones">
-                            <button type="button" class="btn btn-success" id="btn-add">-></button><br>
-                            <button type="button" class="btn btn-info" id="btn-remove"><-</button>
+                            <button type="button" class="btn btn-success" id="btn-add">Agregar</button><br>
+                            <button type="button" class="btn btn-info" id="btn-remove">Quitar</button>
                         </div>
                         <div class="divGrupo">
-                            <p>Coordinadores de Tutores Seleccionados:</p>
+                            <p>Coordinadores de Tutores Asignados:</p>
                             <select class="grupo" name="coordinadores[]" id="select-to" multiple size="15">
                                 <?php comboTutores(3, "seleccionados", $idCursoAbierto); ?>
                             </select>                                            

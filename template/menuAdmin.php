@@ -8,6 +8,11 @@ FECHA DE MODIFICACION: 23 DE ENERO DEL 2014
 AUTOR: JOSE MANUEL NIETO GOMEZ
 OBJETIVO: VALIDAR LA SESION PARA SABER QUE MENU DESPLEGAR-->
 
+<!--CHANGE CONTROL 1.1.0
+FECHA DE MODIFICACION: 21 DE MAYO DEL 2014
+AUTOR: JOSE MANUEL NIETO GOMEZ
+OBJETIVO: AJUSTES ESTETICOS-->
+
 <?php if(esAdministrador()){ ?>
 <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="navbar-inner">
@@ -17,7 +22,7 @@ OBJETIVO: VALIDAR LA SESION PARA SABER QUE MENU DESPLEGAR-->
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="brand" href="index.php">SGI Softmeta-A</a>
+            <a class="brand" href="index.php">SIA Softmeta-A</a>
             <div class="nav-collapse collapse">
                 <ul class="nav">
                     <!--<li><a href="index.php"><i class="icon-home icon-white"></i> Inicio</a></li>-->
@@ -25,14 +30,14 @@ OBJETIVO: VALIDAR LA SESION PARA SABER QUE MENU DESPLEGAR-->
                         <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-user icon-white"></i> Usuarios<b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li class="dropdown-submenu">
-                                <a href="javascript:void(0)"><i class="icon-user"></i> Alumno Estudiante</a>
+                                <a href="javascript:void(0)"><i class="icon-user"></i> Alumnos</a>
                                 <ul class="dropdown-menu">
                                     <li><a href="altaAlumnoEstudiante.php"><i class="icon-upload"></i> Agregar</a></li>
                                     <li><a href="verAlumnosEstudiantes.php"><i class="icon-search"></i> Listar</a></li>
                                 </ul>
                             </li>
                             <li class="dropdown-submenu">
-                                <a href="javascript:void(0)"><i class="icon-user"></i> Alumno Profesionista</a>
+                                <a href="javascript:void(0)"><i class="icon-user"></i> Usuarios</a>
                                 <ul class="dropdown-menu">
                                     <li><a href="altaAlumnoProfesionista.php"><i class="icon-upload"></i> Agregar</a></li>
                                     <li><a href="verAlumnosProfesionistas.php"><i class="icon-search"></i> Listar</a></li>
@@ -53,7 +58,7 @@ OBJETIVO: VALIDAR LA SESION PARA SABER QUE MENU DESPLEGAR-->
                                 </ul>
                             </li>  
                             <li class="dropdown-submenu">
-                                <a href="javascript:void(0)"><i class="icon-user"></i> Grupo</a>
+                                <a href="javascript:void(0)"><i class="icon-list"></i> Grupo</a>
                                 <ul class="dropdown-menu">
                                     <li><a href="altaGrupos.php"><i class="icon-upload"></i> Agregar</a></li>
                                     <li><a href="verGrupos.php"><i class="icon-search"></i> Listar</a></li>
@@ -65,7 +70,7 @@ OBJETIVO: VALIDAR LA SESION PARA SABER QUE MENU DESPLEGAR-->
                         </ul>
                     </li>  
                     <li class="dropdown">
-                        <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-globe icon-white"></i> Gesti&oacute;n<b class="caret"></b></a>
+                        <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-indent-left icon-white"></i> Administraci&oacute;n<b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li class="dropdown-submenu">
                                 <a href="javascript:void(0)">Tutor</a>
@@ -115,19 +120,19 @@ OBJETIVO: VALIDAR LA SESION PARA SABER QUE MENU DESPLEGAR-->
                         <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-book icon-white"></i> Curso<b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li><a href="nuevoCurso.php"><i class="icon-upload"></i> Vincular</a></li>
-                            <li><a href="cursos.php"><i class="icon-search"></i> Abrir</a></li>
-                            <li><a href="cursosAbiertos.php"><i class="icon-bookmark"></i> Enrolar</a></li>
+                            <li><a href="cursos.php"><i class="icon-search"></i> Ver</a></li>
+                            <li><a href="cursosAbiertos.php"><i class="icon-random"></i> Asignar Grupos</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-th-large icon-white"></i> Reporte<b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li><a href="../admin/reportes_1.php"><i  class="icon-user"></i>Subir</a></li>
-                            <li><a href="../admin/verReportes.php"><i  class="icon-user"></i>Listar</a></li>
+                            <li><a href="../admin/reportes_1.php"><i  class="icon-upload"></i>Generar</a></li>
+                            <li><a href="../admin/verReportes.php"><i  class="icon-search"></i>Listar</a></li>
                         </ul>
                     </li>
                     <li><a href="#verEditarPerfilModal" role="button" data-toggle="modal" onclick="verPerfilPropio(<?php echo $_SESSION["idPorTabla"];?>)"><i class="icon-info-sign icon-white"></i> Perfil</a></li>
-                    <li><a href="#" role="button" data-toggle="modal" onclick="javascript:document.formMoodle.submit();"><i class="icon-info-sign icon-white"></i> Gesti&oacute;n escolar</a></li>
+                    <li><a href="#" role="button" data-toggle="modal" onclick="javascript:document.formMoodle.submit();"><i class="icon-share icon-white"></i> Recursos</a></li>
                 </ul>
                 <p class="navbar-text pull-right">
                     Bienvenido(a) <a href="javascript:void(0)" class="navbar-link dropdown-toggle" data-toggle="dropdown"><?php echo (isset($_SESSION["nombre"])) ? $_SESSION["nombre"] : "Admin"; ?></a> (<a href="../logout.php">Cerrar Sesi&oacute;n</a>)                       

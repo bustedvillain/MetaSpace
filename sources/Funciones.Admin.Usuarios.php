@@ -1500,4 +1500,49 @@ function verificarUsuarioMoodleJSON($username) {
     return json_encode(verificarUsuarioMoodle($username));
 }
 
+/**
+ * Function que genera opciones de un combo de los
+ * profesores de aula en la base de datos
+ */
+function comboProfesoresAula() {
+    $query = new Query("SG");
+
+    $query->sql = "SELECT  p.id_profesor_aula, dp.nombre_pila, dp.primer_apellido, dp.segundo_apellido FROM profesores_aula p, datos_personales dp where p.id_datos_personales=dp.id_datos_personales and p.status = 1";
+    $profesores = $query->select("obj");
+
+    echo <<<combo
+        <option value="">Seleccione un Profesor de Aula</option>
+combo;
+    if ($profesores) {
+        foreach ($profesores as $profesor) {
+            echo <<<HTML
+                <option value="$profesor->id_profesor_aula">$profesor->nombre_pila $profesor->primer_apellido $profesor->segundo_apellido</option>
+HTML;
+        }
+    }
+}
+
+
+/**
+ * Funcion que genera un combo con las empresas registradas
+ * en la base de datos
+ */
+function comboEmpresas() {
+    $query = new Query("SG");
+
+    $query->sql = "SELECT  id_empresa, nombre_empresa FROM empresa where status = 1";
+    $empresas = $query->select("obj");
+
+    if ($empresas) {
+        foreach ($empresas as $empresa) {
+            echo <<<HTML
+                <option value="$empresa->id_empresa">$empresa->nombre_empresa</option>
+HTML;
+        }
+    } else {
+        echo <<<html
+            <option value=''>No hay empresas disponibles</option>
+html;
+    }
+}
 ?>

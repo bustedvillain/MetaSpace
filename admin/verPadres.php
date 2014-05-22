@@ -15,6 +15,13 @@ $mensaje = html_entity_decode(urldecode($_GET["mensaje"]));
  * AUTOR: JOSE MANUEL NIETO GOMEZ
  * OBJETIVO: MOSTRAR FOTO DE PERFIL AL VER USUARIO
  */
+
+/**
+ * CHANGE CONTROL 1.1.0
+ * AUTOR: JOSE MANUEL NIETO GOMEZ
+ * FECHA DE MODIFICACIÓN: 21 DE MAYO DE 2014
+ * OBJETIVO: CAMBIOS ESTETICOS
+ */
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -37,11 +44,11 @@ $mensaje = html_entity_decode(urldecode($_GET["mensaje"]));
                 <?php echo $mensaje; ?>
             </div>
 
-            <a class="btn btn-primary btn-success" href="altaPadres.php">Agregar</a>
+            <a class="btn btn-primary btn-success" href="altaPadres.php">Agregar Padre de Familia</a>
             <!--<a class="btn btn-primary" href="descargaDatos.php?tipo=3" target="_blank">Descargar Datos</a>-->
             <div class="btn-group">
                 <a class="btn btn-warning dropdown-toggle" data-toggle="dropdown" href="#">
-                    Descargar
+                    Descargar Lista
                     <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu">

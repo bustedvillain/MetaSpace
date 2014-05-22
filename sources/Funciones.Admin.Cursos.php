@@ -19,6 +19,13 @@
  */
 
 /**
+ * CHANGE CONTROL 1.1.0
+ * AUTOR: JOSE MANUEL NIETO GOMEZ
+ * FECHA DE MODIFICACIÓN: 21 DE MAYO DE 2014
+ * OBJETIVO: CAMBIOS ESTETICOS
+ */
+
+/**
  * Funcion que consulta los cursos de Moodle, mostrando solo
  * lo que no han sido vinculados al sistema de gestión
  */
@@ -112,9 +119,9 @@ function consultaTopicosCursoMoodle($idCursoMoodle) {
             $descripcion = ($topico->summary != "") ? strip_tags($topico->summary) : "";
             if ($topico->section != "0") {
                 echo <<<HTML
-                <h4>T&oacute;pico $topico->section</h4>
+                <h4>Bloque $topico->section</h4>
                 <div class="input-append">
-                    <label>Nombre de la Unidad:</label>
+                    <label>Nombre del Bloque:</label>
                     <input type="text" name="nombre_unidad[]" placeholder="" value="$nombre">
                 </div>
                 <div class="input-append">
@@ -233,10 +240,10 @@ function catalogoCursos() {
                         <a class="icon-trash" href="borrarCurso.php?id=$reg->id_curso" onClick="return confirm('¿Está seguro?');" title="Borrar"></a>
                     </td>
                     <td>$reg->id_curso</td>
-                    <td>$reg->clave_curso</td>
                     <td>$reg->nombre_curso</td>
                     <td>$reg->nombre_corto</td>
-                    <td><a href="abrirCurso.php?id=$reg->id_curso&nombre=$reg->nombre_curso">Abrir Curso</a></td>
+                    <td>$reg->clave_curso</td>                    
+                    <td><a href="abrirCurso.php?id=$reg->id_curso&nombre=$reg->nombre_curso">Publicar Curso</a></td>
                 </tr>
 TABLA;
         }
@@ -395,7 +402,7 @@ SQL;
         $i = 0;
         foreach ($resultado as $res) {
             echo <<<HTML
-                <h4>Unidad $res->no_unidad</h4>
+                <h4>Bloque $res->no_unidad</h4>
                 <p><b>Nombre:</b> $res->nombre_unidad</p>
                 <p><b>Descripcion:</b> $res->descripcion</p>
                 <div class="input-append">
@@ -414,7 +421,7 @@ HTML;
             $i++;
         }
     }else{
-        imprimeError("No hay t&oacute;picos activos.");
+        imprimeError("No hay bloques activos.");
     }
 }
 
@@ -510,16 +517,16 @@ function catalogoCursosAbiertos() {
                     <td>
                         <a class="icon-eye-open verCursoAbierto" title='Ver' href="#verModal" role="button" data-toggle="modal" name="$reg->id_curso_abierto"></a>                            
                         <a class="icon-edit editaCursoAbierto" title='Editar' href="#editarModal" role="button" data-toggle="modal" name="$reg->id_curso_abierto"></a>
-                        <a class="icon-trash" title='Cerrar Curso' href="cerrarCurso.php?id=$reg->id_curso_abierto" onClick="return confirm('¿Está seguro de cerrar este curso?');"></a>
-                        <a class="icon-bookmark" title='Ver Tutores Enrolados' href="verTutoresCurso.php?id=$reg->id_curso_abierto"></a>
-                        <a class="icon-user" title='Ver Grupos Enrolados' href="verGruposCurso.php?id=$reg->id_curso_abierto"></a>
+                        <a class="icon-lock" title='Cerrar Curso' href="cerrarCurso.php?id=$reg->id_curso_abierto" onClick="return confirm('¿Está seguro de cerrar este curso?');"></a>
+                        <a class="icon-bookmark" title='Ver Tutores Asignados' href="verTutoresCurso.php?id=$reg->id_curso_abierto"></a>
+                        <a class="icon-user" title='Ver Grupos Asignados' href="verGruposCurso.php?id=$reg->id_curso_abierto"></a>
                     </td>
                     <td>$reg->id_curso_abierto</td>
                     <td>$reg->nombre_curso_abierto</td>
                     <td>$reg->descripcion</td>
                     <td>$reg->fecha_inicio</td>
                     <td>$reg->fecha_fin</td>
-                    <td><a href="enrolarGrupo.php?id=$reg->id_curso_abierto">Enrolar Grupos</a></td>
+                    <td><a href="enrolarGrupo.php?id=$reg->id_curso_abierto">Asignar Grupos</a></td>
                 </tr>
 TABLA;
         }
@@ -809,6 +816,41 @@ SQL;
 }
 
 /**
+ * CHANGE CONTROL 1.1.0
+ * FECHA DE MODIFICACION: 21 DE MAYO DEL 2014
+ * AUTOR: JOSE MANUEL NIETO GOMEZ
+ * OBJETIVO: CREAR FUNCION PARA RETORNAR NOMBRE DEL CURSO RAIZA DE UN CURSO ABIERTO/PUBLICADO
+ * 
+ * Funcion qu recibe el id de un curso bierto y retorna el nombre del curso raiz
+ * @param type $idCursoAbierto
+ * @return boolean
+ */
+function getNombreCurso($idCursoAbierto) {
+    if (!$idCursoAbierto)
+        return FALSE;
+
+    $query = new Query("SG");
+
+    $query->sql = <<<SQL
+            SELECT c.nombre_curso
+            FROM cursos_abiertos ca, cursos c
+            WHERE ca.id_curso_abierto=$idCursoAbierto 
+              and ca.id_curso = c.id_curso
+
+SQL;
+
+    $resultado = $query->select("obj");
+
+    if ($resultado) {
+        foreach ($resultado as $res) {
+            return $res->nombre_curso;
+        }
+    } else {
+        return false;
+    }
+}
+
+/**
  * Devuelve un arreglo con id's de elementos aer que corresponden a un curso abierto
  * @param type $idCursoAbierto
  * @return array|boolean
@@ -1038,7 +1080,7 @@ SQL;
             echo <<<heading
                 <div class="accordion-heading">
                     <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse$res->id_grupo">
-                        <b>Seleccione tutores Senior y Junior para el grupo:</b> $res->nombre_grupo
+                        <b>Asigne Tutores Senior y Junior para el grupo:</b> $res->nombre_grupo
                     </a>
                 </div>
                     
@@ -1066,7 +1108,8 @@ nombre;
             //Imprime selects de tutores
             echo <<<tutores
                 <legend>Tutores Senior</legend>
-                <p class="text-warning">A continuaci&oacute;n se muestran los Tutores Senior disponibles para enrolar en el curso, seleccione los tutores que desea enrolar y de click en '->', si desea remover alguno de los seleccionados, de click en el nombre y al boton de '<-'.</p>
+                <p class="text-warning">A continuaci&oacute;n se muestran los Tutores Senior disponibles para asignar en el curso.</p>
+                <p class="text-warning">Seleccione los tutores disponibles y dé click en 'Agregar' para asignarlos. Si desea remover tutores asignados, seleccionelos y dé click en 'Quitar'.</p>
                 
                 <br/><br/>
                 <div class="divGrupo">
@@ -1082,11 +1125,11 @@ tutores;
                     </select>
                 </div>
                 <div class="botones">
-                    <button type="button" class="btn btn-success btn-add" name="$i">-></button>
-                    <button type="button" class="btn btn-info btn-remove" name="$i"><-</button>
+                    <button type="button" class="btn btn-success btn-add" name="$i">Agregar</button>
+                    <button type="button" class="btn btn-info btn-remove" name="$i">Quitar</button>
                 </div>
                 <div class="divGrupo">
-                    <p>Tutores Senior Seleccionados:</p>
+                    <p>Tutores Senior Asignados:</p>
                     <select class="grupo select-to" name="seniors$res->id_grupo[]" id="select-to$i" title="$i" multiple size="15">
 tutores;
             if ($seccionados == true) {
@@ -1101,7 +1144,8 @@ tutores;
             $i++;
             echo <<<tutores
                 <legend>Tutores Junior</legend>
-                <p class="text-warning">A continuaci&oacute;n se muestran los Tutores Junior disponibles para enrolar en el curso, seleccione los tutores que desea enrolar y de click en 'Agregar', si desea remover alguno de los seleccionados, de click en el nombre y al boton de 'Remover'.</p>
+                <p class="text-warning">A continuaci&oacute;n se muestran los Tutores Junior disponibles para asignar en el curso. </p>
+                <p class="text-warning">Seleccione los tutores disponibles y dé click en 'Agregar' para asignarlos. Si desea remover tutores asignados, seleccionelos y dé click en 'Quitar'.</p>
                 
                 <br/><br/>
                 <div class="divGrupo">
@@ -1117,11 +1161,11 @@ tutores;
                     </select>
                 </div>
                 <div class="botones">
-                    <button type="button" class="btn btn-success btn-add" name="$i">-></button>
-                    <button type="button" class="btn btn-info btn-remove" name="$i"><-</button>
+                    <button type="button" class="btn btn-success btn-add" name="$i">Agregar</button>
+                    <button type="button" class="btn btn-info btn-remove" name="$i">Quitar</button>
                 </div>
                 <div class="divGrupo">
-                    <p>Tutores Junior Seleccionados:</p>
+                    <p>Tutores Junior Asignados:</p>
                     <select class="grupo select-to" name="juniors$res->id_grupo[]" id="select-to$i" title="$i" multiple size="15">
 tutores;
             if ($seccionados == true) {
@@ -1631,4 +1675,81 @@ sql;
     }
 }
 
+/**
+ * Devuelve true si una unidad tiene series
+ * @param type $idUnidad
+ * @return boolean
+ */
+function unidadEnAlgunaSerie($idUnidad) {
+
+    $query = new Query("SG");
+    $query->sql = "select id_serie_aer from serie_aer where id_unidad = $idUnidad";
+    $series = $query->select("obj");
+    if ($query->numRegistros() > 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+/**
+ * CHANGE CONTROL 1.1.0
+ * AUTOR: JOSE MANUEL NIETO GOMEZ
+ * FECHA DE MODIFICACIÓN: 21 DE MAYO DE 2014
+ * OBJETIVO: CAMBIOS ESTETICOS
+ */
+
+/**
+ * Devuelve los cursos Moodle para el linkeo de series API
+ * @param type $idCursoSG
+ */
+function cursosMoodleParaSerie($idCursoSG) {
+//Crea objeto para realizar consultas al sistema de gestion
+    $query = new Query("SG");
+//Query a Moodle
+    $query->sql = "SELECT * from unidades where id_curso=$idCursoSG and status = 1 and url_unidad is not null";
+    $resultado = $query->select("obj");
+
+    if ($resultado) {
+        foreach ($resultado as $topico) {
+            if (!unidadEnAlgunaSerie($topico->id_unidad))
+                $boton = '<a class="btn btn-info" data-toggle="modal" href="#verModalLinkeo" onclick="llenaModalLinkeo(\'' . $topico->id_unidad . '\');">Agregar informaci&oacute;n de series';
+            else
+                $boton = '<a class="btn btn-success" data-toggle="modal" href="#verModalLinkeo" onclick="llenaModalLinkeoEditar(\'' . $topico->id_unidad . '\');">Editar informaci&oacute;n de series';
+            echo <<<HTML
+            <div class="well">
+                <h5>$topico->nombre_unidad </h5> $boton </a> 
+            </div>
+HTML;
+        }
+    } else {
+        echo "<h3 class='text-warning'>No hay bloques activos en este curso.</h3>";
+    }
+}
+
+/**
+ * Imprime los options de los tipos de elementos
+ * @return string
+ */
+function comboTipoElemento() {
+
+    $query = new Query("SG");
+
+    $query->sql = "SELECT * from tipo_elemento where status = 1";
+    $tiposE = $query->select("obj");
+    $var = "";
+    if ($tiposE) {
+        foreach ($tiposE as $te) {
+            $var = $var . "<option value = '$te->id_tipo_elemento'>$te->nombre_tipo</option>";
+//            echo<<<hab
+//        <option value = "$te->id_tipo_elemento">$te->nombre_tipo</option>
+//hab;
+        }
+    } else {
+        echo <<<html
+            <option value="">No hay tipos de elementos</option>
+html;
+    }
+    return $var;
+}
 ?>

@@ -2,6 +2,13 @@
 include("../sources/Funciones.php");
 verificarSesionAdminOGestor();
 
+/**
+ * CHANGE CONTROL 1.1.0
+ * AUTOR: JOSE MANUEL NIETO GOMEZ
+ * FECHA DE MODIFICACIÓN: 21 DE MAYO DE 2014
+ * OBJETIVO: CAMBIOS ESTETICOS
+ */
+
 if ($_GET) {
     ?>
     <!DOCTYPE html>
@@ -20,13 +27,13 @@ if ($_GET) {
 
                 <!-- Main hero unit for a primary marketing message or call to action -->
                 <div class="hero-unit">
-                    <h1>Abrir Curso</h1>
+                    <h1>Publicar Curso</h1>
                     <p>A continuaci&oacute;n se muestra un formulario para poder abrir un curso. Los campos marcados con (*) son obligatorios.</p>
                 </div>      
 
                 <ul class="breadcrumb">
                     <li><a href="cursos.php">Cursos</a> <span class="divider">/</span></li>
-                    <li class="active">Abrir Curso</li>
+                    <li class="active">Publicar Curso</li>
                 </ul>
 
                 <form action="gdaAbrirCurso.php" method="POST" id="formAbrirCurso">
@@ -34,7 +41,7 @@ if ($_GET) {
                         <div class="input-append">
                             <h3 class="text-info"><?php echo $_GET["nombre"] ?></h3>
                         </div>
-                        <legend>Datos espec&iacute;ficos para el curso abierto</legend>
+                        <legend>Datos espec&iacute;ficos para la publicaci&oacute;n del curso</legend>
 
                         <div class="input-append">
                             <label>*Nombre:</label>
@@ -55,9 +62,9 @@ if ($_GET) {
                         </div>
                         
                         
-                        <legend>Ajuste de fechas sobre unidades</legend>
-                        <p class="text-warning">Seleccione las fechas en las que desea que est&eacute;n disponibles las unidades. Si no desea ingresar fechas, las unidades siempre ser&aacute;n visibles durante el periodo de ejecuci&oacute;n del curso abierto.</p>
-                        <p class="text-info">Se asignar&aacute;n fechas s&oacute;lo sobre las unidades del curso que est&eacute;n activas.</p>
+                        <legend>Programaci&oacute;n de fechas sobre bloques</legend>
+                        <p class="text-warning">Seleccione las fechas en las que desea que est&eacute;n disponibles los bloques. Si no desea ingresar fechas, los bloques siempre ser&aacute;n visibles durante el periodo de publicaci&oacute;n del curso.</p>
+                        <p class="text-info">Se asignar&aacute;n fechas s&oacute;lo sobre los bloques del curso que est&eacute;n activos.</p>
 
                         <?php imprimeTopicosFechas($_GET["id"]) ?>
 

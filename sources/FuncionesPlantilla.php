@@ -1009,4 +1009,15 @@ function numeroUnidadDeElemento($idElemento){
     return $var;
 //    return $r;
 }
+
+/**
+ * Obtiene el color en el archivo pedido
+ * @param type $ruta
+ * @return type
+ */
+function obtenerColor($ruta) {
+    $arrayConfig = parse_ini_file($ruta);
+    return $arrayConfig['colorCalif'];
+}
+
 ?>

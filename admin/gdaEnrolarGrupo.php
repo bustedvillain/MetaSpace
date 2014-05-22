@@ -7,6 +7,14 @@ verificarSesionAdminOGestor();
  * AUTOR: JOSE MANUEL NIETO GOMEZ
  * OBJETIVO: ENROLAR ALUMNOS EN CURSO/GRUPO DE MOODLE
  */
+
+/**
+ * CHANGE CONTROL 1.1.0
+ * AUTOR: JOSE MANUEL NIETO GOMEZ
+ * FECHA DE MODIFICACIÓN: 21 DE MAYO DE 2014
+ * OBJETIVO: CAMBIOS ESTETICOS
+ */
+
 if ($_POST) {
 //    var_dump($_POST);
     if ($_POST["cambio"] == 0) {//!isset($_POST["grupos"]) || !isset($_POST["idCursoAbierto"])){
@@ -104,8 +112,8 @@ if ($_POST) {
 
             <!-- Main hero unit for a primary marketing message or call to action -->
             <div class="hero-unit">
-                <h1>Grupos enrolados correctamente</h1>
-                <img src="../img/ok.png"/>
+                <h1 style="display:none" class="listo">Grupos Asignados Correctamente</h1>
+                <img style="display:none" class="listo" src="../img/ok.png"/>
                 <?php
                 if (isset($_POST["grupos"]) || isset($_POST["idCursoAbierto"])) {
                     if (!empty($arrEliminar)) {
@@ -118,7 +126,7 @@ elimi;
                     if ($arrRecibidos != "") {
                         echo <<<html
                          
-                            <h4> Para asignar tutores a los grupos presione el bot&oacute;n. <button style="display:none" id="listo" type="button" class="btn btn-success" onclick='window.location = "enrolarTutores.php?id_curso_abierto=$idCursoAbierto";' id="btn-add">Continuar</button>  </h4>
+                            <h4 style="display:none" class="listo"> Para asignar tutores a los grupos presione el bot&oacute;n. <button type="button" class="btn btn-success" onclick='window.location = "enrolarTutores.php?id_curso_abierto=$idCursoAbierto";' id="btn-add">Continuar</button>  </h4>
                             
 html;
                     }
@@ -215,13 +223,12 @@ iframe;
 //                $c = $contador - 3;
                 echo <<<iframe
                      <div class="smCargando">
-                        <div class="alert alert-success"><h4><img src="../img/loading.gif" style="width: 4%;"/>&nbsp;&nbsp;&nbsp;Estamos vinculando con moodle, espere por favor.</h4></div>
+                        <div class="alert alert-success"><h4><img src="../img/loading.gif" style="width: 4%;"/>&nbsp;&nbsp;&nbsp;Asignando Grupos, espere por favor.</h4></div>
                      </div>
                      <script type="text/javascript">
                         $("#frameGrupos$contador").load(function(){
                               $(".smCargando").hide("slow");  
-                              $("#listo").show("fast");  
-                              $("#listo2").show("fast");  
+                              $(".listo").show("fast");                                 
                         });
                      </script>
 iframe;

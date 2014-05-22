@@ -26,7 +26,7 @@
             <!-- Main hero unit for a primary marketing message or call to action -->
             <div class="hero-unit">
                 <h1>Vinculaci&oacute;n</h1>
-                <p>Vinculaci&oacute;n de curso de Moodle con el sistema de gesti&oacute;n. Los campos marcados con (*) son obligatorios.</p>
+                <p>Relaciona las habilidades del pensamiento con los elementos del curso.</p>
             </div> 
             
             <ul class="breadcrumb">
@@ -34,14 +34,14 @@
                 <li class="active">Vinculaci&oacute;n</li>
             </ul>
             
-            <form action="gdaCurso.php">
+            <form action="cursos.php">
                 <fieldset>
-                    <legend>Curso de Moodle</legend>
+                    <legend>Curso</legend>
                     <div class="input-append">
                         <h3 class="text-info"><?php echo $fullname; ?></h3>
                     </div>
                     <!--//inicia control de cambios #5-->
-                    <legend>Relaci&oacute;n unidades-series API</legend>
+                    <legend>Bloques</legend>
                     <!--//Termina control de cambios #5-->
                     <div class="input-append">
                         

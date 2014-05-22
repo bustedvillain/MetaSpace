@@ -1,4 +1,13 @@
-<?php include("../sources/Funciones.php"); verificarSesionAdminOGestor();?>
+<?php include("../sources/Funciones.php"); verificarSesionAdminOGestor();
+
+/**
+ * CHANGE CONTROL 1.1.0
+ * AUTOR: JOSE MANUEL NIETO GOMEZ
+ * FECHA DE MODIFICACIÓN: 21 DE MAYO DE 2014
+ * OBJETIVO: CAMBIOS ESTETICOS
+ */
+
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -15,12 +24,12 @@
 
             <!-- Main hero unit for a primary marketing message or call to action -->
             <div class="hero-unit">
-                <h1>Cursos Abiertos</h1>
-                <p>A continuaci&oacute;n se muestran los cursos vinculados con Moodle.</p>
+                <h1>Cursos Publicados</h1>
+                <p>A continuaci&oacute;n se muestran los cursos publicados para su administraci&oacute;n de Grupos y Tutores.</p>
             </div>   
 
             <ul class="breadcrumb">
-                <li class="active">Cursos Abiertos</li>
+                <li class="active">Cursos Publicados</li>
             </ul>
 
             <table cellpadding="0" cellspacing="0" border="0" class="display tabla">
@@ -32,7 +41,7 @@
                         <th>Descripci&oacute;n</th>
                         <th>Fecha Inicio</th>
                         <th>Fecha Terminaci&oacute;n</th>
-                        <th></th>                        
+                        <th>Asignar</th>                        
                     </tr>                    
                 </thead>
                 <tbody>
@@ -44,7 +53,7 @@
             <div id="verModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <h3 id="myModalLabel">Ver Curso Abierto</h3>
+                    <h3 id="myModalLabel">Informaci&oacute;n General</h3>
                 </div>
                 <div class="modal-body">
                     <table class="table table-hover table-bordered">
@@ -53,7 +62,7 @@
                             <td><b class="text-info" id="ver_nombre_curso"></b></td>
                         </tr>
                         <tr>
-                            <td>Nombre del Curso Abierto:</td>
+                            <td>Nombre del Curso Publicado:</td>
                             <td id="ver_nombre_curso_abierto"></td>
                         </tr>
                         <tr>
@@ -84,7 +93,7 @@
             <div id="editarModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <h3 id="myModalLabel">Editar Curso</h3>
+                    <h3 id="myModalLabel">Editar Publicaci&oacute;n</h3>
                 </div>
                 <form id="editarCurso" action="gdaEditarCursoAbierto.php" method="POST">
                     <div class="modal-body">                    
@@ -94,7 +103,7 @@
                                 <td><b class="text-info" id="ver_nombre_curso2"></b></td>
                             </tr>
                             <tr>
-                                <td>Nombre Curso Abierto:</td>
+                                <td>Nombre Curso Publicado:</td>
                                 <td><input type="text" name="cursos_abiertos/nombre_curso_abierto" id="edita_nombre_curso_abierto" required></td>
                             </tr>
                             <tr>

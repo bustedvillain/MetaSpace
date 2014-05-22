@@ -1,7 +1,8 @@
+<title>Sistema Integral de Administraci&oacute;n Softmeta-A</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="">
-<meta name="author" content="">
+<meta name="description" content="Sistema Integral de Administración del Espacio Digital para el Aprendizaje Autónomo">
+<meta name="author" content="Eblue">
 
 <!-- Le styles -->
 <link href="../assets/css/bootstrap.css" rel="stylesheet">
@@ -28,7 +29,7 @@
 <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
 <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
 <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
-<link rel="shortcut icon" href="../assets/ico/favicon.png">
+<link rel="shortcut icon" href="../img/favicon.ico">
 <script>
     function getUrlVars() {
         var vars = {};
@@ -43,3 +44,5 @@
 
 <!--Estilos propios-->
 <link href="../css/style.css" rel="stylesheet">
+
+

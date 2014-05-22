@@ -113,4 +113,27 @@ COMBO;
     }
 }
 
+/**
+ * Imprime los options del combo de roles de un tutor
+ */
+function comboRolesTutores() {
+    $query = new Query("SG");
+
+    $query->sql = "SELECT  id_rol_tutor, nombre FROM rol_tutor where status = 1";
+    $roles = $query->select("obj");
+
+    if ($roles) {
+        foreach ($roles as $rol) {
+            echo <<<HTML
+                <option value="$rol->id_rol_tutor">$rol->nombre</option>
+HTML;
+        }
+    } else {
+        echo <<<html
+            <option value="">No hay roles</option>
+html;
+    }
+}
+
+
 ?>

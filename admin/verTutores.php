@@ -37,11 +37,11 @@ $mensaje = html_entity_decode(urldecode($_GET["mensaje"]));
                 <?php echo $mensaje; ?>
             </div>
 
-            <a class="btn btn-primary btn-success" href="altaTutores.php">Agregar</a>
+            <a class="btn btn-primary btn-success" href="altaTutores.php">Agregar Tutor</a>
             <!--<a class="btn btn-primary" href="descargaDatos.php?tipo=1" target="_blank">Descargar</a>-->
             <div class="btn-group">
                 <a class="btn btn-warning dropdown-toggle" data-toggle="dropdown" href="#">
-                    Descargar
+                    Descargar Lista
                     <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu">

@@ -173,6 +173,57 @@ function borraHabilidad($idHabilidad) {
     }
 }
 
+/**
+ * Imprime los options del combo de habilidades activas
+ * @return string
+ */
+function comboHabilidades() {
+
+    $query = new Query("SG");
+
+    $query->sql = "SELECT * from habilidades where status = 1";
+    $habilidades = $query->select("obj");
+    $var = "";
+    if ($habilidades) {
+        foreach ($habilidades as $hab) {
+//            echo<<<hab
+//        <option value = "$hab->id_habilidad">$hab->nombre_habilidad</option>
+//hab;  
+
+            $ns = ($hab->nombre_habilidad);
+            $var = $var . "<option value = '$hab->id_habilidad'>$ns</option>";
+        }
+    }
+    return $var;
+}
+/**
+ * Imprime un combo de habilidades dejando seleccionada la que se pida
+ * @param type $idSelected
+ * @return string
+ */
+function comboHabilidadesConSelected($idSelected) {
+
+    $query = new Query("SG");
+
+    $query->sql = "SELECT * from habilidades where status = 1";
+    $habilidades = $query->select("obj");
+    $var = "";
+    if ($habilidades) {
+        foreach ($habilidades as $hab) {
+//            echo<<<hab
+//        <option value = "$hab->id_habilidad">$hab->nombre_habilidad</option>
+//hab;
+            $ns = html_entity_decode($hab->nombre_habilidad);
+            if ($idSelected == $hab->id_habilidad) {
+                $var = $var . "<option value = '$hab->id_habilidad' selected='selected'>$ns</option>";
+            } else {
+                $var = $var . "<option value = '$hab->id_habilidad'>$ns</option>";
+            }
+        }
+    }
+    return $var;
+}
+
 
 
 ?>

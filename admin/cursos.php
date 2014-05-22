@@ -3,7 +3,15 @@
 //Autor:Omar Nava
 //Objetivo: Edicion de cursos
 //03-ene-2014
-include("../sources/Funciones.php"); verificarSesionAdminOGestor();?>
+include("../sources/Funciones.php"); verificarSesionAdminOGestor();
+
+/**
+ * CHANGE CONTROL 1.1.0
+ * AUTOR: JOSE MANUEL NIETO GOMEZ
+ * FECHA DE MODIFICACIÓN: 21 DE MAYO DE 2014
+ * OBJETIVO: CAMBIOS ESTETICOS
+ */
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -21,24 +29,24 @@ include("../sources/Funciones.php"); verificarSesionAdminOGestor();?>
             <!-- Main hero unit for a primary marketing message or call to action -->
             <div class="hero-unit">
                 <h1>Cat&aacute;logo de Cursos</h1>
-                <p>A continuaci&oacute;n se muestran los cursos vinculados con Moodle.</p>
+                <p>A continuaci&oacute;n se muestran los cursos dados de alta en el sistema.</p>
             </div>  
 
             <ul class="breadcrumb">
                 <li class="active">Cursos</li>
             </ul>
 
-            <p class="text-warning">IMPORTANTE: La edici&oacute;n de los cursos es posible siempre y cuando no existan alumnos/grupos enrolados a este en un curso abierto.</p>
+            <p class="text-warning">IMPORTANTE: La edici&oacute;n de los cursos es posible siempre y cuando no existan alumnos/grupos asignados al curso publicado.</p>
             
             <table cellpadding="0" cellspacing="0" border="0" class="display tabla">
                 <thead>
                     <tr>
                         <th>Acci&oacute;n</th>
                         <th>id</th>
-                        <th>Clave</th>
                         <th>Nombre</th>
                         <th>Nombre corto</th>
-                        <th></th>                        
+                        <th>Clave</th>
+                        <th>Publicar</th>                        
                     </tr>                    
                 </thead>
                 <tbody>

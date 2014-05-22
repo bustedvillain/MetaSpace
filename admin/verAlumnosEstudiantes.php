@@ -19,6 +19,13 @@ if (isset($_GET["mensaje"]))
  * AUTOR: JOSE MANUEL NIETO GOMEZ
  * OBJETIVO: MOSTRAR FOTO DE PERFIL AL VER USUARIO
  */
+
+/**
+ * CHANGE CONTROL 1.1.0
+ * AUTOR: JOSE MANUEL NIETO GOMEZ
+ * FECHA DE MODIFICACIÓN: 21 DE MAYO DE 2014
+ * OBJETIVO: CAMBIOS ESTETICOS
+ */
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -41,14 +48,11 @@ if (isset($_GET["mensaje"]))
                 <?php echo $mensaje; ?>
             </div>
             
-            <a class="btn btn-primary btn-success" href="altaAlumnoEstudiante.php">Agregar</a>
+            <a class="btn btn-primary btn-success" href="altaAlumnoEstudiante.php">Agregar Alumno</a>
             <!--<a class="btn btn-primary" href="descargaDatos.php?tipo=0" target="_blank">Descargar Datos</a>-->
-            <a class="btn btn-primary" href="./descargarAlumnosEstudiantes.php">Descargar</a>
-            <?php tablaUsuarios("estudiante"); ?>
-
+            <a class="btn btn-primary" href="./descargarAlumnosEstudiantes.php">Descargar Lista</a>
             
-
-            
+            <?php tablaUsuarios("estudiante"); ?>           
                 
             <?php include("../template/footer.php"); ?>
 
