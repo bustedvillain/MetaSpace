@@ -1,7 +1,7 @@
 <?php
 //Control de cambios #7
 //Autor:Omar Nava
-//Objetivo: Hacer una funcion para el nobre y cerrar sesion
+//Objetivo: Hacer una funcion para el nombre y cerrar sesion
 //03-ene-2014
 include '../../sources/Funciones.php';
 verificarSesionAlumno();
