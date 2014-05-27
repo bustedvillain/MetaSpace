@@ -114,20 +114,20 @@ function cargaControles()
                     orientation: "vertical",
                     step: 2,
                     stop: function(event, ui) {
-                        if(ui.value <=0){
-                           $("#sliderVolumen").slider("option", "value", 0);
+                        if (ui.value <= 0) {
+                            $("#sliderVolumen").slider("option", "value", 0);
                         }
-                        if(ui.value >=100){
-                           $("#sliderVolumen").slider("option", "value", 100);
+                        if (ui.value >= 100) {
+                            $("#sliderVolumen").slider("option", "value", 100);
                         }
-                        
+
                     },
-                    slide:  function(event, ui) {
-                        
-                        if(ui.value >=100){
-                           $("#sliderVolumen").slider("option", "value", 100);
+                    slide: function(event, ui) {
+
+                        if (ui.value >= 100) {
+                            $("#sliderVolumen").slider("option", "value", 100);
                         }
-                        
+
                     }
 //                    value: volumenGral
                 });
@@ -472,7 +472,7 @@ function cargaContenidooo()
     debugConsole('Los valores 0=' + idProgresoDeIndiceActual() + '--1=' + idElementoDeIndiceActual() + '--2=' + detalleDeIndiceActual() + '--3=' + tipoElementoDeIndiceActual());
     debugConsole('--A punto de iniciar cargaContenido');
 //    debugConsole('que hay='+arrCont[indiceActual]).valueOf();
-    debugConsole("URL IFRAME:"+unidades_path + arrCont[indiceActual].ruta + "index.html");
+    debugConsole("URL IFRAME:" + unidades_path + arrCont[indiceActual].ruta + "index.html");
     $("#frameCont").attr("src", unidades_path + arrCont[indiceActual].ruta + "index.html");
 
     if (alumno === "si" && arrCont[indiceActual].status_evaluacion.toString() === "0") {
@@ -674,13 +674,24 @@ function seteaVolumen(volumen)
     trazaEnConsola("Volumne = " + volumen, 4);
 
 }
-function existeArrancaFuncion(nombreFuncion)
-{
+/**
+ * CHANGE CONTROL 1.1.0
+ * AUTOR: JOSE MANUEL NIETO GOMEZ
+ * OBJETIVO: MEJORAR LA EJECUCIÓN DE FUNCIONES DE INTERFAZ, PARA CORRECCIÓN DE BUGS
+ * @param {type} nombreFuncion
+ * @returns {undefined}
+ */
+
+/**
+ * Ejecuta una función ubicada en la interfaz dentro del contenido cargado, no recibe parametros
+ * @param {type} nombreFuncion
+ * @returns {undefined}
+ */
+function existeArrancaFuncion(nombreFuncion) {
 
     if (navegador === "Mozilla Firefox") {
         var isDefined = eval('(typeof ' + 'frameCont.contentWindow.' + nombreFuncion + '==\'function\');');
-        if (isDefined)
-        {
+        if (isDefined) {
             trazaEnConsola('Se ejecutará  funcion: ' + 'frameCont.contentWindow.' + nombreFuncion + '()', 1);
             eval('frameCont.contentWindow.' + nombreFuncion + '();');
             if (nombreFuncion === "playContenido") {
@@ -695,12 +706,28 @@ function existeArrancaFuncion(nombreFuncion)
                 statusReproduccion = 0;
             }
         } else {
-            trazaEnConsola('La funcion: ' + 'frameCont.contentWindow.' + nombreFuncion + '() No existe.', 1);
+            trazaEnConsola('La funcion: ' + 'frameCont.contentWindow.' + nombreFuncion + '() No esta definida. Try anyway.', 1);
+            try {
+                trazaEnConsola('Se intentara ejecutar la funcion no definida: ' + 'frameCont.contentWindow.' + nombreFuncion + '()', 1);
+                eval('frameCont.contentWindow.' + nombreFuncion + '();');
+                if (nombreFuncion === "playContenido") {
+                    $('#botonPlay').attr("src", template_path + "/" + tipo_elemento + "/botonPausa-a.png");
+                    $('#botonPlay').attr("title", "Pausar");
+                    debugConsole('Cambiando title a pausar');
+                    statusReproduccion = 1;
+                } else if (nombreFuncion === "pausarContenido") {
+                    $('#botonPlay').attr("src", template_path + "/" + tipo_elemento + "/botonPlay-a.png");
+                    $('#botonPlay').attr("title", "Reproducir");
+                    debugConsole('Cambiando title a reproducir');
+                    statusReproduccion = 0;
+                }
+            } catch (e) {
+                trazaEnConsola('La funcion: ' + 'frameCont.contentWindow.' + nombreFuncion + '() Genero una excepcion.', 1);
+            }
         }
     } else {
         var isDefined = eval('(typeof ' + 'frameCont.' + nombreFuncion + '==\'function\');');
-        if (isDefined)
-        {
+        if (isDefined) {
             trazaEnConsola('Se ejecutará  funcion: ' + 'frameCont.' + nombreFuncion + '()', 1);
             eval('frameCont.' + nombreFuncion + '();');
             if (nombreFuncion === "playContenido") {
@@ -715,38 +742,69 @@ function existeArrancaFuncion(nombreFuncion)
                 statusReproduccion = 0;
             }
         } else {
-            trazaEnConsola('La funcion: ' + 'frameCont.' + nombreFuncion + '() No existe.', 1);
+            trazaEnConsola('La funcion: ' + 'frameCont.' + nombreFuncion + '() No esta definida. Try it anyway.', 1);
+
+            try {
+                trazaEnConsola('Se intentara ejecutar la funcion: ' + 'frameCont.' + nombreFuncion + '()', 1);
+                eval('frameCont.' + nombreFuncion + '();');
+                if (nombreFuncion === "playContenido") {
+                    $('#botonPlay').attr("src", template_path + "/" + tipo_elemento + "/botonPausa-a.png");
+                    $('#botonPlay').attr("title", "Pausar");
+                    debugConsole('Cambiando title a pausar');
+                    statusReproduccion = 1;
+                } else if (nombreFuncion === "pausarContenido") {
+                    $('#botonPlay').attr("src", template_path + "/" + tipo_elemento + "/botonPlay-a.png");
+                    $('#botonPlay').attr("title", "Reproducir");
+                    debugConsole('Cambiando title a reproducir');
+                    statusReproduccion = 0;
+                }
+            } catch (e) {
+                trazaEnConsola('La funcion: ' + 'frameCont.contentWindow.' + nombreFuncion + '() Genero una excepcion.', 1);
+            }
         }
     }
 
 }
 
-
+/**
+ * Ejecuta una función ubicada en la interfaz dentro del contenido cargado, recibe un parametro
+ * @param {type} nombreFuncion
+ * @param {type} parametros
+ * @returns {undefined}
+ */
 function existeArrancaFuncionV(nombreFuncion, parametros)
 {
     if (navegador === "Mozilla Firefox") {
         var isDefined = eval('(typeof ' + 'frameCont.contentWindow.' + nombreFuncion + '==\'function\');');
-        if (isDefined)
-        {
+        if (isDefined) {
             trazaEnConsola('Se ejecutará  funcion: ' + nombreFuncion + '(' + parametros + ')', 5);
             eval('frameCont.contentWindow.' + nombreFuncion + '(' + parametros + ');');
-
         }
-        else
-        {
-            trazaEnConsola('La funcion: ' + 'frameCont.contentWindow.' + nombreFuncion + '(' + parametros + ') No existe.', 1);
+        else {
+            trazaEnConsola('La funcion: ' + 'frameCont.contentWindow.' + nombreFuncion + '(' + parametros + ') No definida. Try it anyway.', 1);
+
+            try {
+                trazaEnConsola('Se ejecutará  funcion: ' + nombreFuncion + '(' + parametros + ')', 5);
+                eval('frameCont.contentWindow.' + nombreFuncion + '(' + parametros + ');');
+            } catch (e) {
+                trazaEnConsola('La funcion: ' + 'frameCont.contentWindow.' + nombreFuncion + '(' + parametros + ') Genero Excepcion', 1);
+            }
         }
     } else {
         var isDefined = eval('(typeof ' + 'frameCont.' + nombreFuncion + '==\'function\');');
-        if (isDefined)
-        {
+        if (isDefined) {
             trazaEnConsola('Se ejecutará  funcion: ' + nombreFuncion + '(' + parametros + ')', 5);
             eval('frameCont.' + nombreFuncion + '(' + parametros + ');');
-
         }
-        else
-        {
-            trazaEnConsola('La funcion: ' + 'frameCont.' + nombreFuncion + '(' + parametros + ') No existe.', 1);
+        else {
+            trazaEnConsola('La funcion: ' + 'frameCont.' + nombreFuncion + '(' + parametros + ') No definida. Try it anyway..', 1);
+
+            try {
+                trazaEnConsola('Se ejecutará  funcion: ' + nombreFuncion + '(' + parametros + ')', 5);
+                eval('frameCont.' + nombreFuncion + '(' + parametros + ');');
+            } catch (e) {
+                trazaEnConsola('La funcion: ' + 'frameCont.' + nombreFuncion + '(' + parametros + ') Genero excepcion', 1);
+            }
         }
     }
 
