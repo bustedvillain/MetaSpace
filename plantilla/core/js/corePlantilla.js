@@ -484,6 +484,7 @@ function cargaContenidooo()
     debugConsole("se triggeo el ui-slider-handle");
     $("#frameCont").load(function()
     {
+        console.log("CorePlantilla: FrameCont load ready.");
         playContenido();
         seteaVolumen(volumenGral);
     });
