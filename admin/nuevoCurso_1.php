@@ -48,11 +48,11 @@ if (isset($_GET["id"])) {
 
                 <form id="nuevoCurso" action="gdaCurso.php" enctype="multipart/form-data" method="POST">
                     <fieldset>
-                        <legend>Curso de Moodle</legend>
+                        <legend>Curso</legend>
                         <div class="input-append">
                             <h3 class="text-info"><?php echo $fullname; ?></h3>
                         </div>                    
-                        <legend>Datos para el Sistema de Integral de Administraci&oacute;n</legend>
+                        <legend>Datos para el Sistema Integral de Administraci&oacute;n</legend>
                         <div class="input-append">
                             <label>*Nombre del Curso:</label>
                             <input type="text" name="cursos/nombre_curso" id="nombre_curso" placeholder="" value="<?php echo $fullname; ?>"required>
