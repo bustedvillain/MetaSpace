@@ -83,7 +83,7 @@ if ($_POST) {
                     <!--<h1>Curso abierto correctamente</h1>-->
                     <h1>Curso Publicado Exitosamente</h1>
                     <img src="../img/ok.png"/>
-                    <h3>Para continuar: <a href="cursosAbiertos.php" class="btn btn-success">Asignar Grupos</a></h3>
+                    <h3>Para continuar: <a href="enrolarGrupo.php?id=<?=$idCursoAbierto?>" class="btn btn-success">Asignar Grupos</a> &oacute; <a href="cursosAbiertos.php" class="btn btn-danger">Regresar</a></h3>
                     
                 </div>
 
