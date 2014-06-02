@@ -238,6 +238,8 @@ iframe;
 
 
         </div> <!-- /container -->
+        
+        <?php include("../template/footer.php"); ?>   
 
         <!-- Le javascript
         ================================================== -->

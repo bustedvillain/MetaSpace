@@ -23,7 +23,7 @@
             <!-- Main hero unit for a primary marketing message or call to action -->
             <div class="hero-unit">
                 <h1>Vincular Curso</h1>
-                <p>A continuaci&oacute;n se muestran los cursos creados en la secci&oacute; de recursos, seleccione uno para vincularlo.</p>
+                <p>A continuaci&oacute;n se muestran los cursos creados en la secci&oacute;n de recursos, seleccione uno para vincularlo.</p>
             </div>  
             
             <ul class="breadcrumb">

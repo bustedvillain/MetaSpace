@@ -38,7 +38,7 @@ if (isset($_GET["id"])) {
                 <!-- Main hero unit for a primary marketing message or call to action -->
                 <div class="hero-unit">
                     <h1>Vinculaci&oacute;n</h1>
-                    <p>Vinculaci&oacute;n de curso con sistema. Los campos marcados con (*) son obligatorios.</p>
+                    <p>Vinculaci&oacute;n de curso con el sistema. Los campos marcados con (*) son obligatorios.</p>
                 </div> 
 
                 <ul class="breadcrumb">

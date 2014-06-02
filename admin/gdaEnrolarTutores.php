@@ -67,7 +67,7 @@ if ($_POST["id_curso_abierto"]) {
                 <ul class="breadcrumb">
                     <li><a href="cursosAbiertos.php">Cursos Publicados</a> <span class="divider">/</span></li>
                     <li><a href="enrolarGrupo.php?id=<?=$idCursoAbierto?>">Asignar Grupos</a> <span class="divider">/</span></li>
-                    <li><a href="enrolarTutores.php.php?id=$idCursoAbierto">Asignar Tutores</a> <span class="divider">/</span></li>
+                    <li><a href="enrolarTutores.php?id=<?=$idCursoAbierto?>">Asignar Tutores</a> <span class="divider">/</span></li>
                     <li class="active">Tutores asignados</li>
                 </ul>
                 <div class="hero-unit" id="listo" style="display:none;">
@@ -171,6 +171,8 @@ iframe;
 //            }
             ?>
             </div> <!-- /container -->
+            
+            <?php include("../template/footer.php"); ?>   
             
             <!-- Le javascript
             ================================================== -->
