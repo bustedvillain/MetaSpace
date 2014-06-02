@@ -236,10 +236,10 @@ iframe;
             ?>
 
 
-
+            <?php include("../template/footer.php"); ?>  
         </div> <!-- /container -->
         
-        <?php include("../template/footer.php"); ?>   
+         
 
         <!-- Le javascript
         ================================================== -->
