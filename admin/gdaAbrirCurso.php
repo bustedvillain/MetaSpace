@@ -87,7 +87,7 @@ if ($_POST) {
                     
                 </div>
 
-
+                  <?php include("../template/footer.php"); ?>  
             </div> <!-- /container -->
 
             <!-- Le javascript
