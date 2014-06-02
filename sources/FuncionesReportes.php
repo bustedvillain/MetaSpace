@@ -694,7 +694,7 @@ function tablaParaReportes($idTutor) {
                     <th>Curso Publicado</th>
                     <th>Grupo</th>
                     <th>Tipo Reporte</th>
-                    <th>Subir</th>
+                    <th>Subir/Generar</th>
                 </tr>
             </thead>
             <tbody>
@@ -711,7 +711,7 @@ html;
                     <th>Curso Publicado</th>
                     <th>Grupo</th>
                     <th>Tipo Reporte</th>
-                    <th>Subir</th>
+                    <th>Subir/Generar</th>
                 </tr>
             </tfoot>
         </table>

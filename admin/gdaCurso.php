@@ -2,6 +2,13 @@
 include("../sources/Funciones.php");
 verificarSesionAdminOGestor();
 
+/**
+ * CHANGE CONTRO 1.1.0
+ * AUTOR: JOSE MANUEL NIETO GOMEZ
+ * FECHA DE MODIFICACION: 02 DE JUNIO DE 2014
+ * OBJETIVO: CAMBIO ESTETICO EN EL MENSAJE DE SALIDA.
+ */
+
 if ($_POST) {
 //    var_dump($_FILES);
 //    echo "<br><br>";
@@ -110,10 +117,10 @@ if ($_POST) {
                         </div>
                     </div>
                     <div class="alert alert-success">
-                        <?php echo $cursosActivos; ?> unidades ser&aacute;n activas.
+                        <?php echo $cursosActivos; ?> bloques ser&aacute;n activos.
                     </div>
                     <div class="alert alert-error">
-                        <?php echo $i - $cursosActivos; ?> unidades ser&aacute;n inactivas.
+                        <?php echo $i - $cursosActivos; ?> bloques ser&aacute;n inactivos.
                     </div>
                     <?php 
                         if(count($errores) > 0){

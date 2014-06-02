@@ -23,7 +23,7 @@ OBJEVITO: CAMBIOS ESTETICOS-->
                     </li>
 
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-book icon-white"></i> Tutores<b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-flag icon-white"></i> Tutores<b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li><a href="tutoresJrAsignados.php"><i  class="icon-book"></i>Junior Asignado</a></li>                               
                         </ul>

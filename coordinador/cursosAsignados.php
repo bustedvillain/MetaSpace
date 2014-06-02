@@ -1,4 +1,12 @@
- <?php require_once '../sources/Funciones.php';?>
+ <?php require_once '../sources/Funciones.php';
+ 
+ /**
+  * CHANGE CONTROL 1.1.0
+  * FECHA DE MODIFICACION: 28/05/2014
+  * AUTOR: JOSE MANUEL NIETO GOMEZ
+  * OBJETIVO: CAMBIOS ESTETICOS
+  */
+ ?>
 <!--
 //   Date             Modified by         Change(s)
 //   2013-10-03         HMP                 1.0
@@ -18,7 +26,7 @@
         <div class="container">
             <!-- Main hero unit for a primary marketing message or call to action -->
             <div class="hero-unit">
-                <h1>Cursos Abiertos Asignados</h1>
+                <h1>Cursos Publicados Asignados</h1>
             </div>
             <ul class="breadcrumb">
                     <li><a href="index.php">Inicio</a> <span class="divider">/</span></li>
@@ -30,7 +38,7 @@
                     <tr>
                         <th>Acci&oacute;n</th>
                         <th>Nombre Curso</th>
-                        <th>Nombre Curso Abierto</th>
+                        <th>Nombre Curso Publicado</th>
                         <th>Acci&oacute;n</th>
                         
                     </tr>
@@ -41,7 +49,7 @@
                     <tr>
                         <th>Acci&oacute;n</th>
                         <th>Nombre Curso</th>
-                        <th>Nombre Curso Abierto</th>
+                        <th>Nombre Curso Publicado</th>
                         <th>Acci&oacute;n</th>
                     </tr>
                 </tfoot>

@@ -71,7 +71,8 @@ if ($_POST["id_curso_abierto"]) {
                     <li class="active">Tutores asignados</li>
                 </ul>
                 <div class="hero-unit" id="listo" style="display:none;">
-                    <h1>Tutores Asignados Correctamente</h1>
+                    <h1>Curso Publicado Correctamente</h1>
+                    <p>Los usuarios pueden iniciar el curso</p>
                     <img src="../img/ok.png"/>
                 </div>
 <!--                <div id="smCargando">

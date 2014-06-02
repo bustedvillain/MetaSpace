@@ -28,7 +28,7 @@ if ($_GET) {
                 <!-- Main hero unit for a primary marketing message or call to action -->
                 <div class="hero-unit">
                     <h1>Publicar Curso</h1>
-                    <p>A continuaci&oacute;n se muestra un formulario para poder abrir un curso. Los campos marcados con (*) son obligatorios.</p>
+                    <p>A continuaci&oacute;n se muestra un formulario para poder publicar un curso. Los campos marcados con (*) son obligatorios.</p>
                 </div>      
 
                 <ul class="breadcrumb">

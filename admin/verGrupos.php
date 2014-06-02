@@ -1,6 +1,13 @@
 <?php
 include("../sources/Funciones.php");
 verificarSesionAdminOGestor();
+
+/**
+ * CHANGE CONTROL 1.1.0
+ * AUTOR: JOSE MANUEL NIETO GOMEZ
+ * FECHA DE MODIFICACION: 02 DE JUNIO DE 2014
+ * OBJETIVO: CAMBIO ESTETICO EN EL MENSAJE DE ALTA DE GRUPO POR "AGREGAR GRUPO"
+ */
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,7 +32,7 @@ verificarSesionAdminOGestor();
             <ul class="breadcrumb">
                 <li class="active">Grupos</li>
             </ul>
-            <a href="altaGrupos.php" class="btn btn-success">Agregar</a>
+            <a href="altaGrupos.php" class="btn btn-success">Agregar Grupo</a>
             <table cellpadding="0" cellspacing="0" border="0" class="display tabla">
                 <thead>
                     <tr>

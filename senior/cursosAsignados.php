@@ -18,7 +18,7 @@
         <div class="container">
             <!-- Main hero unit for a primary marketing message or call to action -->
             <div class="hero-unit">
-                <h1>Cursos Abiertos Asignados</h1>
+                <h1>Cursos Publicados Asignados</h1>
             </div>
             <ul class="breadcrumb">
                     <li><a href="index.php">Inicio</a> <span class="divider">/</span></li>
@@ -30,7 +30,7 @@
                     <tr>
                         <th>Acci&oacute;n</th>
                         <th>Nombre Curso</th>
-                        <th>Nombre Curso Abierto</th>
+                        <th>Nombre Curso Publicado</th>
                         <th>Acci&oacute;n</th>
                         
                     </tr>
@@ -41,7 +41,7 @@
                     <tr>
                         <th>Acci&oacute;n</th>
                         <th>Nombre Curso</th>
-                        <th>Nombre Curso Abierto</th>
+                        <th>Nombre Curso Publicado</th>
                         <th>Acci&oacute;n</th>
                     </tr>
                 </tfoot>

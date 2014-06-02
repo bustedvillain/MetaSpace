@@ -3,6 +3,14 @@ $idTutor = null;
 if(isset($_GET['idTutor'])){
     $idTutor=$_GET['idTutor'];
 }
+
+
+/**
+ * CHANGE CONTROL 1.1.0
+ * FECHA DE MODIFICACION: 28 DE MAYO DE 2014
+ * AUTOR: JOSE MANUEL NIETO GOMEZ
+ * OBJETIVO: CAMBIOS ESTETICOS
+ */
 ?>
 <!--
 //   Date             Modified by         Change(s)
@@ -23,7 +31,8 @@ if(isset($_GET['idTutor'])){
         <div class="container">
             <!-- Main hero unit for a primary marketing message or call to action -->
             <div class="hero-unit">
-                <h1>Reportes (Paso 1 de 2)</h1>
+                <h1>Subir/Generar Reportes</h1>
+                <p>Identifica el Curso y Grupo del cual generar reporte, posteriormente seleccione el tipo de reporte y dé click en 'Generar/Subir'</p>
             </div>
              <?php
             tablaParaReportes(obtenerIDTabla());

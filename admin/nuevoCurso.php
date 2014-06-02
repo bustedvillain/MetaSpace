@@ -30,7 +30,7 @@
                 <li class="active">Nuevo Curso</li>
             </ul>
             <p class="text-info">
-                *Solamente aparecen los cursos que fueron dados de alta con el formato de "topicos".
+                *Solamente aparecen los cursos que fueron dados de alta con el formato de "t&oacute;picos".
             </p>
             
             <table cellpadding="0" cellspacing="0" border="0" class="display tabla">

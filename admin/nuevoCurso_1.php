@@ -38,7 +38,7 @@ if (isset($_GET["id"])) {
                 <!-- Main hero unit for a primary marketing message or call to action -->
                 <div class="hero-unit">
                     <h1>Vinculaci&oacute;n</h1>
-                    <p>Vinculaci&oacute;n de curso con sistema de gesti&oacute;n. Los campos marcados con (*) son obligatorios.</p>
+                    <p>Vinculaci&oacute;n de curso con sistema. Los campos marcados con (*) son obligatorios.</p>
                 </div> 
 
                 <ul class="breadcrumb">
@@ -52,7 +52,7 @@ if (isset($_GET["id"])) {
                         <div class="input-append">
                             <h3 class="text-info"><?php echo $fullname; ?></h3>
                         </div>                    
-                        <legend>Datos para el Sistema de Gesti&oacute;n Integral</legend>
+                        <legend>Datos para el Sistema de Integral de Administraci&oacute;n</legend>
                         <div class="input-append">
                             <label>*Nombre del Curso:</label>
                             <input type="text" name="cursos/nombre_curso" id="nombre_curso" placeholder="" value="<?php echo $fullname; ?>"required>
@@ -104,7 +104,7 @@ if (isset($_GET["id"])) {
                         </div>
                         
                         <legend>Equivalencias Num&eacute;ricas</legend>
-                        <p class="text-info">Asigne las equivalencias num&eacute;ricas relacionadas a las calificaciones/premios. El Rango 1 hace referencia al m&aacute;s bajo; desde 1 hasta el valor que usted especifique. El rango 4 es la calificaci&oacute;n m&aacute;xima.</p>
+                        <p class="text-info">Asigne las equivalencias num&eacute;ricas relacionadas a las calificaciones/premios. 'Insuficiente' hace referencia al m&aacute;s bajo; desde 1 hasta el valor que usted especifique. El rango 'Muy Bien' es la calificaci&oacute;n m&aacute;xima.</p>
                         <div class="input-append">
                             <label>Insuficiente:</label>
                             <b>De</b><input type="text" value="1" disabled/> a <input type="text" name="equivalencias_numericas/rango1" required id="rango1" value=""/>
