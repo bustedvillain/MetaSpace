@@ -738,7 +738,7 @@ function existeArrancaFuncion(nombreFuncion) {
             //Prueba
             trazaEnConsola('Se ejecutará  funcion: ' + 'frameCont.contentWindow.' + nombreFuncion + '()', 1);
             eval('frameCont.contentWindow.' + nombreFuncion + '();');
-            
+
             if (nombreFuncion === "playContenido") {
                 $('#botonPlay').attr("src", template_path + "/" + tipo_elemento + "/botonPausa-a.png");
                 $('#botonPlay').attr("title", "Pausar");
@@ -800,10 +800,18 @@ function existeArrancaFuncionV(nombreFuncion, parametros)
             }
         }
     } else {
-        var isDefined = eval('(typeof ' + 'frameCont.' + nombreFuncion + '==\'function\');');
+        //Funcion desactualizada en Chrom
+//        var isDefined = eval('(typeof ' + 'frameCont.' + nombreFuncion + '==\'function\');');
+        //Acutlización
+        var isDefined = eval('(typeof ' + 'frameCont.contentWindow.' + nombreFuncion + '==\'function\');');
+
         if (isDefined) {
             trazaEnConsola('Se ejecutará  funcion: ' + nombreFuncion + '(' + parametros + ')', 5);
+            //Funcion desactualizada por Chrome
             eval('frameCont.' + nombreFuncion + '(' + parametros + ');');
+
+            //Actualizacion
+            eval('frameCont.contentWindow.' + nombreFuncion + '(' + parametros + ');');
         }
         else {
             trazaEnConsola('La funcion: ' + 'frameCont.' + nombreFuncion + '(' + parametros + ') No definida. Try it anyway..', 1);
