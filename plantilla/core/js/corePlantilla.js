@@ -800,7 +800,7 @@ function existeArrancaFuncionV(nombreFuncion, parametros)
             }
         }
     } else {
-        //Funcion desactualizada en Chrom
+        //Funcion desactualizada en Chrome
 //        var isDefined = eval('(typeof ' + 'frameCont.' + nombreFuncion + '==\'function\');');
         //Acutlización
         var isDefined = eval('(typeof ' + 'frameCont.contentWindow.' + nombreFuncion + '==\'function\');');
@@ -808,7 +808,7 @@ function existeArrancaFuncionV(nombreFuncion, parametros)
         if (isDefined) {
             trazaEnConsola('Se ejecutará  funcion: ' + nombreFuncion + '(' + parametros + ')', 5);
             //Funcion desactualizada por Chrome
-            eval('frameCont.' + nombreFuncion + '(' + parametros + ');');
+//            eval('frameCont.' + nombreFuncion + '(' + parametros + ');');
 
             //Actualizacion
             eval('frameCont.contentWindow.' + nombreFuncion + '(' + parametros + ');');
