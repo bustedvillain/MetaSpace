@@ -264,7 +264,11 @@ function eventosBotones()
     });
     $('#btnReiniciar').click(function() {
 //        alert('presionaste Reiniciar');
-        window.frameCont.location.reload();
+        try {
+            window.frameCont.location.reload();
+        } catch (e) {
+            window.frameCont.contentWindow.location.reload();
+        }
     });
     $('#botonPlay').click(function() {
         if (statusReproduccion === 0) {
