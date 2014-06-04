@@ -726,10 +726,19 @@ function existeArrancaFuncion(nombreFuncion) {
             }
         }
     } else {
-        var isDefined = eval('(typeof ' + 'frameCont.' + nombreFuncion + '==\'function\');');
+        //Esta función ya no funciona en Chrome, se probará hacerlo como se hace con FireFox
+//        var isDefined = eval('(typeof ' + 'frameCont.' + nombreFuncion + '==\'function\');');
+//        Prueba
+        var isDefined = eval('(typeof ' + 'frameCont.contentWindow.' + nombreFuncion + '==\'function\');');
         if (isDefined) {
-            trazaEnConsola('Se ejecutará  funcion: ' + 'frameCont.' + nombreFuncion + '()', 1);
-            eval('frameCont.' + nombreFuncion + '();');
+            //Esta funcion ya no funciona en Chrome, se probará hacerlo como se hace en Firefox
+            //            trazaEnConsola('Se ejecutará  funcion: ' + 'frameCont.' + nombreFuncion + '()', 1);            
+//            eval('frameCont.' + nombreFuncion + '();');
+
+            //Prueba
+            trazaEnConsola('Se ejecutará  funcion: ' + 'frameCont.contentWindow.' + nombreFuncion + '()', 1);
+            eval('frameCont.contentWindow.' + nombreFuncion + '();');
+            
             if (nombreFuncion === "playContenido") {
                 $('#botonPlay').attr("src", template_path + "/" + tipo_elemento + "/botonPausa-a.png");
                 $('#botonPlay').attr("title", "Pausar");
