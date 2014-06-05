@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <script>
+            /**
+             * Función para abrir pantalla completa
+             * @param {type} element
+             * @returns {undefined}
+             */
+            function launchFullscreen(element) {
+                if (element.requestFullscreen) {
+                    element.requestFullscreen();
+                } else if (element.mozRequestFullScreen) {
+                    element.mozRequestFullScreen();
+                } else if (element.webkitRequestFullscreen) {
+                    element.webkitRequestFullscreen();
+                } else if (element.msRequestFullscreen) {
+                    element.msRequestFullscreen();
+                }
+            }
+
+            /**
+             * Funcion para salir de pantalla completa
+             * @returns {undefined}
+             */
+            function exitFullscreen() {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) {
+                    document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) {
+                    document.webkitExitFullscreen();
+                }
+            }
+
+            /**
+             * Información sobre el estado del la ventana
+             * @returns {undefined}
+             */
+            function dumpFullscreen() {
+                console.log("document.fullscreenElement is: ", document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement);
+                console.log("document.fullscreenEnabled is: ", document.fullscreenEnabled || document.mozFullScreenEnabled || document.webkitFullscreenEnabled || document.msFullscreenEnabled);
+            }
+
+        </script>
+    </head>
+    <body>
+        <div>Prueba pantalla completa</div>
+        <button onclick="launchFullscreen(document.documentElement);">Launch Fullscreen</button>
+        <button onclick="exitFullscreen();">Close Fullscreen</button>
+    </body>
+</html>

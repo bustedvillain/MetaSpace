@@ -63,11 +63,8 @@ function inicio()
     /**
      * Abrir pantalla completa
      */
-    try {
-        launchFullscreen(document.documentElement);
-    } catch (e) {
-        trazaEnConsola("No se pudo abrir la pantalla completa");
-    }
+    launchFullscreen(document.documentElement);
+    
 
 }
 function arreglaAlResize()
@@ -1014,11 +1011,8 @@ function eventosDeSustitucion()
         /**
          * Cierra pantalla completa
          */
-        try {
-           exitFullscreen()
-        } catch (e) {
-            trazaEnConsola("No se pudo cerrar la pantalla completa");
-        }
+        exitFullscreen()
+       
 
         debugConsole('salir');
         registraSalida();
@@ -1209,14 +1203,18 @@ function validarRecarga() {
  * @returns {undefined}
  */
 function launchFullscreen(element) {
-    if (element.requestFullscreen) {
-        element.requestFullscreen();
-    } else if (element.mozRequestFullScreen) {
-        element.mozRequestFullScreen();
-    } else if (element.webkitRequestFullscreen) {
-        element.webkitRequestFullscreen();
-    } else if (element.msRequestFullscreen) {
-        element.msRequestFullscreen();
+    try {
+        if (element.requestFullscreen) {
+            element.requestFullscreen();
+        } else if (element.mozRequestFullScreen) {
+            element.mozRequestFullScreen();
+        } else if (element.webkitRequestFullscreen) {
+            element.webkitRequestFullscreen();
+        } else if (element.msRequestFullscreen) {
+            element.msRequestFullscreen();
+        }
+    } catch (e) {
+        trazaEnConsola("Error al abrir pantaa completa");
     }
 }
 
@@ -1225,12 +1223,16 @@ function launchFullscreen(element) {
  * @returns {undefined}
  */
 function exitFullscreen() {
-    if (document.exitFullscreen) {
-        document.exitFullscreen();
-    } else if (document.mozCancelFullScreen) {
-        document.mozCancelFullScreen();
-    } else if (document.webkitExitFullscreen) {
-        document.webkitExitFullscreen();
+    try {
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        } else if (document.mozCancelFullScreen) {
+            document.mozCancelFullScreen();
+        } else if (document.webkitExitFullscreen) {
+            document.webkitExitFullscreen();
+        }
+    } catch (e) {
+        trazaEnConsola("Error al cerrar pantalla completa");
     }
 }
 
