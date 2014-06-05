@@ -5,6 +5,14 @@
 //15/ene/2014
 //Volumen en la plantilla, arranque automático en admin y prevent click fuera de fancyCal
 
+/**
+ * CHANGE CONTROL 1.1.0
+ * AUTOR: JOSE MANUEL NIETO GOMEZ
+ * FECHA DE MODIFICACION: 05 DE JUNIO 2014
+ * OBJETIVO: AGREGAR FUNCIONALIDAD PARA MONITOREAR UN CONTADOR DE RECARGAS EN CONTENIDOS CON CARGA INCOMPLETA.
+ *  EVENTOS PARA MANEJAR LA PANTALLA COMPLETA DEL DISPOSITIVO
+ */
+
 var cargaInicial = 0;
 //Iniciamos con la función inicio
 $(document).ready(inicio);
@@ -51,6 +59,15 @@ function inicio()
         arreglaAlResize();
     });
     volumenGral = 50;
+
+    /**
+     * Abrir pantalla completa
+     */
+    try {
+        launchFullscreen(document.documentElement);
+    } catch (e) {
+        trazaEnConsola("No se pudo abrir la pantalla completa");
+    }
 
 }
 function arreglaAlResize()
@@ -248,6 +265,10 @@ function eventosBotones()
             trazaEnConsola("Anterior, volumen=" + volumenGral, 2);
             cargaContenidooo();
 //            recargaPaginaContenido(indiceActual);
+
+            //Contador de recargas
+            nRecargas = 0;
+            trazaEnConsola("Reinicio de recargas contenido");
         }
     });
     $('#botonSiguiente').click(function() {
@@ -260,6 +281,10 @@ function eventosBotones()
             trazaEnConsola("Siguiente, volumen=" + volumenGral, 2);
             cargaContenidooo();
 //            recargaPaginaContenido(indiceActual);
+
+            //Contador de recargas
+            nRecargas = 0;
+            trazaEnConsola("Reinicio de recargas contenido");
         }
     });
     $('#btnReiniciar').click(function() {
@@ -269,6 +294,10 @@ function eventosBotones()
         } catch (e) {
             window.frameCont.contentWindow.location.reload();
         }
+
+        //Contador de recargas
+        nRecargas = 0;
+        trazaEnConsola("Reinicio de recargas contenido");
     });
     $('#botonPlay').click(function() {
         if (statusReproduccion === 0) {
@@ -982,9 +1011,17 @@ function eventosDeSustitucion()
     });
     $('#botonSalir').click(function(event)
     {
+        /**
+         * Cierra pantalla completa
+         */
+        try {
+           exitFullscreen()
+        } catch (e) {
+            trazaEnConsola("No se pudo cerrar la pantalla completa");
+        }
+
         debugConsole('salir');
         registraSalida();
-
 
     });
     trazaEnConsola('------------------Fin eventosDeSustitucion', 4);
@@ -1130,4 +1167,78 @@ function recargaPaginaContenido(idInidceN) {
         nuevaRuta = nuevaRuta + "&idIndiceNuevo=" + idInidceN;
         window.location.href = nuevaRuta;
     }
+}
+
+
+/**
+ * CHANGE CONTROL 1.1.0
+ * AUTOR: JOSE MANUEL NIETO GOMEZ
+ * FECHA DE MODIFICACION: 05 DE JUNIO 2014
+ * OBJETIVO: AGREGAR FUNCIONALIDAD PARA MONITOREAR UN CONTADOR DE RECARGAS EN CONTENIDOS CON CARGA INCOMPLETA.
+ *  EVENTOS PARA MANEJAR LA PANTALLA COMPLETA DEL DISPOSITIVO
+ */
+
+/**
+ * Variable para controlar el numero de recargas
+ */
+var nRecargas = 0;
+var maxRecargas = 20;
+
+/**
+ * Funcion que valida si el contenido se puede seguir recargando de forma automatica
+ * @returns {Boolean}
+ */
+function validarRecarga() {
+    trazaEnConsola("Validar recarga");
+    trazaEnConsola("nRecargas:" + nRecargas);
+    trazaEnConsola("maxRecargas:" + maxRecargas);
+    if (nRecargas < maxRecargas) {
+        nRecargas++;
+        trazaEnConsola("Recarga automatica... " + nRecargas);
+        return true;
+    } else {
+        nRecargas = 0;
+        trazaEnConsola("Recarga maximas, solicitando autorización para recargar...");
+        return false;
+    }
+}
+
+/**
+ * Función para abrir pantalla completa
+ * @param {type} element
+ * @returns {undefined}
+ */
+function launchFullscreen(element) {
+    if (element.requestFullscreen) {
+        element.requestFullscreen();
+    } else if (element.mozRequestFullScreen) {
+        element.mozRequestFullScreen();
+    } else if (element.webkitRequestFullscreen) {
+        element.webkitRequestFullscreen();
+    } else if (element.msRequestFullscreen) {
+        element.msRequestFullscreen();
+    }
+}
+
+/**
+ * Funcion para salir de pantalla completa
+ * @returns {undefined}
+ */
+function exitFullscreen() {
+    if (document.exitFullscreen) {
+        document.exitFullscreen();
+    } else if (document.mozCancelFullScreen) {
+        document.mozCancelFullScreen();
+    } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+    }
+}
+
+/**
+ * Información sobre el estado del la ventana
+ * @returns {undefined}
+ */
+function dumpFullscreen() {
+    console.log("document.fullscreenElement is: ", document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement);
+    console.log("document.fullscreenEnabled is: ", document.fullscreenEnabled || document.mozFullScreenEnabled || document.webkitFullscreenEnabled || document.msFullscreenEnabled);
 }
