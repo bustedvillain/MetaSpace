@@ -49,7 +49,8 @@ and open the template in the editor.
                 console.log("document.fullscreenElement is: ", document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement);
                 console.log("document.fullscreenEnabled is: ", document.fullscreenEnabled || document.mozFullScreenEnabled || document.webkitFullscreenEnabled || document.msFullscreenEnabled);
             }
-
+            launchFullscreen(document.documentElement);
+            
         </script>
     </head>
     <body>

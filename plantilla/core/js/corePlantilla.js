@@ -60,12 +60,6 @@ function inicio()
     });
     volumenGral = 50;
 
-    /**
-     * Abrir pantalla completa
-     */
-    launchFullscreen(document.documentElement);
-    
-
 }
 function arreglaAlResize()
 {
