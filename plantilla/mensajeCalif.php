@@ -113,7 +113,7 @@ $colorBorde = obtenerColor(STORAGE_PATH."cursos/".$idCurso."/frontweb/colores.in
                 <!--<div class="elem_left"><img src="../img/alumno/bloque_estrellas.jpg" width="99" height="216" /></div>-->
                 <div id="alumno_bloque_control">
                     <h3>¿Quieres volver a intentarlo?</h3>
-                    <div class="elem_absolute" style="top: 45px; left: 280px;"><a href="" onclick="parent.window.frameCont.location.reload(); parent.cierraCalif();"><img src="<?php echo $rutaCursos; ?>reintentar.jpg" width="87" height="72" /></a></div>
+                    <div class="elem_absolute" style="top: 45px; left: 280px;"><a href="" onclick="try{parent.window.frameCont.location.reload();}catch(e){parent.window.frameCont.contentWindow.location.reload();} parent.cierraCalif();"><img src="<?php echo $rutaCursos; ?>reintentar.jpg" width="87" height="72" /></a></div>
                     <div class="elem_absolute" style="top: 45px; left: 400px;"><a href="" onclick="parent.avanceDesdeCalif()"><img src="<?php echo $rutaCursos; ?>salir.jpg" width="87" height="72" /></a></div>
                 </div>
             </div>
