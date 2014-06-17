@@ -2,19 +2,18 @@
 //Archivo creado para control de cambios #7
 include '../../sources/Funciones.php';
 verificarSesionAlumno();
-if(navegadorActual() == "Internet Explorer"){
+if (navegadorActual() == "Internet Explorer") {
     $metodo = "muestraFileI();";
     $estilo = "none";
     $idForm = '';
     $idFile = '';
     $idCmd = '';
-}else{
+} else {
     $metodo = "muestraImagenUp();";
     $estilo = "none";
     $idForm = ' id="frmSubeImagen" ';
     $idFile = ' id="inputSubida" ';
     $idCmd = ' id="btnSube" ';
-    
 }
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -29,9 +28,11 @@ if(navegadorActual() == "Internet Explorer"){
 
         <link href="../style/reset.css" type="text/css" rel="stylesheet"  media="all" />
         <link href="../style/general.css" type="text/css" rel="stylesheet"  media="all" />
+        <link href="../style/alumno.css" type="text/css" rel="stylesheet"  media="all" />
 
-        
-        
+
+
+
         <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
         <link href='http://fonts.googleapis.com/css?family=Dosis:400,300,500' rel='stylesheet' type='text/css'/>
         <!--<script type="text/javascript" src="../../js/jquery-1.7.min.js"></script>-->
@@ -44,7 +45,7 @@ if(navegadorActual() == "Internet Explorer"){
                 $("#inputSubida").change(function() {
 //                    alert('la subiré');
 //                    $("#frmSubeImagen").submit();
-                        $("#btnSube").trigger("click");
+                    $("#btnSube").trigger("click");
 //                        window.location.href = window.location.href;
                 });
             }

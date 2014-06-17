@@ -25,6 +25,8 @@ $idAlumno = obtenerIDTabla();
 
         <link href="../style/reset.css" type="text/css" rel="stylesheet"  media="all" />
         <link href="../style/general.css" type="text/css" rel="stylesheet"  media="all" />
+        <link href="../style/alumno.css" type="text/css" rel="stylesheet"  media="all" />
+
         <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
         <link href='http://fonts.googleapis.com/css?family=Dosis:400,300,500' rel='stylesheet' type='text/css'/>
         <script type="text/javascript" src="../../js/jquery-1.7.min.js"></script>
@@ -36,7 +38,7 @@ $idAlumno = obtenerIDTabla();
             }
             function enviaForm(form) {
 
-                $("#"+form).submit();
+                $("#" + form).submit();
             }
         </script>
         <style>
@@ -252,7 +254,7 @@ $idAlumno = obtenerIDTabla();
                     <div id="msg_recib" class="contenido_msg_recib">
 
                         <ul class="msgs">
-                            <li>Pase el mouse sobre el mensaje <?php echo substr($tipo,0,  strlen($tipo)-1); ?> para abrirlo</li>
+                            <li>Pase el mouse sobre el mensaje <?php echo substr($tipo, 0, strlen($tipo) - 1); ?> para abrirlo</li>
                             <?php mensajesAlAlumnoDeCompanyeros($idAlumno, $pagina, $tipo) ?>
 <!--                                    <span class="alignLeft">Clases de M&uacute;sica</span></a>
                                 <ul class="msgs">
@@ -411,6 +413,6 @@ $idAlumno = obtenerIDTabla();
 
 
 
-<?php include_once '../../sources/ConfiguracionesGlobalesFW.php'; ?>
+        <?php include_once '../../sources/ConfiguracionesGlobalesFW.php'; ?>
     </body>
 </html>

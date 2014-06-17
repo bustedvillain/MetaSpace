@@ -1,5 +1,6 @@
-<?php  
-include '../../sources/Funciones.php'; verificarSesionAlumno();
+<?php
+include '../../sources/Funciones.php';
+verificarSesionAlumno();
 if (!isset($_GET['idPadre'])) {
     header("Location:mi_locker.php");
 }
@@ -17,6 +18,8 @@ $idPadre = $_GET['idPadre'];
 
         <link href="../style/reset.css" type="text/css" rel="stylesheet"  media="all" />
         <link href="../style/general.css" type="text/css" rel="stylesheet"  media="all" />
+        <link href="../style/alumno.css" type="text/css" rel="stylesheet"  media="all" />
+
         <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
         <link href='http://fonts.googleapis.com/css?family=Dosis:400,300,500' rel='stylesheet' type='text/css'/>
 
@@ -134,7 +137,7 @@ $idPadre = $_GET['idPadre'];
                                 <!--</div>-->
                                 <div class="form_largo_tutor">
                                     <textarea name="mensaje" cols="50" rows="3" wrap="soft" id="LoginMensaje" placeholder="Mensaje..."></textarea>
-                                    <input type='hidden' name='idDestinatario' value='<?php echo $idPadre;?>'/>
+                                    <input type='hidden' name='idDestinatario' value='<?php echo $idPadre; ?>'/>
                                     <input type="hidden" id="location" name="location" value="mi_locker.php"/>
                                 </div>
                                 <div class="form_tutor">

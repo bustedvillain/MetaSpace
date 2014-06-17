@@ -1,7 +1,9 @@
-<?php include '../../sources/Funciones.php'; verificarSesionAlumno();
-if(isset($_GET['pagina'])){
+<?php
+include '../../sources/Funciones.php';
+verificarSesionAlumno();
+if (isset($_GET['pagina'])) {
     $pagina = $_GET['pagina'];
-}else{
+} else {
     $pagina = 1;
 }
 ?>
@@ -17,6 +19,8 @@ if(isset($_GET['pagina'])){
 
         <link href="../style/reset.css" type="text/css" rel="stylesheet"  media="all" />
         <link href="../style/general.css" type="text/css" rel="stylesheet"  media="all" />
+        <link href="../style/alumno.css" type="text/css" rel="stylesheet"  media="all" />
+
         <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
         <link href='http://fonts.googleapis.com/css?family=Dosis:400,300,500' rel='stylesheet' type='text/css'/>
         <script type="text/javascript" src="../../js/jquery-1.7.min.js"></script>
@@ -28,7 +32,7 @@ if(isset($_GET['pagina'])){
             }
             function enviaForm(form) {
 
-                $("#"+form).submit();
+                $("#" + form).submit();
             }
         </script>
         <style>
@@ -142,7 +146,7 @@ if(isset($_GET['pagina'])){
                 muestra_oculta_letras('contenido_a_mostrar_letras');/* "contenido_a_mostrar" es el nombre que le dimos al DIV */
             }
 
-        // Función para mostrar la lista desplegable de tutores
+            // Función para mostrar la lista desplegable de tutores
             function muestra_oculta_dif_el(id_el1, id_el2) {
                 if (document.getElementById(idCheck).checked) {
                     var el = document.getElementById(idDiv); //Se define la variable "el" igual a nuestro div
@@ -151,7 +155,7 @@ if(isset($_GET['pagina'])){
                 }
             }
 
-        // Función para mostrar la lista desplegable de tutores
+            // Función para mostrar la lista desplegable de tutores
             function muestra_oculta(id) {
                 if (document.getElementById) {
                     var el = document.getElementById(id); //Se define la variable "el" igual a nuestro div
@@ -160,7 +164,7 @@ if(isset($_GET['pagina'])){
                 }
             }
 
-        // Función para mostrar la lista desplegable de tutores
+            // Función para mostrar la lista desplegable de tutores
             function muestra_oculta_tabs(id_tab1, id_tab2) {
                 if (document.getElementById(id_tab1)) {
                     var el = document.getElementById(id_tab1); //Se define la variable "el" igual a nuestro div
@@ -174,7 +178,7 @@ if(isset($_GET['pagina'])){
                 }
             }
 
-        // Función para mostrar la lista desplegable de tutores
+            // Función para mostrar la lista desplegable de tutores
             function muestra_oculta(idDiv) {
                 alert(document.getElementById(idDiv));
                 if (document.getElementById) {
@@ -245,13 +249,14 @@ if(isset($_GET['pagina'])){
 
                         <ul class="msgs">
                             <?php
-                            if(cantidadPaginas(padreDeAlumno(obtenerIdDatosPersonales())) > 0){
+                            if (cantidadPaginas(padreDeAlumno(obtenerIdDatosPersonales())) > 0) {
                                 echo '<li>Pase el mouse sobre el mensaje para abrirlo</li>';
-                            }else{
+                            } else {
                                 echo '<li>No hay mensajes disponibles.</li>';
                             }
-                            
-                             mensajesAlAlumnoDelPadre($pagina); ?>
+
+                            mensajesAlAlumnoDelPadre($pagina);
+                            ?>
 <!--                            <li><a href="#"><div class="msg_head"><span class="alignLeft">Antonio Marquez Padre - 5° 32-B</span><span class="alignRight">12/12/12</span></div>
                                     <span class="alignLeft">Clases de M&uacute;sica</span></a>
                                 <ul class="msgs">
@@ -267,12 +272,12 @@ if(isset($_GET['pagina'])){
                                     </li>
                                 </ul>
                             </li>-->
-                            
-                            
+
+
                         </ul>
-                        
+
                         <div id="btn_int"><?php paginacionAlumnoDelPadre(); ?>
-                            
+
                             <div id="btn_int_regresar"><a href="javascript:history.back()"> </a></div>
 
 

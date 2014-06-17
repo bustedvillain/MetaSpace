@@ -1,6 +1,7 @@
-<?php include '../../sources/Funciones.php'; 
- include '../../template/validacionesBaul.php';
- verificarSesionAlumno();
+<?php
+include '../../sources/Funciones.php';
+include '../../template/validacionesBaul.php';
+verificarSesionAlumno();
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -14,6 +15,8 @@
 
         <link href="../style/reset.css" type="text/css" rel="stylesheet"  media="all" />
         <link href="../style/general.css" type="text/css" rel="stylesheet"  media="all" />
+        <link href="../style/alumno.css" type="text/css" rel="stylesheet"  media="all" />
+
 
         <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
         <link href='http://fonts.googleapis.com/css?family=Dosis:400,300,500' rel='stylesheet' type='text/css'/>
@@ -47,31 +50,31 @@
                     <div id="lateral_nav_mi_locker"><a title="" href="mi_locker.php"></a></div>
                     <div id="lateral_nav_biblioteca"><a title="" href="biblioteca.php"></a></div>
                 </div>
-                
-                <?php 
-                 if(tieneCursosAsignados(obtenerIDTabla()))
-                 { ?>
+
+                <?php
+                if (tieneCursosAsignados(obtenerIDTabla())) {
+                    ?>
                     <div id="baul">
-                    <div id="baul_nav">
-                        <ul>
-                            <?php                             
+                        <div id="baul_nav">
+                            <ul>
+                                <?php
                                 generarBloques($noUnidadesTotales, $noUnidad);
-                            ?>
-                            
-                        </ul>
-                    </div>
-                    <div id="baul_tab">
-                        
+                                ?>
+
+                            </ul>
+                        </div>
+                        <div id="baul_tab">
+
                             <?php
                             generarCursoAsignadosBaul(obtenerIDTabla(), $noUnidad)
                             ?>
-                        
+
+                        </div>
+
                     </div>
 
-                </div>
-                
-                <?php
-                 }                 
+                    <?php
+                }
                 ?>
             </div>
             <div id="footer">
@@ -84,6 +87,6 @@
                 <div id="social"><img src="../img/social.gif" width="117" height="50" /></div>
             </div>
         </div>
-        <?php include_once '../../sources/ConfiguracionesGlobalesFW.php'; ?>
+<?php include_once '../../sources/ConfiguracionesGlobalesFW.php'; ?>
     </body>
 </html>

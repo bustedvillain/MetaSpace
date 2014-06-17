@@ -80,6 +80,8 @@ $cantidad = count($arrIdsCurso);
         </script>
         <link href="../style/reset.css" type="text/css" rel="stylesheet"  media="all" />
         <link href="../style/general.css" type="text/css" rel="stylesheet"  media="all" />
+        <link href="../style/alumno.css" type="text/css" rel="stylesheet"  media="all" />
+
         <style>
             #buscador_alu input  {
                 -moz-border-radius: 10px; /* Firefox */
@@ -99,26 +101,26 @@ $cantidad = count($arrIdsCurso);
                 /*margin-top: -60px;*/
                 margin: 10px 5px;
 
-line-height: 50px;
+                line-height: 50px;
             }
             #buscador {
-	width: 268px;
-	height: 62px;
-	float:left;
-	line-height: 62px;
-}
+                width: 268px;
+                height: 62px;
+                float:left;
+                line-height: 62px;
+            }
 
-#lupa input[type="submit"] {
-	position:absolute;
-	top: 38px;
-	right: 418px;
-	width: 35px;
-	height: 34px;
-	background-image:url(../img/lupa.png);
-	background-color: #fff;
-	outline:0px;
-	border: 0px solid blue;
-}
+            #lupa input[type="submit"] {
+                position:absolute;
+                top: 38px;
+                right: 418px;
+                width: 35px;
+                height: 34px;
+                background-image:url(../img/lupa.png);
+                background-color: #fff;
+                outline:0px;
+                border: 0px solid blue;
+            }
         </style>
     </head>
     <body>

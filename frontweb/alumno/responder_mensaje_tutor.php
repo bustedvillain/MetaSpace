@@ -1,5 +1,6 @@
 <?php
-include '../../sources/Funciones.php'; verificarSesionAlumno();
+include '../../sources/Funciones.php';
+verificarSesionAlumno();
 if (!isset($_GET['idTutor'])) {
     header("Location:mi_locker.php");
 }
@@ -17,6 +18,8 @@ $idTutor = $_GET['idTutor'];
 
         <link href="../style/reset.css" type="text/css" rel="stylesheet"  media="all" />
         <link href="../style/general.css" type="text/css" rel="stylesheet"  media="all" />
+        <link href="../style/alumno.css" type="text/css" rel="stylesheet"  media="all" />
+
         <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
         <link href='http://fonts.googleapis.com/css?family=Dosis:400,300,500' rel='stylesheet' type='text/css'/>
 
@@ -127,14 +130,14 @@ $idTutor = $_GET['idTutor'];
                     <div class="contenido">
                         <div id="intro_contacto_form">
                             <form id="frmContact" class="login"  method="POST" action='enviaMensaje.php'>
-<!--                                <div class="form_tutor">
-                                    <select id="ContactoTutor">
-                                        <option value="id del alumno que se obtiene de la consulta en la base de datos">Tutor</option>
-                                    </select>
-                                </div>-->
+                                <!--                                <div class="form_tutor">
+                                                                    <select id="ContactoTutor">
+                                                                        <option value="id del alumno que se obtiene de la consulta en la base de datos">Tutor</option>
+                                                                    </select>
+                                                                </div>-->
                                 <div class="form_largo_tutor">
                                     <textarea name="mensaje" cols="50" rows="3" wrap="soft" id="LoginMensaje" placeholder="Mensaje..."></textarea>
-                                    <input type='hidden' name='idDestinatario' value='<?php echo $idTutor;?>'/>
+                                    <input type='hidden' name='idDestinatario' value='<?php echo $idTutor; ?>'/>
                                     <input type="hidden" id="location" name="location" value="mi_locker.php"/>
                                 </div>
                                 <div class="form_tutor">

@@ -1,6 +1,15 @@
 <!--inicia lineas itt-->
-<?php include "../../sources/Funciones.php";
-verificarSesionAlumno(); ?>
+<?php
+include "../../sources/Funciones.php";
+verificarSesionAlumno();
+
+/**
+ * CHANGE CONTROL 1.1.0
+ * AUTOR: JOSE MANUEL NIETO GOMEZ
+ * FECHA DE MODIFICACION: 17 DE JUNIO DE 2014
+ * OBJETIVO: AGREGAR EVENTO EN APERTURA DE BLOQUES PARA CAMBIAR A PANTALLA COMPLETA
+ */
+?>
 
 <!--Fin lineas itt-->
 
@@ -16,6 +25,8 @@ verificarSesionAlumno(); ?>
 
         <link href="../style/reset.css" type="text/css" rel="stylesheet"  media="all" />
         <link href="../style/general.css" type="text/css" rel="stylesheet"  media="all" />
+        <link href="../style/alumno.css" type="text/css" rel="stylesheet"  media="all" />
+
 
         <link href="../style/mapa.css" type="text/css" rel="stylesheet"  media="all" />
         <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
@@ -113,7 +124,7 @@ cabecera;
 
                 <div id="lateral_nav">
                     <div id="lateral_nav_aprender"><a title="" href="index.php"></a></div>
-                    
+
                     <div id="lateral_nav_baul"><a title="" href="baul.php"></a></div>
                     <div id="lateral_nav_mi_locker"><a title="" href="mi_locker.php"></a></div>
                     <div id="lateral_nav_biblioteca"><a title="" href="biblioteca.php"></a></div>
@@ -127,12 +138,12 @@ cabecera;
                             <!--<img src="../img/alumno/mapa.jpg" width="615" height="409" class="margin10"/>-->
                         <div id="mcPrincipal" style="">
                             <input class="fancyy" type ="hidden"/>
-                            <a id="mcl1"  ><img id="mc1" class="mcNumero" /></a>
-                            <a id="mcl2"  ><img id="mc2" class="mcNumero" /></a>
-                            <a id="mcl3"  ><img id="mc3" class="mcNumero" /></a>
-                            <a id="mcl4"  ><img id="mc4" class="mcNumero" /></a>
-                            <a id="mcl5"  ><img id="mc5" class="mcNumero" /></a>
-                            <a id="mcl6"  ><img id="mc6" class="mcNumero" /></a>
+                            <a id="mcl1"  onclick="launchFullscreen(document.documentElement);"><img id="mc1" class="mcNumero" /></a>
+                            <a id="mcl2"  onclick="launchFullscreen(document.documentElement);"><img id="mc2" class="mcNumero" /></a>
+                            <a id="mcl3"  onclick="launchFullscreen(document.documentElement);"><img id="mc3" class="mcNumero" /></a>
+                            <a id="mcl4"  onclick="launchFullscreen(document.documentElement);"><img id="mc4" class="mcNumero" /></a>
+                            <a id="mcl5"  onclick="launchFullscreen(document.documentElement);"><img id="mc5" class="mcNumero" /></a>
+                            <a id="mcl6"  onclick="launchFullscreen(document.documentElement);"><img id="mc6" class="mcNumero" /></a>
                         </div>
                     </div>
                     <div id="calidad_nav">
@@ -167,6 +178,6 @@ cabecera;
 
 
         </div>
-<?php include_once '../../sources/ConfiguracionesGlobalesFW.php'; ?>
+        <?php include_once '../../sources/ConfiguracionesGlobalesFW.php'; ?>
     </body>
 </html>

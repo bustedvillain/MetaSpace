@@ -1,4 +1,5 @@
-<?php include '../../sources/Funciones.php'; verificarSesionAlumno();?>
+<?php include '../../sources/Funciones.php';
+verificarSesionAlumno(); ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
@@ -11,6 +12,8 @@
 
         <link href="../style/reset.css" type="text/css" rel="stylesheet"  media="all" />
         <link href="../style/general.css" type="text/css" rel="stylesheet"  media="all" />
+        <link href="../style/alumno.css" type="text/css" rel="stylesheet"  media="all" />
+
 
         <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
         <link href='http://fonts.googleapis.com/css?family=Dosis:400,300,500' rel='stylesheet' type='text/css'/>
@@ -75,37 +78,37 @@
 
                         <div class="locker_comentarios">
                             <h3>Comentarios del Tutor <small><a href="tutor_revisar.php">ver más</a></small></h3>
-                            <?php @imprimeMensajesLockerTutor(); ?>
-<!--                            <div class="locker_nota">
-                                <p><strong>Antonio Molina</strong><br/>
-                                    ¿Qué tal los exámenes finales Diego?</p>
-                                <span class="fecha">12/12/2013</span>
-                                <span class="btn_responder"><a href="responder_mensaje_tutor.php">Responder</a></span>
-                            </div>
-                            <div class="locker_nota">
-                                <p><strong>Antonio Molina</strong><br/>
-                                    ¿Qué tal los exámenes finales Diego?</p>
-                                <span class="fecha">12/12/2013</span>
-                                <span class="btn_responder"><a href="responder_mensaje_tutor.php">Responder</a></span>
-                            </div>-->
+<?php @imprimeMensajesLockerTutor(); ?>
+                            <!--                            <div class="locker_nota">
+                                                            <p><strong>Antonio Molina</strong><br/>
+                                                                ¿Qué tal los exámenes finales Diego?</p>
+                                                            <span class="fecha">12/12/2013</span>
+                                                            <span class="btn_responder"><a href="responder_mensaje_tutor.php">Responder</a></span>
+                                                        </div>
+                                                        <div class="locker_nota">
+                                                            <p><strong>Antonio Molina</strong><br/>
+                                                                ¿Qué tal los exámenes finales Diego?</p>
+                                                            <span class="fecha">12/12/2013</span>
+                                                            <span class="btn_responder"><a href="responder_mensaje_tutor.php">Responder</a></span>
+                                                        </div>-->
                         </div>
 
                         <div class="locker_comentarios">
                             <h3>Comentarios del Padre <small><a href="padre_revisar.php">ver más</a></small></h3>
-                            <?php @imprimeMensajesLockerPadre(); ?>
-<!--                            <div class="locker_nota">
-                                <p><strong>Papá</strong><br/>
-                                    ¡Mucho ánimo hijo!</p>
-                                <span class="fecha">12/12/2013</span>
-                                <span class="btn_responder"><a href="responder_mensaje_padre.php">Responder</a></span>
-                            </div>
-
-                            <div class="locker_nota">
-                                <p><strong>Papá</strong><br/>
-                                    Vas progresando en las actividades.</p>
-                                <span class="fecha">12/12/2013</span>
-                                <span class="btn_responder"><a href="responder_mensaje_padre.php">Responder</a></span>
-                            </div>-->
+<?php @imprimeMensajesLockerPadre(); ?>
+                            <!--                            <div class="locker_nota">
+                                                            <p><strong>Papá</strong><br/>
+                                                                ¡Mucho ánimo hijo!</p>
+                                                            <span class="fecha">12/12/2013</span>
+                                                            <span class="btn_responder"><a href="responder_mensaje_padre.php">Responder</a></span>
+                                                        </div>
+                            
+                                                        <div class="locker_nota">
+                                                            <p><strong>Papá</strong><br/>
+                                                                Vas progresando en las actividades.</p>
+                                                            <span class="fecha">12/12/2013</span>
+                                                            <span class="btn_responder"><a href="responder_mensaje_padre.php">Responder</a></span>
+                                                        </div>-->
                         </div>
 
                     </div>

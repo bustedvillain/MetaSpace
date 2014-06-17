@@ -1,7 +1,9 @@
-<?php include '../../sources/Funciones.php'; verificarSesionAlumno(); 
-if(isset($_GET['pagina'])){
+<?php
+include '../../sources/Funciones.php';
+verificarSesionAlumno();
+if (isset($_GET['pagina'])) {
     $pagina = $_GET['pagina'];
-}else{
+} else {
     $pagina = 1;
 }
 ?>
@@ -17,6 +19,8 @@ if(isset($_GET['pagina'])){
 
         <link href="../style/reset.css" type="text/css" rel="stylesheet"  media="all" />
         <link href="../style/general.css" type="text/css" rel="stylesheet"  media="all" />
+        <link href="../style/alumno.css" type="text/css" rel="stylesheet"  media="all" />
+
         <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
         <link href='http://fonts.googleapis.com/css?family=Dosis:400,300,500' rel='stylesheet' type='text/css'/>
         <script type="text/javascript" src="../../js/jquery-1.7.min.js"></script>
@@ -28,7 +32,7 @@ if(isset($_GET['pagina'])){
             }
             function enviaForm(form) {
 
-                $("#"+form).submit();
+                $("#" + form).submit();
             }
         </script>
         <style>
@@ -244,23 +248,23 @@ if(isset($_GET['pagina'])){
                     <div id="msg_recib" class="contenido_msg_recib">
 
                         <ul class="msgs">
-                            <?php mensajesAlAlumnoDelTutor($pagina); ?>
-<!--                            <li>Pase el mouse sobre el mensaje para abrirlo</li>
-                            <li><a href="#"><div class="msg_head"><span class="alignLeft">Antonio Marquez Padre - 5° 32-B</span><span class="alignRight">12/12/12</span></div>
-                                    <span class="alignLeft">Clases de M&uacute;sica</span></a>
-                                <ul class="msgs">
-                                    <li>
-                                        <div id="msg_body">                       
-                                            <div class="msg_text" style="text-align:justify">En este espacio se muestra todo el texto del mensaje, para que el usuario pueda leerlo. No hay un número de caracteres límite. Cuando el texto rebasa la capacidad del espacio se muestra la barra de scroll vertical para poder desplazarse por el texto.
-                                            </div>
-                                            <div>
-                                                <textarea id="msg_cuerpo" cols="60" rows="3" wrap="soft" placeholder="Mensaje..." style="text-align:justify"> </textarea>
-                                                <span class="horizontal_btn2"> <a href="#">Responder</a></span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </li>-->
+<?php mensajesAlAlumnoDelTutor($pagina); ?>
+                            <!--                            <li>Pase el mouse sobre el mensaje para abrirlo</li>
+                                                        <li><a href="#"><div class="msg_head"><span class="alignLeft">Antonio Marquez Padre - 5° 32-B</span><span class="alignRight">12/12/12</span></div>
+                                                                <span class="alignLeft">Clases de M&uacute;sica</span></a>
+                                                            <ul class="msgs">
+                                                                <li>
+                                                                    <div id="msg_body">                       
+                                                                        <div class="msg_text" style="text-align:justify">En este espacio se muestra todo el texto del mensaje, para que el usuario pueda leerlo. No hay un número de caracteres límite. Cuando el texto rebasa la capacidad del espacio se muestra la barra de scroll vertical para poder desplazarse por el texto.
+                                                                        </div>
+                                                                        <div>
+                                                                            <textarea id="msg_cuerpo" cols="60" rows="3" wrap="soft" placeholder="Mensaje..." style="text-align:justify"> </textarea>
+                                                                            <span class="horizontal_btn2"> <a href="#">Responder</a></span>
+                                                                        </div>
+                                                                    </div>
+                                                                </li>
+                                                            </ul>
+                                                        </li>-->
                         </ul>
                         <div id="btn_int"><?php paginacionAlumnoDelTutor(); ?>
                             <div id="btn_int_regresar"><a href="javascript:history.back()"> </a></div>

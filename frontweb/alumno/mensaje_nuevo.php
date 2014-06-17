@@ -1,4 +1,5 @@
-<?php include '../../sources/Funciones.php';
+<?php
+include '../../sources/Funciones.php';
 verificarSesionAlumno();
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -13,6 +14,8 @@ verificarSesionAlumno();
 
         <link href="../style/reset.css" type="text/css" rel="stylesheet"  media="all" />
         <link href="../style/general.css" type="text/css" rel="stylesheet"  media="all" />
+        <link href="../style/alumno.css" type="text/css" rel="stylesheet"  media="all" />
+
         <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
         <link href='http://fonts.googleapis.com/css?family=Dosis:400,300,500' rel='stylesheet' type='text/css'/>
 
@@ -119,7 +122,7 @@ verificarSesionAlumno();
                 </div>
 
                 <div id="tutor_mensaje">
-                    <h2 style="color:#ff9000">Mis amigos de <?php echo obtenerGrupoAlumno(obtenerIdDatosPersonales());?></h2>
+                    <h2 style="color:#ff9000">Mis amigos de <?php echo obtenerGrupoAlumno(obtenerIdDatosPersonales()); ?></h2>
                     <div class="contenido">
 
                         <div id="intro_contacto_form">
@@ -133,7 +136,7 @@ verificarSesionAlumno();
                                     <select id="ContactoTutor" required ='required' name='idDestinatario'>
                                     <?php imprimeOptionsDeCompanyerosDeAlumno(obtenerIDTabla()); ?>
                                     </select>
-<?php // echo obtenerIDTabla(). "-". gruposDeAlumno(obtenerIDTabla())."-".  companyerosDeAlumno(obtenerIDTabla());    ?>   
+<?php // echo obtenerIDTabla(). "-". gruposDeAlumno(obtenerIDTabla())."-".  companyerosDeAlumno(obtenerIDTabla());     ?>   
                                 </div>
 
                                 <div class="form_largo_tutor"><textarea name="mensaje" cols="50" rows="3" wrap="soft" id="LoginMensaje" placeholder="Mensaje..."></textarea></div>
