@@ -130,7 +130,7 @@ function consultaTopicosCursoMoodle($idCursoMoodle) {
                 </div>
                 <div class="input-append">
                     <label>Contenido HTML5:</label>
-                    <input type="file" name="contenido[]" placeholder="" class="contenido">
+                    <input type="file" name="contenido[]" placeholder="" class="contenido" accept="application/zip">
                 </div>
 HTML;
             }

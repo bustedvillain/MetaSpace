@@ -14,7 +14,7 @@ AUTOR: JOSE MANUEL NIETO GOMEZ
 OBJETIVO: AJUSTES ESTETICOS-->
 
 <?php if(esAdministrador()){ ?>
-<div class="navbar navbar-inverse navbar-fixed-top">
+<div class="navbar navbar-fixed-top">
     <div class="navbar-inner">
         <div class="container">
             <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -27,7 +27,7 @@ OBJETIVO: AJUSTES ESTETICOS-->
                 <ul class="nav">
                     <!--<li><a href="index.php"><i class="icon-home icon-white"></i> Inicio</a></li>-->
                     <li class="dropdown">
-                        <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-user icon-white"></i> Usuarios<b class="caret"></b></a>
+                        <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-user"></i> Usuarios<b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li class="dropdown-submenu">
                                 <a href="javascript:void(0)"><i class="icon-user"></i> Alumnos</a>
@@ -70,7 +70,7 @@ OBJETIVO: AJUSTES ESTETICOS-->
                         </ul>
                     </li>  
                     <li class="dropdown">
-                        <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-indent-left icon-white"></i> Administraci&oacute;n<b class="caret"></b></a>
+                        <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-indent-left"></i> Administraci&oacute;n<b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li class="dropdown-submenu">
                                 <a href="javascript:void(0)">Tutor</a>
@@ -100,7 +100,7 @@ OBJETIVO: AJUSTES ESTETICOS-->
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-tags icon-white"></i> Cat&aacute;logos<b class="caret"></b></a>
+                        <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-tags"></i> Cat&aacute;logos<b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li class="nav-header">Relacionado a curso</li>
                             <li><a href="habilidades.php">Habilidad</a></li>
@@ -117,7 +117,7 @@ OBJETIVO: AJUSTES ESTETICOS-->
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-book icon-white"></i> Curso<b class="caret"></b></a>
+                        <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-book"></i> Curso<b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li><a href="nuevoCurso.php"><i class="icon-upload"></i> Vincular</a></li>
                             <li><a href="cursos.php"><i class="icon-search"></i> Ver</a></li>
@@ -125,14 +125,14 @@ OBJETIVO: AJUSTES ESTETICOS-->
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-th-large icon-white"></i> Reporte<b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-th-large"></i> Reporte<b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li><a href="../admin/reportes_1.php"><i  class="icon-upload"></i>Generar</a></li>
                             <li><a href="../admin/verReportes.php"><i  class="icon-search"></i>Listar</a></li>
                         </ul>
                     </li>
                     <li><a href="#verEditarPerfilModal" role="button" data-toggle="modal" onclick="verPerfilPropio(<?php echo $_SESSION["idPorTabla"];?>)"><i class="icon-info-sign icon-white"></i> Perfil</a></li>
-                    <li><a href="#" role="button" data-toggle="modal" onclick="javascript:document.formMoodle.submit();"><i class="icon-share icon-white"></i> Recursos</a></li>
+                    <li><a href="#" role="button" data-toggle="modal" onclick="javascript:document.formMoodle.submit();"><i class="icon-share"></i> Recursos</a></li>
                 </ul>
                 <p class="navbar-text pull-right">
                     Bienvenido(a) <a href="javascript:void(0)" class="navbar-link dropdown-toggle" data-toggle="dropdown"><?php echo (isset($_SESSION["nombre"])) ? $_SESSION["nombre"] : "Admin"; ?></a> (<a href="../logout.php">Cerrar Sesi&oacute;n</a>)                       

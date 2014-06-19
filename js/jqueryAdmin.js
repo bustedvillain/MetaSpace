@@ -1070,12 +1070,12 @@ $(document).ready(function() {
     function compare_dates(fecha, fecha2) {
         fecha = estandarizaFecha(fecha.trim());
         fecha2 = estandarizaFecha(fecha2.trim());
-        
-      
-        
+
+
+
         debugConsole("Compare_dates");
-        debugConsole("Formato estandarizado 1:"+fecha);
-        debugConsole("Formato estandarizado 2:"+fecha2);
+        debugConsole("Formato estandarizado 1:" + fecha);
+        debugConsole("Formato estandarizado 2:" + fecha2);
 
         if (fecha == null || fecha2 == null) {
             return false;
@@ -1132,16 +1132,16 @@ $(document).ready(function() {
         }
     }
 
-/**
- * 
- * @returns {undefined}
- */
-function sonFechasIguales(fecha,fecha2)
-{
-     fecha = estandarizaFecha(fecha.trim());
-     fecha2 = estandarizaFecha(fecha2.trim());
-     
-      if (fecha == null || fecha2 == null) {
+    /**
+     * 
+     * @returns {undefined}
+     */
+    function sonFechasIguales(fecha, fecha2)
+    {
+        fecha = estandarizaFecha(fecha.trim());
+        fecha2 = estandarizaFecha(fecha2.trim());
+
+        if (fecha == null || fecha2 == null) {
             return false;
         }
         //Espera el formato estandarizado dd/mm/yyyy
@@ -1152,9 +1152,9 @@ function sonFechasIguales(fecha,fecha2)
         var yDay = Number(fecha2.substring(0, 2));
         var yMonth = Number(fecha2.substring(3, 5));
         var yYear = Number(fecha2.substring(6, 10));
-        
-        return (xDay===yDay && xMonth===yMonth && xYear === yYear)? true:false;
-}
+
+        return (xDay === yDay && xMonth === yMonth && xYear === yYear) ? true : false;
+    }
 
 
     /**
@@ -1198,6 +1198,13 @@ function sonFechasIguales(fecha,fecha2)
 //        
 //    });
 
+    /**
+     * Change Control: 1.1.0
+     * Autor: Jose Manuel Nieto Gomez
+     * Fecha de Modificación: 18/06/2014
+     * Objetivo: Agregar validación interna de paquetes ZIP
+     */
+
     $("body").on("change", ".contenido", function() {
         debugConsole("Validando nuevo contenido");
         var ext = "zip";
@@ -1208,10 +1215,43 @@ function sonFechasIguales(fecha,fecha2)
                     show: true
                 });
             } catch (e) {
+                debugConsole(e);
                 alert("Tipo de extensión para contenidos no válido. Solo admiten archivos ZIP.");
+                               
             }
         }
+
+        //Validacion interna
+        input_validando = $(this);
+        try {
+            $("#validacionZips").modal({
+                show: true
+            });
+        } catch (e) {
+            debugConsole(e);
+            error_modal = true;
+           
+        }
+
+        //Mostrar barra de progreso
+        $("#validandoZip").show("fast");
+
+        //Tabla de resultados
+        $("#resultadosValidacion").hide("fast");
+
+        if ($(this).attr("name") == "plantilla") {
+            debugConsole("Validando iconografia");
+            tipo_empaquetado = "iconografia";
+        } else {
+            debugConsole("Validando contenidos");
+            tipo_empaquetado = "contenidos";
+        }
+        //Lectura de zip
+        getListFiles(this);
+
     });
+
+
 
     /**
      * Valida rangos en curso nuevo
@@ -1570,7 +1610,7 @@ function sonFechasIguales(fecha,fecha2)
             }
             $("#edita_contenido").append("<tr>");
             $("#edita_contenido").append("<td>Contenido HTML5 <small>(*Si deja el cotenido vacío, este no se actualizará)</small>:</td>");
-            $("#edita_contenido").append("<td><input type='file' name='contenido[]' class='contenido'>" + msjContenido + "</td>");
+            $("#edita_contenido").append("<td><input type='file' name='contenido[]' accept='application/zip' class='contenido'>" + msjContenido + "</td>");
 
             $("#edita_contenido").append("</tr>");
 
@@ -1666,32 +1706,32 @@ function sonFechasIguales(fecha,fecha2)
     $("#fecha_inicio").change(function(event) {
         validaFechasCursoAbierto("fecha_inicio", "fecha_fin");
     });
-    
-    $("body").on("input", "#fecha_inicio", function(event){
+
+    $("body").on("input", "#fecha_inicio", function(event) {
         validaFechasCursoAbierto("fecha_inicio", "fecha_fin");
     });
 
     $("#fecha_fin").change(function(event) {
         validaFechasCursoAbierto("fecha_inicio", "fecha_fin");
     });
-    
-    $("body").on("input", "#fecha_fin", function(event){
+
+    $("body").on("input", "#fecha_fin", function(event) {
         validaFechasCursoAbierto("fecha_inicio", "fecha_fin");
     });
 
     $("#edita_fecha_inicio").change(function(event) {
         validaFechasCursoAbierto("edita_fecha_inicio", "edita_fecha_fin");
     });
-    
-    $("body").on("input", "#edita_fecha_inicio", function(event){
+
+    $("body").on("input", "#edita_fecha_inicio", function(event) {
         validaFechasCursoAbierto("edita_fecha_inicio", "edita_fecha_fin");
     });
 
     $("#edita_fecha_fin").change(function(event) {
         validaFechasCursoAbierto("edita_fecha_inicio", "edita_fecha_fin");
     });
-    
-    $("body").on("input", "#edita_fecha_fin", function(event){
+
+    $("body").on("input", "#edita_fecha_fin", function(event) {
         validaFechasCursoAbierto("edita_fecha_inicio", "edita_fecha_fin");
     });
 
@@ -1718,44 +1758,44 @@ function sonFechasIguales(fecha,fecha2)
 
 //            debugConsole("FI:"+fechaInicio);
 //            debugConsole("FF:"+fechaFin);
-            
+
             if (fechaInicio != "" && fechaFin != "") {
                 if (!compare_dates(fechaInicio, fechaFin)) {
                     debugConsole("Fecha ok");
                     $("#errorFecha" + index).html("");
                     $("#errorFechaRango" + index).html("");
                     //comparar rango dentro de validacion
-                    
-                    
+
+
                     var fechaInicioCursoAbierto = $("#fecha_inicio").val();
-                   // debugConsole(fechaInicioCursoAbierto);
-                    var fechaFinCursoAbierto =$("#fecha_fin").val();
-                    
+                    // debugConsole(fechaInicioCursoAbierto);
+                    var fechaFinCursoAbierto = $("#fecha_fin").val();
+
 //                    debugConsole(compare_dates( fechaFin, fechaInicioCursoAbierto ));
 //                    debugConsole(compare_dates( fechaFinCursoAbierto, fechaInicio ));
-                  
 
-                
-                
-                    if( (compare_dates( fechaFin, fechaInicioCursoAbierto )    || sonFechasIguales(fechaFin,fechaInicioCursoAbierto)) && 
-                        (compare_dates( fechaFinCursoAbierto, fechaFin )       || sonFechasIguales(fechaFinCursoAbierto,fechaFin)) &&
-                        (compare_dates( fechaFinCursoAbierto, fechaInicio )    || sonFechasIguales(fechaFinCursoAbierto,fechaInicio)) &&
-                        (compare_dates( fechaInicio, fechaInicioCursoAbierto ) || sonFechasIguales(fechaInicio,fechaInicioCursoAbierto)))
+
+
+
+                    if ((compare_dates(fechaFin, fechaInicioCursoAbierto) || sonFechasIguales(fechaFin, fechaInicioCursoAbierto)) &&
+                            (compare_dates(fechaFinCursoAbierto, fechaFin) || sonFechasIguales(fechaFinCursoAbierto, fechaFin)) &&
+                            (compare_dates(fechaFinCursoAbierto, fechaInicio) || sonFechasIguales(fechaFinCursoAbierto, fechaInicio)) &&
+                            (compare_dates(fechaInicio, fechaInicioCursoAbierto) || sonFechasIguales(fechaInicio, fechaInicioCursoAbierto)))
                     {
-                        
-                        
-                    }else
+
+
+                    } else
                     {
                         success = false;
                         $("#errorFechaRango" + index).html("La fecha inicio y terminación de la unidad no están dentro del rango de fecha inicio y terminación del curso abierto. ");
                     }
-                    
-                    
+
+
                 } else {
                     debugConsole("Fecha inicio mayor a la final");
                     success = false;
                     $("#errorFecha" + index).html("La fecha de inicio es mayor a la fecha fin.");
-                     
+
                 }
             }
         });
@@ -2292,5 +2332,77 @@ function sonFechasIguales(fecha,fecha2)
     });
 
 });
+//Variable que define el tipo de empaquetado que se va a validar
+var tipo_empaquetado;
+var input_validando;
 
+//Validacion de ZIPS
+function listaCargaZIP(entradas) {
+    //Mostrar barra de progreso
+//    $("#validandoZip").hide("fast");
+
+    //Tabla de resultados
+    $("#resultadosValidacion").show("fast");
+
+    console.log(entradas);
+
+    $("#tipo_validacion").html(tipo_empaquetado);
+    var resultado;
+    if (tipo_empaquetado == "iconografia") {
+        resultado = validarEmpaquetamiento("iconografia", entradas);
+    } else if (tipo_empaquetado == "contenidos") {
+        resultado = validarEmpaquetamiento("contenidos", entradas);
+    }
+
+    var errores = document.getElementById("errores_validacion");
+    errores.innerHTML = "";
+
+    var warnings = document.getElementById("warnings_validacion");
+    warnings.innerHTML = "";
+
+    if (resultado[0]) {
+//            alert("El ZIP cuenta con los estandares");
+        $("#resutado_validacion").html("<b class='text-success'>El ZIP cuenta con los estandares</b>");
+        errores.innerHTML = "<b class='text-info'>No se encontraron errores.</b>";
+    } else {
+
+        $("#resutado_validacion").html("<b class='text-error'>El zip no cuenta con los estandares</b>");
+
+        //Limpiar input
+        input_validando.val("");
+        var errores_texto = "";
+
+        for (i = 0; i < resultado[1].length; i++) {
+            var li = document.createElement("li");
+            li.textContent = resultado[1][i];
+            errores_texto+=resultado[1][i]+"\n";
+            errores.appendChild(li);
+        }
+
+        if (error_modal === true) {
+            alert("El ZIP No cumple con los estandares \n Errores: \n"+errores_texto);
+        } else {
+            alert("El ZIP No cumple con los estandares");
+        }
+    }
+    
+    //Warnings
+    var warnings_texto ="";
+    if (resultado[2].length > 0) {
+        $(".observaciones").show("fast");
+        for (i = 0; i < resultado[2].length; i++) {
+            var li = document.createElement("li");
+            li.textContent = resultado[2][i];
+            warnings_texto+=resultado[2][i]+"\n";
+            warnings.appendChild(li);
+        }
+        
+        if(error_modal === true){
+            alert("Observaciones:\n Nota: Las siguientes observaciones corresponden a archivos/carpetas que no requieren incluirse obligatoriamente en el empaquetado, pero se le notifican para su revisión.\n"+warnings_texto);
+        }
+    } else {
+        $(".observaciones").hide("fast");
+    }
+
+}
 

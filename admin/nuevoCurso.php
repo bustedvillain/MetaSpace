@@ -10,8 +10,9 @@
 <html lang="en">
     <head>
         <title>Sistema de Gesti&oacute;n Integral Softmeta-A</title>
-        <?php include("../template/metasDatatables.php"); ?>
         <?php include("../template/heads.php"); ?>
+        <?php include("../template/metasDatatables.php"); ?>
+        
     </head>
 
     <body>

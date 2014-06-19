@@ -4,7 +4,7 @@ FECHA DE MODIFICACION: 21 DE MAYO DEL 2014
 AUTOR: JOSE MANUEL NIETO GOMEZ
 OBJETIVO: AJUSTES ESTETICOS-->
 
-<div class="navbar navbar-inverse navbar-fixed-top">
+<div class="navbar navbar-fixed-top">
     <div class="navbar-inner">
         <div class="container">
             <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
