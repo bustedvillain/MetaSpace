@@ -1191,4 +1191,14 @@ function validarRecarga() {
     }
 }
 
+/**
+ * Funcion para saltar a otra serie directamente
+ * @param {type} id_elemento
+ * @returns {undefined}
+ */
+function linkSerie(id_elemento){
+    indiceActual=id_elemento;
+    cargaContenidooo();
+    volumenGral = $("#sliderVolumen").slider("option", "value");
+}
 

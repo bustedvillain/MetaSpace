@@ -90,7 +90,7 @@ $cantidad = count($arrIdsCurso);
                 width: 255px;
                 height: 50px;
                 align: top;
-                border: 8px solid #ff9000;
+                border: 8px solid #acaab8;
                 /*background-color: #fff;*/	
                 background-color: #fff;
                 font-family: Dosis, Arial, serif;

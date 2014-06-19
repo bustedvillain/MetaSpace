@@ -28,6 +28,12 @@ function obtenerNoUnidad($idUnidad)
         return $seriesUnidad[0]['no_unidad'];
     }
 }
+/**
+ * CHANGE CONTROL 1.1.0
+ * AUT0R: JOSE MANUEL NIETO GOMEZ
+ * FECHA DE MODIFICACION: 19 DE JUNIO DE 2014
+ * OBJETIVO: AGREGAR ID A LAS SERIES PARA PODER CREAR LINKS
+ */
 
 /**
  * @author HMP
@@ -57,13 +63,15 @@ function generarSeries($idUnidad, $idRelCursoGrupo,$idAlumno)
     if($seriesUnidad)
     {
         $html = "";   
+        $contador_series = 0;
         foreach ($seriesUnidad as $serie) 
         {
-            $html .= ' <div class="grid_4">';
+            $html .= ' <div class="grid_4" onclick="parent.linkSerie('.$contador_series.');">';
             $html .= '<div class="letraP">Serie '.$serie->nivel.'</div>';
             $res = generaElementosAER($serie->id, $idRelCursoGrupo,$idAlumno);
             $html .=$res;
             $html .= '</div>';
+            $contador_series+=3;
         }
         echo $html;
     }
