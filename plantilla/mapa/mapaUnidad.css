@@ -193,6 +193,15 @@ body
     color: black;
 }
 
+/*CHANGE CONTROL: 1.1.0
+AUTOR: JOSE MANUEL NIETO GOMEZ
+FECHA DE MODIFICACION: 19 DE JUNIO DE 2014
+OBJETIVO: CREAR LINKS EN LAS SERIES*/
+
+.grid_4{
+    cursor: pointer;
+}
+
 
 /***** Screen 960px *****/
 
