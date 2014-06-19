@@ -66,12 +66,12 @@ function generarSeries($idUnidad, $idRelCursoGrupo,$idAlumno)
         $contador_series = 0;
         foreach ($seriesUnidad as $serie) 
         {
-            $html .= ' <div class="grid_4" onclick="parent.linkSerie('.$contador_series.'); parent.jQuery.fancybox.close();" style="cursor:pointer;">';
-            $html .= '<div class="letraP">Serie '.$serie->nivel.'</div>';
-            $res = generaElementosAER($serie->id, $idRelCursoGrupo,$idAlumno);
+            $html .= ' <div class="grid_4">';
+            $html .= '<div class="letraP" style="cursor:pointer;" onclick="parent.linkSerie('.$contador_series.'); parent.jQuery.fancybox.close();">Serie '.$serie->nivel.'</div>';
+            $res = generaElementosAER($serie->id, $idRelCursoGrupo,$idAlumno, $contador_series);
             $html .=$res;
             $html .= '</div>';
-            $contador_series+=3;
+            
         }
         echo $html;
     }
@@ -90,7 +90,7 @@ function generarSeries($idUnidad, $idRelCursoGrupo,$idAlumno)
  * En caso de que la consulta no devuelva nada, se genera un elemento AER que no se 
  * muestra en el navegador para respetar el CSS
  */
-function generaElementosAER($idSerie, $idRelCursoGrupo,$idAlumno)
+function generaElementosAER($idSerie, $idRelCursoGrupo,$idAlumno, &$baseContador)
 {
     $sql=new Query("SG");
     $sql->sql='SELECT aer.id_elemento_aer as "idElemento",
@@ -116,7 +116,7 @@ function generaElementosAER($idSerie, $idRelCursoGrupo,$idAlumno)
             $color  = $evaluacion[0];
             $imagen = $evaluacion[1];
             $curso  = $evaluacion[2];
-            $html   .='<div class="aer">';                        
+            $html   .='<div class="aer" onclick="parent.linkSerie('.$baseContador.'); parent.jQuery.fancybox.close();">';                        
             $html   .= '<div class="letra '.$color.'">'.$elemento->tipoElemento.'</div>';
 //            $html .=  '<div>
 //                        <div class="aro"></div>
@@ -131,6 +131,8 @@ function generaElementosAER($idSerie, $idRelCursoGrupo,$idAlumno)
             
             $html .= '</div>';
             $html .= '</div>';
+            
+            $baseContador++;
           }
         return $html;
 
