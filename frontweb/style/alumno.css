@@ -1,0 +1,3845 @@
+@charset "utf-8";
+/* CSS Document */
+/*
+
+
+GRIS BASE:	#3a3a3a;
+VISTA ALUMNO
+
+Naranja:	#acaab8;
+
+VISTA PADRE
+
+Verde:	#02dc02;
+
+VISTA TUTOR
+
+Azul:	#04b7f9;
+
+
+*/
+
+.fondo_naranja {
+	background-color: #c0d9de !important;
+}
+
+
+.fondo_verde {
+	background-color: #02dc02;
+}
+
+.fondo_azul {
+	background-color: #04b7f9;
+}
+
+body {
+	padding: 0px;
+	margin:0px;
+	font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+	color: #3a3a3a;
+	background-image:url(../img/alumno/fondo.gif);
+	background-position: top center;
+	background-repeat:repeat-x;
+}
+
+#container {
+	width: 1024px;
+	height: 768px;
+	margin: 0 auto;
+}
+
+#header {
+	width: 1024px;
+	height: 93px;
+	float:left;
+	position: relative;
+	border-bottom: 1px solid #acaab8;
+	background-color: #c0d9de;
+	
+}
+
+#nombre {
+	width: 931px;
+	height: 20px;
+	float:left;
+}
+
+#nombre h3 {
+	text-align:right;
+	color: #fff;
+	font-size: 13px;
+	line-height: 20px;
+}
+
+#nombre h3 span {
+	text-align:right;
+	color: #000;
+	font-size: 13px;
+	line-height: 20px;
+}
+
+#foto_perfil {
+	width: 93px;
+	height: 94px;
+	position: absolute;
+	top: 0px;
+	right:0px;	
+}
+
+#logo {
+	width: 347px;
+	height: 72px;
+	float:left;
+	margin: 0px 0px  0px 10px;	
+}
+
+#buscador {
+	width: 268px;
+	height: 62px;
+	float:left;
+	line-height: 62px;
+}
+
+
+#buscador_alu input  {
+	-moz-border-radius: 10px; /* Firefox */
+	-webkit-border-radius: 10px; /* Google Chrome y Safari */
+	border-radius: 10px; /* CSS3 (Opera 10.5, IE 9 y est&aacute;ndar a ser soportado por todos los futuros navegadores) */
+	width: 225px;
+	height: 35px;
+	border: 8px solid #acaab8;
+	background-color: #fff;	
+	font-family: Dosis, Arial, serif;
+	font-weight: 400;
+	font-size: 17px;
+	padding: 0px 5px;
+	margin: 10px 5px;
+}
+
+#buscador_pad input  {
+	-moz-border-radius: 10px; /* Firefox */
+	-webkit-border-radius: 10px; /* Google Chrome y Safari */
+	border-radius: 10px; /* CSS3 (Opera 10.5, IE 9 y est&aacute;ndar a ser soportado por todos los futuros navegadores) */
+	width: 225px;
+	height: 35px;
+	border: 8px solid #167300;
+	background-color: #fff;	
+	font-family: Dosis, Arial, serif;
+	font-weight: 400;
+	font-size: 17px;
+	padding: 0px 5px;
+	margin: 5px;
+}
+
+#buscador_alu input:hover, #buscador_alu input:focus, #buscador_pad input:hover, #buscador_pad input:focus  {
+	background-color: #d3d3d3;	
+	outline:0px;	
+}
+
+#lupa input[type="submit"] {
+	position:absolute;
+	top: 38px;
+	right: 418px;
+	width: 35px;
+	height: 35px;
+	background-image:url(../img/lupa.png);
+	background-color: #fff;
+	outline:0px;
+	border: 0px solid blue;
+}
+
+
+.separador {
+	width: 2px;
+	height: 72px;
+	float:left;
+	background-image:url(../img/separador.gif);
+}
+
+.btn_perfil {
+	width: 100px;
+	height: 72px;
+	float:left;
+	line-height: 95px;
+	position: relative;
+	font:Verdana, Geneva, sans-serif;
+	font-size: 13px;
+	color: #fff;
+	text-align:center;
+}
+
+.btn_perfil img {
+	width: 55px;
+	height: 30px;
+	position:absolute;
+	top: 10px;
+	left: 23px;
+}
+
+.btn_perfil a {
+	width: 100px;
+	height: 72px;
+	display:block;
+	font:Verdana, Geneva, sans-serif;
+	color: #fff;
+	text-decoration:none;
+}
+
+.btn_perfil a:hover, .btn_perfil a:active  {
+	width: 100px;
+	height: 72px;
+	display:block;
+	font:Verdana, Geneva, sans-serif;
+	color:#ff0;
+	background-color:rgba(0,0,0,0.5);
+}
+
+
+/* ################# CENTRAL ###################### */
+
+#central {
+	background: #fff;
+	float:left;
+	min-height: 400px;
+	width: 100%;
+	padding-top: 20px;
+	position: relative;
+}
+
+#lateral_nav {
+	width: 149px;
+	height: 500px;	
+	float:left;	
+}
+
+
+
+#lateral_nav_aprender, #lateral_nav_mi_locker, #lateral_nav_baul, #lateral_nav_biblioteca {
+	width:149px;
+	height: 58px;
+	float:left;
+}
+
+#lateral_nav_aprender a, #lateral_nav_aprender a:visited {
+	width:149px;
+	height: 58px;
+	display:block;
+	background-image:url(../img/alumno/lateral_nav.gif);
+	background-position: center 0px;
+}
+
+#lateral_nav_aprender a:hover, #lateral_nav_aprender a:active, #lateral_nav_aprender span {
+	width:149px;
+	height: 94px;
+	display:block;
+	background-image:url(../img/alumno/lateral_nav.gif);
+	background-position: center -58px;
+}
+
+#lateral_nav_mi_locker a, #lateral_nav_mi_locker a:visited {
+	width:149px;
+	height: 58px;
+	display:block;
+	background-image:url(../img/alumno/lateral_nav.gif);
+	background-position: center -116px;
+}
+
+#lateral_nav_mi_locker a:hover, #lateral_nav_mi_locker a:active, #lateral_nav_mi_locker span {
+	width:149px;
+	height: 58px;
+	display:block;
+	background-image:url(../img/alumno/lateral_nav.gif);
+	background-position: center -174px;
+}
+
+#lateral_nav_baul a, #lateral_nav_baul a:visited {
+	width:149px;
+	height: 58px;
+	display:block;
+	background-image:url(../img/alumno/lateral_nav.gif);
+	background-position: center -232px;
+}
+
+#lateral_nav_baul a:hover, #lateral_nav_baul a:active, #lateral_nav_baul span {
+	width:149px;
+	height: 58px;
+	display:block;
+	background-image:url(../img/alumno/lateral_nav.gif);
+	background-position: center -290px;
+}
+
+#lateral_nav_biblioteca a, #lateral_nav_biblioteca a:visited {
+	width:149px;
+	height: 58px;
+	display:block;
+	background-image:url(../img/alumno/lateral_nav.gif);
+	background-position: center -348px;
+}
+
+#lateral_nav_biblioteca a:hover, #lateral_nav_biblioteca a:active, #lateral_nav_biblioteca span {
+	width:149px;
+	height: 58px;
+	display:block;
+	background-image:url(../img/alumno/lateral_nav.gif);
+	background-position: center -406px;
+}
+
+#destacado {
+	width: 153px;
+	height: 486px;
+	float:right;
+}
+
+
+
+.modulo_izq {
+	width: 280px;
+	height: 240px;
+	float:left;
+	margin: 0px 20px 20px 40px;
+	position:relative;
+}
+
+.modulo_decha {
+	width: 280px;
+	height: 240px;
+	float:left;
+	margin: 0px 40px 20px 20px;
+	position:relative;
+}
+
+.modulo_centro {
+	width: 280px;
+	height: 240px;
+	float:left;
+	margin: 10px 0px 10px 195px;
+	position:relative;
+}
+
+.modulo_letras a, .modulo_letras a:visited {
+	width: 280px;
+	height: 240px;
+	display:block;
+	
+}
+
+.modulo_letras a:hover, .modulo_letras a:active {
+	width: 280px;
+	height: 240px;
+	display:block;
+	/*background-image:url(../img/alumno/modulo_letras_hover.gif);*/
+}
+
+
+.modulo_mates a, .modulo_mates a:visited {
+	width: 280px;
+	height: 240px;
+	display:block;
+	
+}
+
+.modulo_mates a:hover, .modulo_mates a:active {
+	width: 280px;
+	height: 240px;
+	display:block;
+	/*background-image:url(../img/alumno/modulo_mates_hover.gif);*/
+
+}
+
+
+
+.modulo_ciencias a, .modulo_ciencias a:visited {
+	width: 280px;
+	height: 240px;
+	display:block;
+	
+}
+
+.modulo_ciencias a:hover, .modulo_ciencias a:active {
+	width: 280px;
+	height: 240px;
+	display:block;
+	/*background-image:url(../img/alumno/modulo_ciencias_hover.gif);*/
+}
+
+.modulo_artes a, .modulo_artes a:visited {
+	width: 280px;
+	height: 240px;
+	display:block;
+	
+}
+
+.modulo_artes a:hover, .modulo_artes a:active {
+	width: 280px;
+	height: 240px;
+	display:block;
+	/*background-image:url(../img/alumno/modulo_artes_hover.gif);*/
+}
+
+
+.puntuacion {
+	width: 95px;
+	height: 30px;
+	float:left;
+	z-index: 3000;
+	position:relative;
+	visibility:hidden;
+}
+
+.estrella {
+	width:21px;
+	height: 20px;
+	float:left;
+	margin: 10px 5px;
+}
+
+.estrella a, .estrella a:visited {
+	width:21px;
+	height: 20px;
+	display:block;
+	background-image:url(../img/estrella.png);
+	background-repeat: no-repeat;
+	background-position: 0px -20px;
+}
+
+.estrella a:hover, .estrella a:active  {
+		width:21px;
+	height: 20px;
+	display:block;
+	background-image:url(../img/estrella.png);
+	background-position: 0px 0px;
+
+}
+
+.txt {
+	width:280px;
+	height: 50px;
+	line-height: 50px;
+	font-family: 'Dosis', Arial, serif;
+	font-size: 20px;
+	font-weight: 500;
+	text-align:center;
+	color:#fff;
+	position:absolute;
+	top: 185px;
+	left: 0px;	
+}
+/* ########################## 28_11_2013 ########################## */
+
+
+/*#contenido_a_mostrar_mates, #contenido_a_mostrar_ciencias, #contenido_a_mostrar_letras, #contenido_a_mostrar_artes {
+	width:259px;
+	height:240px;
+	position:absolute;
+	top: 0px;
+	left: 247px;
+	z-index: 4000;	
+}
+*/
+
+/* las cajas de arriba al pulsar aparece por debajo la caja oculta */
+
+.contenido_a_mostrar_letras, .contenido_a_mostrar_mates  {
+	width:280px;
+	height:270px;
+	position:absolute;
+	top: 230px;
+	left: 0px;
+	z-index: 7000;
+}
+/* las cajas de abajo al pulsar aparece por encima la caja oculta */
+.contenido_a_mostrar_ciencias, .contenido_a_mostrar_artes  {
+	width:280px;
+	height:270px;
+	position:absolute;
+	top: -260px;
+	left: 0px;
+	z-index: 7000;
+}
+
+.contenido_enlace {
+	width:195px;
+	height:53px;
+	display:block;
+	position:absolute;
+	top: 175px;
+	left: 45px;
+	
+}
+
+.contenido_enlace a {
+	width:195px;
+	height:53px;
+	display:block;
+}
+/* ########################## FIN 28_11_2013 ########################## */
+/* ########################## PERFIL ########################## */
+
+#alumno_contenido {
+	width: 597px;
+	height: 485px;
+	float: left;
+	margin: 0px 40px;
+	background-color: #fcfcb2;
+		-moz-border-radius: 8px; /* Firefox */
+	-webkit-border-radius: 8px; /* Google Chrome y Safari */
+	border-radius: 8px; /* CSS3 (Opera 10.5, IE 9 y est&aacute;ndar a ser soportado por todos los futuros navegadores) */
+		position:relative;
+}
+
+#alumno_contenido h2 {
+	font-family: 'Dosis', Arial, serif;
+	font-weight: 500;
+	font-size: 22px;
+	width: 100%;
+	height: 60px;
+	line-height: 60px;
+	padding: 0px 30px 0px;
+	color: #666;
+	position:relative;
+}
+
+#alumno_contenido h2 img {
+	position:absolute;
+	top: 0px;
+	right: 250px;
+}
+
+#alumno_bloque {
+	width: 825px;
+	height: 430px;
+	float: left;
+	margin: 0px 10px 0px 40px;
+	background-color: #347ff2;
+		-moz-border-radius: 8px; /* Firefox */
+	-webkit-border-radius: 8px; /* Google Chrome y Safari */
+	border-radius: 8px; /* CSS3 (Opera 10.5, IE 9 y est&aacute;ndar a ser soportado por todos los futuros navegadores) */
+}
+
+#alumno_bloque h2 {
+	font-family: 'Dosis', Arial, serif;
+	font-weight: 500;
+	font-size: 22px;
+	width: 100%;
+	height: 60px;
+	line-height: 60px;
+	padding: 0px 30px 0px;
+	color: #fff;
+	position:relative;
+}
+
+#alumno_bloque_control {
+	width: 773px;
+	height: 121px;
+	float: left;
+	position: relative;
+}
+
+#alumno_bloque_control h3 {
+	font-family: 'Dosis', Arial, serif;
+	font-weight: 500;
+	font-size: 38px;
+	height: 42px;
+	line-height: 42px;
+	text-align: center;
+	padding: 0px 30px 0px;
+	color: #347ff2;
+}
+
+
+
+#alumno_sinopsis {
+	width: 597px;
+	height: 460px;
+	float: left;
+	margin: 0px 40px;
+	background-color: #6b6b6b;
+		-moz-border-radius: 8px; /* Firefox */
+	-webkit-border-radius: 8px; /* Google Chrome y Safari */
+	border-radius: 8px; /* CSS3 (Opera 10.5, IE 9 y est&aacute;ndar a ser soportado por todos los futuros navegadores) */
+		position:relative;
+}
+
+#alumno_sinopsis h2 {
+	font-family: 'Dosis', Arial, serif;
+	font-weight: 500;
+	font-size: 22px;
+	width: 100%;
+	height: 60px;
+	line-height: 60px;
+	padding: 0px 30px 0px;
+	color: #fff;
+	position:relative;
+}
+
+.contenido {
+	width: 560px;
+	height: 240px;
+	float: left;
+	-moz-border-radius: 8px; /* Firefox */
+	-webkit-border-radius: 8px; /* Google Chrome y Safari */
+	border-radius: 8px; /* CSS3 (Opera 10.5, IE 9 y est&aacute;ndar a ser soportado por todos los futuros navegadores) */
+	background-color: #fff;
+	margin: 0px 17px;	
+}
+
+.contenido_msg_recib {
+	width: 95%;
+	height: 90%;
+	float: left;
+	-moz-border-radius: 8px; /* Firefox */
+	-webkit-border-radius: 8px; /* Google Chrome y Safari */
+	border-radius: 8px; /* CSS3 (Opera 10.5, IE 9 y est&aacute;ndar a ser soportado por todos los futuros navegadores) */
+	background-color: #fff;
+	margin: 30px 0px;
+}
+
+.contenido_msg_env {
+	width: 95%;
+	height: 90%;
+	float: left;
+	-moz-border-radius: 8px; /* Firefox */
+	-webkit-border-radius: 8px; /* Google Chrome y Safari */
+	border-radius: 8px; /* CSS3 (Opera 10.5, IE 9 y est&aacute;ndar a ser soportado por todos los futuros navegadores) */
+	background-color: #fff;
+	margin: 30px 0px;
+	display:none;
+}
+
+.comunic_tabs{
+	width:561px;
+	height:31px;
+	display:block;
+	position:absolute;
+	top: 61px;
+	left: 0px;
+}
+.comunic_tabs1{
+	width:125px;
+	height:25px;
+	display:block;
+	position:absolute;
+	top: 0px;
+	left: 0px;
+}
+
+.comunic_tabs2{
+	width:125px;
+	height:25px;
+	display:block;
+	position:absolute;
+	top: 0px;
+	left: 130px;
+}
+
+.comunic_tabs1 a, .comunic_tabs2 a{
+	width:125px;
+	height:25px;
+	line-height: 25px;
+	display:block;
+	font-family: 'Dosis', Arial, serif;
+	font-size: 17px;
+	color: #04b7f9;
+	text-align:center;
+	text-decoration:none;
+	background-color:#FFF;	
+	-moz-border-radius: 6px; /* Firefox */
+	-webkit-border-radius: 6px; /* Google Chrome y Safari */
+	border-radius: 6px; /* CSS3 (Opera 10.5, IE 9 y est&aacute;ndar a ser soportado por todos los futuros navegadores) */
+		border: 2px solid white;
+}
+
+.contenido_tabs a:hover, .comunic_tabs1 a:hover, .comunic_tabs2 a:hover{
+	width:125px;
+	height:25px;
+	line-height: 25px;
+	display:block;
+	font-family: 'Dosis', Arial, serif;
+	font-size: 17px;
+	color: #fff;
+	text-align:center;
+	text-decoration:none;
+	background-color:#04b7f9;	
+	-moz-border-radius: 6px; /* Firefox */
+	-webkit-border-radius: 6px; /* Google Chrome y Safari */
+	border-radius: 6px; /* CSS3 (Opera 10.5, IE 9 y est&aacute;ndar a ser soportado por todos los futuros navegadores) */
+	border: 2px solid white;
+}
+
+.msgs{
+	width: 560px;
+	height: 40px;
+	list-style:none;
+	font-size:12px;
+	background: #fff;
+	border:2px solid white;
+	padding:0;
+	margin: 0px 0px 0px 0px;
+}
+
+.msg_head{
+	width:480px;
+	height:25px;
+	float:center;
+}
+
+.msg_body{
+	width:480px;
+	height:100%;
+	position:relative;
+	float:left;
+}
+
+.msg_text{
+	width:95%;
+	height:20%;
+	font-size: 12px;
+	float:left;
+	top: 20px;
+	left:0px;
+}
+
+.msgs ul{
+	margin:0;
+    padding:0;
+    list-style:none;
+    height:0;
+    overflow: hidden;
+    transition:1s;
+    -moz-transition:1s;
+    -webkit-transition:1s;
+}
+
+.msgs ul li a{
+	background:#04b7f9;
+}
+
+.msgs ul li ul {
+	background:#04b7f9;
+}
+
+.msgs ul li a:hover{
+	background: none repeat scroll 0 0 #ccc;
+    color: red;
+    -moz-transition: color 0.4s ease;
+    -webkit-transition: color 0.4s ease;
+    -o-transition: color 0.4s ease;
+}
+
+.msgs li a{
+	display: block;
+    border-bottom: 1px solid rgba(0,0,0, 0.2);
+    border-top: 1px solid rgba(255,255,255, 0.2);
+    background:#3e3f44;
+    text-decoration:none;
+    color:#FFF;
+    text-shadow: 1px 0px 1px rgba(0,0,0,0.2);
+    filter: dropshadow(color=#000, offx=1, offy=0);
+    padding:10px;
+    padding-left:20px;
+}
+
+.msgs li a:hover{
+	background:#4a6ba2;
+    -moz-transition: background 0.3s ease-in;
+    -webkit-transition: background 0.3s ease-in;
+    -o-transition: background 0.3s ease-in;
+}
+
+.msgs li:hover ul{
+	height:120px;
+    overflow-y:auto;
+    overflow-x:hidden;
+}
+
+.msgs li ul li a{
+	font-size:14px;
+    color:#47689d;
+    text-shadow: 1px 0px 1px rgba(255,255,255,0.5);
+}
+
+.contenido_subida {
+	width: 560px;
+	height: 240px;
+	float: left;
+	-moz-border-radius: 8px; /* Firefox */
+	-webkit-border-radius: 8px; /* Google Chrome y Safari */
+	border-radius: 8px; /* CSS3 (Opera 10.5, IE 9 y est&aacute;ndar a ser soportado por todos los futuros navegadores) */
+	background-color: #fff;
+	background-image:url(../img/alumno/locker/foto_muestra.jpg);
+	margin: 0px 17px;	
+}
+
+.contenido_subida_enlace {
+	width: 560px;
+	height: 40px;
+	float: left;
+	text-align: center;
+	margin-top: 200px;	
+}
+
+.contenido_subida_enlace a {
+	font-family: 'Dosis', Arial, serif;
+	font-weight: bold;
+	font-size: 18px;
+	color: #3a3a3a;
+}
+
+.contenido_largo {
+	width: 790px;
+	height: 340px;
+	float: left;
+	-moz-border-radius: 8px; /* Firefox */
+	-webkit-border-radius: 8px; /* Google Chrome y Safari */
+	border-radius: 8px; /* CSS3 (Opera 10.5, IE 9 y est&aacute;ndar a ser soportado por todos los futuros navegadores) */
+	background-color: #fff;
+	margin: 0px 17px;
+}
+
+
+#foto_mi_perfil {
+	width: 160px;
+	height: 200px;
+	float:left;
+	padding: 20px 25px;
+}
+
+#datos_mi_perfil {
+	width: 280px;
+	height: 180px;
+	float:left;
+	font-family: 'Dosis', Arial, serif;
+	font-weight: 500;
+	font-size: 18px;
+		padding: 20px 0px 0px;
+}
+
+#datos_mi_perfil strong {
+	color: #acaab8;
+	
+}
+
+#btn_int {
+	width: 95%;
+	height: 100px;
+	float:left;
+	margin: 20px 12px 10px;
+}
+
+#btn_int_regresar, #btn_int_capturar, #btn_int_editar, #btn_int_subir, #btn_int_subir_dibu, #btn_int_crear_dibu   {
+	width: 175px;
+	height: 98px;
+	float: left;
+	margin: 7px;	
+}
+
+#btn_int_regresar a, #btn_int_regresar a:visited {
+	width: 175px;
+	height: 98px;
+	display:block;
+	background-image:url(../img/alumno/btn_regresar.png);
+}
+
+#btn_int_regresar a:hover, #btn_int_regresar a:active {
+	width: 175px;
+	height: 98px;
+	display:block;
+	background-image:url(../img/alumno/btn_regresar_hover.png);
+}
+
+#btn_int_capturar a, #btn_int_capturar a:visited {
+	width: 175px;
+	height: 98px;
+	display:block;
+	background-image:url(../img/alumno/btn_capturar.png);
+}
+
+#btn_int_capturar a:hover, #btn_int_capturar a:active {
+	width: 175px;
+	height: 98px;
+	display:block;
+	background-image:url(../img/alumno/btn_capturar_hover.png);
+}
+
+#btn_int_editar a, #btn_int_editar a:visited {
+	width: 175px;
+	height: 98px;
+	display:block;
+	background-image:url(../img/alumno/btn_editar.png);
+}
+
+#btn_int_editar a:hover, #btn_int_editar a:active {
+	width: 175px;
+	height: 98px;
+	display:block;
+	background-image:url(../img/alumno/btn_editar_hover.png);
+}
+
+#btn_int_subir a, #btn_int_subir a:visited {
+	width: 175px;
+	height: 98px;
+	display:block;
+	background-image:url(../img/alumno/btn_subir.png);
+}
+
+#btn_int_subir a:hover, #btn_int_subir a:active {
+	width: 175px;
+	height: 98px;
+	display:block;
+	background-image:url(../img/alumno/btn_subir_hover.png);
+}
+
+#btn_int_subir_dibu a, #btn_int_subir_dibu a:visited {
+	width: 175px;
+	height: 98px;
+	display:block;
+	background-image:url(../img/alumno/btn_dibu.png);
+}
+
+#btn_int_subir_dibu a:hover, #btn_int_subir_dibu a:active {
+	width: 175px;
+	height: 98px;
+	display:block;
+	background-image:url(../img/alumno/btn_dibu_hover.png);
+}
+
+#btn_int_crear_dibu a, #btn_int_crear_dibu a:visited {
+	width: 175px;
+	height: 98px;
+	display:block;
+	background-image:url(../img/alumno/btn_crear.png);
+}
+
+#btn_int_crear_dibu a:hover, #btn_int_crear_dibu a:active {
+	width: 175px;
+	height: 98px;
+	display:block;
+	background-image:url(../img/alumno/btn_crear_hover.png);
+}
+
+#btn_guardar {
+	width: 175px;
+	height: 98px;
+	position:absolute;
+	top: 300px;
+	right:200px;
+		color: #fff;
+		font-size: 22px;
+}
+
+#btn_guardar a{
+	color: #fff;
+}
+/* ########################## BAUL ########################## */
+
+
+#baul {
+	width: 825px;
+	float: left;
+	margin-left: 40px;
+}
+
+#baul_nav {
+	width: 825px;
+	height: 33px;
+	float: left;
+}
+
+#baul_nav ul {
+	float: right;
+	border: 2px solid #acaab8;
+	-moz-border-radius: 8px; /* Firefox */
+	-webkit-border-radius: 8px; /* Google Chrome y Safari */
+	border-radius: 8px; /* CSS3 (Opera 10.5, IE 9 y est&aacute;ndar a ser soportado por todos los futuros navegadores) */
+}
+
+#baul_nav ul li {
+	float: left;
+}
+
+#baul_nav ul li a {
+	text-decoration:none;
+	display:block;
+	font-size: 19px;
+	font-weight: bold;
+	padding: 5px;
+	color: #3a3a3a;
+}
+
+#baul_nav ul li a:hover, #baul_nav ul li a:active, #baul_nav ul li span {
+	text-decoration:none;
+	display:block;
+	font-size: 19px;
+	font-weight: bold;
+	padding: 5px;
+	color: #fff;
+	-moz-border-radius: 5px; /* Firefox */
+	-webkit-border-radius: 5px; /* Google Chrome y Safari */
+	border-radius: 5px; /* CSS3 (Opera 10.5, IE 9 y est&aacute;ndar a ser soportado por todos los futuros navegadores) */
+	background-color: #acaab8;
+}
+
+#baul_tab {
+	width: 825px;
+	height: 480px;
+	float: left;
+	margin: 0px;
+}
+
+.puntuacion_baul {
+	width: 95px;
+	height: 50px;
+	margin-top: 80px;
+	float:left;
+	z-index: 3000;
+	position:relative;
+	visibility:hidden;
+}
+
+#baul_letras {
+	width: 825px;
+	height: 116px;
+	float: left;
+	margin-bottom: 5px;
+	
+}
+
+#baul_generico {
+	width: 825px;
+	height: 116px;
+	float: left;
+	margin-bottom: 5px;
+	
+}
+#baul_mates {
+	width: 825px;
+	height: 116px;
+	float: left;
+	margin-bottom: 5px;
+	
+}
+
+#baul_ciencias {
+	width: 825px;
+	height: 116px;
+	float: left;
+		margin-bottom: 5px;
+	
+}
+
+#baul_artes {
+	width: 825px;
+	height: 116px;
+	float: left;
+	margin-bottom: 5px;
+	
+}
+
+.item_on {
+	width: 98px;
+	height: 98px;
+	float: left;
+	padding: 10px;
+}
+
+.item_off {
+	width: 98px;
+	height: 98px;
+	float: left;
+	padding: 10px;
+	filter: alpha(opacity=20);
+	opacity: 0.2;
+}
+
+/* ########################## MI LOCKER ########################## */
+
+
+/*#locker {
+	width: 825px;
+	height: 500px;
+	float: left;
+	margin-left: 40px;
+	padding: 0px 0px 0px 6px;
+	background-image:url(../img/alumno/locker/locker_fondo.gif);
+	background-repeat:no-repeat;
+}*/
+
+.caja_larga {
+	width: 195px;
+	height: 438px;
+	float: left;
+	margin: 0px 4px;
+	padding-top: 10px;
+	position: relative;
+}
+
+.caja_corta {
+	width: 195px;
+	height: 210px;
+	float: left;
+	padding-top: 10px;
+	position: relative;
+}
+
+.nota_impar {
+	width: 158px;
+	height: 65px;
+	float: left;
+	margin: 5px 10px;
+	font-size: 14px;
+	padding: 10px 5px;
+	background-color: #f5fb4d;
+	border:1px solid #88896d;
+	position: relative;
+}
+
+.nota_par {
+	width: 158px;
+	height: 65px;
+	float: left;
+	margin: 5px 10px;
+	font-size: 14px;
+	padding: 10px 5px;
+	background-color: #75fcd4;
+	border:1px solid #88896d;
+	position: relative;
+}
+
+.nota_par div, .nota_impar div {
+	width: 40px;
+	height: 12px;
+	background-color: #fff;
+	position: absolute;
+	top: -6px;
+	right: 65px;
+	filter: alpha(opacity=60);
+	opacity: 0.6;
+}
+
+.nota_par span, .nota_impar span {
+	width: 40px;
+	height: 12px;
+	position: absolute;
+	bottom: 0px;
+	right: 0px;
+	font-size: 11px;
+	padding: 5px;
+	text-align: right;
+}
+
+.locker_titulo {
+	width: 60px;
+	height: 16px;
+	line-height: 16px;
+	text-align:center;
+	padding: 5px;
+	background-color: #acaab8;
+	border:3px solid #fff;
+	-moz-border-radius: 8px; /* Firefox */
+	-webkit-border-radius: 8px; /* Google Chrome y Safari */
+	border-radius: 8px; /* CSS3 (Opera 10.5, IE 9 y est&aacute;ndar a ser soportado por todos los futuros navegadores) */
+	position: absolute;
+	bottom: 0px;
+	left: 5px;
+}
+
+.locker_titulo a {
+	color: #fff;
+	font-family: 'Dosis', Arial, serif;
+	font-weight: 500;
+	font-size: 17px;
+}
+
+#crear_icono {
+	width: 131px;
+	height: 134px;
+	position:absolute;
+	bottom: 0px;
+	right: 0px;
+}
+
+.cont_fotos {
+	width: 180px;
+	height: 170px;
+	margin: 5px 0px 0px 10px;
+	float: left;
+}
+.locker_foto {
+	width: 43px;
+	height: 28px;
+	padding: 3px;
+	background-color: #fff;
+	float: left;
+	margin: 4px;
+}
+
+.cont_libros {
+	width: 180px;
+	height: 380px;
+	margin: 5px 0px 0px 6px;
+	float: left;
+}
+
+.locker_libro_a {
+	width: 165px;
+	height: 18px;
+	line-height: 18px;
+	padding: 3px;
+	background-color: #94294a;
+	float: left;
+	margin: 1px;
+	border: 2px solid #811838;
+	color: #fff;
+}
+
+.locker_libro_b {
+	width: 165px;
+	height: 18px;
+	line-height: 18px;
+	padding: 3px;
+	background-color: #a2840d;
+	float: left;
+	margin: 1px;
+	border: 2px solid #79640f;
+	color: #fff;
+}
+
+.locker_libro_c {
+	width: 165px;
+	height: 18px;
+	line-height: 18px;
+	padding: 3px;
+	background-color: #0d6fa2;
+	float: left;
+	margin: 1px;
+	border: 2px solid #16587a;
+
+}
+
+.locker_libro_a a, .locker_libro_b a, .locker_libro_c a  {
+	text-decoration:none;
+	display:block;
+	color: #fff;
+}
+
+.foto_grande {
+	width: 95px;
+	height: 62px;
+	padding: 2px 3px;
+	background-color: #bfbfbf;
+	float: left;
+	margin: 4px;
+}
+
+/* ########################## BIBLIOTECA ########################## */
+
+
+#biblioteca {
+	width: 821px;
+	height: 503px;
+	float: left;
+	margin-left: 40px;
+	/*background-image:url(../img/alumno/biblioteca/bliblio_fondo.gif);*/
+}
+	
+#nav_biblio {
+	width: 210px;
+	background-color: #6b6b6b;
+	-moz-border-radius: 8px; /* Firefox */
+	-webkit-border-radius: 8px; /* Google Chrome y Safari */
+	border-radius: 8px; /* CSS3 (Opera 10.5, IE 9 y est&aacute;ndar a ser soportado por todos los futuros navegadores) */
+	margin: 0px 10px 10px 20px;	
+	float:left;
+}
+
+#nav_biblio ul {
+	margin: 0px;
+}
+
+#nav_biblio ul li {
+	font-family: Dosis, Arial, serif;
+	font-weight: 500;
+	height: 35px;
+	font-size: 20px;
+	border-bottom: 2px solid #fff;
+}
+
+#nav_biblio ul li:last-child {
+	border-bottom: 0px solid #fff;
+}
+
+#nav_biblio ul li a {
+	color: #fff;
+	text-decoration: none;
+		height: 25px;
+	display: block;
+	padding: 5px 10px;
+}
+
+#nav_biblio ul li:first-child a:hover, #nav_biblio ul li:first-child a:active {
+	color: #fff;
+	text-decoration: none;
+	display: block;
+	background-color: #acaab8;
+	-moz-border-top-left-radius: 8px; /* Firefox */
+	-webkit-border-top-left-radius: 8px; /* Google Chrome y Safari */
+	border-top-left-radius: 10px; /* CSS3 (Opera 10.5, IE 9 y est&aacute;ndar a ser soportado por todos los futuros navegadores) */
+	
+	-moz-border-top-right-radius: 8px; /* Firefox */
+	-webkit-border-top-right-radius: 8px; /* Google Chrome y Safari */
+	border-top-right-radius: 8px; /* CSS3 (Opera 10.5, IE 9 y est&aacute;ndar a ser soportado por todos los futuros navegadores) */
+}
+
+
+#nav_biblio ul li:last-child a:hover, #nav_biblio ul li:first-child a:active {
+	color: #fff;
+	text-decoration: none;
+	display: block;
+	background-color: #acaab8;
+	-moz-border-bottom-left-radius: 8px; /* Firefox */
+	-webkit-border-bottom-left-radius: 8px; /* Google Chrome y Safari */
+	border-bottom-left-radius: 8px; /* CSS3 (Opera 10.5, IE 9 y est&aacute;ndar a ser soportado por todos los futuros navegadores) */
+	
+	-moz-border-bottom-right-radius: 8px; /* Firefox */
+	-webkit-border-bottom-right-radius: 8px; /* Google Chrome y Safari */
+	border-bottom-right-radius: 8px; /* CSS3 (Opera 10.5, IE 9 y est&aacute;ndar a ser soportado por todos los futuros navegadores) */
+}
+
+#nav_biblio ul li a:hover {
+	color: #fff;
+	text-decoration: none;
+	display: block;
+	background-color: #acaab8;
+}
+
+#destacados_biblio {
+	width: 500px;
+	height: 250px;
+	float:left;
+	margin: 0px 0px 0px 50px;
+}
+
+#carrusel_biblio {
+	width: 800px;
+	height: 250px;
+	float:left;
+	margin: 5px 0px 0px 40px;
+}
+
+.libro_a {
+	width: 230px;
+	height: 245px;
+	float:left;
+	margin: 0px 5px;
+	border: 2px solid #6b6b6b;
+	-moz-border-radius: 8px; /* Firefox */
+	-webkit-border-radius: 8px; /* Google Chrome y Safari */
+	border-radius: 8px; /* CSS3 (Opera 10.5, IE 9 y est&aacute;ndar a ser soportado por todos los futuros navegadores) */
+	position: relative;
+}
+
+.libro_b {
+	width: 178px;
+	height: 245px;
+	float:left;
+	margin: 0px 3px;
+	border: 2px solid #6b6b6b;
+	-moz-border-radius: 8px; /* Firefox */
+	-webkit-border-radius: 8px; /* Google Chrome y Safari */
+	border-radius: 8px; /* CSS3 (Opera 10.5, IE 9 y est&aacute;ndar a ser soportado por todos los futuros navegadores) */
+	position: relative;
+}
+
+.libro_enlace a {
+	position:absolute;
+	width: 24px;
+	height: 24px;
+	background-image:url(../img/alumno/biblioteca/mas.gif);
+	top: 5px;
+	right: 10px;
+	z-index: 3500;
+}
+
+.libro_sup {
+	width: 100%;
+	height: 20px;
+	float:left;
+	font-size:15px;
+	font-weight: bold;
+	color: #acaab8;
+}
+
+.libro_a_foto {
+	width: 100%;
+	height: 128px;
+	float:left;
+	position: relative;
+}
+
+.libro_a_foto img {
+	width: 141px;
+	height: 128px;
+	position: absolute;
+	top: 0px;
+	left: 45px;
+}
+
+.libro_b_foto {
+	width: 100%;
+	height: 128px;
+	float:left;
+	position: relative;
+}
+
+.libro_b_foto img {
+	width: 141px;
+	height: 128px;
+	position: absolute;
+	top: 0px;
+	left: 20px;
+}
+
+.libro_a_titulo {
+	width: 100%;
+	height: 48px;
+	float:left;
+	background-color: #acaab8;
+}
+
+.libro_b_titulo {
+	width: 100%;
+	height: 46px;
+	float:left;
+	border-top: 1px solid #6b6b6b;
+		border-bottom: 1px solid #6b6b6b;
+}
+
+.libro_a_titulo h3 {
+	padding: 5px;
+	color: #fff;
+	font-size: 15px;
+	font-weight:bold;
+}
+
+.libro_a_titulo h3 a {
+	color: #fff;
+}
+
+.libro_b_titulo h3 {
+	padding: 5px;
+	color: #6b6b6b;
+	font-size: 15px;
+	font-weight:bold;
+}
+
+.libro_b_titulo h3 a {
+	color: #6b6b6b;
+}
+.libro_autor {
+	width: 230px;
+	height: 24px;
+	float:left;
+}
+
+.libro_inf {
+	width: 100%;
+	height: 25px;
+	float:left;
+	z-index: 3000;
+	position:relative;
+	background-color: #6b6b6b;
+		-moz-border-bottom-left-radius: 5px; /* Firefox */
+	-webkit-border-bottom-left-radius: 5px; /* Google Chrome y Safari */
+	border-bottom-left-radius: 5px; /* CSS3 (Opera 10.5, IE 9 y est&aacute;ndar a ser soportado por todos los futuros navegadores) */
+	
+	-moz-border-bottom-right-radius: 5px; /* Firefox */
+	-webkit-border-bottom-right-radius: 5px; /* Google Chrome y Safari */
+	border-bottom-right-radius: 5px; /* CSS3 (Opera 10.5, IE 9 y est&aacute;ndar a ser soportado por todos los futuros navegadores) */
+}
+
+
+
+.estrellax {
+	width:21px;
+	height: 20px;
+	float:left;
+	margin: 0px 5px;
+	visibility:hidden;
+}
+
+.estrellax a, .estrellax a:visited {
+	width:21px;
+	height: 20px;
+	display:block;
+	background-image:url(../img/estrella.png);
+	background-repeat: no-repeat;
+	background-position: 0px -20px;
+}
+
+.estrellax a:hover, .estrellax a:active  {
+		width:21px;
+	height: 20px;
+	display:block;
+	background-image:url(../img/estrella.png);
+	background-position: 0px 0px;
+
+}
+
+.foto_libro_lateral {
+	width: 184px;
+	height: 230px;
+	float:left;
+}
+
+.libro_txt {
+	width: 350px;
+	height: 230px;
+	float:left;
+}
+
+.libro_txt p {
+	margin: 5px 0px;
+	font-size: 14px;
+	line-height: 130%;
+}
+
+.libro_txt h1 {
+	width: 350px;
+	height: 30px;
+	line-height: 30px;
+	float:left;
+	font-size:18px;
+	font-weight:bold;
+}
+/* ########################## MAPA ########################## */
+#alumno_mapa {
+	width: 760px;
+	height: 430px;
+	float: left;
+	margin: 0px 10px 0px 40px;
+	background-color: #fff;
+	-moz-border-radius: 8px; /* Firefox */
+	-webkit-border-radius: 8px; /* Google Chrome y Safari */
+	border-radius: 8px; /* CSS3 (Opera 10.5, IE 9 y est&aacute;ndar a ser soportado por todos los futuros navegadores) */
+	border: 3px solid #acaab8;
+	position:relative;
+}
+
+#alumno_mapa h2 {
+	font-family: 'Dosis', Arial, serif;
+	font-weight: 500;
+	font-size: 22px;
+	width: 30%;
+	height: 60px;
+	line-height: 60px;
+	padding: 0px 30px 0px;
+	color: #fff;
+	position:absolute;
+	top: 0px;
+	left:0px;
+}
+
+#mapa {
+	width: 620px;
+	height: 409px;
+	float:left;
+
+}
+
+#calidad_nav {
+	width: 115px;
+	height: 409px;
+	float:left;
+	margin-left: 13px;
+}
+
+#calidad_nav ul {
+	font-family: 'Dosis', Arial, serif;
+	font-weight: bold;
+	font-size: 16px;
+	padding: 0px;
+
+}
+
+#calidad_nav ul li {
+	-moz-border-radius: 8px; /* Firefox */
+	-webkit-border-radius: 8px; /* Google Chrome y Safari */
+	border-radius: 8px; /* CSS3 (Opera 10.5, IE 9 y est&aacute;ndar a ser soportado por todos los futuros navegadores) */
+	border: 3px solid #acaab8;
+	text-align:center;
+	margin: 10px 0px;
+
+}
+
+#calidad_nav ul li a {
+	text-decoration:none;
+	display:block;
+	height: 50px;
+	line-height: 50px;
+			color: #3a3a3a;
+}
+
+#calidad_nav ul li a:hover {
+	display:block;
+	height: 50px;
+	line-height: 50px;
+	background-color: #acaab8;
+				color: #fff;
+}
+
+/* ########################## FOOTER ########################## */
+
+#footer {
+	width: 100%;
+	height: 50px;
+	float:left;
+}
+
+#legal {
+	width: 750px;
+	height: 50px;
+	line-height: 50px;
+	float:left;
+}
+
+#legal ul {
+	margin: 0 0 0 450px;
+}
+
+#legal ul li {
+	float:left;
+	margin: 0px 5px;
+}
+
+#legal ul li a {
+	font-size:14px;
+	border-bottom: 1px solid #acaab8;
+	text-decoration:none;
+	color: #000;
+}
+
+/* ################# TUTOR ###################### */
+
+#tutor {
+	padding: 0px;
+	margin:0px;
+	font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+	color: #3a3a3a;
+	background-image:url(../img/tutor/fondo.gif);
+	background-position: top center;
+	background-repeat:no-repeat;
+}
+
+#header_tutor {
+	width: 1024px;
+	height: 93px;
+	float:left;
+	position: relative;
+	border-bottom: 1px solid #05b7f9;
+	background-color: #3a3a3a;
+	
+}
+
+.alignLeft{
+	float: left;
+}
+
+.alignRight{
+	float: right;	
+}
+
+.alignTop{
+	float: top;
+}
+
+.alignBottom{
+	float: bottom;	
+}
+
+.separador_tutor {
+	width: 2px;
+	height: 72px;
+	float:left;
+	background-image:url(../img/tutor/separador.gif);
+}
+
+#buscador_tutor input  {
+	-moz-border-radius: 10px; /* Firefox */
+	-webkit-border-radius: 10px; /* Google Chrome y Safari */
+	border-radius: 10px; /* CSS3 (Opera 10.5, IE 9 y est&aacute;ndar a ser soportado por todos los futuros navegadores) */
+	width: 225px;
+	height: 35px;
+	border: 8px solid #04b7f9;
+	background-color: #fff;	
+	font-family: Dosis, Arial, serif;
+	font-weight: 400;
+	font-size: 17px;
+	padding: 0px 5px;
+	margin: 10px 5px;
+}
+
+#buscador_tutor input:hover, #buscador_tutor input:focus {
+	background-color: #d3d3d3;	
+	outline:0px;	
+}
+
+/* ################# TUTOR_central ###################### */
+
+#lateral_nav_cursos, #lateral_nav_reportes, #lateral_nav_comunicacion, #lateral_nav_tutor_biblio {
+	width:149px;
+	height: 58px;
+	float:left;
+}
+
+#lateral_nav_cursos a, #lateral_nav_cursos a:visited {
+	width:149px;
+	height: 58px;
+	display:block;
+	background-image:url(../img/tutor/cursos.gif);
+}
+
+#lateral_nav_cursos a:hover, #lateral_nav_cursos a:active, #lateral_nav_cursos span {
+	width:149px;
+	height: 58px;
+	display:block;
+	background-image:url(../img/tutor/cursos_hover.gif);
+}
+
+#lateral_nav_reportes a, #lateral_nav_reportes a:visited {
+	width:149px;
+	height: 58px;
+	display:block;
+	background-image:url(../img/tutor/reportes.gif);
+}
+
+#lateral_nav_reportes a:hover, #lateral_nav_reportes a:active, #lateral_nav_reportes span {
+	width:149px;
+	height: 58px;
+	display:block;
+	background-image:url(../img/tutor/reportes_hover.gif);
+}
+
+#lateral_nav_comunicacion a, #lateral_nav_comunicacion a:visited {
+	width:149px;
+	height: 58px;
+	display:block;
+	background-image:url(../img/tutor/comunicacion.gif);
+}
+
+#lateral_nav_comunicacion a:hover, #lateral_nav_comunicacion a:active, #lateral_nav_comunicacion span {
+	width:149px;
+	height: 58px;
+	display:block;
+	background-image:url(../img/tutor/comunicacion_hover.gif);
+}
+
+#lateral_nav_tutor_biblio a, #lateral_nav_tutor_biblio a:visited {
+	width:149px;
+	height: 58px;
+	display:block;
+	background-image:url(../img/tutor/tutor_biblio.gif);
+}
+
+#lateral_nav_tutor_biblio a:hover, #lateral_nav_tutor_biblio a:active, #lateral_nav_tutor_biblio span {
+	width:149px;
+	height: 58px;
+	display:block;
+	background-image:url(../img/tutor/tutor_biblio_hover.gif);
+}
+
+/* ################# MODULOS GENERALES ###################### */
+
+#modulo_cursos a, #modulo_cursos a:visited {
+	width: 280px;
+	height: 240px;
+	display:block;
+	background-image:url(../img/tutor/modulo_cursos.gif);
+}
+
+#modulo_cursos a:hover, #modulo_cursos a:active {
+	width: 280px;
+	height: 240px;
+	display:block;
+	background-image:url(../img/tutor/modulo_cursos_hover.gif);
+}
+
+#modulo_reportes a, #modulo_reportes a:visited {
+	width: 280px;
+	height: 240px;
+	display:block;
+	background-image:url(../img/tutor/modulo_reportes.gif);
+}
+
+#modulo_reportes a:hover, #modulo_reportes a:active {
+	width: 280px;
+	height: 240px;
+	display:block;
+	background-image:url(../img/tutor/modulo_reportes_hover.gif);
+}
+
+#modulo_comunicacion a, #modulo_comunicacion a:visited {
+	width: 280px;
+	height: 240px;
+	display:block;
+	background-image:url(../img/tutor/modulo_comunicacion.gif);
+}
+
+#modulo_comunicacion a:hover, #modulo_comunicacion a:active {
+	width: 280px;
+	height: 240px;
+	display:block;
+	background-image:url(../img/tutor/modulo_comunicacion_hover.gif);
+}
+
+#modulo_biblio a, #modulo_biblio a:visited {
+	width: 280px;
+	height: 240px;
+	display:block;
+	background-image:url(../img/tutor/modulo_biblio.gif);
+}
+
+#modulo_biblio a:hover, #modulo_biblio a:active {
+	width: 280px;
+	height: 240px;
+	display:block;
+	background-image:url(../img/tutor/modulo_biblio_hover.gif);
+}
+
+#modulo_generar a, #modulo_generar a:visited {
+	width: 280px;
+	height: 240px;
+	display:block;
+	background-image:url(../img/tutor/modulo_generar.gif);
+}
+
+#modulo_generar a:hover, #modulo_generar a:active {
+	width: 280px;
+	height: 240px;
+	display:block;
+	background-image:url(../img/tutor/modulo_generar_hover.gif);
+}
+
+#modulo_ver a, #modulo_ver a:visited {
+	width: 280px;
+	height: 240px;
+	display:block;
+	background-image:url(../img/tutor/modulo_ver.gif);
+}
+
+#modulo_ver a:hover, #modulo_ver a:active {
+	width: 280px;
+	height: 240px;
+	display:block;
+	background-image:url(../img/tutor/modulo_ver_hover.gif);
+}
+
+#modulo_subir a, #modulo_subir a:visited {
+	width: 280px;
+	height: 240px;
+	display:block;
+	background-image:url(../img/tutor/modulo_subir.gif);
+}
+
+#modulo_subir a:hover, #modulo_subir a:active {
+	width: 280px;
+	height: 240px;
+	display:block;
+	background-image:url(../img/tutor/modulo_subir_hover.gif);
+}
+
+#modulo_mensaje1 a, #modulo_mensaje1 a:visited {
+	width: 280px;
+	height: 240px;
+	display:block;
+	background-image:url(../img/tutor/modulo_mensaje1.gif);
+}
+
+#modulo_mensaje1 a:hover, #modulo_mensaje1 a:active {
+	width: 280px;
+	height: 240px;
+	display:block;
+	background-image:url(../img/tutor/modulo_mensaje1_hover.gif);
+}
+
+#modulo_mensaje2 a, #modulo_mensaje2 a:visited {
+	width: 280px;
+	height: 240px;
+	display:block;
+	background-image:url(../img/tutor/modulo_mensaje2.gif);
+}
+
+#modulo_mensaje2 a:hover, #modulo_mensaje2 a:active {
+	width: 280px;
+	height: 240px;
+	display:block;
+	background-image:url(../img/tutor/modulo_mensaje2_hover.gif);
+}
+
+#modulo_foros a, #modulo_foros a:visited {
+	width: 280px;
+	height: 240px;
+	display:block;
+	background-image:url(../img/tutor/modulo_foros.gif);
+}
+
+#modulo_foros a:hover, #modulo_foros a:active {
+	width: 280px;
+	height: 240px;
+	display:block;
+	background-image:url(../img/tutor/modulo_foros_hover.gif);
+}
+
+#modulo_enviar a, #modulo_enviar a:visited {
+	width: 280px;
+	height: 240px;
+	display:block;
+	background-image:url(../img/tutor/modulo_enviar.gif);
+}
+
+#modulo_enviar a:hover, #modulo_enviar a:active {
+	width: 280px;
+	height: 240px;
+	display:block;
+	background-image:url(../img/tutor/modulo_enviar_hover.gif);
+}
+
+.extra_general {
+	width:280px;
+	height:270px;
+	background-color: #04b7f9;
+}
+.extra_padre {
+	width:280px;
+	height:270px;
+	background-color: #02dc02;
+}
+.extra_cajas {
+	width:280px;
+	height:270px;
+	/*background-color: #4cbb47;*/
+}
+.extra_letras {
+	width:280px;
+	height:270px;
+	background-color: #4cbb47;
+}
+
+.extra_mates {
+	width:280px;
+	height:270px;
+	background-color: #347ff2;
+}
+
+.extra_ciencias {
+	width:280px;
+	height:270px;
+	background-color: #ddab1d;
+}
+
+.extra_artes {
+	width:280px;
+	height:270px;
+	background-color: #e24e42;
+}
+
+.tutor_enlace0 {
+	width:225px;
+	height:40px;
+	display:block;
+	position:absolute;
+	top: 25px;
+	left: 25px;
+}
+
+.tutor_enlace1 {
+	width:225px;
+	height:40px;
+	display:block;
+	position:absolute;
+	top: 85px;
+	left: 25px;
+}
+
+.tutor_enlace2 {
+	width:225px;
+	height:40px;
+	display:block;
+	position:absolute;
+	top: 145px;
+	left: 25px;
+}
+
+.tutor_enlace3 {
+	width:225px;
+	height:40px;
+	display:block;
+	position:absolute;
+	top: 205px;
+	left: 25px;
+}
+
+.tutor_enlace4 {
+	width:225px;
+	height:40px;
+	display:block;
+	position:absolute;
+	top: 225px;
+	left: 25px;
+}
+
+.tutor_foro_enlace1 {
+	width:225px;
+	height:40px;
+	display:block;
+	position:absolute;
+	top: 45px;
+	left: 25px;
+}
+
+.tutor_foro_enlace2 {
+	width:225px;
+	height:40px;
+	display:block;
+	position:absolute;
+	top: 105px;
+	left: 25px;
+}
+
+.tutor_foro_enlace3 {
+	width:225px;
+	height:40px;
+	display:block;
+	position:absolute;
+	top: 165px;
+	left: 25px;
+}
+
+.tutor_foro_enlace4 {
+	width:225px;
+	height:40px;
+	display:block;
+	position:absolute;
+	top: 225px;
+	left: 25px;
+}
+
+.tutor_enlace0 a, .tutor_enlace1 a, .tutor_enlace2 a,  .tutor_enlace3 a, .tutor_enlace4 a  {
+	width:225px;
+	height:40px;
+	line-height: 40px;
+	display:block;
+	font-family: 'Dosis', Arial, serif;
+	font-size: 20px;
+	color: #04b7f9;
+	text-align:center;
+	text-decoration:none;
+	background-color:#FFF;	
+	-moz-border-radius: 6px; /* Firefox */
+	-webkit-border-radius: 6px; /* Google Chrome y Safari */
+	border-radius: 6px; /* CSS3 (Opera 10.5, IE 9 y est&aacute;ndar a ser soportado por todos los futuros navegadores) */
+		border: 2px solid white;
+}
+
+.tutor_foro_enlace0 a, .tutor_foro_enlace1 a, .tutor_foro_enlace2 a,  .tutor_foro_enlace3 a, .tutor_foro_enlace4 a  {
+	width:225px;
+	height:40px;
+	line-height: 40px;
+	display:block;
+	font-family: 'Dosis', Arial, serif;
+	font-size: 20px;
+	color: #04b7f9;
+	text-align:center;
+	text-decoration:none;
+	background-color:#FFF;	
+	-moz-border-radius: 6px; /* Firefox */
+	-webkit-border-radius: 6px; /* Google Chrome y Safari */
+	border-radius: 6px; /* CSS3 (Opera 10.5, IE 9 y est&aacute;ndar a ser soportado por todos los futuros navegadores) */
+		border: 2px solid white;
+}
+
+.tutor_enlace0 a:hover, .tutor_enlace1 a:hover, .tutor_enlace2 a:hover, .tutor_enlace3 a:hover, .tutor_enlace4 a:hover {
+	width:225px;
+	height:40px;
+	line-height: 40px;
+	display:block;
+	font-family: 'Dosis', Arial, serif;
+	font-size: 20px;
+	color: #fff;
+	text-align:center;
+	text-decoration:none;
+	background-color:#04b7f9;	
+	-moz-border-radius: 6px; /* Firefox */
+	-webkit-border-radius: 6px; /* Google Chrome y Safari */
+	border-radius: 6px; /* CSS3 (Opera 10.5, IE 9 y est&aacute;ndar a ser soportado por todos los futuros navegadores) */
+	border: 2px solid white;
+}
+
+.tutor_foro_enlace1 a:hover, .tutor_foro_enlace2 a:hover, .tutor_foro_enlace3 a:hover, .tutor_foro_enlace4 a:hover {
+	width:225px;
+	height:40px;
+	line-height: 40px;
+	display:block;
+	font-family: 'Dosis', Arial, serif;
+	font-size: 20px;
+	color: #fff;
+	text-align:center;
+	text-decoration:none;
+	background-color:#04b7f9;	
+	-moz-border-radius: 6px; /* Firefox */
+	-webkit-border-radius: 6px; /* Google Chrome y Safari */
+	border-radius: 6px; /* CSS3 (Opera 10.5, IE 9 y est&aacute;ndar a ser soportado por todos los futuros navegadores) */
+	border: 2px solid white;
+}
+
+/* ########################## MENSAJES Y CHAT ########################## */
+
+#col_extra {
+	width: 160px;
+	float:right;
+}
+
+#mensajes {
+	width: 160px;
+	height: 170px;
+	float:right;
+	background-color: #cfcfcf;
+	-moz-border-radius: 6px; /* Firefox */
+	-webkit-border-radius: 6px; /* Google Chrome y Safari */
+	border-radius: 6px; /* CSS3 (Opera 10.5, IE 9 y est&aacute;ndar a ser soportado por todos los futuros navegadores) */
+}
+
+#chat {
+	width: 160px;
+	height: 310px;
+	float:right;
+	margin-top: 20px;
+	background-color: #aae8ff;
+	-moz-border-radius: 6px; /* Firefox */
+	-webkit-border-radius: 6px; /* Google Chrome y Safari */
+	border-radius: 6px; /* CSS3 (Opera 10.5, IE 9 y est&aacute;ndar a ser soportado por todos los futuros navegadores) */
+}
+
+#chat_title{
+	width: 160px;
+	height: 20px;
+	display:inline;
+}
+
+#mensajes h4 {
+	width: 120px;
+	height: 20px;
+	font-family: 'Dosis', Arial, serif;
+	font-size: 18px;
+	padding: 5px;
+	border-bottom: 1px solid #fff;
+}
+
+#chat_head{
+	width: 120px;
+	height: 20px;
+	font-family: 'Dosis', Arial, serif;
+	font-size: 18px;
+	padding: 5px;
+	border-bottom: 1px solid #fff;
+	float:left;
+}
+
+#chat_greenBtn{
+	width: 20px;
+	height: 20px;
+	float:left;
+	margin-left: 0px;
+	background-size: 20px 20px;
+	background-image:url(../img/tutor/btn_online.png);
+}
+
+#chat_greenBtn a{
+	width: 20px;
+	height:20px;
+	line-height: 20px;
+	display:block;
+	font-family: 'Dosis', Arial, serif;
+	font-size: 11px;
+	color: #04b7f9;
+	text-align:center;
+	text-decoration:none;
+}
+
+.chat_conectados {
+	width: 160px;
+	height: 100px;
+	font-size: 11px;
+	border-bottom: 1px solid #fff;
+}
+
+.chat_conectados p{
+	font-size: 11px;
+}
+
+#mensajes p, #chat p  {
+	font-size: 12px;
+	padding: 5px;
+}
+
+#chat_scroll {
+	width: 160px;
+	height: 250px;
+	overflow-y: scroll;
+}
+
+#chat_scroll div {
+
+}
+
+#chat_scroll div span {
+	font-size: 12px;
+	font-weight: bold;
+	padding: 5px;
+
+}
+
+.chat_input div{
+	width: 160px;
+	height: 30px;
+	float:right;
+	background-color: #aae8ff;
+}
+.chat_padre  {
+	width: 120px;
+	height: 30px;
+	margin: 0 20px;
+	background-color: #02dc02;
+	color: #fff;
+	-moz-border-radius: 8px; /* Firefox */
+	-webkit-border-radius: 8px; /* Google Chrome y Safari */
+	border-radius: 8px; /* CSS3 (Opera 10.5, IE 9 y est&aacute;ndar a ser soportado por todos los futuros navegadores) */
+}
+
+.chat_tutor {
+	width: 120px;
+	height: 30px;
+	margin: 0 20px;
+	background-color: #04b7f9;
+	color: #fff;
+	-moz-border-radius: 8px; /* Firefox */
+	-webkit-border-radius: 8px; /* Google Chrome y Safari */
+	border-radius: 8px; /* CSS3 (Opera 10.5, IE 9 y est&aacute;ndar a ser soportado por todos los futuros navegadores) */
+}
+
+/* ########################## PERFIL TUTOR ########################## */
+
+#tutor_contenido {
+	width: 597px;
+	height: 485px;
+	float: left;
+	margin: 0px 40px;
+	background-color: #04b7f9;
+	-moz-border-radius: 8px; /* Firefox */
+	-webkit-border-radius: 8px; /* Google Chrome y Safari */
+	border-radius: 8px; /* CSS3 (Opera 10.5, IE 9 y est&aacute;ndar a ser soportado por todos los futuros navegadores) */
+	position:relative;
+}
+
+#tutor_contenido_gris {
+	width: 597px;
+	height: 460px;
+	float: left;
+	margin: 0px 40px;
+	background-color: #939393;
+	-moz-border-radius: 8px; /* Firefox */
+	-webkit-border-radius: 8px; /* Google Chrome y Safari */
+	border-radius: 8px; /* CSS3 (Opera 10.5, IE 9 y est&aacute;ndar a ser soportado por todos los futuros navegadores) */
+	position:relative;
+}
+
+#tutor_contenido h2, #tutor_contenido_gris h2 {
+	font-family: 'Dosis', Arial, serif;
+	font-weight: 500;
+	font-size: 22px;
+	width: 100%;
+	height: 60px;
+	line-height: 60px;
+	padding: 0px 30px 0px;
+	color: #fff;
+	position:relative;
+}
+
+#tutor_contenido h2 img {
+	position:absolute;
+	top: 0px;
+	right: 250px;
+}
+
+#datos_tutor {
+	width: 280px;
+	height: 180px;
+	float:left;
+	font-family: 'Dosis', Arial, serif;
+	font-weight: 500;
+	font-size: 18px;
+		padding: 20px 0px 0px;
+}
+
+#datos_tutor strong {
+	color: #04b7f9;
+	
+}
+
+
+/* ########################## BTN TUTOR ########################## */
+
+#tutor_btn {
+	width: 95%;
+	height: 100px;
+	float:left;
+	margin: 20px 12px 10px;
+}
+
+#tutor_btn_capturar{
+	width: 175px;
+	height: 98px;
+	float: right;	
+	margin: 7px;
+}
+
+#tutor_btn_regresar, #tutor_btn_editar, #tutor_btn_subir, #tutor_btn_lista    {
+	width: 175px;
+	height: 98px;
+	float: left;
+	margin: 7px;	
+}
+
+#tutor_btn_regresar a, #tutor_btn_regresar a:visited {
+	width: 175px;
+	height: 98px;
+	display:block;
+	background-image:url(../img/tutor/btn_regresar.png);
+
+}
+
+#tutor_btn_regresar a:hover, #tutor_btn_regresar a:active {
+	width: 175px;
+	height: 98px;
+	display:block;
+	background-image:url(../img/tutor/btn_regresar_hover.png);
+
+}
+
+#tutor_btn_capturar a, #tutor_btn_capturar a:visited {
+	width: 175px;
+	height: 98px;
+	display:block;
+	background-image:url(../img/tutor/btn_subir.png);
+
+}
+
+#tutor_btn_capturar a:hover, #tutor_btn_capturar a:active {
+	width: 175px;
+	height: 98px;
+	display:block;
+	background-image:url(../img/tutor/btn_subir_hover.png);
+
+}
+
+#tutor_btn_editar a, #tutor_btn_editar a:visited {
+	width: 175px;
+	height: 98px;
+	display:block;
+	background-image:url(../img/tutor/btn_editar.png);
+
+}
+
+#tutor_btn_editar a:hover, #tutor_btn_editar a:active {
+	width: 175px;
+	height: 98px;
+	display:block;
+	background-image:url(../img/tutor/btn_editar_hover.png);
+}
+
+#tutor_btn_lista a, #tutor_btn_lista a:visited {
+	width: 175px;
+	height: 98px;
+	display:block;
+	background-image:url(../img/tutor/btn_lista.png);
+
+}
+
+#tutor_btn_lista a:hover, #tutor_btn_lista a:active {
+	width: 175px;
+	height: 98px;
+	display:block;
+	background-image:url(../img/tutor/btn_lista_hover.png);
+}
+
+/* ########################## GRUPOS LISTA ########################## */
+
+ul.grupos_list {
+	border: 1px solid #d9d9d9;
+	margin: 5px 20px;
+	font-size: 14px;
+}
+
+ul.grupos_list li {
+	margin: 5px 10px;
+}
+
+
+ul.grupos_list li a, ul.grupos_list li a:visited  {
+	text-decoration: none;
+	height: 20px;
+	line-height: 20px;
+	padding: 5px;
+	text-align: left;
+	display: block;
+	padding: 5px;
+	color: #666;
+}
+
+ul.grupos_list li a:hover, ul.grupos_list li a:active {
+	background-color: #04b7f9;
+	color: #fff;
+}
+
+.gtitulo {
+	background-color: #04b7f9;
+	color: #fff;
+	font-weight: bold;
+	padding: 10px;
+}
+
+
+.gimpar {
+	background-color: #b3e9fd;
+}
+
+.gpar {
+	background-color: #d9d9d9;
+}
+
+.gimpar span, .gpar span {
+	font-weight: bold;
+}
+
+.overf {
+	overflow-y: scroll;
+	height: 200px;
+}
+	
+
+
+
+/* ########################## VERTICAL BTN ########################## */
+
+.vertical_btn {
+	font-size: 14px;
+}
+
+.vertical_btn li {
+	height:35px;
+	display:block;
+	margin: 20px 0px;
+}
+
+
+.vertical_btn li a, .vertical_btn li a:visited  {
+	width:50%;
+	height:35px;
+	line-height: 35px;
+	display:block;
+		margin: 0px auto;
+	font-family: 'Dosis', Arial, serif;
+	font-size: 18px;
+	font-weight: bold;
+	text-align:center;
+	text-decoration:none;
+	color: #04b7f9;
+	background-color:#FFF;	
+	-moz-border-radius: 6px; /* Firefox */
+	-webkit-border-radius: 6px; /* Google Chrome y Safari */
+	border-radius: 6px; /* CSS3 (Opera 10.5, IE 9 y est&aacute;ndar a ser soportado por todos los futuros navegadores) */
+	border: 2px solid #04b7f9;
+}
+
+.vertical_btn li a:hover, .vertical_btn li a:active  {
+	color: #fff;
+	background-color:#04b7f9;	
+	border: 2px solid #04b7f9;
+}
+
+/* ########################## HORIZONTAL BTN ########################## */
+
+.horizontal_btn {
+	font-size: 12px;
+	padding: 10px;
+}
+
+.abrir_btn {
+	font-size: 12px;
+	padding: 10px;
+}
+
+.horizontal_btn2 {
+	width: 17%;
+	height: 10%;
+	float: right;
+	font-size: 10px;
+	margin: 0px 0px;
+	padding: 0px;
+}
+
+.horizontal_btn2 a, .horizontal_btn2 a:visited  {
+	height: 10%;
+	line-height: 10%;
+	display:block;
+	margin: 0px 0px;
+	font-family: 'Dosis', Arial, serif;
+	font-size: 12px;
+	font-weight: bold;
+	text-align:center;
+	text-decoration:none;
+	color: #04b7f9;
+	background-color:#FFF;	
+	-moz-border-radius: 6px; /* Firefox */
+	-webkit-border-radius: 6px; /* Google Chrome y Safari */
+	border-radius: 6px; /* CSS3 (Opera 10.5, IE 9 y est&aacute;ndar a ser soportado por todos los futuros navegadores) */
+	border: 2px solid #04b7f9;
+}
+
+.horizontal_btn2 a:hover, .horizontal_btn2 a:active  {
+	color: #fff;
+	background-color:#04b7f9;	
+	border: 2px solid #04b7f9;
+}
+
+.horizontal_btn li {
+	width: 25%;
+	height:35px;
+	float: left;
+	margin: 20px 20px;
+}
+
+.abrir_btn li {
+	width: 25%;
+	height:35px;
+	float: left;
+	margin: 20px 20px 0px 210px;
+}
+
+.abrir_btn li a, .abrir_btn li a:visited  {
+	height:35px;
+	line-height: 35px;
+	display:block;
+		margin: 0px auto;
+	font-family: 'Dosis', Arial, serif;
+	font-size: 18px;
+		font-weight: bold;
+	text-align:center;
+	text-decoration:none;
+	color: #04b7f9;
+	background-color:#FFF;	
+	-moz-border-radius: 6px; /* Firefox */
+	-webkit-border-radius: 6px; /* Google Chrome y Safari */
+	border-radius: 6px; /* CSS3 (Opera 10.5, IE 9 y est&aacute;ndar a ser soportado por todos los futuros navegadores) */
+	border: 2px solid #04b7f9;
+}
+
+.horizontal_btn li a:hover, .horizontal_btn li a:active  {
+	color: #fff;
+	background-color:#04b7f9;	
+	border: 2px solid #04b7f9;
+}
+
+.abrir_btn li a, .abrir_btn li a:visited  {
+	height:35px;
+	line-height: 35px;
+	display:block;
+		margin: 0px auto;
+	font-family: 'Dosis', Arial, serif;
+	font-size: 18px;
+		font-weight: bold;
+	text-align:center;
+	text-decoration:none;
+	color: #04b7f9;
+	background-color:#FFF;	
+	-moz-border-radius: 6px; /* Firefox */
+	-webkit-border-radius: 6px; /* Google Chrome y Safari */
+	border-radius: 6px; /* CSS3 (Opera 10.5, IE 9 y est&aacute;ndar a ser soportado por todos los futuros navegadores) */
+	border: 2px solid #04b7f9;
+}
+
+.abrir_btn li a:hover, .abrir_btn li a:active  {
+	color: #fff;
+	background-color:#04b7f9;	
+	border: 2px solid #04b7f9;
+}
+
+/* ########################## HORIZONTAL BTN LARGO ########################## */
+
+.horizontal_btn_largo {
+	font-size: 12px;
+	padding: 10px;
+}
+
+.horizontal_btn_largo li {
+	width: 45%;
+	height:35px;
+	float: left;
+	margin: 10px 10px;
+}
+
+
+.horizontal_btn_largo li a, .horizontal_btn_largo li a:visited  {
+	height:35px;
+	line-height: 35px;
+	display:block;
+		margin: 0px auto;
+	font-family: 'Dosis', Arial, serif;
+	font-size: 16px;
+		font-weight: bold;
+	text-align:center;
+	text-decoration:none;
+	color: #04b7f9;
+	background-color:#FFF;	
+	-moz-border-radius: 6px; /* Firefox */
+	-webkit-border-radius: 6px; /* Google Chrome y Safari */
+	border-radius: 6px; /* CSS3 (Opera 10.5, IE 9 y est&aacute;ndar a ser soportado por todos los futuros navegadores) */
+	border: 2px solid #04b7f9;
+}
+
+.horizontal_btn_largo li a:hover, .horizontal_btn_largo li a:active  {
+	color: #fff;
+	background-color:#04b7f9;	
+	border: 2px solid #04b7f9;
+}
+
+/* ########################## HORIZONTAL BTN ########################## */
+
+h6.pregunta {
+	text-align:center;
+	height: 90px;
+	line-height: 90px;
+	font-family: 'Dosis', Arial, serif;
+	font-size:28px;	
+	font-weight: bold;
+	background-image:url(../img/tutor/pdf_icon.gif);
+	background-position:center center;
+	background-repeat:no-repeat;
+}
+
+/* ########################## MENSAJES ########################## */
+
+#tutor_mensaje {
+	width: 597px;
+	height: 460px;
+	float: left;
+	margin: 0px 40px;
+	position:relative;
+}
+
+#tutor_mensaje h2 {
+	font-family: 'Dosis', Arial, serif;
+	font-weight: 500;
+	font-size: 22px;
+	width: 100%;
+	height: 60px;
+	line-height: 60px;
+	color: #04b7f9;
+	position:relative;
+}
+
+.msg_check{
+	width: 250px;
+	height: 30px;
+	display: inline;	
+}
+
+.check{
+	width: 5px;
+	height: 30px;
+}
+
+.check_title{
+	width: 20px;
+	height: 30px;
+	margin: 0px 0px 10px -15px;
+}
+
+.form_tutor {
+	width: 450px;
+	height: 50px;
+	line-height: 50px;
+	display:block;
+	float:left;
+	margin: 0px 0px 20px;
+}
+
+.form_largo_tutor {
+	width: 305px;
+	height: 90px;
+	line-height: 50px;
+	display:block;
+	float:left;
+	margin: 0px 0px 20px;
+}
+
+.recordar {
+	width: 305px;
+	height: 20px;
+	line-height: 20px;
+	float:left;
+
+
+}
+
+.form_tutor input[type='checkbox'] {
+	width: 50px;
+	height: 20px;
+	border: 0px solid #ccc;
+	background-color:#acaab8;
+	padding: 0px;	
+	margin: 0px;
+	font-family: 'Dosis', Arial, serif;
+	font-weight: 500;
+	font-size: 16px;
+	
+}
+
+.form_tutor input {
+	border: 1px solid #3a3a3a;
+	width: 290px;
+	height: 38px;
+	background-color:#ececec;
+	padding: 5px;
+	-moz-border-radius: 5px; /* Firefox */
+	-webkit-border-radius: 5px; /* Google Chrome y Safari */
+	border-radius: 5px; /* CSS3 (Opera 10.5, IE 9 y est&aacute;ndar a ser soportado por todos los futuros navegadores) */
+	font-family: 'Dosis', Arial, serif;
+	font-weight: 500;
+	font-size: 22px;
+	color: #000;
+}
+
+.form_tutor select {
+	border: 1px solid #3a3a3a;
+	background-color:#ececec;
+	padding: 5px;
+	margin: 10px 0px;
+	-moz-border-radius: 5px; /* Firefox */
+	-webkit-border-radius: 5px; /* Google Chrome y Safari */
+	border-radius: 5px; /* CSS3 (Opera 10.5, IE 9 y est&aacute;ndar a ser soportado por todos los futuros navegadores) */
+}
+
+.form_largo_tutor textarea {
+	border: 1px solid #3a3a3a;
+	background-color:#ececec;
+	padding: 5px;
+	margin: 0px;
+	width: 440px;
+	resize: none;
+	-moz-border-radius: 5px; /* Firefox */
+	-webkit-border-radius: 5px; /* Google Chrome y Safari */
+	border-radius: 5px; /* CSS3 (Opera 10.5, IE 9 y est&aacute;ndar a ser soportado por todos los futuros navegadores) */
+	font-family: 'Dosis', Arial, serif;
+	font-weight: 500;
+	font-size: 18px;
+	color: #000;
+}
+
+.form_tutor input[type="submit"] {
+	width: 100px;
+	border: 0px solid #ccc;
+	font-family: 'Dosis', Arial, serif;
+	font-weight: 500;
+	font-size: 18px;
+	padding: 2px;
+	color:#fff;
+	float: right;	
+	-moz-border-radius: 18px; /* Firefox */
+	-webkit-border-radius: 18px; /* Google Chrome y Safari */
+	border-radius: 18px; /* CSS3 (Opera 10.5, IE 9 y est&aacute;ndar a ser soportado por todos los futuros navegadores) */ 
+}
+
+/* ########################## TUTOR BIBLIOTECA ########################## */
+
+#nav_biblio_tutor {
+	width: 210px;
+	background-color: #6b6b6b;
+	-moz-border-radius: 8px; /* Firefox */
+	-webkit-border-radius: 8px; /* Google Chrome y Safari */
+	border-radius: 8px; /* CSS3 (Opera 10.5, IE 9 y est&aacute;ndar a ser soportado por todos los futuros navegadores) */
+	margin: 0px 10px 10px 20px;	
+	float:left;
+}
+
+#nav_biblio_tutor ul {
+	margin: 0px;
+}
+
+#nav_biblio_tutor ul li {
+	font-family: Dosis, Arial, serif;
+	font-weight: 500;
+	height: 35px;
+	font-size: 20px;
+	border-bottom: 2px solid #fff;
+}
+
+#nav_biblio_tutor ul li:last-child {
+	border-bottom: 0px solid #fff;
+}
+
+#nav_biblio_tutor ul li a {
+	color: #fff;
+	text-decoration: none;
+		height: 25px;
+	display: block;
+	padding: 5px 10px;
+}
+
+#nav_biblio_tutor ul li:first-child a:hover, #nav_biblio_tutor ul li:first-child a:active {
+	color: #fff;
+	text-decoration: none;
+	display: block;
+	background-color: #04b7f9;
+	-moz-border-top-left-radius: 8px; /* Firefox */
+	-webkit-border-top-left-radius: 8px; /* Google Chrome y Safari */
+	border-top-left-radius: 10px; /* CSS3 (Opera 10.5, IE 9 y est&aacute;ndar a ser soportado por todos los futuros navegadores) */
+	
+	-moz-border-top-right-radius: 8px; /* Firefox */
+	-webkit-border-top-right-radius: 8px; /* Google Chrome y Safari */
+	border-top-right-radius: 8px; /* CSS3 (Opera 10.5, IE 9 y est&aacute;ndar a ser soportado por todos los futuros navegadores) */
+}
+
+
+#nav_biblio_tutor ul li:last-child a:hover, #nav_biblio_tutor ul li:first-child a:active {
+	color: #fff;
+	text-decoration: none;
+	display: block;
+	background-color: #04b7f9;
+	-moz-border-bottom-left-radius: 8px; /* Firefox */
+	-webkit-border-bottom-left-radius: 8px; /* Google Chrome y Safari */
+	border-bottom-left-radius: 8px; /* CSS3 (Opera 10.5, IE 9 y est&aacute;ndar a ser soportado por todos los futuros navegadores) */
+	
+	-moz-border-bottom-right-radius: 8px; /* Firefox */
+	-webkit-border-bottom-right-radius: 8px; /* Google Chrome y Safari */
+	border-bottom-right-radius: 8px; /* CSS3 (Opera 10.5, IE 9 y est&aacute;ndar a ser soportado por todos los futuros navegadores) */
+}
+
+#nav_biblio_tutor ul li a:hover {
+	color: #fff;
+	text-decoration: none;
+	display: block;
+	background-color: #04b7f9;
+}
+
+/* ########################## HORIZONTAL BTN ########################## */
+
+.horizontal_btn {
+	font-size: 12px;
+	padding: 10px;
+}
+
+.horizontal_btn li {
+	width: 45%;
+	height:35px;
+	float: left;
+	margin: 20px 8px;
+}
+
+
+.horizontal_btn li a, .horizontal_btn li a:visited  {
+	height:35px;
+	line-height: 35px;
+	display:block;
+		margin: 0px auto;
+	font-family: 'Dosis', Arial, serif;
+	font-size: 18px;
+		font-weight: bold;
+	text-align:center;
+	text-decoration:none;
+	color: #acaab8;
+	background-color:#FFF;	
+	-moz-border-radius: 6px; /* Firefox */
+	-webkit-border-radius: 6px; /* Google Chrome y Safari */
+	border-radius: 6px; /* CSS3 (Opera 10.5, IE 9 y est&aacute;ndar a ser soportado por todos los futuros navegadores) */
+	border: 2px solid #acaab8;
+}
+
+.horizontal_btn li a:hover, .horizontal_btn li a:active  {
+	color: #fff;
+	background-color:#acaab8;	
+	border: 2px solid #acaab8;
+}
+
+/*#############################   LOCKER NUEVO   ####################################### */
+
+#locker {
+	width: 830px;
+	height: 399px;
+	float: left;
+	margin-left: 20px;
+	padding: 0px 0px 0px 6px;
+	background-color: #dcddb1;
+	border: 2px solid #8e8f72;
+	-moz-border-radius: 8px; /* Firefox */
+	-webkit-border-radius: 8px; /* Google Chrome y Safari */
+	border-radius: 8px; /* CSS3 (Opera 10.5, IE 9 y est&aacute;ndar a ser soportado por todos los futuros navegadores) */
+}
+
+#locker_izq {
+	width: 48%;
+	height: 399px;
+	float: left;
+}
+
+#locker_decha {
+	width: 48%;
+	height: 399px;
+	float: left;
+	border-left: 2px solid #8e8f72;
+}
+
+#locker_fotos, #locker_dibus {
+	width: 94%;
+	height: 160px;
+	margin: 10px auto;
+	background-color: #fff;
+}
+
+#locker_fotos h3, #locker_dibus h3 {
+	height: 24px;
+	line-height: 24px;
+	padding: 0px 10px;
+	background-color: #fcfcb2;
+	color: #fff;
+}
+
+
+.locker_comentarios {
+	width: 94%;
+	height: 160px;
+	margin: 10px auto;
+	background-color: #feffcc;
+	border: 1px solid #949494;
+}
+
+.locker_comentarios h3 {
+	height: 24px;
+	line-height: 24px;
+	padding: 0px 10px;
+	background-color: #949494;
+	color: #fff;
+}
+
+.locker_comentarios small {
+	height: 24px;
+	line-height: 24px;
+	padding: 0px 10px;
+	color: #fff;
+	float:right;
+}
+
+.locker_comentarios small a {
+	display:block;
+	color:inherit;
+}
+
+.locker_nota {
+	line-height: 120%;
+	min-height: 52px;
+	padding: 4px 10px;
+	color: #3a3a3a;
+	font-size:14px;
+	border-bottom: 1px solid #949494;
+}
+
+.locker_nota p {
+	width: 70%;
+	float: left;
+	line-height: 120%;
+	padding: 4px 10px;
+	color: #3a3a3a;
+	font-size:14px;
+}
+
+.fecha {
+	height: 20px;
+	font-size: 11px;
+	float: right;
+}
+
+.btn_responder {
+	height: 20px;
+	float: right;
+}
+
+.btn_responder a, .btn_responder a:visited {
+	height: 20px;
+	line-height: 20px;
+	font-size:12px;
+	background-color: #fff;
+	padding: 0px 10px;
+	color: #acaab8;
+	-moz-border-radius: 8px; /* Firefox */
+	-webkit-border-radius: 8px; /* Google Chrome y Safari */
+	border-radius: 8px; /* CSS3 (Opera 10.5, IE 9 y est&aacute;ndar a ser soportado por todos los futuros navegadores) */
+	text-decoration:none;
+	border: 1px solid #acaab8;
+}
+
+.btn_responder a:hover, .btn_responder a:active {
+	height: 20px;
+	line-height: 20px;
+	font-size:12px;
+	background-color: #acaab8;
+	padding: 0px 10px;
+	color: #fff;
+	-moz-border-radius: 8px; /* Firefox */
+	-webkit-border-radius: 8px; /* Google Chrome y Safari */
+	border-radius: 8px; /* CSS3 (Opera 10.5, IE 9 y est&aacute;ndar a ser soportado por todos los futuros navegadores) */
+	text-decoration:none;
+}
+
+/*#############################   PADRE    ####################################### */
+
+#padre {
+	padding: 0px;
+	margin:0px;
+	font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+	color: #3a3a3a;
+	background-image:url(../img/padre/fondo.gif);
+	background-position: top center;
+	background-repeat:no-repeat;
+}
+
+#header_padre {
+	width: 1024px;
+	height: 93px;
+	float:left;
+	position: relative;
+	border-bottom: 1px solid #02dc02;
+	background-color: #3a3a3a;
+}
+
+.separador_padre {
+	width: 2px;
+	height: 72px;
+	float:left;
+	background-image:url(../img/padre/separador.gif);
+}
+
+#buscador_padre input  {
+	-moz-border-radius: 10px; /* Firefox */
+	-webkit-border-radius: 10px; /* Google Chrome y Safari */
+	border-radius: 10px; /* CSS3 (Opera 10.5, IE 9 y est&aacute;ndar a ser soportado por todos los futuros navegadores) */
+	width: 225px;
+	height: 35px;
+	border: 8px solid #02dc02;
+	background-color: #fff;	
+	font-family: Dosis, Arial, serif;
+	font-weight: 400;
+	font-size: 17px;
+	padding: 0px 5px;
+	margin: 10px 5px;
+}
+
+#buscador_padre input:hover, #buscador_padre input:focus {
+	background-color: #d3d3d3;	
+	outline:0px;	
+}
+
+
+#padre_contenido {
+	width: 597px;
+	height: 485px;
+	float: left;
+	margin: 0px 40px;
+	background-color: #02dc02;
+	-moz-border-radius: 8px; /* Firefox */
+	-webkit-border-radius: 8px; /* Google Chrome y Safari */
+	border-radius: 8px; /* CSS3 (Opera 10.5, IE 9 y est&aacute;ndar a ser soportado por todos los futuros navegadores) */
+	position:relative;
+}
+
+#padre_contenido h2 {
+	font-family: 'Dosis', Arial, serif;
+	font-weight: 500;
+	font-size: 22px;
+	width: 100%;
+	height: 60px;
+	line-height: 60px;
+	padding: 0px 30px 0px;
+	color: #fff;
+	position:relative;
+}
+
+#padre_contenido h2 img {
+	position:absolute;
+	top: 0px;
+	right: 250px;
+}
+
+#datos_padre {
+	width: 280px;
+	height: 180px;
+	float:left;
+	font-family: 'Dosis', Arial, serif;
+	font-weight: 500;
+	font-size: 18px;
+		padding: 20px 0px 0px;
+}
+
+#datos_padre strong {
+	color: #02dc02;
+	
+}
+
+
+
+/* ########################## BTN PADRE ########################## */
+
+#padre_btn {
+	width: 95%;
+	height: 100px;
+	float:left;
+	margin: 20px 12px 10px;
+}
+
+#padre_btn_regresar, #padre_btn_capturar, #padre_btn_editar, #padre_btn_subir   {
+	width: 175px;
+	height: 98px;
+	float: left;
+	margin: 7px;	
+}
+
+#padre_btn_regresar a, #padre_btn_regresar a:visited {
+	width: 175px;
+	height: 98px;
+	display:block;
+	background-image:url(../img/padre/btn_regresar.png);
+
+}
+
+#padre_btn_regresar a:hover, #padre_btn_regresar a:active {
+	width: 175px;
+	height: 98px;
+	display:block;
+	background-image:url(../img/padre/btn_regresar_hover.png);
+
+}
+
+#padre_btn_capturar a, #padre_btn_capturar a:visited {
+	width: 175px;
+	height: 98px;
+	display:block;
+	background-image:url(../img/padre/btn_capturar.png);
+
+}
+
+#padre_btn_capturar a:hover, #padre_btn_capturar a:active {
+	width: 175px;
+	height: 98px;
+	display:block;
+	background-image:url(../img/padre/btn_capturar_hover.png);
+
+}
+
+#padre_btn_editar a, #padre_btn_editar a:visited {
+	width: 175px;
+	height: 98px;
+	display:block;
+	background-image:url(../img/padre/btn_editar.png);
+
+}
+
+#padre_btn_editar a:hover, #padre_btn_editar a:active {
+	width: 175px;
+	height: 98px;
+	display:block;
+	background-image:url(../img/padre/btn_editar_hover.png);
+}
+
+
+
+/*#############################   PADRE  MENU LATERAL   ####################################### */
+
+#lateral_pad_educacion, #lateral_pad_biblioteca, #lateral_pad_familia, #lateral_pad_comunicacion {
+	width:149px;
+	height: 58px;
+	float:left;
+}
+
+#lateral_pad_educacion a, #lateral_pad_educacion a:visited {
+	width:149px;
+	height: 58px;
+	display:block;
+	background-image:url(../img/padre/educacion.gif);
+}
+
+#lateral_pad_educacion a:hover, #lateral_pad_educacion a:active, #lateral_pad_educacion span {
+	width:149px;
+	height: 58px;
+	display:block;
+	background-image:url(../img/padre/educacion_hover.gif);
+}
+
+#lateral_pad_biblioteca a, #lateral_pad_biblioteca a:visited {
+	width:149px;
+	height: 58px;
+	display:block;
+	background-image:url(../img/padre/biblioteca.gif);
+}
+
+#lateral_pad_biblioteca a:hover, #lateral_pad_biblioteca a:active, #lateral_pad_biblioteca span {
+	width:149px;
+	height: 58px;
+	display:block;
+	background-image:url(../img/padre/biblioteca_hover.gif);
+}
+
+#lateral_pad_familia a, #lateral_pad_familia a:visited {
+	width:149px;
+	height: 58px;
+	display:block;
+	background-image:url(../img/padre/familia.gif);
+}
+
+#lateral_pad_familia a:hover, #lateral_pad_familia a:active, #lateral_pad_familia span {
+	width:149px;
+	height: 58px;
+	display:block;
+	background-image:url(../img/padre/familia_hover.gif);
+}
+
+#lateral_pad_comunicacion a, #lateral_pad_comunicacion a:visited {
+	width:149px;
+	height: 58px;
+	display:block;
+	background-image:url(../img/padre/comunicacion.gif);
+}
+
+#lateral_pad_comunicacion a:hover, #lateral_pad_comunicacion a:active, #lateral_pad_comunicacion span {
+	width:149px;
+	height: 58px;
+	display:block;
+	background-image:url(../img/padre/comunicacion_hover.gif);
+}
+#lateral_pad_hijo {
+	width:149px;
+	height: 58px;
+	float:left;
+	position: relative;
+}
+
+#lateral_pad_hijo p {
+	width:149px;
+	height: 30px;
+	float:left;
+	color: #fff;
+	font-size: 14px;
+	position: absolute;
+	top: 20px;
+	right: -70px;
+
+}
+/*#############################   PADRE  hijos   ####################################### */
+
+#hijos {
+	background: #d4d4d4;
+	-moz-border-radius: 10px; /* Firefox */
+	-webkit-border-radius: 10px; /* Google Chrome y Safari */
+	border-radius: 10px; /* CSS3 (Opera 10.5, IE 9 y est&aacute;ndar a ser soportado por todos los futuros navegadores) */
+	width: 580px;
+	height: 455px;
+	float:left;
+	padding-left: 20px;
+}
+
+#hijos h4 {
+	font-family: 'Dosis', Arial, serif;
+	font-weight: 500;
+	font-size: 24px;
+	width: 100%;
+	height: 60px;
+	line-height: 60px;
+	padding: 0px 25px 0px;
+}
+
+
+
+.hijo {
+	background: #333;
+	-moz-border-radius: 10px; /* Firefox */
+	-webkit-border-radius: 10px; /* Google Chrome y Safari */
+	border-radius: 10px; /* CSS3 (Opera 10.5, IE 9 y est&aacute;ndar a ser soportado por todos los futuros navegadores) */
+	width: 144px;
+	margin: 5px 15px;
+	height: 160px;
+	float:left;
+	border: 2px solid #fff;
+}
+
+.hijo_foto {
+	width: 144px;
+	height: 124px;
+		position: relative;
+		float:left;
+}
+
+.hijo_foto img {
+	position: absolute;
+	top: 10px;
+	left: 24px;
+}
+
+.hijo_nombre {
+	float:left;
+	width: 134px;
+	color: #fff;
+	text-align: center;
+	background: #02dc02;
+	padding: 5px;
+	height: 24px;
+	line-height: 24px;
+	border-top: 2px solid #fff;
+	-moz-border-bottom-left-radius: 8px; /* Firefox */
+	-webkit-border-bottom-left-radius: 8px; /* Google Chrome y Safari */
+	border-bottom-left-radius: 8px; /* CSS3 (Opera 10.5, IE 9 y est&aacute;ndar a ser soportado por todos los futuros navegadores) */
+	
+	-moz-border-bottom-right-radius: 8px; /* Firefox */
+	-webkit-border-bottom-right-radius: 8px; /* Google Chrome y Safari */
+	border-bottom-right-radius: 8px; /* CSS3 (Opera 10.5, IE 9 y est&aacute;ndar a ser soportado por todos los futuros navegadores) */
+}
+
+/*#############################   PADRE  hijos   ####################################### */
+
+.padre_enlace0 {
+	width:225px;
+	height:40px;
+	display:block;
+	position:absolute;
+	top: 25px;
+	left: 25px;
+}
+
+.padre_enlace1 {
+	width:225px;
+	height:40px;
+	display:block;
+	position:absolute;
+	top: 85px;
+	left: 25px;
+}
+
+.padre_enlace2 {
+	width:225px;
+	height:40px;
+	display:block;
+	position:absolute;
+	top: 145px;
+	left: 25px;
+}
+
+.padre_enlace3 {
+	width:225px;
+	height:40px;
+	display:block;
+	position:absolute;
+	top: 205px;
+	left: 25px;
+}
+
+.padre_enlace4 {
+	width:225px;
+	height:40px;
+	display:block;
+	position:absolute;
+	top: 225px;
+	left: 25px;
+}
+
+.padre_enlace0 a, .padre_enlace1 a, .padre_enlace2 a,  .padre_enlace3 a, .padre_enlace4 a  {
+	width:225px;
+	height:40px;
+	line-height: 40px;
+	display:block;
+	font-family: 'Dosis', Arial, serif;
+	font-size: 20px;
+	color: #02dc02;
+	text-align:center;
+	text-decoration:none;
+	background-color:#FFF;	
+	-moz-border-radius: 6px; /* Firefox */
+	-webkit-border-radius: 6px; /* Google Chrome y Safari */
+	border-radius: 6px; /* CSS3 (Opera 10.5, IE 9 y est&aacute;ndar a ser soportado por todos los futuros navegadores) */
+		border: 2px solid white;
+}
+
+.padre_enlace0 a:hover, .padre_enlace1 a:hover, .padre_enlace2 a:hover, .padre_enlace3 a:hover, .padre_enlace4 a:hover {
+	width:225px;
+	height:40px;
+	line-height: 40px;
+	display:block;
+	font-family: 'Dosis', Arial, serif;
+	font-size: 20px;
+	color: #fff;
+	text-align:center;
+	text-decoration:none;
+	background-color:#02dc02;	
+	-moz-border-radius: 6px; /* Firefox */
+	-webkit-border-radius: 6px; /* Google Chrome y Safari */
+	border-radius: 6px; /* CSS3 (Opera 10.5, IE 9 y est&aacute;ndar a ser soportado por todos los futuros navegadores) */
+	border: 2px solid white;
+}
+
+.padre_foro_enlace1 {
+	width:225px;
+	height:40px;
+	display:block;
+	position:absolute;
+	top: 45px;
+	left: 25px;
+}
+
+.padre_foro_enlace2 {
+	width:225px;
+	height:40px;
+	display:block;
+	position:absolute;
+	top: 105px;
+	left: 25px;
+}
+
+.padre_foro_enlace3 {
+	width:225px;
+	height:40px;
+	display:block;
+	position:absolute;
+	top: 165px;
+	left: 25px;
+}
+
+.padre_foro_enlace4 {
+	width:225px;
+	height:40px;
+	display:block;
+	position:absolute;
+	top: 225px;
+	left: 25px;
+}
+
+.padre_foro_enlace0 a, .padre_foro_enlace1 a, .padre_foro_enlace2 a,  .padre_foro_enlace3 a, .padre_foro_enlace4 a  {
+	width:225px;
+	height:40px;
+	line-height: 40px;
+	display:block;
+	font-family: 'Dosis', Arial, serif;
+	font-size: 20px;
+	color: #02dc02;
+	text-align:center;
+	text-decoration:none;
+	background-color:#FFF;	
+	-moz-border-radius: 6px; /* Firefox */
+	-webkit-border-radius: 6px; /* Google Chrome y Safari */
+	border-radius: 6px; /* CSS3 (Opera 10.5, IE 9 y est&aacute;ndar a ser soportado por todos los futuros navegadores) */
+		border: 2px solid white;
+}
+
+.padre_foro_enlace1 a:hover, .padre_foro_enlace2 a:hover, .padre_foro_enlace3 a:hover, .padre_foro_enlace4 a:hover {
+	width:225px;
+	height:40px;
+	line-height: 40px;
+	display:block;
+	font-family: 'Dosis', Arial, serif;
+	font-size: 20px;
+	color: #fff;
+	text-align:center;
+	text-decoration:none;
+	background-color:#02dc02;	
+	-moz-border-radius: 6px; /* Firefox */
+	-webkit-border-radius: 6px; /* Google Chrome y Safari */
+	border-radius: 6px; /* CSS3 (Opera 10.5, IE 9 y est&aacute;ndar a ser soportado por todos los futuros navegadores) */
+	border: 2px solid white;
+}
+
+
+#reporte_nav {
+	width: 825px;
+	height: 33px;
+	float: left;
+}
+
+#reporte_nav ul {
+	float: right;
+	border: 2px solid #02dc02;
+	-moz-border-radius: 8px; /* Firefox */
+	-webkit-border-radius: 8px; /* Google Chrome y Safari */
+	border-radius: 8px; /* CSS3 (Opera 10.5, IE 9 y est&aacute;ndar a ser soportado por todos los futuros navegadores) */
+}
+
+#reporte_nav ul li {
+	float: left;
+}
+
+#reporte_nav ul li a {
+	text-decoration:none;
+	display:block;
+	font-size: 19px;
+	font-weight: bold;
+	padding: 5px;
+	color: #3a3a3a;
+}
+
+#reporte_nav ul li a:hover, #reporte_nav ul li a:active, #reporte_nav ul li span {
+	text-decoration:none;
+	display:block;
+	font-size: 19px;
+	font-weight: bold;
+	padding: 5px;
+	color: #fff;
+	-moz-border-radius: 5px; /* Firefox */
+	-webkit-border-radius: 5px; /* Google Chrome y Safari */
+	border-radius: 5px; /* CSS3 (Opera 10.5, IE 9 y est&aacute;ndar a ser soportado por todos los futuros navegadores) */
+	background-color: #02dc02;
+}
+
+/* ########################## PADRE BIBLIOTECA ########################## */
+
+#nav_biblio_padre {
+	width: 210px;
+	background-color: #6b6b6b;
+	-moz-border-radius: 8px; /* Firefox */
+	-webkit-border-radius: 8px; /* Google Chrome y Safari */
+	border-radius: 8px; /* CSS3 (Opera 10.5, IE 9 y est&aacute;ndar a ser soportado por todos los futuros navegadores) */
+	margin: 0px 10px 10px 20px;	
+	float:left;
+}
+
+#nav_biblio_padre ul {
+	margin: 0px;
+}
+
+#nav_biblio_padre ul li {
+	font-family: Dosis, Arial, serif;
+	font-weight: 500;
+	height: 35px;
+	font-size: 20px;
+	border-bottom: 2px solid #fff;
+}
+
+#nav_biblio_padre ul li:last-child {
+	border-bottom: 0px solid #fff;
+}
+
+#nav_biblio_padre ul li a {
+	color: #fff;
+	text-decoration: none;
+		height: 25px;
+	display: block;
+	padding: 5px 10px;
+}
+
+#nav_biblio_padre  ul li:first-child a:hover, #nav_biblio_padre ul li:first-child a:active {
+	color: #fff;
+	text-decoration: none;
+	display: block;
+	background-color: #02dc02;
+	-moz-border-top-left-radius: 8px; /* Firefox */
+	-webkit-border-top-left-radius: 8px; /* Google Chrome y Safari */
+	border-top-left-radius: 10px; /* CSS3 (Opera 10.5, IE 9 y est&aacute;ndar a ser soportado por todos los futuros navegadores) */
+	
+	-moz-border-top-right-radius: 8px; /* Firefox */
+	-webkit-border-top-right-radius: 8px; /* Google Chrome y Safari */
+	border-top-right-radius: 8px; /* CSS3 (Opera 10.5, IE 9 y est&aacute;ndar a ser soportado por todos los futuros navegadores) */
+}
+
+
+#nav_biblio_padre  ul li:last-child a:hover, #nav_biblio_padre ul li:first-child a:active {
+	color: #fff;
+	text-decoration: none;
+	display: block;
+	background-color: #02dc02;
+	-moz-border-bottom-left-radius: 8px; /* Firefox */
+	-webkit-border-bottom-left-radius: 8px; /* Google Chrome y Safari */
+	border-bottom-left-radius: 8px; /* CSS3 (Opera 10.5, IE 9 y est&aacute;ndar a ser soportado por todos los futuros navegadores) */
+	
+	-moz-border-bottom-right-radius: 8px; /* Firefox */
+	-webkit-border-bottom-right-radius: 8px; /* Google Chrome y Safari */
+	border-bottom-right-radius: 8px; /* CSS3 (Opera 10.5, IE 9 y est&aacute;ndar a ser soportado por todos los futuros navegadores) */
+}
+
+#nav_biblio_padre ul li a:hover {
+	color: #fff;
+	text-decoration: none;
+	display: block;
+	background-color: #02dc02;
+}
+
+
+
+
+/* ######################## */
+
+#modulo_p_mensaje1 a, #modulo_p_mensaje1 a:visited {
+	width: 280px;
+	height: 240px;
+	display:block;
+	background-image:url(../img/padre/modulo_mensaje1.gif);
+}
+
+#modulo_p_mensaje1 a:hover, #modulo_p_mensaje1 a:active {
+	width: 280px;
+	height: 240px;
+	display:block;
+	background-image:url(../img/padre/modulo_mensaje1_hover.gif);
+}
+
+#modulo_p_mensaje2 a, #modulo_p_mensaje2 a:visited {
+	width: 280px;
+	height: 240px;
+	display:block;
+	background-image:url(../img/padre/modulo_mensaje2.gif);
+}
+
+#modulo_p_mensaje2 a:hover, #modulo_p_mensaje2 a:active {
+	width: 280px;
+	height: 240px;
+	display:block;
+	background-image:url(../img/padre/modulo_mensaje2_hover.gif);
+}
+
+#modulo_p_foros a, #modulo_p_foros a:visited {
+	width: 280px;
+	height: 240px;
+	display:block;
+	background-image:url(../img/padre/modulo_foros.gif);
+}
+
+#modulo_p_foros a:hover, #modulo_p_foros a:active {
+	width: 280px;
+	height: 240px;
+	display:block;
+	background-image:url(../img/padre/modulo_foros_hover.gif);
+}
+
+#modulo_p_enviar a, #modulo_p_enviar a:visited {
+	width: 280px;
+	height: 240px;
+	display:block;
+	background-image:url(../img/padre/modulo_enviar.gif);
+}
+
+#modulo_p_enviar a:hover, #modulo_p_enviar a:active {
+	width: 280px;
+	height: 240px;
+	display:block;
+	background-image:url(../img/padre/modulo_enviar_hover.gif);
+}
+
+
+/* ########################## VERTICAL BTN PADRE ########################## */
+
+.vertical_btn_padre {
+	font-size: 14px;
+}
+
+.vertical_btn_padre li {
+	height:35px;
+	display:block;
+	margin: 20px 0px;
+}
+
+
+.vertical_btn_padre li a, .vertical_btn_padre li a:visited  {
+	width:50%;
+	height:35px;
+	line-height: 35px;
+	display:block;
+		margin: 0px auto;
+	font-family: 'Dosis', Arial, serif;
+	font-size: 18px;
+	font-weight: bold;
+	text-align:center;
+	text-decoration:none;
+	color: #02dc02;
+	background-color:#FFF;	
+	-moz-border-radius: 6px; /* Firefox */
+	-webkit-border-radius: 6px; /* Google Chrome y Safari */
+	border-radius: 6px; /* CSS3 (Opera 10.5, IE 9 y est&aacute;ndar a ser soportado por todos los futuros navegadores) */
+	border: 2px solid #02dc02;
+}
+
+.vertical_btn_padre li a:hover, .vertical_btn_padre li a:active  {
+	color: #fff;
+	background-color:#02dc02;	
+	border: 2px solid #02dc02;
+}
+
+/* ####################     EDUCACION         ##################*/
+
+.educacion {
+	background: #d4d4d4;
+	-moz-border-radius: 10px; /* Firefox */
+	-webkit-border-radius: 10px; /* Google Chrome y Safari */
+	border-radius: 10px; /* CSS3 (Opera 10.5, IE 9 y est&aacute;ndar a ser soportado por todos los futuros navegadores) */
+	width: 580px;
+	height: 220px;
+	float:left;
+}
+
+.educacion h2 {
+	font-family: 'Dosis', Arial, serif;
+	font-weight: 500;
+	font-size: 22px;
+	width: 100%;
+	height: 37px;
+	line-height: 37px;
+	text-indent: 20px;
+	background: #616161;
+		-moz-border-top-left-radius: 8px; /* Firefox */
+	-webkit-border-top-left-radius: 8px; /* Google Chrome y Safari */
+	border-top-left-radius: 10px; /* CSS3 (Opera 10.5, IE 9 y est&aacute;ndar a ser soportado por todos los futuros navegadores) */
+	
+	-moz-border-top-right-radius: 8px; /* Firefox */
+	-webkit-border-top-right-radius: 8px; /* Google Chrome y Safari */
+	border-top-right-radius: 8px; /* CSS3 (Opera 10.5, IE 9 y est&aacute;ndar a ser soportado por todos los futuros navegadores) */
+	color: #fff;
+}
+
+.educacion ul {
+	width: 580px;
+	float:left;
+}
+
+.educacion ul li {
+	width: 580px;
+	line-height: 20px;
+	float:left;
+	border-bottom: 2px solid #fff;
+}
+
+.educacion ul li a {
+	text-decoration:none;
+	color:inherit;
+	display:block;
+	padding: 4px 15px;
+}
+
+.educacion ul li a:hover, .educacion ul li a:active {
+	text-decoration:none;
+	color: #fff;
+	background-color: #02dc02;
+}
+
+/* ########################## MAPA ########################## */
+#padre_mapa {
+	width: 55%;
+	float: left;
+	margin: 0px 10px 0px 40px;
+	background-color: #fff;
+	-moz-border-radius: 8px; /* Firefox */
+	-webkit-border-radius: 8px; /* Google Chrome y Safari */
+	border-radius: 8px; /* CSS3 (Opera 10.5, IE 9 y est&aacute;ndar a ser soportado por todos los futuros navegadores) */
+	border: 3px solid #02dc02;
+	position:relative;
+}
+
+#tutor_mapa {
+		width: 55%;
+	float: left;
+	margin: 0px 10px 0px 40px;
+	background-color: #fff;
+	-moz-border-radius: 8px; /* Firefox */
+	-webkit-border-radius: 8px; /* Google Chrome y Safari */
+	border-radius: 8px; /* CSS3 (Opera 10.5, IE 9 y est&aacute;ndar a ser soportado por todos los futuros navegadores) */
+	position:relative;
+	border: 3px solid #04b7f9;
+
+}
+
+#padre_mapa h2, #tutor_mapa h2 {
+	font-family: 'Dosis', Arial, serif;
+	font-weight: 500;
+	font-size: 22px;
+	width: 30%;
+	height: 60px;
+	line-height: 60px;
+	padding: 0px 30px 0px;
+	color: #fff;
+	position:absolute;
+	top: 0px;
+	left:0px;
+}
+
+#mapa {
+	width: 78%;
+	height: 409px;
+	float:left;
+}
+
+#calidad_nav {
+	width: 17%;
+		float:left;
+		margin: 10px;
+}
+
+#calidad_nav ul {
+	font-family: 'Dosis', Arial, serif;
+	font-weight: bold;
+	font-size: 14px;
+	padding: 0px;
+
+}
+
+#calidad_nav ul li {
+	-moz-border-radius: 8px; /* Firefox */
+	-webkit-border-radius: 8px; /* Google Chrome y Safari */
+	border-radius: 8px; /* CSS3 (Opera 10.5, IE 9 y est&aacute;ndar a ser soportado por todos los futuros navegadores) */
+	border: 3px solid #acaab8;
+	text-align:center;
+	margin: 10px 0px;
+
+}
+
+#calidad_nav ul li a {
+	text-decoration:none;
+	display:block;
+	height: 50px;
+	line-height: 50px;
+			color: #3a3a3a;
+}
+
+#calidad_nav ul li a:hover {
+	display:block;
+	height: 50px;
+	line-height: 50px;
+	background-color: #acaab8;
+				color: #fff;
+}
+
+/* ###################### COLORES #################### */
+
+.fondo_naranja {
+	background-color: #acaab8 !important;
+}
+
+.color_naranja {
+	color: #acaab8 !important;
+}
+
+
+.fondo_verde {
+	background-color: #02dc02 !important;
+}
+
+.color_verde {
+	color: #02dc02 !important;
+}
+
+.fondo_azul {
+	background-color: #04b7f9 !important;
+}
+
+.color_azul {
+	color: #04b7f9 !important;
+}
+
