@@ -80,6 +80,7 @@ $colorBorde = obtenerColor(STORAGE_PATH."cursos/".$idCurso."/frontweb/colores.in
                 height: 121px;
                 float: left;
                 position: relative;
+                text-align: center;
             }
 
             #alumno_bloque_control h3 {
@@ -93,7 +94,7 @@ $colorBorde = obtenerColor(STORAGE_PATH."cursos/".$idCurso."/frontweb/colores.in
                 color: #347ff2;
             }
             .contenido_largo {
-                width: 94%;
+                width: 97%;
                 height: 76%;
                 float: left;
                 -moz-border-radius: 8px; /* Firefox */
