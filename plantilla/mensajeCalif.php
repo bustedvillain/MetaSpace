@@ -43,8 +43,8 @@ $colorBorde = obtenerColor(STORAGE_PATH."cursos/".$idCurso."/frontweb/colores.in
         <link href='http://fonts.googleapis.com/css?family=Dosis:400,300,500' rel='stylesheet' type='text/css'>
         <style>
             #alumno_bloque {
-                width: 825px;
-                height: 430px;
+                width: 100%;
+                height: 100%;
                 float: left;
                 margin: 0px 10px 0px 40px;
                 -moz-border-radius: 8px; /* Firefox */
@@ -76,7 +76,7 @@ $colorBorde = obtenerColor(STORAGE_PATH."cursos/".$idCurso."/frontweb/colores.in
             }
 
             #alumno_bloque_control {
-                width: 773px;
+                width: 100%;
                 height: 121px;
                 float: left;
                 position: relative;
@@ -85,16 +85,16 @@ $colorBorde = obtenerColor(STORAGE_PATH."cursos/".$idCurso."/frontweb/colores.in
             #alumno_bloque_control h3 {
                 font-family: 'Dosis', Arial, serif;
                 font-weight: 500;
-                font-size: 38px;
+                font-size: 250%;
                 height: 42px;
-                line-height: 42px;
+                line-height: 50%;
                 text-align: center;
                 padding: 0px 30px 0px;
                 color: #347ff2;
             }
             .contenido_largo {
-                width: 790px;
-                height: 340px;
+                width: 94%;
+                height: 76%;
                 float: left;
                 -moz-border-radius: 8px; /* Firefox */
                 -webkit-border-radius: 8px; /* Google Chrome y Safari */
@@ -109,12 +109,12 @@ $colorBorde = obtenerColor(STORAGE_PATH."cursos/".$idCurso."/frontweb/colores.in
             <h2>BLOQUE <?php echo $nUni; ?><img src="<?php echo $rutaCursos; ?>bloque.gif" class="elem_absolute" style="top: 0px; right: 80px;" width="57" height="57" /></h2>
             <div class="contenido_largo">
                 <p class="margin10"><strong>Has ganado:</strong></p>
-                <div class="elem_left" style="margin-left: 260px;"><img src="<?php echo $rutaPremios.$imagenPremio; ?>" width="240" height="180" /></div>
+                <div style="display:block; text-align: center;"><img src="<?php echo $rutaPremios.$imagenPremio; ?>" width="240" height="180" /></div>
                 <!--<div class="elem_left"><img src="../img/alumno/bloque_estrellas.jpg" width="99" height="216" /></div>-->
                 <div id="alumno_bloque_control">
                     <h3>¿Quieres volver a intentarlo?</h3>
-                    <div class="elem_absolute" style="top: 45px; left: 280px;"><a href="" onclick="try{parent.window.frameCont.location.reload();}catch(e){parent.window.frameCont.contentWindow.location.reload();} parent.cierraCalif();"><img src="<?php echo $rutaCursos; ?>reintentar.jpg" width="87" height="72" /></a></div>
-                    <div class="elem_absolute" style="top: 45px; left: 400px;"><a href="" onclick="parent.avanceDesdeCalif()"><img src="<?php echo $rutaCursos; ?>salir.jpg" width="87" height="72" /></a></div>
+                    <div style="display:inline; margin-right: 5%;"><a href="" onclick="try{parent.window.frameCont.location.reload();}catch(e){parent.window.frameCont.contentWindow.location.reload();} parent.cierraCalif();"><img src="<?php echo $rutaCursos; ?>reintentar.jpg" width="10%" /></a></div>
+                    <div style="display:inline;"><a href="" onclick="parent.avanceDesdeCalif()"><img src="<?php echo $rutaCursos; ?>salir.jpg" width="10%"/></a></div>
                 </div>
             </div>
 
