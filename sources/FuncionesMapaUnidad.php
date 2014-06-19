@@ -116,7 +116,7 @@ function generaElementosAER($idSerie, $idRelCursoGrupo,$idAlumno, &$baseContador
             $color  = $evaluacion[0];
             $imagen = $evaluacion[1];
             $curso  = $evaluacion[2];
-            $html   .='<div class="aer" onclick="parent.linkSerie('.$baseContador.'); parent.jQuery.fancybox.close();">';                        
+            $html   .='<div class="aer" id="'.$baseContador.'" onclick="parent.linkSerie('.$baseContador.'); parent.jQuery.fancybox.close();">';                        
             $html   .= '<div class="letra '.$color.'">'.$elemento->tipoElemento.'</div>';
 //            $html .=  '<div>
 //                        <div class="aro"></div>

@@ -1202,3 +1202,11 @@ function linkSerie(id_elemento){
     volumenGral = $("#sliderVolumen").slider("option", "value");
 }
 
+/**
+ * Funcion que devuelve el indice actual
+ * @returns {indicePorIdElemento.i|Number|indiceActual|id_elemento}
+ */
+function getIndiceActual(){
+    return indiceActual;
+}
+

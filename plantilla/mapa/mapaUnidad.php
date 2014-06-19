@@ -53,7 +53,10 @@
 
 
         </div>
-    
+        <script>
+            //De acuerdo a la posicion actual, busca el id del contenido y lo colorea de color naranja
+            document.getElementById(parent.getIndiceActual()).style.border= "2px solid #ff9000";
+        </script>
     </body>
 
 </html>
