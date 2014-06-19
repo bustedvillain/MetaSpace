@@ -110,7 +110,7 @@ $colorBorde = obtenerColor(STORAGE_PATH."cursos/".$idCurso."/frontweb/colores.in
             <h2>BLOQUE <?php echo $nUni; ?><img src="<?php echo $rutaCursos; ?>bloque.gif" class="elem_absolute" style="top: 0px; right: 80px;" width="57" height="57" /></h2>
             <div class="contenido_largo">
                 <p class="margin10"><strong>Has ganado:</strong></p>
-                <div style="display:block; text-align: center;"><img src="<?php echo $rutaPremios.$imagenPremio; ?>" width="240" height="180" /></div>
+                <div style="display:block; text-align: center;"><img src="<?php echo $rutaPremios.$imagenPremio; ?>" width="20%"/></div>
                 <!--<div class="elem_left"><img src="../img/alumno/bloque_estrellas.jpg" width="99" height="216" /></div>-->
                 <div id="alumno_bloque_control">
                     <h3>¿Quieres volver a intentarlo?</h3>
