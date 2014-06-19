@@ -1,4 +1,4 @@
-<?php require_once '../../sources/Funciones.php';?>
+<?php require_once '../../sources/Funciones.php'; ?>
 <html>
     <head>
         <title>Mapa Unidad</title>
@@ -7,56 +7,53 @@
     </head>
     <body>
         <div id="mapaUnidad">     
-   <div  class="row gris">
-	<div id="titulo" class="grid_12">
-            <h1>Mapa de Bloque <?php echo obtenerNoUnidad($_GET['idUnidad']);?></h1>
-	</div>
-    </div>
+            <div  class="row gris">
+                <div id="titulo" class="grid_12">
+                    <h1>Mapa de Bloque <?php echo obtenerNoUnidad($_GET['idUnidad']); ?></h1>
+                </div>
+            </div>
             <br/>
             <div class="row">
-            
-            <?php 
-            $idUnidad = $_GET['idUnidad'];
-            $idRelCursoGrupo = $_GET['idRelCursoGrupo'];
-            $idAlumno = $_GET['idAlumno'];
-            
-            generarSeries($idUnidad,
-                          $idRelCursoGrupo,
-                          $idAlumno);
-            
-            $porcentajeAvance=porcentajeAvance($idUnidad,
-                                               $idRelCursoGrupo,
-                                               $idAlumno);
-            ?>
+
+                <?php
+                $idUnidad = $_GET['idUnidad'];
+                $idRelCursoGrupo = $_GET['idRelCursoGrupo'];
+                $idAlumno = $_GET['idAlumno'];
+
+                generarSeries($idUnidad, $idRelCursoGrupo, $idAlumno);
+
+                $porcentajeAvance = porcentajeAvance($idUnidad, $idRelCursoGrupo, $idAlumno);
+                ?>
             </div>
-    <div  class="row">
-	<div class="grid_12">
-            <div  class=" fondoTrofeo gris">
-                <div  class="progresoMapa">
-                    <div class="loaderFondo">
-                        <div class="porcentajeCorrecto" style="width: <?php echo $porcentajeAvance?>%"></div>
+            <div  class="row">
+                <div class="grid_12">
+                    <div  class=" fondoTrofeo gris">
+                        <div  class="progresoMapa">
+                            <div class="loaderFondo">
+                                <div class="porcentajeCorrecto" style="width: <?php echo $porcentajeAvance ?>%"></div>
+                            </div>
+                        </div>
+                        <div  id="porcentaje">
+                            <div><?php echo $porcentajeAvance ?>%</div>
+                        </div>
+                        <div class="cajaPromedio">
+                            <div class="textoPromedio">PROMEDIO</div>
+                        </div>
+                        <div class="cajaPromedioImagen">
+                            <div id="trofeoPromedio">
+                                <!--<img src="TROFEO ORO-A.png"/>-->
+<?php echo obtenerImagenPromedioGeneral($idUnidad, $idRelCursoGrupo, $idAlumno) ?>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
-                <div  id="porcentaje">
-                    <div><?php echo $porcentajeAvance?>%</div>
-                </div>
-                <div class="cajaPromedio">
-                    <div class="textoPromedio">PROMEDIO</div>
-                </div>
-                <div class="cajaPromedioImagen">
-                    <div id="trofeoPromedio">
-                        <!--<img src="TROFEO ORO-A.png"/>-->
-                        <?php  echo obtenerImagenPromedioGeneral($idUnidad, $idRelCursoGrupo,$idAlumno)?>
-                    </div>
-                </div>
-                
             </div>
-	</div>
-    </div>
 
 
-            
+
         </div>
-    </body>
     
+    </body>
+
 </html>

@@ -66,7 +66,7 @@ function generarSeries($idUnidad, $idRelCursoGrupo,$idAlumno)
         $contador_series = 0;
         foreach ($seriesUnidad as $serie) 
         {
-            $html .= ' <div class="grid_4" onclick="parent.linkSerie('.$contador_series.');">';
+            $html .= ' <div class="grid_4" onclick="parent.linkSerie('.$contador_series.');" style="cursor:pointer;">';
             $html .= '<div class="letraP">Serie '.$serie->nivel.'</div>';
             $res = generaElementosAER($serie->id, $idRelCursoGrupo,$idAlumno);
             $html .=$res;
