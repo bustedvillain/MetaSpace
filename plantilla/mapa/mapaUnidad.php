@@ -57,7 +57,7 @@
             //De acuerdo a la posicion actual, busca el id del contenido y lo colorea de color naranja
             document.getElementById(parent.getIndiceActual()+"-a").style.color= "#ff9000";
             document.getElementById(parent.getIndiceActual()+"-b").style.backgroundColor = "#ff9000";
-            
+            document.getElementById(parent.getIndiceActual()+"-b").style.color= "white";
             
         </script>
     </body>
