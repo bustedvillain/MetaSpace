@@ -18,6 +18,14 @@ verificarSesionAdminOGestor();
  * FECHA DE MODIFICACIÓN: 19 DE JUNIO DE 2014
  * OBJETIVO: IMPLEMENTACION DE VALIDADOR DE PAQUETES
  */
+/**
+ * CHANGE CONTROL 1.1.0
+ * AUTOR: JOSE MANUEL NIETO GOMEZ
+ * FECHA DE MODIFICACIÓN: 20 DE JUNIO DE 2014
+ * OBJETIVO: IMPLEMENTACION DE MODALIDADES PARA EJECUCION DE CURSOS. 
+ * MODIFICACION EN VENTANA MODAL PARA VER EL CURSO AGREGANDO EL CAMPO DE TIPO DE EJECUCION
+ * MODIFICACION EN VENTANA MODAL PARA EDITAR EL CURSO AGREGANDO EL CAMPO DE TIPO DE EJECUCION PARA SU MODIFICACION
+ */
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -102,10 +110,12 @@ verificarSesionAdminOGestor();
                             <td>Nivel Escolar:</td>
                             <td id="ver_nivel_escolar"></td>
                         </tr>
+                        <!--CONTROL DE CAMBIOS 1.1.0-->
                         <tr>
-                            <td>Nivel Escolar:</td>
-                            <td id="ver_grado_escolar"></td>
+                            <td>Tipo de Ejecuci&oacute;n:</td>
+                            <td id="ver_tipo_ejecucion"></td>
                         </tr>
+                        <!--CONTROL DE CAMBIOS 1.1.0-->
                         <tr>
                             <td>Acci&oacute;n:</td>
                             <td id="probar_curso"></td>
@@ -188,6 +198,17 @@ verificarSesionAdminOGestor();
                                 </td>
                             </tr>
                             <!--termina control de cambios #6-->
+                            <!--CONTROL DE CAMBIOS 1.1.0-->
+                            <tr>
+                                <td>Tipo de Ejecuci&oacute;n:</td>
+                                <td>
+                                    <select name="cursos/tipo_ejecucion" id="edita_tipo_ejecucion" required>
+                                        <option value="0">Aut&oacute;noma/Libre</option>
+                                        <option value="1">Seriaci&oacute;n de bloques</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <!--CONTROL DE CAMBIOS 1.1.1-->
                             <tr>
                                 <td>Iconograf&iacute;a del curso:</td>
                                 <td><input type="file" name="plantilla" accept="application/zip" class="contenido"/></td>

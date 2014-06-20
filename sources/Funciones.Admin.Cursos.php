@@ -251,6 +251,13 @@ TABLA;
 }
 
 /**
+ * CHANGE CONTROL 1.1.0
+ * AUTOR: JOSE MANUEL NIETO GOMEZ
+ * FECHA DE MODIFICACIÓN: 20 DE JUNIO DE 2014
+ * OBJETIVO: MODIFICACION A LA CONSULTA PARA TRAER TAMBIEN EL CAMPO DE "tipo_ejecucion"
+ */
+
+/**
  * Funcion que consulta la información de un curso y la retorna en un arreglo
  * @param type $idCurso
  * @return array 
@@ -275,7 +282,8 @@ function consultaInfoCurso($idCurso) {
                 c.id_categoria,
                 c.id_asignatura,
                 c.id_grado_escolar grado, 
-                ne.id_nivel
+                ne.id_nivel,
+                tipo_ejecucion
             from cursos c
             left join categorias ca
                     on ca.id_categoria = c.id_categoria
@@ -294,7 +302,12 @@ SQL;
     if ($resultado) {
         foreach ($resultado as $res) {
             $cursoMoodle = consultaCursoMoodle($res->id_curso_moodle);
-
+            
+            //Valida el campo tipo de ejecucion. Si es nulo le asigna un 0 (Autonoma por default)
+            if(($tipo_ejecucion = $res->tipo_ejecucion) == null){
+                $tipo_ejecucion = 0;
+            }
+            
             $curso = array("id_curso" => $res->id_curso,
                 "clave_curso" => $res->clave_curso,
                 "nombre_curso" => $res->nombre_curso,
@@ -309,7 +322,8 @@ SQL;
                 "id_categoria" => $res->id_categoria,
                 "id_asignatura" => $res->id_asignatura,
                 "id_nivel" => $res->id_nivel,
-                "id_curso_moodle" => $res->id_curso_moodle);
+                "id_curso_moodle" => $res->id_curso_moodle,
+                "tipo_ejecucion" => $tipo_ejecucion);
 
             //Checa info del gestor de contenido
             if ($res->id_gestor_contenido != "") {
@@ -1751,5 +1765,31 @@ function comboTipoElemento() {
 html;
     }
     return $var;
+}
+
+/**
+ * Funcion que consulta e tipo de ejecucion de un curso:
+ * 0: Autónoma/Libre
+ * 1: Seriación de bloques
+ * @param type $idCurso
+ * @return int
+ */
+function consultaTipoEjecucionCurso($idCurso){
+    $query = new Query("SG");
+
+    $query->sql = "SELECT tipo_ejecucion from cursos where id_curso = $idCurso";
+    $tipoEjecucion = $query->select("obj");
+    
+    if($tipoEjecucion){
+        foreach($tipoEjecucion as $tipo){
+            //Valida el campo tipo de ejecucion. Si es nulo le asigna un 0 (Autonoma por default)
+            if(($tipo_ejecucion = $tipo->tipo_ejecucion) == null){
+                $tipo_ejecucion = 0;
+            }
+            return $tipo_ejecucion;
+        }
+    }else{
+        return 0;
+    }
 }
 ?>

@@ -2,6 +2,14 @@
 
 //session_start();
 //verificaSesionAlumno();
+
+/**
+ * CHANGE CONTROL 1.1.0
+ * AUTOR: JOSE MANUEL NIETO GOMEZ
+ * FECHA DE MODIFICACION: 20 DE JUNIO DE 2014
+ * OBJETIVO: AGREGAR CONSULTA PARA VALIDAR EL TIPO DE EJECUCION DE BLOQUES: LIBRE(AUTONOMA), SERIADA
+ */
+
 /**
  * Devuelve las unidades de un curso que están activas para el alumno
  * @param type $alumno
@@ -10,7 +18,7 @@
  * @param type $idAlumno
  * @return string
  */
-function arregloIdUnidadesMC($alumno, $idRelCursoGrupo, $idCurso, $idAlumno) {
+function arregloIdUnidadesMC($alumno, $idRelCursoGrupo, $idCurso, $idAlumno, $tipoEjecucion) {
     require_once 'Query.php';
     $sql = new Query("SG");
     $sql->sql = <<<hhh
@@ -43,20 +51,45 @@ hhh;
         $arrResultados [0] = 0;
         $bandera = 1;
         foreach ($unidades as $uni) {
-            if($bandera == 1){
-                $arrIdUnidades = $arrIdUnidades . $uni->idUnidad . ",";
-            }else{
-                $arrIdUnidades = $arrIdUnidades . '"-",';
+
+            //ANTIGUO CODIGO
+//            if ($bandera == 1) {
+//                $arrIdUnidades = $arrIdUnidades . $uni->idUnidad . ",";
+//            } else {
+//                $arrIdUnidades = $arrIdUnidades . '"-",';
+//            }
+////            echo '**'.date_create($uni->fechaInicio).'**';
+////            echo $uni->fechaInicio . "$$" . $uni->fechaFin;
+//            if (@unidadFueCompletada($idRelCursoGrupo, $uni->idUnidad, $idAlumno) && (($uni->fechaInicio == null) || ($uni->fechaInicio) <= $hoy && $uni->fechaFin >= $hoy)) {
+//                $bandera = 1;
+//            } else {
+//                $bandera = 0;
+//            }
+//            $cont++;
+            //CHANGE CONTROL 1.1.0 - NUEVO CODIGO
+            if ($tipoEjecucion == 1) { //Si es seriada, lo hace como antes
+                if ($bandera == 1) {
+                    $arrIdUnidades = $arrIdUnidades . $uni->idUnidad . ",";
+                } else {
+                    $arrIdUnidades = $arrIdUnidades . '"-",';
+                }
+
+                if (@unidadFueCompletada($idRelCursoGrupo, $uni->idUnidad, $idAlumno) && (($uni->fechaInicio == null) || ($uni->fechaInicio) <= $hoy && $uni->fechaFin >= $hoy)) {
+                    $bandera = 1;
+                } else {
+                    $bandera = 0;
+                }
+            } else { //Si no especifica seriacion siempre hace de forma autonoma solo validando fechas
+                if (($uni->fechaInicio == null) || ($uni->fechaInicio) <= $hoy && $uni->fechaFin >= $hoy) {
+                    $arrIdUnidades = $arrIdUnidades . $uni->idUnidad . ",";
+                } else {
+                    $arrIdUnidades = $arrIdUnidades . '"-",';
+                }
             }
-//            echo '**'.date_create($uni->fechaInicio).'**';
-//            echo $uni->fechaInicio . "$$" . $uni->fechaFin;
-            if (@unidadFueCompletada($idRelCursoGrupo, $uni->idUnidad, $idAlumno) && (($uni->fechaInicio == null) || ($uni->fechaInicio) <= $hoy && $uni->fechaFin >= $hoy)) {
-                $bandera = 1;
-            }else{
-                $bandera = 0;
-            }
+
             $cont++;
         }
+
         $arrIdUnidades = substr($arrIdUnidades, 0, strlen($arrIdUnidades));
 
 //        foreach ($unidades as $uni) {

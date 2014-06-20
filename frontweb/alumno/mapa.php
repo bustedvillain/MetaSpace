@@ -9,6 +9,12 @@ verificarSesionAlumno();
  * FECHA DE MODIFICACION: 17 DE JUNIO DE 2014
  * OBJETIVO: AGREGAR EVENTO EN APERTURA DE BLOQUES PARA CAMBIAR A PANTALLA COMPLETA
  */
+/**
+ * CHANGE CONTROL 1.1.0
+ * AUTOR: JOSE MANUEL NIETO GOMEZ
+ * FECHA DE MODIFICACION: 20 DE JUNIO DE 2014
+ * OBJETIVO: CAMBIAR LA FORMA EN QUE SE HACE USO DEL MAPA. SE INSERTARÁ UN IFRAME DEL MODULO PRINCIPAL DE MAPA DE RUTA
+ */
 ?>
 
 <!--Fin lineas itt-->
@@ -21,29 +27,35 @@ verificarSesionAlumno();
         <meta name="lang" content="es" />
         <meta name="description" content="" />
         <meta name="keywords" content="" />
-        <link rel="shortcut icon" href="/favicon.ico" />
-
-        <link href="../style/reset.css" type="text/css" rel="stylesheet"  media="all" />
-        <link href="../style/general.css" type="text/css" rel="stylesheet"  media="all" />
-        <link href="../style/alumno.css" type="text/css" rel="stylesheet"  media="all" />
-
+        <link rel="shortcut icon" href="/favicon.ico" />        
 
         <link href="../style/mapa.css" type="text/css" rel="stylesheet"  media="all" />
         <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
         <link href='http://fonts.googleapis.com/css?family=Dosis:400,300,500' rel='stylesheet' type='text/css'/>
 
+        <link href="../style/reset.css" type="text/css" rel="stylesheet"  media="all" />
+        <link href="../style/general.css" type="text/css" rel="stylesheet"  media="all" />
+        <link href="../style/alumno.css" type="text/css" rel="stylesheet"  media="all" />
+
+        <!--CODIGO ANTIGUO-->
         <!--Agregadas por Itt para correcto funcionamiento con Base de datos-->
-        <script type='text/javascript' src="../../plantilla/core/js/variablesCore.js"></script>  
+        <!--<script type='text/javascript' src="../../plantilla/core/js/variablesCore.js"></script>-->  
         <?php
-        verificaSesionAlumnoFW();
+//        verificaSesionAlumnoFW();
         if (isset($_GET['alumno']) && isset($_GET['idCurso'])) {//Si está creada la variable
             if ($_GET['alumno'] == "si" && isset($_GET['idRelCursoGrupo']) && isset($_GET['idCurso'])) {//si es un alumno
                 $idCurso = $_GET['idCurso'];
                 $idRelCursoGrupo = $_GET['idRelCursoGrupo'];
                 $idAlumno = $_SESSION['idPorTabla'];
-                $idA = 2;
+//                $idA = 2;
+//                $baseStorage = BASE_STORAGE . "cursos";
+//                $arrUnidadesMC = arregloIdUnidadesMC($_GET['alumno'], $idRelCursoGrupo, $_GET['idCurso'], $idAlumno);
+//                
                 $baseStorage = BASE_STORAGE . "cursos";
-                $arrUnidadesMC = arregloIdUnidadesMC($_GET['alumno'], $idRelCursoGrupo, $_GET['idCurso'], $idAlumno);
+
+                $tipoEjecucion = consultaTipoEjecucionCurso($idCurso);
+                
+                $arrUnidadesMC = arregloIdUnidadesMC($_GET['alumno'], $idRelCursoGrupo, $_GET['idCurso'], $idAlumno, $tipoEjecucion);
 //                var_dump ($arrUnidadesMC);
                 echo <<<cabecera
                     <script type='text/javascript'>
@@ -53,6 +65,8 @@ verificarSesionAlumno();
                         alumno = "si";
                         idCurso=$idCurso;
                         rutaCompMapaCurso = "$baseStorage/" + idCurso + "/mapa";
+                        
+                        tipoEjecucion = $tipoEjecucion;
                     </script>
 cabecera;
             } else if ($_GET['alumno'] == "no" && isset($_GET['idCurso'])) {
@@ -75,6 +89,7 @@ cabecera;
             //Si no viene esa variable
         }
         ?>
+        <!--/CODIGO ANTIGUO-->
  <!--        <script>
  
              var arrIdUnidades = //echo arregloIdUnidadesMC($_GET['alumno'], $idRel);
@@ -89,7 +104,7 @@ cabecera;
         <script type='text/javascript' src="../../js/jquery-1.7.min.js"></script>  
         <script type='text/javascript' src="../../js/jquery-ui.min.js"></script>
         <script type='text/javascript' src="../../js/jquery.fancybox.js"></script>  
-        <script type='text/javascript' src="../../js/jqueryMapaCurso2.js"></script> 
+        <script type='text/javascript' src="../../js/jqueryMapaCurso.js"></script> 
     </head>
 
 
@@ -98,25 +113,22 @@ cabecera;
         <div id="container">
             <div id="header">
                 <div id="nombre" class="fondo_naranja">
-                    <h3><span>Alumno: </span><?php if (isset($_SESSION['nombre'])) echo $_SESSION['nombre']; ?> <b><a href="../../logout.php"> Cerrar sesi&oacute;n</a></b></h3>
+                    <h3><span>Alumno: </span><?php nombreLogout(); ?></h3>
                 </div>
-
                 <div id="logo"><a href="index.php"><img src="../img/logo_meta.gif" width="347" height="72" alt="Ir a inicio de Meta Space" /></a></div>
                 <div class="separador"></div>
                 <div id="buscador">
                     <form id="" name=""  action="" enctype="multipart/form-data" method="post">
-                        <div id="buscador_alu"><input name="buscador" size="35" maxlength="35" type="text" id="Buscador" placeholder="Buscar..."/></div>
+                        <div id="buscador_alu"><input name="buscador" size="35" maxlength="35" type="text" id="Buscador" placeholder="Buscar..."></div>
                         <div id="lupa"><input name="submit" class="btn_envio" id="btn_envio" value="" type="submit"></div>
                     </form>
                 </div>
-                <div id="botones">
-                    <div class="separador"></div>
-                    <div class="btn_perfil"><a href="perfil.php"><img src="../img/alumno/icono_perfil.png" width="55" height="30" />mi perfil</a></div>
-                    <div class="separador"></div>
-                    <div class="btn_perfil"><a href="como_navegar.php"><img src="../img/alumno/icono_navegar.png" width="55" height="30" />como navegar</a></div>
-                    <div class="separador"></div>
-                    <div class="btn_perfil"><a href="amigos.php"><img src="../img/alumno/icono_amigos.png" width="55" height="30" />amigos</a></div>
-                </div>
+                <div class="separador"></div>
+                <div class="btn_perfil"><a href="perfil.php"><img src="../img/alumno/icono_perfil.png" width="55" height="30" />mi perfil</a></div>
+                <div class="separador"></div>
+                <div class="btn_perfil"><a href="como_navegar.php"><img src="../img/alumno/icono_navegar.png" width="55" height="30" />como navegar</a></div>
+                <div class="separador"></div>
+                <div class="btn_perfil"><a href="amigos.php"><img src="../img/alumno/icono_amigos.png" width="55" height="30" />amigos</a></div>
                 <div id="foto_perfil" class="fondo_naranja"><img src="<?php echo rutaFotoDeSesion(); ?>" width="77" height="78" class="margin10" /></div>
             </div>
 
@@ -136,15 +148,22 @@ cabecera;
                     <h2>Mapa</h2>
                     <div id="mapa" >
                             <!--<img src="../img/alumno/mapa.jpg" width="615" height="409" class="margin10"/>-->
+                        <!--ANTIGUO CODIGO-->
                         <div id="mcPrincipal" style="">
                             <input class="fancyy" type ="hidden"/>
-                            <a id="mcl1"  onclick="launchFullscreen(document.documentElement);"><img id="mc1" class="mcNumero" /></a>
-                            <a id="mcl2"  onclick="launchFullscreen(document.documentElement);"><img id="mc2" class="mcNumero" /></a>
-                            <a id="mcl3"  onclick="launchFullscreen(document.documentElement);"><img id="mc3" class="mcNumero" /></a>
-                            <a id="mcl4"  onclick="launchFullscreen(document.documentElement);"><img id="mc4" class="mcNumero" /></a>
-                            <a id="mcl5"  onclick="launchFullscreen(document.documentElement);"><img id="mc5" class="mcNumero" /></a>
-                            <a id="mcl6"  onclick="launchFullscreen(document.documentElement);"><img id="mc6" class="mcNumero" /></a>
+                            <a id="mcl1"><img id="mc1" class="mcNumero" /></a>
+                            <a id="mcl2"><img id="mc2" class="mcNumero" /></a>
+                            <a id="mcl3"><img id="mc3" class="mcNumero" /></a>
+                            <a id="mcl4"><img id="mc4" class="mcNumero" /></a>
+                            <a id="mcl5"><img id="mc5" class="mcNumero" /></a>
+                            <a id="mcl6"><img id="mc6" class="mcNumero" /></a>
                         </div>
+                        <!--ANTIGUO CODIGO-->
+
+                        <!--CHANGE CONTROL 1.1.0-->
+                        <?php // include("mapaCurso/index.php?alumno=si&idCurso=$idCurso&idRelCursoGrupo=$idRelCursoGrupo"); ?>
+                        <!--IFRAME-->
+                        <!--<iframe class="fancyy" style="width:100%; height: 100%;" marginheight="0" marginwidth="0" frameborder="0" scrolling="No" src="../../mapaCurso/index.php?alumno=si&idCurso=<?= $idCurso ?>&idRelCursoGrupo=<?= $idRelCursoGrupo ?>"></iframe>-->
                     </div>
                     <div id="calidad_nav">
                         <span>Cuestionarios</span>

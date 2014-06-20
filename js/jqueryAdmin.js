@@ -21,8 +21,14 @@ var tiempo = "";
  * CHANGE CONTROL 0.99.9
  * FECHA DE MODIFICACION: 23 DE ENERO DEL 2014
  * AUTOR: JOSE MANUEL NIETO GOMEZ
- * OBJETIVO: IMPELEMENTAR LA FUNCION DE ESTANDARIZACION DE FECHAS
- * 
+ * OBJETIVO: IMPELEMENTAR LA FUNCION DE ESTANDARIZACION DE FECHAS * 
+ */
+
+/**
+ * CHANGE CONTROL 1.1.0
+ * AUTOR: JOSE MANUEL NIETO GOMEZ
+ * FECHA DE MODIFICACIÓN: 20 DE JUNIO DE 2014
+ * OBJETIVO: FUNCIONALIDAD PARA ELEGIR EL TIPO DE EJECUCIÓN DEL CURSO
  */
 
 var cambioGrado, idGradoEscolar;
@@ -1217,7 +1223,7 @@ $(document).ready(function() {
             } catch (e) {
                 debugConsole(e);
                 alert("Tipo de extensión para contenidos no válido. Solo admiten archivos ZIP.");
-                               
+
             }
         }
 
@@ -1230,7 +1236,7 @@ $(document).ready(function() {
         } catch (e) {
             debugConsole(e);
             error_modal = true;
-           
+
         }
 
         //Mostrar barra de progreso
@@ -1494,6 +1500,22 @@ $(document).ready(function() {
         $("#ver_asignatura").html(Encoder.htmlDecode(datos.nombre_asignatura)).text();
         $("#ver_nivel_escolar").html(datos.nivel).text();
         $("#ver_grado_escolar").html(datos.nombre_grado).text();
+        
+        /**
+         * CHANGE CONTROL 1.1.0
+         * AUTOR: JOSE MANUEL NIETO GOMEZ
+         * FECHA DE MODIFICACIÓN: 20 DE JUNIO DE 2014
+         * OBJETIVO: PRESENTACION DE CAMMPO "tipo_ejecucion"
+         */
+        if(datos.tipo_ejecucion == "0"){
+            $("#ver_tipo_ejecucion").html("Aut&oacute;noma/Libre").text();
+        }else if(datos.tipo_ejecucion == "1"){
+            $("#ver_tipo_ejecucion").html("Seriaci&oacute;n de Bloques").text();
+        }else{
+            $("#ver_tipo_ejecucion").html("Desconocido").text();
+        }        
+//        /CHANGE CONTROL 1.1.1
+
         $("#probar_curso").html("<a href='../mapaCurso/index.php?alumno=no&idCurso=" + datos.id_curso + "' target='_blank'>Probar Curso</a>");
 
         $("#ver_topicos").html("");
@@ -1564,6 +1586,15 @@ $(document).ready(function() {
         $("#comboNivelEscolar").change();
 //        $("#comboGradoEscolares option[value=" + datos.grado + "]").attr("selected", true);
         debugConsole('el grado es' + datos.grado);
+        
+        /**
+         * CHANGE CONTROL 1.1.0
+         * AUTOR: JOSE MANUEL NIETO GOMEZ
+         * FECHA DE MODIFICACIÓN: 20 DE JUNIO DE 2014
+         * OBJETIVO: PRESENTACION DE CAMPO "tipo_ejecucion"
+         */
+        $("#edita_tipo_ejecucion option[value=" + datos.tipo_ejecucion + "]").attr("selected", true);              
+//        /CHANGE CONTROL 1.1.1
 
         $("#edita_contenido").html("");
         for (i = 0; i < datos.topicos.length; i++) {
@@ -1609,7 +1640,7 @@ $(document).ready(function() {
                 msjContenido = "<p class='text-error'><b>Contenido HTML5 no existente</b></p>";
             }
             $("#edita_contenido").append("<tr>");
-            $("#edita_contenido").append("<td>Contenido HTML5 <small>(*Si deja el cotenido vacío, este no se actualizará)</small>:</td>");
+            $("#edita_contenido").append("<td>Contenido HTML5 <small>(*Si deja el contenido vacío, este no se actualizará)</small>:</td>");
             $("#edita_contenido").append("<td><input type='file' name='contenido[]' accept='application/zip' class='contenido'>" + msjContenido + "</td>");
 
             $("#edita_contenido").append("</tr>");
@@ -2375,30 +2406,30 @@ function listaCargaZIP(entradas) {
         for (i = 0; i < resultado[1].length; i++) {
             var li = document.createElement("li");
             li.textContent = resultado[1][i];
-            errores_texto+=resultado[1][i]+"\n";
+            errores_texto += resultado[1][i] + "\n";
             errores.appendChild(li);
         }
 
         if (error_modal === true) {
-            alert("El ZIP No cumple con los estandares \n Errores: \n"+errores_texto);
+            alert("El ZIP No cumple con los estandares \n Errores: \n" + errores_texto);
         } else {
             alert("El ZIP No cumple con los estandares");
         }
     }
-    
+
     //Warnings
-    var warnings_texto ="";
+    var warnings_texto = "";
     if (resultado[2].length > 0) {
         $(".observaciones").show("fast");
         for (i = 0; i < resultado[2].length; i++) {
             var li = document.createElement("li");
             li.textContent = resultado[2][i];
-            warnings_texto+=resultado[2][i]+"\n";
+            warnings_texto += resultado[2][i] + "\n";
             warnings.appendChild(li);
         }
-        
-        if(error_modal === true){
-            alert("Observaciones:\n Nota: Las siguientes observaciones corresponden a archivos/carpetas que no requieren incluirse obligatoriamente en el empaquetado, pero se le notifican para su revisión.\n"+warnings_texto);
+
+        if (error_modal === true) {
+            alert("Observaciones:\n Nota: Las siguientes observaciones corresponden a archivos/carpetas que no requieren incluirse obligatoriamente en el empaquetado, pero se le notifican para su revisión.\n" + warnings_texto);
         }
     } else {
         $(".observaciones").hide("fast");

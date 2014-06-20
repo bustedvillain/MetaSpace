@@ -13,6 +13,13 @@
  * FECHA DE MODIFICACIÓN: 21 DE MAYO DE 2014
  * OBJETIVO: CAMBIOS ESTETICOS
  */
+
+/**
+ * CHANGE CONTROL 1.1.0
+ * AUTOR: JOSE MANUEL NIETO GOMEZ
+ * FECHA DE MODIFICACIÓN: 20 DE JUNIO DE 2014
+ * OBJETIVO: AGREGAR CAMPO AL FORMULARIO PARA ELEGIR EL TIPO DE EJECUCIÓN DEL CURSO
+ */
 include("../sources/Funciones.php");
 verificarSesionAdminOGestor();
 
@@ -102,6 +109,16 @@ if (isset($_GET["id"])) {
                             <p class="text-info">Paquete que contine informaci&oacute;n como: Color del curso, imagenes del curso, imagenes de los premios dentro del curso. Estos deben estar sujetos a los est&aacute;ndares establecdos.</p>
                             <input type="file" name="plantilla" accept="application/zip" required class="contenido"/>
                         </div>
+                        
+                        <!--Control de cambios 1.1.0-->
+                        <div class="input-append">
+                            <label>Tipo de ejecuci&oacute;n:</label>
+                            <select name="cursos/tipo_ejecucion" required>
+                                <option value="0">Aut&oacute;noma/Libre</option>
+                                <option value="1">Seriaci&oacute;n de bloques</option>
+                            </select>
+                        </div>
+                        <!--Control de cambios 1.1.0-->
 
                         <legend>Equivalencias Num&eacute;ricas</legend>
                         <p class="text-info">Asigne las equivalencias num&eacute;ricas relacionadas a las calificaciones/premios. 'Insuficiente' hace referencia al m&aacute;s bajo; desde 1 hasta el valor que usted especifique. El rango 'Muy Bien' es la calificaci&oacute;n m&aacute;xima.</p>

@@ -12,13 +12,24 @@
          * FECHA DE MODIFICACION: 05 DE JUNIO DE 2014
          * OBJETIVO: AGREGAR EVENTO EN APERTURA DE BLOQUES PARA CAMBIAR A PANTALLA COMPLETA
          */
+        
+        /**
+         * CHANGE CONTROL 1.1.0
+         * AUTOR: JOSE MANUEL NIETO GOMEZ
+         * FECHA DE MODIFICACION: 20 DE JUNIO DE 2014
+         * OBJETIVO: AGREGAR CONSULTA PARA VALIDAR EL TIPO DE EJECUCION DE BLOQUES: LIBRE(AUTONOMA), SERIADA
+         */
         if (isset($_GET['alumno']) && isset($_GET['idCurso'])) {//Si está creada la variable
             if ($_GET['alumno'] == "si" && isset($_GET['idRelCursoGrupo']) && isset($_GET['idCurso'])) {//si es un alumno
                 $idCurso = $_GET['idCurso'];
                 $idRelCursoGrupo = $_GET['idRelCursoGrupo'];
                 $idAlumno = $_SESSION['idPorTabla'];
                 $baseStorage = BASE_STORAGE . "cursos";
-                $arrUnidadesMC = arregloIdUnidadesMC($_GET['alumno'], $idRelCursoGrupo, $_GET['idCurso']);
+                
+                $tipoEjecucion = consultaTipoEjecucionCurso($idCurso);
+                
+                $arrUnidadesMC = arregloIdUnidadesMC($_GET['alumno'], $idRelCursoGrupo, $_GET['idCurso'], $tipoEjecucion);
+                
 //                var_dump ($arrUnidadesMC);
                 echo <<<cabecera
                     <script type='text/javascript'>
@@ -28,6 +39,8 @@
                         alumno = "si";
                         idCurso=$idCurso;
                         rutaCompMapaCurso = "$baseStorage/" + idCurso + "/mapa";
+                        
+                        tipoEjecucion = $tipoEjecucion;
                     </script>
 cabecera;
             } else if ($_GET['alumno'] == "no" && isset($_GET['idCurso'])) {
@@ -74,12 +87,12 @@ cabecera;
         <!--Es el body y éste el <a href="./index.php?idRelCursoGrupo=1&idUnidad=1" class="fancyy">link </a>-->
         <div id="mcPrincipal">
 
-            <a id="mcl1" onclick="launchFullscreen(document.documentElement);" href="#" class="fancyy"><img id="mc1" class="mcNumero" /></a>
-            <a id="mcl2" onclick="launchFullscreen(document.documentElement);" href="#" class="fancyy"><img id="mc2" class="mcNumero" /></a>
-            <a id="mcl3" onclick="launchFullscreen(document.documentElement);" href="#" class="fancyy"><img id="mc3" class="mcNumero" /></a>
-            <a id="mcl4" onclick="launchFullscreen(document.documentElement);" href="#" class="fancyy"><img id="mc4" class="mcNumero" /></a>
-            <a id="mcl5" onclick="launchFullscreen(document.documentElement);" href="#" class="fancyy"><img id="mc5" class="mcNumero" /></a>
-            <a id="mcl6" onclick="launchFullscreen(document.documentElement);" href="#" class="fancyy"><img id="mc6" class="mcNumero" /></a>
+            <a id="mcl1"><img id="mc1" class="mcNumero" /></a>
+            <a id="mcl2"><img id="mc2" class="mcNumero" /></a>
+            <a id="mcl3"><img id="mc3" class="mcNumero" /></a>
+            <a id="mcl4"><img id="mc4" class="mcNumero" /></a>
+            <a id="mcl5"><img id="mc5" class="mcNumero" /></a>
+            <a id="mcl6"><img id="mc6" class="mcNumero" /></a>
         </div>
         <!--Es el body y éste el <a href="./index.php?idRelCursoGrupo=1&idUnidad=1" class="fancyy">link </a>-->
     </body>
