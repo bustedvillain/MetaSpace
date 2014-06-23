@@ -67,6 +67,8 @@ verificarSesionAlumno();
                         rutaCompMapaCurso = "$baseStorage/" + idCurso + "/mapa";
                         
                         tipoEjecucion = $tipoEjecucion;
+                        
+                        frontweb = true;
                     </script>
 cabecera;
             } else if ($_GET['alumno'] == "no" && isset($_GET['idCurso'])) {

@@ -41,6 +41,8 @@
                         rutaCompMapaCurso = "$baseStorage/" + idCurso + "/mapa";
                         
                         tipoEjecucion = $tipoEjecucion;
+                        
+                        frontweb = false;
                     </script>
 cabecera;
             } else if ($_GET['alumno'] == "no" && isset($_GET['idCurso'])) {
