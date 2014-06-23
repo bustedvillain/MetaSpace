@@ -186,7 +186,7 @@ function ligasBotonesMc()
                 if (typeof (arrIdUnidades[i]) !== "undefined" && arrIdUnidades[i] !== '-' && arrIdUnidades[i] !== null) {
 //                    $("#mcl" + (i + 1)).attr("href", '../plantilla/index.php?alumno=no&idRelCursoGrupo=' + idRelCursoGrupo + '&idUnidad=' + arrIdUnidades[i]);
                     if (frontweb === true) {
-                        $("#mcl" + (i + 1)).attr("href", '../../plantilla/index.php?alumno=no&idRelCursoGrupo=' + idRelCursoGrupo + '&idUnidad=' + arrIdUnidades[i]);
+                        $("#mcl" + (i + 1)).attr("href", '../../plantilla/index.php?alumno=si&idRelCursoGrupo=' + idRelCursoGrupo + '&idUnidad=' + arrIdUnidades[i]);
                     } else {
                         $("#mcl" + (i + 1)).attr("href", '../plantilla/index.php?alumno=no&idRelCursoGrupo=' + idRelCursoGrupo + '&idUnidad=' + arrIdUnidades[i]);
                     }
