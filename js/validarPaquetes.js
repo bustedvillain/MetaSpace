@@ -131,6 +131,7 @@ function inicializaEstandaresIconografia() {
     lista.push(new ItemLista("frontweb/salir.jpg", false, false, true));
     lista.push(new ItemLista("frontweb/slide.gif", false, false, true));
     lista.push(new ItemLista("frontweb/baul.gif", false, false, true));
+    lista.push(new ItemLista("frontweb/preview.png", false, false, false));
 
     //Carpeta mapa
     lista.push(new ItemLista("mapa/", true, false, true));
@@ -149,6 +150,38 @@ function inicializaEstandaresIconografia() {
     lista.push(new ItemLista("mapa/6-a.png", false, false, false));
     lista.push(new ItemLista("mapa/6-b.png", false, false, false));
     lista.push(new ItemLista("mapa/fondoMC.png", false, false, true));
+
+    //Caminos del mapa
+    lista.push(new ItemLista("mapa/camino-1-2.png", false, false, false));
+    lista.push(new ItemLista("mapa/camino-1-3.png", false, false, false));
+    lista.push(new ItemLista("mapa/camino-1-4.png", false, false, false));
+    lista.push(new ItemLista("mapa/camino-1-5.png", false, false, false));
+    lista.push(new ItemLista("mapa/camino-1-6.png", false, false, false));
+    lista.push(new ItemLista("mapa/camino-2-1.png", false, false, false));
+    lista.push(new ItemLista("mapa/camino-2-3.png", false, false, false));
+    lista.push(new ItemLista("mapa/camino-2-4.png", false, false, false));
+    lista.push(new ItemLista("mapa/camino-2-5.png", false, false, false));
+    lista.push(new ItemLista("mapa/camino-2-6.png", false, false, false));
+    lista.push(new ItemLista("mapa/camino-3-1.png", false, false, false));
+    lista.push(new ItemLista("mapa/camino-3-2.png", false, false, false));
+    lista.push(new ItemLista("mapa/camino-3-4.png", false, false, false));
+    lista.push(new ItemLista("mapa/camino-3-5.png", false, false, false));
+    lista.push(new ItemLista("mapa/camino-3-6.png", false, false, false));
+    lista.push(new ItemLista("mapa/camino-4-1.png", false, false, false));
+    lista.push(new ItemLista("mapa/camino-4-2.png", false, false, false));
+    lista.push(new ItemLista("mapa/camino-4-3.png", false, false, false));
+    lista.push(new ItemLista("mapa/camino-4-5.png", false, false, false));
+    lista.push(new ItemLista("mapa/camino-4-6.png", false, false, false));
+    lista.push(new ItemLista("mapa/camino-5-1.png", false, false, false));
+    lista.push(new ItemLista("mapa/camino-5-2.png", false, false, false));
+    lista.push(new ItemLista("mapa/camino-5-3.png", false, false, false));
+    lista.push(new ItemLista("mapa/camino-5-4.png", false, false, false));
+    lista.push(new ItemLista("mapa/camino-5-6.png", false, false, false));
+    lista.push(new ItemLista("mapa/camino-6-1.png", false, false, false));
+    lista.push(new ItemLista("mapa/camino-6-2.png", false, false, false));
+    lista.push(new ItemLista("mapa/camino-6-3.png", false, false, false));
+    lista.push(new ItemLista("mapa/camino-6-4.png", false, false, false));
+
 
     //Carpeta premios
     lista.push(new ItemLista("premios/", true, false, true));

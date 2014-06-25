@@ -91,95 +91,99 @@ function ligasBotonesMc()
             debugConsole("EJECUCION DE CURSO CON SERIACION DE BLOQUES")
             debugConsole('La rutaCompMapaCurso =' + rutaCompMapaCurso);
             console.log(arrIdUnidades);
+            
+            //VALIDACION CON RECURSION
+            habilitaSeriacionBloques();
 
+            //CODIGO SIN RECURSION
             //SE VALIDARA EN CASCADA SI HAY ID DE BLOQUE, EN ALGUN CASO QUE NO HAYA ID DE BLOQUE SE OMITE EL RESTO DE LOS BLOQUES
-            if (typeof (arrIdUnidades[0]) !== "undefined" && arrIdUnidades[0] !== '-' && arrIdUnidades[0] !== null) {
-                if (frontweb === true) {
-                    $("#mcl1").attr("href", '../../plantilla/index.php?alumno=si&idRelCursoGrupo=' + idRelCursoGrupo + '&idUnidad=' + arrIdUnidades[0]);
-                } else {
-                    $("#mcl1").attr("href", '../plantilla/index.php?alumno=si&idRelCursoGrupo=' + idRelCursoGrupo + '&idUnidad=' + arrIdUnidades[0]);
-                }
-
-                $("#mc1").attr("src", rutaCompMapaCurso + "/1-a.png");
-                $("#mcl1").attr("class", 'fancyy');
-                $("body").on("click", "#mc1", function() {
-                    launchFullscreen(document.documentElement);
-                });
-
-                if (typeof (arrIdUnidades[1]) !== "undefined" && arrIdUnidades[1] !== '-' && arrIdUnidades[1] !== null) {
-                    //URL SOBRE EL BOTON HACIA EL GESTOR DE CONTENIDOS/PLANTILLA
-//                    $("#mcl2").attr("href", '../plantilla/index.php?alumno=si&idRelCursoGrupo=' + idRelCursoGrupo + '&idUnidad=' + arrIdUnidades[1]);
-                    if (frontweb === true) {
-                        $("#mcl2").attr("href", '../../plantilla/index.php?alumno=si&idRelCursoGrupo=' + idRelCursoGrupo + '&idUnidad=' + arrIdUnidades[1]);
-                    } else {
-                        $("#mcl2").attr("href", '../plantilla/index.php?alumno=si&idRelCursoGrupo=' + idRelCursoGrupo + '&idUnidad=' + arrIdUnidades[1]);
-                    }
-                    //BOTON ACTIVO
-                    $("#mc2").attr("src", rutaCompMapaCurso + "/2-a.png");
-                    //FUNCIONALIDAD DE FANCY WINDOW (MODAL)
-                    $("#mcl2").attr("class", 'fancyy');
-                    //FUNCIONALIDAD PARA ABRIR EN PANTALLA COMPLETA EL GESTOR DE CONTENIDOS/PLANTILLA
-                    $("body").on("click", "#mc2", function() {
-                        launchFullscreen(document.documentElement);
-                    });
-                    if (typeof (arrIdUnidades[2]) !== "undefined" && arrIdUnidades[2] !== '-' && arrIdUnidades[2] !== null) {
-//                        $("#mcl3").attr("href", '../plantilla/index.php?alumno=si&idRelCursoGrupo=' + idRelCursoGrupo + '&idUnidad=' + arrIdUnidades[2]);
-                        if (frontweb === true) {
-                            $("#mcl3").attr("href", '../../plantilla/index.php?alumno=si&idRelCursoGrupo=' + idRelCursoGrupo + '&idUnidad=' + arrIdUnidades[2]);
-                        } else {
-                            $("#mcl3").attr("href", '../plantilla/index.php?alumno=si&idRelCursoGrupo=' + idRelCursoGrupo + '&idUnidad=' + arrIdUnidades[2]);
-                        }
-                        $("#mc3").attr("src", rutaCompMapaCurso + "/3-a.png");
-                        $("#mcl3").attr("class", 'fancyy');
-                        $("body").on("click", "#mc3", function() {
-                            launchFullscreen(document.documentElement);
-                        });
-                        if (typeof (arrIdUnidades[3]) !== "undefined" && arrIdUnidades[3] !== '-' && arrIdUnidades[3] !== null) {
-//                            $("#mcl4").attr("href", '../plantilla/index.php?alumno=si&idRelCursoGrupo=' + idRelCursoGrupo + '&idUnidad=' + arrIdUnidades[3]);
-                            if (frontweb === true) {
-                                $("#mcl4").attr("href", '../../plantilla/index.php?alumno=si&idRelCursoGrupo=' + idRelCursoGrupo + '&idUnidad=' + arrIdUnidades[3]);
-                            } else {
-                                $("#mcl4").attr("href", '../plantilla/index.php?alumno=si&idRelCursoGrupo=' + idRelCursoGrupo + '&idUnidad=' + arrIdUnidades[3]);
-                            }
-
-                            $("#mc4").attr("src", rutaCompMapaCurso + "/4-a.png");
-                            $("#mcl4").attr("class", 'fancyy');
-                            $("body").on("click", "#mc4", function() {
-                                launchFullscreen(document.documentElement);
-                            });
-                            if (typeof (arrIdUnidades[4]) !== "undefined" && arrIdUnidades[4] !== '-' && arrIdUnidades[4] !== null) {
-//                                $("#mcl5").attr("href", '../plantilla/index.php?alumno=si&idRelCursoGrupo=' + idRelCursoGrupo + '&idUnidad=' + arrIdUnidades[4]);
-                                if (frontweb === true) {
-                                    $("#mcl5").attr("href", '../../plantilla/index.php?alumno=si&idRelCursoGrupo=' + idRelCursoGrupo + '&idUnidad=' + arrIdUnidades[4]);
-                                } else {
-                                    $("#mcl5").attr("href", '../plantilla/index.php?alumno=si&idRelCursoGrupo=' + idRelCursoGrupo + '&idUnidad=' + arrIdUnidades[4]);
-                                }
-
-                                $("#mc5").attr("src", rutaCompMapaCurso + "/5-a.png");
-                                $("#mcl5").attr("class", 'fancyy');
-                                $("body").on("click", "#mc5", function() {
-                                    launchFullscreen(document.documentElement);
-                                });
-                                if (typeof (arrIdUnidades[5]) !== "undefined" && arrIdUnidades[5] !== '-' && arrIdUnidades[5] !== null) {
-//                                    $("#mcl6").attr("href", '../plantilla/index.php?alumno=si&idRelCursoGrupo=' + idRelCursoGrupo + '&idUnidad=' + arrIdUnidades[5]);
-                                    if (frontweb === true) {
-                                        $("#mcl6").attr("href", '../../plantilla/index.php?alumno=si&idRelCursoGrupo=' + idRelCursoGrupo + '&idUnidad=' + arrIdUnidades[5]);
-                                    } else {
-                                        $("#mcl6").attr("href", '../plantilla/index.php?alumno=si&idRelCursoGrupo=' + idRelCursoGrupo + '&idUnidad=' + arrIdUnidades[5]);
-                                    }
-
-                                    $("#mc6").attr("src", rutaCompMapaCurso + "/6-a.png");
-                                    $("#mcl6").attr("class", 'fancyy');
-                                    $("body").on("click", "#mc6", function() {
-                                        launchFullscreen(document.documentElement);
-                                    });
-                                }
-                            }
-                        }
-                    }
-                }
-
-            }
+//            if (typeof (arrIdUnidades[0]) !== "undefined" && arrIdUnidades[0] !== '-' && arrIdUnidades[0] !== null) {
+//                if (frontweb === true) {
+//                    $("#mcl1").attr("href", '../../plantilla/index.php?alumno=si&idRelCursoGrupo=' + idRelCursoGrupo + '&idUnidad=' + arrIdUnidades[0]);
+//                } else {
+//                    $("#mcl1").attr("href", '../plantilla/index.php?alumno=si&idRelCursoGrupo=' + idRelCursoGrupo + '&idUnidad=' + arrIdUnidades[0]);
+//                }
+//
+//                $("#mc1").attr("src", rutaCompMapaCurso + "/1-a.png");
+//                $("#mcl1").attr("class", 'fancyy');
+//                $("body").on("click", "#mc1", function() {
+//                    launchFullscreen(document.documentElement);
+//                });
+//
+//                if (typeof (arrIdUnidades[1]) !== "undefined" && arrIdUnidades[1] !== '-' && arrIdUnidades[1] !== null) {
+//                    //URL SOBRE EL BOTON HACIA EL GESTOR DE CONTENIDOS/PLANTILLA
+////                    $("#mcl2").attr("href", '../plantilla/index.php?alumno=si&idRelCursoGrupo=' + idRelCursoGrupo + '&idUnidad=' + arrIdUnidades[1]);
+//                    if (frontweb === true) {
+//                        $("#mcl2").attr("href", '../../plantilla/index.php?alumno=si&idRelCursoGrupo=' + idRelCursoGrupo + '&idUnidad=' + arrIdUnidades[1]);
+//                    } else {
+//                        $("#mcl2").attr("href", '../plantilla/index.php?alumno=si&idRelCursoGrupo=' + idRelCursoGrupo + '&idUnidad=' + arrIdUnidades[1]);
+//                    }
+//                    //BOTON ACTIVO
+//                    $("#mc2").attr("src", rutaCompMapaCurso + "/2-a.png");
+//                    //FUNCIONALIDAD DE FANCY WINDOW (MODAL)
+//                    $("#mcl2").attr("class", 'fancyy');
+//                    //FUNCIONALIDAD PARA ABRIR EN PANTALLA COMPLETA EL GESTOR DE CONTENIDOS/PLANTILLA
+//                    $("body").on("click", "#mc2", function() {
+//                        launchFullscreen(document.documentElement);
+//                    });
+//                    if (typeof (arrIdUnidades[2]) !== "undefined" && arrIdUnidades[2] !== '-' && arrIdUnidades[2] !== null) {
+////                        $("#mcl3").attr("href", '../plantilla/index.php?alumno=si&idRelCursoGrupo=' + idRelCursoGrupo + '&idUnidad=' + arrIdUnidades[2]);
+//                        if (frontweb === true) {
+//                            $("#mcl3").attr("href", '../../plantilla/index.php?alumno=si&idRelCursoGrupo=' + idRelCursoGrupo + '&idUnidad=' + arrIdUnidades[2]);
+//                        } else {
+//                            $("#mcl3").attr("href", '../plantilla/index.php?alumno=si&idRelCursoGrupo=' + idRelCursoGrupo + '&idUnidad=' + arrIdUnidades[2]);
+//                        }
+//                        $("#mc3").attr("src", rutaCompMapaCurso + "/3-a.png");
+//                        $("#mcl3").attr("class", 'fancyy');
+//                        $("body").on("click", "#mc3", function() {
+//                            launchFullscreen(document.documentElement);
+//                        });
+//                        if (typeof (arrIdUnidades[3]) !== "undefined" && arrIdUnidades[3] !== '-' && arrIdUnidades[3] !== null) {
+////                            $("#mcl4").attr("href", '../plantilla/index.php?alumno=si&idRelCursoGrupo=' + idRelCursoGrupo + '&idUnidad=' + arrIdUnidades[3]);
+//                            if (frontweb === true) {
+//                                $("#mcl4").attr("href", '../../plantilla/index.php?alumno=si&idRelCursoGrupo=' + idRelCursoGrupo + '&idUnidad=' + arrIdUnidades[3]);
+//                            } else {
+//                                $("#mcl4").attr("href", '../plantilla/index.php?alumno=si&idRelCursoGrupo=' + idRelCursoGrupo + '&idUnidad=' + arrIdUnidades[3]);
+//                            }
+//
+//                            $("#mc4").attr("src", rutaCompMapaCurso + "/4-a.png");
+//                            $("#mcl4").attr("class", 'fancyy');
+//                            $("body").on("click", "#mc4", function() {
+//                                launchFullscreen(document.documentElement);
+//                            });
+//                            if (typeof (arrIdUnidades[4]) !== "undefined" && arrIdUnidades[4] !== '-' && arrIdUnidades[4] !== null) {
+////                                $("#mcl5").attr("href", '../plantilla/index.php?alumno=si&idRelCursoGrupo=' + idRelCursoGrupo + '&idUnidad=' + arrIdUnidades[4]);
+//                                if (frontweb === true) {
+//                                    $("#mcl5").attr("href", '../../plantilla/index.php?alumno=si&idRelCursoGrupo=' + idRelCursoGrupo + '&idUnidad=' + arrIdUnidades[4]);
+//                                } else {
+//                                    $("#mcl5").attr("href", '../plantilla/index.php?alumno=si&idRelCursoGrupo=' + idRelCursoGrupo + '&idUnidad=' + arrIdUnidades[4]);
+//                                }
+//
+//                                $("#mc5").attr("src", rutaCompMapaCurso + "/5-a.png");
+//                                $("#mcl5").attr("class", 'fancyy');
+//                                $("body").on("click", "#mc5", function() {
+//                                    launchFullscreen(document.documentElement);
+//                                });
+//                                if (typeof (arrIdUnidades[5]) !== "undefined" && arrIdUnidades[5] !== '-' && arrIdUnidades[5] !== null) {
+////                                    $("#mcl6").attr("href", '../plantilla/index.php?alumno=si&idRelCursoGrupo=' + idRelCursoGrupo + '&idUnidad=' + arrIdUnidades[5]);
+//                                    if (frontweb === true) {
+//                                        $("#mcl6").attr("href", '../../plantilla/index.php?alumno=si&idRelCursoGrupo=' + idRelCursoGrupo + '&idUnidad=' + arrIdUnidades[5]);
+//                                    } else {
+//                                        $("#mcl6").attr("href", '../plantilla/index.php?alumno=si&idRelCursoGrupo=' + idRelCursoGrupo + '&idUnidad=' + arrIdUnidades[5]);
+//                                    }
+//
+//                                    $("#mc6").attr("src", rutaCompMapaCurso + "/6-a.png");
+//                                    $("#mcl6").attr("class", 'fancyy');
+//                                    $("body").on("click", "#mc6", function() {
+//                                        launchFullscreen(document.documentElement);
+//                                    });
+//                                }
+//                            }
+//                        }
+//                    }
+//                }
+//
+//            }
         } else {//Ejecucion autonoma/libre
             debugConsole("EJECUCION DE CURSO DE FORMA AUTONOMA/LIBRE");
             for (i = 0; i < 6; i++) {
@@ -190,7 +194,7 @@ function ligasBotonesMc()
                     } else {
                         $("#mcl" + (i + 1)).attr("href", '../plantilla/index.php?alumno=no&idRelCursoGrupo=' + idRelCursoGrupo + '&idUnidad=' + arrIdUnidades[i]);
                     }
-                    
+
                     $("#mcl" + (i + 1)).attr("class", 'fancyy');
                     $("#mc" + (i + 1)).attr("src", rutaCompMapaCurso + "/" + (i + 1) + "-a.png");
 
@@ -202,9 +206,44 @@ function ligasBotonesMc()
             }
         }
     }
-
-
 }
+
+/**
+ * Contador para validar el numero de recursiones del metodo "habilitaSeriacionBloques()"
+ * @type Number
+ */
+var contadorBloques = 0;
+
+/**
+ * Función para validar la seriación de bloques
+ * FUNCION RECURSIVA, si el bloque actual esta activo, verifica el contador de bloques y se llama de nuevo así mismo.
+ * La función termina cuando encuentra un bloque inactivo, o si ha alcanzado el máximo de recursiones/bloques
+ * @returns {undefined}
+ */
+function habilitaSeriacionBloques() {
+
+    if (typeof (arrIdUnidades[contadorBloques]) !== "undefined" && arrIdUnidades[contadorBloques] !== '-' && arrIdUnidades[contadorBloques] !== null) {
+        if (frontweb === true) {
+            $("#mcl" + (contadorBloques + 1)).attr("href", '../../plantilla/index.php?alumno=si&idRelCursoGrupo=' + idRelCursoGrupo + '&idUnidad=' + arrIdUnidades[contadorBloques]);
+        } else {
+            $("#mcl" + (contadorBloques + 1)).attr("href", '../plantilla/index.php?alumno=si&idRelCursoGrupo=' + idRelCursoGrupo + '&idUnidad=' + arrIdUnidades[contadorBloques]);
+        }
+
+        $("#mc" + (contadorBloques + 1)).attr("src", rutaCompMapaCurso + "/" + (contadorBloques + 1) + "-a.png");
+        $("#mcl" + (contadorBloques + 1)).attr("class", 'fancyy');
+        $("body").on("click", "#mc" + (contadorBloques + 1), function() {
+            launchFullscreen(document.documentElement);
+        });
+
+        //RECURSIVIDAD
+        contadorBloques++;
+        if (contadorBloques < 6) {
+            habilitaSeriacionBloques();
+        }
+    }
+}
+
+
 function acomodaMapaOnResize()
 {
     if ($(window).innerWidth() < $(window).innerHeight())
