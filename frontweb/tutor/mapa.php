@@ -6,6 +6,13 @@ if (isset($_GET["alumno"]) && isset($_GET["idCurso"])) {
     $idCurso = $_GET["idCurso"];
     $rutaMapa = "../../mapaCurso/index.php?alumno=" . $alumno . "&idCurso=" . $idCurso;
 }
+
+/**
+ * CHANGE CONTROL 1.1.0
+ * AUTOR: JOSE MANUEL NIETO GOMEZ
+ * FECHA DE MODIFICACION: 23 DE JUNIO DE 2014
+ * OBJETIVO: CAMBIAR LA FORMA EN QUE SE HACE USO DEL MAPA. SE INSERTARÁ UN IFRAME DEL MODULO PRINCIPAL DE MAPA DE RUTA
+ */
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -61,15 +68,17 @@ cabecera;
             } else if ($_GET['alumno'] == "no" && isset($_GET['idCurso'])) {
                 $baseStorage = BASE_STORAGE . "cursos";
                 $idCurso = $_GET['idCurso'];
-                $arrUnidadesMC = arregloIdUnidadesMC($_GET['alumno'], null, $_GET['idCurso']);
+                $arrUnidadesMC = arregloIdUnidadesMC($_GET['alumno'], null, $_GET['idCurso'], null, "0");
                 echo <<<cabecera
                     <script type='text/javascript'>
-                debugConsole('noooo');
-                        arrIdUnidades = $arrUnidadesMC;
+                        arrIdUnidades = $arrUnidadesMC
                         
                         alumno = "no";
                         idCurso=$idCurso;
                         rutaCompMapaCurso = "$baseStorage/" + idCurso + "/mapa";
+                        
+                        tipoEjecucion = 0;
+                        frontweb = true;
                     </script>
 cabecera;
             } else {
@@ -93,7 +102,7 @@ cabecera;
         <script type='text/javascript' src="../../js/jquery-1.7.min.js"></script>  
         <script type='text/javascript' src="../../js/jquery-ui.min.js"></script>
         <script type='text/javascript' src="../../js/jquery.fancybox.js"></script>  
-        <script type='text/javascript' src="../../js/jqueryMapaCurso2.js"></script> 
+        <script type='text/javascript' src="../../js/jqueryMapaCurso.js"></script> 
         
     </head>
 

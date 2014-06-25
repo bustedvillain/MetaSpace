@@ -64,8 +64,8 @@ function validarEmpaquetamiento(tipoEmpaquetamiento, listaArchivos) {
         console.log("PROGRESO:" + progreso + "%");
 //        document.getElementById("file-list").innerHTML = progreso + "%";
         document.getElementById("validandoZip").style.width = progreso + "%";
-        $("#validandoZip").css("width", progreso+"%");
-        $("#mensaje_progreso_validacion").html("Validando empaquetado... ("+progreso+"%)");
+        $("#validandoZip").css("width", progreso + "%");
+        $("#mensaje_progreso_validacion").html("Validando empaquetado... (" + progreso + "%)");
         j++;
     });
 
@@ -95,8 +95,8 @@ function validarEmpaquetamiento(tipoEmpaquetamiento, listaArchivos) {
         console.log("PROGRESO:" + progreso + "%");
 //        document.getElementById("file-list").innerHTML = progreso + "%";
         document.getElementById("validandoZip").style.width = progreso + "%";
-        $("#validandoZip").css("width", progreso+"%");
-        $("#mensaje_progreso_validacion").html("Validando empaquetado... ("+progreso+"%)");
+        $("#validandoZip").css("width", progreso + "%");
+        $("#mensaje_progreso_validacion").html("Validando empaquetado... (" + progreso + "%)");
         j++;
     }
 
@@ -316,6 +316,58 @@ function inicializaEstandaresIconografia() {
     //Archivos de la carpeta archivos
     lista.push(new ItemLista("archivos/programa.pdf", false, false, false));
 
+    //Carpeta estimulos
+    lista.push(new ItemLista("estimulos/", true, false, false));
+
+    //Archivos estimulos
+    lista.push(new ItemLista("estimulos/estimulo-1-1-a.png", false, false, false));
+    lista.push(new ItemLista("estimulos/estimulo-1-1-b.png", false, false, false));
+    lista.push(new ItemLista("estimulos/estimulo-1-2-a.png", false, false, false));
+    lista.push(new ItemLista("estimulos/estimulo-1-2-b.png", false, false, false));
+    lista.push(new ItemLista("estimulos/estimulo-1-3-a.png", false, false, false));
+    lista.push(new ItemLista("estimulos/estimulo-1-3-b.png", false, false, false));
+    lista.push(new ItemLista("estimulos/estimulo-1-4-a.png", false, false, false));
+    lista.push(new ItemLista("estimulos/estimulo-1-4-b.png", false, false, false));
+    lista.push(new ItemLista("estimulos/estimulo-2-1-a.png", false, false, false));
+    lista.push(new ItemLista("estimulos/estimulo-2-1-b.png", false, false, false));
+    lista.push(new ItemLista("estimulos/estimulo-2-2-a.png", false, false, false));
+    lista.push(new ItemLista("estimulos/estimulo-2-2-b.png", false, false, false));
+    lista.push(new ItemLista("estimulos/estimulo-2-3-a.png", false, false, false));
+    lista.push(new ItemLista("estimulos/estimulo-2-3-b.png", false, false, false));
+    lista.push(new ItemLista("estimulos/estimulo-2-4-a.png", false, false, false));
+    lista.push(new ItemLista("estimulos/estimulo-2-4-b.png", false, false, false));
+    lista.push(new ItemLista("estimulos/estimulo-3-1-a.png", false, false, false));
+    lista.push(new ItemLista("estimulos/estimulo-3-1-b.png", false, false, false));
+    lista.push(new ItemLista("estimulos/estimulo-3-2-a.png", false, false, false));
+    lista.push(new ItemLista("estimulos/estimulo-3-2-b.png", false, false, false));
+    lista.push(new ItemLista("estimulos/estimulo-3-3-a.png", false, false, false));
+    lista.push(new ItemLista("estimulos/estimulo-3-3-b.png", false, false, false));
+    lista.push(new ItemLista("estimulos/estimulo-3-4-a.png", false, false, false));
+    lista.push(new ItemLista("estimulos/estimulo-3-4-b.png", false, false, false));
+    lista.push(new ItemLista("estimulos/estimulo-4-1-a.png", false, false, false));
+    lista.push(new ItemLista("estimulos/estimulo-4-1-b.png", false, false, false));
+    lista.push(new ItemLista("estimulos/estimulo-4-2-a.png", false, false, false));
+    lista.push(new ItemLista("estimulos/estimulo-4-2-b.png", false, false, false));
+    lista.push(new ItemLista("estimulos/estimulo-4-3-a.png", false, false, false));
+    lista.push(new ItemLista("estimulos/estimulo-4-3-b.png", false, false, false));
+    lista.push(new ItemLista("estimulos/estimulo-4-4-a.png", false, false, false));
+    lista.push(new ItemLista("estimulos/estimulo-4-4-b.png", false, false, false));
+    lista.push(new ItemLista("estimulos/estimulo-5-1-a.png", false, false, false));
+    lista.push(new ItemLista("estimulos/estimulo-5-1-b.png", false, false, false));
+    lista.push(new ItemLista("estimulos/estimulo-5-2-a.png", false, false, false));
+    lista.push(new ItemLista("estimulos/estimulo-5-2-b.png", false, false, false));
+    lista.push(new ItemLista("estimulos/estimulo-5-3-a.png", false, false, false));
+    lista.push(new ItemLista("estimulos/estimulo-5-3-b.png", false, false, false));
+    lista.push(new ItemLista("estimulos/estimulo-5-4-a.png", false, false, false));
+    lista.push(new ItemLista("estimulos/estimulo-5-4-b.png", false, false, false));
+    lista.push(new ItemLista("estimulos/estimulo-6-1-a.png", false, false, false));
+    lista.push(new ItemLista("estimulos/estimulo-6-1-b.png", false, false, false));
+    lista.push(new ItemLista("estimulos/estimulo-6-2-a.png", false, false, false));
+    lista.push(new ItemLista("estimulos/estimulo-6-2-b.png", false, false, false));
+    lista.push(new ItemLista("estimulos/estimulo-6-3-a.png", false, false, false));
+    lista.push(new ItemLista("estimulos/estimulo-6-3-b.png", false, false, false));
+    lista.push(new ItemLista("estimulos/estimulo-6-4-a.png", false, false, false));
+    lista.push(new ItemLista("estimulos/estimulo-6-4-b.png", false, false, false));
 
     return lista;
 }

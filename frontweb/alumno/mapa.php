@@ -74,7 +74,7 @@ cabecera;
             } else if ($_GET['alumno'] == "no" && isset($_GET['idCurso'])) {
                 $baseStorage = BASE_STORAGE . "cursos";
                 $idCurso = $_GET['idCurso'];
-                $arrUnidadesMC = arregloIdUnidadesMC($_GET['alumno'], null, $_GET['idCurso']);
+                $arrUnidadesMC = arregloIdUnidadesMC($_GET['alumno'], null, $_GET['idCurso'], null, "0");
                 echo <<<cabecera
                     <script type='text/javascript'>
                         arrIdUnidades = $arrUnidadesMC
@@ -82,6 +82,9 @@ cabecera;
                         alumno = "no";
                         idCurso=$idCurso;
                         rutaCompMapaCurso = "$baseStorage/" + idCurso + "/mapa";
+                        
+                        tipoEjecucion = 0;
+                        frontweb = true;
                     </script>
 cabecera;
             } else {
