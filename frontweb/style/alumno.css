@@ -1,3 +1,10 @@
+/**
+MODIFICACIÓN PARA AJUSTAR IMAGEN DE LOGO AL PERFIL DE ALUMNO
+**/
+#logo a img {
+    background-image: url(../img/logo_meta2.gif);
+}
+
 @charset "utf-8";
 /* CSS Document */
 /*

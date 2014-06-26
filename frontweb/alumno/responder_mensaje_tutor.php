@@ -94,7 +94,7 @@ $idTutor = $_GET['idTutor'];
                     <h3><span>Alumno: </span><?php nombreLogout(); ?></h3>
                 </div>
 
-                <div id="logo"><a href="index.php"><img src="../img/logo_meta.gif" width="347" height="72" alt="Ir a inicio de Meta Space" /></a></div>
+                <div id="logo"><a href="index.php"><img src="../img/logo_meta2.gif" width="347" height="72" alt="Ir a inicio de Meta Space" /></a></div>
                 <div class="separador"></div>
                 <div id="buscador">
                     <form id="" name=""  action="" enctype="multipart/form-data" method="post">
