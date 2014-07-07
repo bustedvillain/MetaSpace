@@ -101,7 +101,7 @@ function generaElementosAER($idSerie, $idRelCursoGrupo,$idAlumno, &$baseContador
                 WHERE aer.id_serie_aer = '.$idSerie.'
                       AND tp.status = 1
                       AND  aer.status = 1 
-                
+                      ORDER BY aer.id_elemento_aer
                 LIMIT 3;';
     
     $elementoAER= $sql->select("obj");
