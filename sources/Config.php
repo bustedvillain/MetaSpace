@@ -24,7 +24,7 @@
 //Configuracion de Moodle
 define("DB_NAME_MOD","softmeta");
 define("USER_MOD","softmeta");
-define("PASS_MOD","s0ftm3t6.-");
+define("PASS_MOD","ems20140818");
 define("HOST_MOD","192.168.100.150");
 define("PORT_MOD","5432");
 
@@ -32,7 +32,7 @@ define("PORT_MOD","5432");
 //Configuracion de Sistema de Gestion
 define("DB_NAME_SG","softmeta_sgi");
 define("USER_SG","softmeta");
-define("PASS_SG","s0ftm3t6.-");
+define("PASS_SG","ems20140818");
 define("HOST_SG","192.168.100.150");
 define("PORT_SG","5432");
 

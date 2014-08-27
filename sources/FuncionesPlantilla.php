@@ -25,6 +25,14 @@ $idEjercicio = 0;
 $idReto = 0;
 
 /**
+ * CHANGE CONTROL 1.1.1
+ * AUTOR: JOSE MANUEL NIETO GOMEZ
+ * FECHA: 27 DE AGOSTO DE 2014
+ * OBJETIVO: INCLUIR LIBRERIA PARA LAS FUNCIONES EN EL MANEJO DE VARIABLES PARA LOS CONTENIDOS
+ */
+include("Funciones.Plantilla.Variables.php");
+
+/**
  * Obtiene el contador que se usa para construir el editar linkeo con series
  * @global int $contador
  */

@@ -1006,7 +1006,7 @@ function eventosDeSustitucion()
          * Cierra pantalla completa
          */
         exitFullscreen()
-       
+
 
         debugConsole('salir');
         registraSalida();
@@ -1196,8 +1196,8 @@ function validarRecarga() {
  * @param {type} id_elemento
  * @returns {undefined}
  */
-function linkSerie(id_elemento){
-    indiceActual=id_elemento;
+function linkSerie(id_elemento) {
+    indiceActual = id_elemento;
     cargaContenidooo();
     volumenGral = $("#sliderVolumen").slider("option", "value");
 }
@@ -1206,7 +1206,48 @@ function linkSerie(id_elemento){
  * Funcion que devuelve el indice actual
  * @returns {indicePorIdElemento.i|Number|indiceActual|id_elemento}
  */
-function getIndiceActual(){
+function getIndiceActual() {
     return indiceActual;
+}
+
+//Funciones nuevas para el uso de variables en contenidos
+
+/**
+ * Variable que definine el contexto en el que se esta ejecutando
+ * el gestor de contenidos:
+ * 1: Curso Asignado
+ * 2: Ruta de aprendizaje
+ * 3: Serie independiente
+ * Hasta que se integre con el diseño de la UAEM se quedará hardcodeado 
+ * como el contexto 1
+ * @type Number
+ */
+var contexto = 1;
+
+
+function getMSValues(array, callback, error) {
+
+    if (alumno.toString() === 'si') {
+        $.post("../sources/ControladorVariablesContenidos.php", {funcion: "getMSValues", idAlumno: idAlumno, idElemento: arrCont[indiceActual].idElemento, contexto: contexto, variables: array}, function(respuesta) {
+            console.log("GESTOR DE CONTENIDO AFTER POST, GETMSVALUES RETURN:" + respuesta);
+
+
+        });
+
+    } else {
+        //No es alumno, no hay variables que guardar o buscar
+    }
+}
+
+function setMSValue(array, callback, error) {
+
+    if (alumno.toString() === 'si') {
+        $.post("../sources/ControladorVariablesContenidos.php", {funcion: "setMSValues", idAlumno: idAlumno, idElemento: arrCont[indiceActual].idElemento, contexto: contexto, variables: jQuery.encodeJSON(array)}, function(respuesta) {
+            console.log("GESTOR DE CONTENIDO AFTER POST, SETMSVALUES RETURN:" + respuesta);
+
+
+        });
+    }
+
 }
 

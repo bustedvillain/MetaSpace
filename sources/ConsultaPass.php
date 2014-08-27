@@ -14,8 +14,10 @@ include 'Funciones.php';?>
           
           echo $strEncriptada;
           
-          echo "<br>--------------------------------------------";
+          echo "<br>--------------------------------------------<br>";
           echo nDCrypt($strEncriptada);
+          
+          echo "Moodle:".  passBCrypt("admin");
           
   
   
