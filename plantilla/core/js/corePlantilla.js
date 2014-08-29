@@ -1224,30 +1224,85 @@ function getIndiceActual() {
  */
 var contexto = 1;
 
-
+/**
+ * Funcion que solicita variables a MetaSpace mediante una peticion post
+ * las variables y sus valores retornan en un objeto JSON el cual es reenviado
+ * a la función origen mediante un callback
+ * @param {type} array
+ * @param {type} callback
+ * @param {type} error
+ * @returns {undefined}
+ */
 function getMSValues(array, callback, error) {
 
     if (alumno.toString() === 'si') {
         $.post("../sources/ControladorVariablesContenidos.php", {funcion: "getMSValues", idAlumno: idAlumno, idElemento: arrCont[indiceActual].idElemento, contexto: contexto, variables: array}, function(respuesta) {
-            console.log("GESTOR DE CONTENIDO AFTER POST, GETMSVALUES RETURN:" + respuesta);
-
-
+            console.log("GESTOR DE CONTENIDO AFTER POST, GETMSVALUES RETURN:");
+            console.log(respuesta);
+            console.log(jQuery.parseJSON(respuesta));
+            try{
+                callback(jQuery.parseJSON(respuesta));
+            }catch(e){
+                error();
+            }
         });
-
     } else {
         //No es alumno, no hay variables que guardar o buscar
+        error();
     }
 }
 
-function setMSValue(array, callback, error) {
-
+/**
+ * Funcion que almacena variables relacionadas a la serie que esta
+ * ejecutando el alumno
+ * @param {type} array arreglo de variables que desa almacenar
+ * @param {type} callback regresa una respueta al la funcion que invoco esta funcion
+ * @param {type} error regresa notificacion de error en su debido caso
+ * @returns {undefined}
+ */
+function setMSValues(array, callback, error) {
     if (alumno.toString() === 'si') {
-        $.post("../sources/ControladorVariablesContenidos.php", {funcion: "setMSValues", idAlumno: idAlumno, idElemento: arrCont[indiceActual].idElemento, contexto: contexto, variables: jQuery.encodeJSON(array)}, function(respuesta) {
-            console.log("GESTOR DE CONTENIDO AFTER POST, SETMSVALUES RETURN:" + respuesta);
-
-
+        console.log("Se desea almacenar variable para un alumno");
+        $.post("../sources/ControladorVariablesContenidos.php", {funcion: "setMSValues", idAlumno: idAlumno, idElemento: arrCont[indiceActual].idElemento, contexto: contexto, variables: array}, function(respuesta) {
+            try {
+                if (jQuery.parseJSON(respuesta) === true) {
+                    callback();
+                } else {
+                    error();
+                }
+            } catch (e) {
+                console.error("Error al almacenar variables:" + e);
+                error();
+            }
         });
+    }else{
+        error();
     }
+}
 
+/**
+ * Funcion que reinicia todas las variables de un ALUMNO/SERIE/CONTEXTO
+ * @param {type} callback
+ * @param {type} error
+ * @returns {undefined}
+ */
+function resetMSValues(callback, error){
+    if (alumno.toString() === 'si') {
+        console.log("Se desea reiniciar las variables en una serie");
+        $.post("../sources/ControladorVariablesContenidos.php", {funcion: "resetMSValues", idAlumno: idAlumno, idElemento: arrCont[indiceActual].idElemento, contexto: contexto}, function(respuesta) {
+            try {
+                if (jQuery.parseJSON(respuesta) === true) {
+                    callback();
+                } else {
+                    error();
+                }
+            } catch (e) {
+                console.error("Error al almacenar variables:" + e);
+                error();
+            }
+        });
+    }else{
+        error();
+    }
 }
 

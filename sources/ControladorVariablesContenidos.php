@@ -8,8 +8,11 @@ if ($_POST) {
             echo getMSValuesJSON($_POST["idAlumno"], $_POST["idElemento"], $_POST["contexto"], $_POST["variables"]);
             break;
         case "setMSValues":
-            
+            echo setMSValuesJSON($_POST["idAlumno"], $_POST["idElemento"], $_POST["contexto"], $_POST["variables"]);
             break;
+        case "resetMSValues":
+            echo resetMSValuesJSON($_POST["idAlumno"], $_POST["idElemento"], $_POST["contexto"]);
+            break; 
     }
 }
 ?>
