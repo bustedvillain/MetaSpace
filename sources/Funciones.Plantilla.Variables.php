@@ -15,7 +15,7 @@
  * @return boolean retorna bandera si se guardo satisfactoriamente o si ocurrio algun error
  */
 function setMSValues($idAlumno, $idElemento, $contexto, $variables) {
-//Prepara query
+    
     //Id serie
     if (($idSerie = getIdSerie($idElemento)) != NULL) {
         //Guardar y validar variables una por una
@@ -25,11 +25,11 @@ function setMSValues($idAlumno, $idElemento, $contexto, $variables) {
                 //Actualizar valor de variable 
                 $query = new Query("SG");
                 $query->sql = "UPDATE variables_serie_alumno set valor_variable='$valor' where id_variable_serie_alumno = $idVariable";
-                $query->update($query->sql);
+                $query->update($query->sql);                
             } else {
                 //Insertar nueva variable
                 $query = new Query("SG");
-                $query->insert("variables_serie_alumno", "variable, valor_variable, contexto, id_serie_aer, id_alumno", "'$variable', '$valor', $contexto, $idSerie, $idAlumno");
+                $query->insert("variables_serie_alumno", "variable, valor_variable, contexto, id_serie_aer, id_alumno", "'$variable', '$valor', $contexto, $idSerie, $idAlumno");                
             }
         }
         return true;

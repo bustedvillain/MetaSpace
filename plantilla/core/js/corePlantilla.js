@@ -1263,6 +1263,7 @@ function getMSValues(array, callback, error) {
 function setMSValues(array, callback, error) {
     if (alumno.toString() === 'si') {
         console.log("Se desea almacenar variable para un alumno");
+        console.log(array);
         $.post("../sources/ControladorVariablesContenidos.php", {funcion: "setMSValues", idAlumno: idAlumno, idElemento: arrCont[indiceActual].idElemento, contexto: contexto, variables: array}, function(respuesta) {
             try {
                 if (jQuery.parseJSON(respuesta) === true) {
