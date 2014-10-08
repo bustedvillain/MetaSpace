@@ -24,24 +24,24 @@
                 $idUnidad = $_GET['idUnidad'];
                 $idCurso = getIdCursoFromIdUnidad($idUnidad);
                 $baseStorage = BASE_STORAGE;
-                $templatePath = $baseStorage.'cursos/" + idCurso + "/templates';
-                $unidadesPath = $baseStorage.'unidades/" + idUnidad';
+                $templatePath = $baseStorage . 'cursos/" + idCurso + "/templates';
+                $unidadesPath = $baseStorage . 'unidades/" + idUnidad';
                 $navegador = navegadorActual();
                 echo '
                     <script type="text/javascript">
                         
                         var idElementoCalif = -1;
                         volumenGral = 50;
-                        idUnidad='.$idUnidad.';
-                        idCurso = '.$idCurso.';
+                        idUnidad=' . $idUnidad . ';
+                        idCurso = ' . $idCurso . ';
                         tipo_elemento = "i";
                         
-                        template_path = "'.$templatePath.'";
-                        unidades_path = "'.$unidadesPath.';
+                        template_path = "' . $templatePath . '";
+                        unidades_path = "' . $unidadesPath . ';
                         serie_path = unidades_path +  "/" + serie;
                         serie_path2 = serie_path;
-                        idUnidad='.$idUnidad.';
-                        navegador = "'.$navegador.'";
+                        idUnidad=' . $idUnidad . ';
+                        navegador = "' . $navegador . '";
                     </script>
 ';
                 imprimeHead($idUnidad);
@@ -53,7 +53,7 @@
                     echo '<script type="text/javascript">alumno="si"; idAlumno=' . $idAlumno . '</script>';
                     if (isset($_GET['idUnidad'])) {
                         $idUnidad = $_GET['idUnidad'];
-                        echo '<script type="text/javascript"> idUnidad='.$idUnidad.';</script>';
+                        echo '<script type="text/javascript"> idUnidad=' . $idUnidad . ';</script>';
                     }
                     if (isset($_GET['idRelCursoGrupo'])) {
                         $idRelCursoGrupo = $_GET['idRelCursoGrupo'];
@@ -111,6 +111,12 @@
                 <a id="btnInstrucciones" class="fancyInstrucciones" href="#" title="Instrucciones"><img id ="instrucciones"  class="smBoton smBotonT" alt="Instrucciones" title="Instrucciones"/></a>
                 <a id="btnTutor" class="fancyRecurso" href="#" title="Informacion para el Tutor"><img id ="tutor"  class="smBoton smBotonT" alt="Tutor" title="Informacion para el Tutor"/></a>
                 <img id ="titulo"   alt="Titulo" title="Titulo"/>
+                <!--                Control de cambios v.1.1.1
+                            Autor: Ing. Manuel Nieto Gomez
+                            Fecha: 07/10/2014
+                            Objetivo: Boton para abrir contenido en pantalla completa-->
+                <img id ="pantallaCompleta"   class="smBoton smBotonT" alt="Pantalla Completa" title="Pantalla Completa"/>
+
                 <img id ="botonSalir"  class="smBoton smBotonT"  alt="Salir" title="Salir" />
 
             </div>
@@ -133,11 +139,17 @@
 
             </div>
             <div id="sliderVolumen"></div>
+
+            <!--            Control de cambios v.1.1.1
+                        Autor: Ing. Manuel Nieto Gomez
+                        Fecha: 07/10/2014
+                        Objetivo: Boton para cerrar pantalla completa del contenido-->
+            <img id ="cerrarPantallaCompleta"   alt="Cerrar Pantalla Completa" title="Cerrar Pantalla Completa"/>
         </div>
-<script src="../js/jquery.js"></script> 
-<?php
-imprimeScriptDeTiempoMaxSesion();
-?>
+        <script src="../js/jquery.js"></script> 
+        <?php
+        imprimeScriptDeTiempoMaxSesion();
+        ?>
 
     </body>
 </html>

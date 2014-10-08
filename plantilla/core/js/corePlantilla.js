@@ -17,7 +17,7 @@ var cargaInicial = 0;
 //Iniciamos con la función inicio
 $(document).ready(inicio);
 //Hasta que se carguen todos los componentes
-$(window).load(function()
+$(window).load(function ()
 {
     cargaCompleta();
 });
@@ -54,7 +54,7 @@ function inicio()
     initInfoPlantilla();
     $("#loadingPorcentaje").html("80%");
 
-    $(window).resize(function()
+    $(window).resize(function ()
     {
         arreglaAlResize();
     });
@@ -113,7 +113,7 @@ function arreglaAlResize()
 function cargaControles()
 {
     trazaEnConsola('---------------Funcion: cargaControles', 4);
-    $(function() {
+    $(function () {
         $("#sliderVolumen").slider(
                 {
                     range: 'min',
@@ -121,7 +121,7 @@ function cargaControles()
                     min: -8,
                     orientation: "vertical",
                     step: 2,
-                    stop: function(event, ui) {
+                    stop: function (event, ui) {
                         if (ui.value <= 0) {
                             $("#sliderVolumen").slider("option", "value", 0);
                         }
@@ -130,7 +130,7 @@ function cargaControles()
                         }
 
                     },
-                    slide: function(event, ui) {
+                    slide: function (event, ui) {
 
                         if (ui.value >= 100) {
                             $("#sliderVolumen").slider("option", "value", 100);
@@ -149,10 +149,10 @@ function cargaControles()
     $("#sliderVolumen").slider("option", "value", volumenGral);
 //    var metodo = pathToMetodo(detalleDeIndiceActual());
 //inicia control de cambios #5
-    $('.fancyRecurso').click(function() {
+    $('.fancyRecurso').click(function () {
         pausarContenido();
     });
-    $('.fancyInstrucciones').click(function() {
+    $('.fancyInstrucciones').click(function () {
         pausarContenido();
     });
 //termina control de cambios #5
@@ -161,7 +161,7 @@ function cargaControles()
                 minWidth: '95%',
                 minHeight: '95%',
                 'type': 'iframe',
-                afterShow: function() {
+                afterShow: function () {
                     var toolbar = '<audio preload="auto" controls preload="none" autoplay loop>'
                             + '<source src="' + unidades_path + arrCont[indiceActual].ruta + 'instrucciones/audio_ins.wav" />'
                             + '<source src="' + unidades_path + arrCont[indiceActual].ruta + 'instrucciones/audio_ins.mp3" />'
@@ -173,7 +173,7 @@ function cargaControles()
                     $(".fancybox-outer").prepend(toolbar);
                 },
 //inicia control de cambios #5
-                afterClose: function() {
+                afterClose: function () {
                     playContenido();
                 }
 //termina control de cambios #5
@@ -185,7 +185,7 @@ function cargaControles()
                 minHeight: '95%',
                 'type': 'iframe',
 //inicia control de cambios #5
-                afterClose: function() {
+                afterClose: function () {
                     playContenido();
                 }
 //termina control de cambios #5
@@ -211,7 +211,7 @@ function cargaControles()
 //termina control de cambios #5
             });
 
-    $(function()
+    $(function ()
     {
         $('audio').audioPlayer({
             classPrefix: 'audioplayer',
@@ -230,11 +230,11 @@ function cargaControles()
 //    serie_path = unidades_path + "/" + serie;
 //    serie_path = unidades_path + "/" + serie;
     debugConsole('Serie_path =' + serie_path);
-    $(this).mousemove(function(e) {
+    $(this).mousemove(function (e) {
 
         parent.tiempoSesion = 0;
     });
-    $(this).keypress(function(e) {
+    $(this).keypress(function (e) {
         parent.tiempoSesion = 0;
     });
     trazaEnConsola('---------------Fin: cargaControles', 4);
@@ -243,11 +243,11 @@ function eventosBotones()
 {
     trazaEnConsola('------------------Función: eventosBotones', 4);
 
-    $('#botonVolumen').click(function(event)
+    $('#botonVolumen').click(function (event)
     {
         $("#sliderVolumen").toggle("fast");
     });
-    $('#botonAnterior').click(function(event)
+    $('#botonAnterior').click(function (event)
     {
         if (indiceActual > 0) {
             //pausarContenido();
@@ -262,7 +262,7 @@ function eventosBotones()
             trazaEnConsola("Reinicio de recargas contenido");
         }
     });
-    $('#botonSiguiente').click(function() {
+    $('#botonSiguiente').click(function () {
 
         if (indiceActual < maxCantArr)
         {
@@ -278,7 +278,7 @@ function eventosBotones()
             trazaEnConsola("Reinicio de recargas contenido");
         }
     });
-    $('#btnReiniciar').click(function() {
+    $('#btnReiniciar').click(function () {
 //        alert('presionaste Reiniciar');
         try {
             window.frameCont.location.reload();
@@ -290,7 +290,7 @@ function eventosBotones()
         nRecargas = 0;
         trazaEnConsola("Reinicio de recargas contenido");
     });
-    $('#botonPlay').click(function() {
+    $('#botonPlay').click(function () {
         if (statusReproduccion === 0) {
             playContenido();
 //            statusReproduccion = 1;
@@ -323,13 +323,13 @@ function eventosBotones()
 //        }
 //    });
 
-    $(".btnRecurso").on("touchstart", function() {
+    $(".btnRecurso").on("touchstart", function () {
 //        alert('touche1');
 //        banderaTiempo = 1;
 //        tiempo(this);
         tiempoT = new Date();
     });
-    $(".btnRecurso").on("touchend", function() {
+    $(".btnRecurso").on("touchend", function () {
 //        alert('no touche 1');
 //        banderaTiempo = 0;
 //        alert('Fueron seg='+tiempoT);
@@ -343,20 +343,20 @@ function eventosBotones()
 //            alert("Left="+ pos.left +"Top="+pos.top);
             $("#smMensaje").css("margin-left", pos.left + 50);
             $("#smMensaje").css("margin-top", pos.top);
-            setTimeout(function() {
+            setTimeout(function () {
                 $("#smMensaje").css("display", "none");
             }, 2000);
         }
 //        alert('Ini='+tiempoT+"Fin="+t+"dif ="+(t-tiempoT));
     });
-    $(".btnRecurso").on("ontouchstart", function() {
+    $(".btnRecurso").on("ontouchstart", function () {
         alert('touche2');
     });
-    $(".btnRecurso").on("ontouchend", function() {
+    $(".btnRecurso").on("ontouchend", function () {
         banderaTiempo = 0;
         alert('Fueron seg=' + tiempoT);
     });
-    $("#sliderVolumen").on("slide", function(event, ui) {
+    $("#sliderVolumen").on("slide", function (event, ui) {
         var volumen = $("#sliderVolumen").slider("option", "value");
 //        trazaEnConsola('Volumen' + volumen, 5);
         seteaVolumen(volumen);
@@ -404,7 +404,7 @@ function cierraCalif() {
 function json2array(json) {
     var result = [];
     var keys = Object.keys(json);
-    keys.forEach(function(key) {
+    keys.forEach(function (key) {
         result.push(json[key]);
     });
     return result;
@@ -416,7 +416,7 @@ function initInfoPlantilla()
     if (alumno.toString() === 'si')
     {
         debugConsole("A enviar post porque alumno es SI Su id alumno es=" + idAlumno + "y su idUnidad es =" + idUnidad);
-        $.post("../sources/ControladorPlantilla.php", {ins: "retornaArrContenidos", idUnidad: idUnidad, idAlumno: idAlumno}, function(respuesta)
+        $.post("../sources/ControladorPlantilla.php", {ins: "retornaArrContenidos", idUnidad: idUnidad, idAlumno: idAlumno}, function (respuesta)
         {
             debugConsole('Dentro');
             debugConsole(respuesta);
@@ -427,7 +427,7 @@ function initInfoPlantilla()
             debugConsole('ArrCont' + arrCont);
             debugConsole('+++++++++++++++alumno es=' + alumno + 'idAlumno=' + idAlumno);
 //            if (idIndiceNuevo < 0) {
-            $.post("../sources/ControladorPlantilla.php", {ins: "retornaIdProgreso", idRelCursoGrupo: idRelCursoGrupo, idAlumno: idAlumno, idUnidad: idUnidad}, function(respuesta2)
+            $.post("../sources/ControladorPlantilla.php", {ins: "retornaIdProgreso", idRelCursoGrupo: idRelCursoGrupo, idAlumno: idAlumno, idUnidad: idUnidad}, function (respuesta2)
             {
                 debugConsole(respuesta2);
                 arrJSON2 = jQuery.parseJSON(respuesta2);
@@ -452,7 +452,7 @@ function initInfoPlantilla()
         });
     } else {
         debugConsole("A enviar post porque alumno es  NO, idUnidad =" + idUnidad);
-        $.post("../sources/ControladorPlantilla.php", {ins: "retornaArrContenidos", idUnidad: idUnidad}, function(respuesta)
+        $.post("../sources/ControladorPlantilla.php", {ins: "retornaArrContenidos", idUnidad: idUnidad}, function (respuesta)
         {
             debugConsole('Dentro');
             debugConsole('Resp' + respuesta);
@@ -506,7 +506,7 @@ function cargaContenidooo()
     debugConsole("se triggeo el div");
     $(".ui-slider-handle").trigger("click");
     debugConsole("se triggeo el ui-slider-handle");
-    $("#frameCont").load(function()
+    $("#frameCont").load(function ()
     {
         console.log("CorePlantilla: FrameCont load ready.");
         playContenido();
@@ -565,7 +565,7 @@ function asignarCalificacion(calif)
         var idElemento = idElementoDeIndiceActual();
 //        debugConsole('Antes de iniciar post');
 
-        $.post("../sources/ControladorPlantilla.php", {ins: "asignarCalificacion", idAlumno: idAlumno, idElemento: idElemento, calificacion: calif}, function(respuesta)
+        $.post("../sources/ControladorPlantilla.php", {ins: "asignarCalificacion", idAlumno: idAlumno, idElemento: idElemento, calificacion: calif}, function (respuesta)
         {
             registraIntento(calif);
 //                debugConsole('Debtro del post');
@@ -573,7 +573,7 @@ function asignarCalificacion(calif)
             debugConsole(respuesta);
             //Inicia la visualización de la plantilla
             debugConsole('el atributo href será=' + "./mensajeCalif.php?idCurso=" + idCurso + "&calificacion=" + calif + "&idElemento=" + idElemento);
-            setTimeout(function() {
+            setTimeout(function () {
                 $("#yt").attr("href", "./mensajeCalif.php?idCurso=" + idCurso + "&calificacion=" + calif + "&idElemento=" + idElemento);
                 $("#yt").trigger("click");
             }, 3000);
@@ -612,7 +612,7 @@ function asignarStatusElemento(status)
         }
         if (estatus > -1) {
             var idElemento = idElementoDeIndiceActual();
-            $.post("../sources/ControladorPlantilla.php", {ins: "asignarStatusElemento", idAlumno: idAlumno, idElemento: idElemento, status: estatus}, function(respuesta)
+            $.post("../sources/ControladorPlantilla.php", {ins: "asignarStatusElemento", idAlumno: idAlumno, idElemento: idElemento, status: estatus}, function (respuesta)
             {
                 debugConsole(respuesta);
                 var fila = arrCont[indiceActual];
@@ -627,14 +627,14 @@ function asignarStatusElemento(status)
 
 function registraEntrada() {
     var idProgreso = idProgresoDeIndiceActual();
-    $.post("../sources/ControladorPlantilla.php", {ins: 'registrarEntradaPlantilla', idProgresoAlumno: idProgreso}, function(respuesta) {
+    $.post("../sources/ControladorPlantilla.php", {ins: 'registrarEntradaPlantilla', idProgresoAlumno: idProgreso}, function (respuesta) {
         debugConsole('Resultado de registrar entrada:' + respuesta);
     });
 }
 function registraSalida() {
     trazaEnConsola("--Funcion registraSalida()")
     var idProgreso = idProgresoDeIndiceActual();
-    $.post("../sources/ControladorPlantilla.php", {ins: 'registraSalidaPlantilla', idProgresoAlumno: idProgreso}, function(respuesta) {
+    $.post("../sources/ControladorPlantilla.php", {ins: 'registraSalidaPlantilla', idProgresoAlumno: idProgreso}, function (respuesta) {
         debugConsole('Resultado de registrar salida:' + respuesta);
         parent.location.reload();
     });
@@ -642,7 +642,7 @@ function registraSalida() {
 }
 function registraIntento(calif) {
     var idProgreso = idProgresoDeIndiceActual();
-    $.post("../sources/ControladorPlantilla.php", {ins: 'registraIntentoPlantilla', idProgresoAlumno: idProgreso, calificacion: calif}, function(respuesta) {
+    $.post("../sources/ControladorPlantilla.php", {ins: 'registraIntentoPlantilla', idProgresoAlumno: idProgreso, calificacion: calif}, function (respuesta) {
         debugConsole('Resultado de registrar intento:' + respuesta);
     });
 }
@@ -956,51 +956,51 @@ function retornaIdProgreso(idRelCursoGrupo)
 function eventosDeSustitucion()
 {
     trazaEnConsola('------------------Función: eventosDeSustitucion', 4);
-    $('.smBoton').mouseenter(function(event)
+    $('.smBoton').mouseenter(function (event)
     {
         $(this).attr("src", cambiaImagenBoton($(this).attr('src'), "b"));
     });
-    $('.smBoton').mouseout(function(event)
+    $('.smBoton').mouseout(function (event)
     {
         $(this).attr("src", cambiaImagenBoton($(this).attr('src'), "a"));
     });
-    $('.smBoton').mouseup(function(event)
+    $('.smBoton').mouseup(function (event)
     {
         $(this).attr("src", cambiaImagenBoton($(this).attr('src'), "a"));
     });
-    $('.smBoton').mouseup(function(event)
+    $('.smBoton').mouseup(function (event)
     {
         $(this).attr("src", cambiaImagenBoton($(this).attr('src'), "a"));
     });
-    $('.smBoton').mousedown(function(event)
+    $('.smBoton').mousedown(function (event)
     {
         $(this).attr("src", cambiaImagenBoton($(this).attr('src'), "c"));
     });
-    $('.smBoton').click(function(event)
+    $('.smBoton').click(function (event)
     {
         //cargaRecurso($(this).attr("id"));
     });
-    $('.smBotonL').mouseenter(function(event)
+    $('.smBotonL').mouseenter(function (event)
     {
         $(this).attr("src", cambiaImagenBoton($(this).attr('src'), "b"));
     });
-    $('.smBotonL').mouseout(function(event)
+    $('.smBotonL').mouseout(function (event)
     {
         $(this).attr("src", cambiaImagenBoton($(this).attr('src'), "a"));
     });
-    $('.smBotonL').mouseup(function(event)
+    $('.smBotonL').mouseup(function (event)
     {
         $(this).attr("src", cambiaImagenBoton($(this).attr('src'), "a"));
     });
-    $('.smBotonL').mousedown(function(event)
+    $('.smBotonL').mousedown(function (event)
     {
         $(this).attr("src", cambiaImagenBoton($(this).attr('src'), "c"));
     });
-    $('.smBotonL').click(function(event)
+    $('.smBotonL').click(function (event)
     {
         //cargaRecurso($(this).attr("id"));
     });
-    $('#botonSalir').click(function(event)
+    $('#botonSalir').click(function (event)
     {
         /**
          * Cierra pantalla completa
@@ -1012,6 +1012,15 @@ function eventosDeSustitucion()
         registraSalida();
 
     });
+    
+//    CONTROL DE CAMBIOS 1.1.1
+//    FECHA: 07/10/2014
+//    AUTOR: JOSE MANUEL NIETO GOMEZ
+//    OBJETIVO: FUNCION DE CLICK SOBRE BOTON PANTALLA COMPLETA PARA EXPANDIR EL TAMAÑO DEL CONTENIDO
+    $("#pantallaCompleta").click(function(event){
+        muestraPlantilla();
+    });
+    
     trazaEnConsola('------------------Fin eventosDeSustitucion', 4);
 
 }
@@ -1068,10 +1077,19 @@ function cargaBotoneria()
     $('#botonSiguiente').attr("src", template_path + "/" + tipo_elemento + "/botonSiguiente-a.png");
     $('#botonVolumen').attr("src", template_path + "/" + tipo_elemento + "/botonVolumen-a.png");
     $('#botonSalir').attr("src", template_path + "/" + tipo_elemento + "/botonSalir-a.png");
+    
+//    CONTROL DE CAMBIOS 1.1.1
+//    AUTOR: JOSE MANUEL NIETO GOMEZ
+//    FECHA: 07/10/2014
+//    OBJETIVO: AGREGAR BOTON PARA EXPANDIR EL CONTENIDO OCUPANDO TODA LA PANTALLA
+    $('#pantallaCompleta').attr("src", template_path + "/" + tipo_elemento + "/pantallaCompleta-a.png");
+    $('#cerrarPantallaCompleta').attr("src", template_path + "/pestana.png");
+    
+    
 //    $('#btnMapa').attr("href", "mapa/mapaUnidad.php?idUnidad=" + idUnidad + '&idRelCursoGrupo=' + idRelCursoGrupo);
 
     //Asignación de rutas a los href de los recursos por unidad de la class btnRecurso
-    $('.btnRecurso').each(function()
+    $('.btnRecurso').each(function ()
     {
         $(this).attr("href", unidades_path + "/recursos/" + $(this).attr("name") + ".html");
     });
@@ -1090,7 +1108,7 @@ function cargaBotoneria()
 }
 function llenaArregloContenidos()
 {
-    $.post("../../sources/ControladorPlantilla.php", {ins: "llenarArreglo", idUnidad: idUnidad}, function(respuesta) {
+    $.post("../../sources/ControladorPlantilla.php", {ins: "llenarArreglo", idUnidad: idUnidad}, function (respuesta) {
         arrContenidos = respuesta;
     });
 }
@@ -1210,6 +1228,16 @@ function getIndiceActual() {
     return indiceActual;
 }
 
+/**
+ * Control de cambios v.1.1.1
+ * Autor: Ing. Manuel Nieto Gomez
+ * Fecha: 07/10/2014
+ * Objetivo: Funcionalidad para almacenamiento de variables de contenidos en el Sistema
+ * Funcionalidad para expandir el conteido y ocupar todo el espacio disponibe de la pantalla
+ * ocultando la plantilla, así como la funcionalidad para regresar los tamaños a sus valores
+ * originales
+ */
+
 //Funciones nuevas para el uso de variables en contenidos
 
 /**
@@ -1236,13 +1264,13 @@ var contexto = 1;
 function getMSValues(array, callback, error) {
 
     if (alumno.toString() === 'si') {
-        $.post("../sources/ControladorVariablesContenidos.php", {funcion: "getMSValues", idAlumno: idAlumno, idElemento: arrCont[indiceActual].idElemento, contexto: contexto, variables: array}, function(respuesta) {
+        $.post("../sources/ControladorVariablesContenidos.php", {funcion: "getMSValues", idAlumno: idAlumno, idElemento: arrCont[indiceActual].idElemento, contexto: contexto, variables: array}, function (respuesta) {
             console.log("GESTOR DE CONTENIDO AFTER POST, GETMSVALUES RETURN:");
             console.log(respuesta);
             console.log(jQuery.parseJSON(respuesta));
-            try{
+            try {
                 callback(jQuery.parseJSON(respuesta));
-            }catch(e){
+            } catch (e) {
                 error();
             }
         });
@@ -1264,7 +1292,7 @@ function setMSValues(array, callback, error) {
     if (alumno.toString() === 'si') {
         console.log("Se desea almacenar variable para un alumno");
         console.log(array);
-        $.post("../sources/ControladorVariablesContenidos.php", {funcion: "setMSValues", idAlumno: idAlumno, idElemento: arrCont[indiceActual].idElemento, contexto: contexto, variables: array}, function(respuesta) {
+        $.post("../sources/ControladorVariablesContenidos.php", {funcion: "setMSValues", idAlumno: idAlumno, idElemento: arrCont[indiceActual].idElemento, contexto: contexto, variables: array}, function (respuesta) {
             try {
                 if (jQuery.parseJSON(respuesta) === true) {
                     callback();
@@ -1276,7 +1304,7 @@ function setMSValues(array, callback, error) {
                 error();
             }
         });
-    }else{
+    } else {
         error();
     }
 }
@@ -1287,10 +1315,10 @@ function setMSValues(array, callback, error) {
  * @param {type} error
  * @returns {undefined}
  */
-function resetMSValues(callback, error){
+function resetMSValues(callback, error) {
     if (alumno.toString() === 'si') {
         console.log("Se desea reiniciar las variables en una serie");
-        $.post("../sources/ControladorVariablesContenidos.php", {funcion: "resetMSValues", idAlumno: idAlumno, idElemento: arrCont[indiceActual].idElemento, contexto: contexto}, function(respuesta) {
+        $.post("../sources/ControladorVariablesContenidos.php", {funcion: "resetMSValues", idAlumno: idAlumno, idElemento: arrCont[indiceActual].idElemento, contexto: contexto}, function (respuesta) {
             try {
                 if (jQuery.parseJSON(respuesta) === true) {
                     callback();
@@ -1302,8 +1330,54 @@ function resetMSValues(callback, error){
                 error();
             }
         });
-    }else{
+    } else {
         error();
     }
+}
+
+//Funciones para desplegar ocultar la plantila y mostrar el contenido en pantalla completa
+
+/**
+ * Oculta la plantilla para que el contenido abarque todo el espacio
+ * @returns {undefined}
+ */
+function ocultaPlantilla() {
+    $("#contenido").animate({
+        top: "0%",
+        left: "0%",
+        width: "100%",
+        height: "100%",
+        "z-index": 99999
+    }, 2000, function () {
+        //Animation Complete
+        //Se muestra la pestaña para mostrar la plantilla
+        $("#cerrarPantallaCompleta").animate({
+           left: "0px"
+        }, 2000, function(){
+            trazaEnConsola("Pantalla completa", 4);
+        });
+    });
+}
+
+/**
+ * Regresa la plantilla a sus propiedades originales
+ * @returns {undefined}
+ */
+function muestraPlantilla() {
+    $("#contenido").animate({
+        top: "10.5%",
+        left: "6.7%",
+        width: "91.7%",
+        height: "76.7%",
+        "z-index": 0
+    }, 2000, function () {
+        //Animation Complete 
+        //Se oculta la pestaña para mostrar la plantilla
+        $("#cerrarPantallaCompleta").animate({
+           left: "-20%"
+        }, 2000, function(){
+            trazaEnConsola("Propiedades originales de plantilla", 4);
+        });
+    });
 }
 

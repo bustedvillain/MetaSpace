@@ -7,7 +7,7 @@ body{
 {
     margin-left: 30%;
     margin-top: 40%;
-    
+
 }
 #loadingPorcentaje
 {
@@ -17,7 +17,7 @@ body{
 {
     float:top;
     margin-left:40%
-    /*background: #222222;*/
+        /*background: #222222;*/
 }
 #imagenLoading{
     width: 35%;
@@ -29,7 +29,7 @@ body{
     float:top;
     top:0px;
     width:100%;
-    
+
     /*background: #cccccc;*/
     /*height: 100%;*/
 }
@@ -38,7 +38,7 @@ body{
     float:top;
     margin-top: 5%;
     margin-bottom: 5%;
-    
+
     /*background: #111111;*/
 }
 #smPrincipal
@@ -70,12 +70,12 @@ body{
 }
 .smBoton
 {
-/*    background-color: #abc;*/
-margin-top:.5%;
-margin-left: 2%;
+    /*    background-color: #abc;*/
+    margin-top:.5%;
+    margin-left: 2%;
     width: 4%;
     height: 80%;
-    
+
     float: left;
     position: relative;
     /*overflow: hidden;*/
@@ -98,24 +98,24 @@ margin-left: 2%;
     height: 10%;
     position: relative;
     overflow: hidden;
-    
+
 }
 #smLeft
 {
     /*background-color: #abc;*/
     height: 70%;
-    
+
     width:6.8%;
     overflow: visible;
     overflow: hidden;
     /*margin-top: 5%;*/
-    
+
     /*position: fixed;*/
     float:left;
     top:0px;
     padding-top: 1%;
-    
-    
+
+
 }
 #smBottom
 {
@@ -127,14 +127,14 @@ margin-left: 2%;
     position: absolute;
     bottom: 0;
     margin-bottom: 0px;
-    
+
 }
 #titulo{
-    
+
     margin-left: 40%;
     width: 15%;
     height: 100%;
-/*    float: right;*/
+    /*    float: right;*/
     position: absolute;
 }
 #botonSalir, #botonVolumen
@@ -142,6 +142,7 @@ margin-left: 2%;
     margin-right: 0px;
     float: right;
 }
+
 #botonAnterior
 {
     /*margin-left: 32.5%;*/
@@ -171,7 +172,7 @@ margin-left: 2%;
 }
 .smBotonT
 {
-    
+
 }
 #contenido
 {
@@ -179,7 +180,7 @@ margin-left: 2%;
     top: 10.5%;
     left: 6.7%;
     width: 91.7%;
-    
+
     height: 76.7%;
     z-index: 0;
     /*overflow: scroll;*/
@@ -206,4 +207,20 @@ margin-left: 2%;
     display:none;
 }
 
+/*CONTROL DE CAMBIOS 1.1.1
+FECHA: 07/10/2014
+AUTOR: JOSE MANUEL NIETO GOEMZ
+OBJETIVO: ESTILO DE BOTON PARA EXPANDIR CONTENIDO*/
+#cerrarPantallaCompleta{
+    float: right;
+    cursor: pointer;
+}
+
+#cerrarPantallaCompleta{
+    position: absolute;
+    top: 5%;
+    left: -20%;
+    z-index:999999;
+    cursor: pointer;
+}
 
