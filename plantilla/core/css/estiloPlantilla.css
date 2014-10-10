@@ -211,7 +211,7 @@ body{
 FECHA: 07/10/2014
 AUTOR: JOSE MANUEL NIETO GOEMZ
 OBJETIVO: ESTILO DE BOTON PARA EXPANDIR CONTENIDO*/
-#cerrarPantallaCompleta{
+#pantallaCompleta{
     float: right;
     cursor: pointer;
 }

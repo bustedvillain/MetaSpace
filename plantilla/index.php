@@ -115,9 +115,9 @@
                             Autor: Ing. Manuel Nieto Gomez
                             Fecha: 07/10/2014
                             Objetivo: Boton para abrir contenido en pantalla completa-->
-                <img id ="pantallaCompleta"   class="smBoton smBotonT" alt="Pantalla Completa" title="Pantalla Completa"/>
-
+                
                 <img id ="botonSalir"  class="smBoton smBotonT"  alt="Salir" title="Salir" />
+                <img id ="pantallaCompleta"   class="smBoton" alt="Pantalla Completa" title="Pantalla Completa"/>
 
             </div>
             <div id="smLeft">
@@ -144,8 +144,9 @@
                         Autor: Ing. Manuel Nieto Gomez
                         Fecha: 07/10/2014
                         Objetivo: Boton para cerrar pantalla completa del contenido-->
-            <img id ="cerrarPantallaCompleta"   alt="Cerrar Pantalla Completa" title="Cerrar Pantalla Completa"/>
+            
         </div>
+        <img id ="cerrarPantallaCompleta"   alt="Cerrar Pantalla Completa" title="Cerrar Pantalla Completa" height="150"/>
         <script src="../js/jquery.js"></script> 
         <?php
         imprimeScriptDeTiempoMaxSesion();

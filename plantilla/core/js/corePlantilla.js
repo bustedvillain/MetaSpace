@@ -87,6 +87,7 @@ function arreglaAlResize()
         $(".smBotonL").css("width", "60%");
         $(".smBotonL").css("margin-left", "13%");
         $(".smBotonL").css("margin-top", "25%");
+//        $("#pantallaCompleta").css("float", "right");
 
     }
     else
@@ -105,6 +106,7 @@ function arreglaAlResize()
         $(".smBotonL").css("width", "30%");
         $(".smBotonL").css("margin-left", "35%");
         $(".smBotonL").css("margin-top", "35%");
+//        $("#pantallaCompleta").css("float", "right");
 
 
     }
@@ -299,6 +301,7 @@ function eventosBotones()
 //            statusReproduccion = 0;
         }
 
+
     });
 ////        if (typeof jQuery === 'undefined') {
 ////            debugConsole("jQuery is not loaded");
@@ -379,6 +382,32 @@ function eventosBotones()
 
 //    $("#smLoadingPlantilla").css("display","none");
 //    $("#smPrincipal").css("opacity","1");
+
+    $('#botonSalir').click(function (event)
+    {
+        /**
+         * Cierra pantalla completa
+         */
+        exitFullscreen()
+
+
+        debugConsole('salir');
+        registraSalida();
+
+    });
+
+//    CONTROL DE CAMBIOS 1.1.1
+//    FECHA: 07/10/2014
+//    AUTOR: JOSE MANUEL NIETO GOMEZ
+//    OBJETIVO: FUNCION DE CLICK SOBRE BOTON PANTALLA COMPLETA PARA EXPANDIR EL TAMAÑO DEL CONTENIDO
+    $("#pantallaCompleta").click(function (event) {
+        ocultaPlantilla();
+    });
+    
+    $("#cerrarPantallaCompleta").click(function(event){
+        muestraPlantilla();
+    })
+    
     trazaEnConsola('------------------Fin eventosBotones', 4);
 }
 function tiempo(objB) {
@@ -560,6 +589,7 @@ function cargaContenidooo()
 function asignarCalificacion(calif)
 {
     debugConsole('Dentro de la función asignarCalificacion');
+    muestraPlantilla();
     if (alumno === "si") {
 //        asignarStatusElemento(2);
         var idElemento = idElementoDeIndiceActual();
@@ -1000,27 +1030,8 @@ function eventosDeSustitucion()
     {
         //cargaRecurso($(this).attr("id"));
     });
-    $('#botonSalir').click(function (event)
-    {
-        /**
-         * Cierra pantalla completa
-         */
-        exitFullscreen()
 
 
-        debugConsole('salir');
-        registraSalida();
-
-    });
-    
-//    CONTROL DE CAMBIOS 1.1.1
-//    FECHA: 07/10/2014
-//    AUTOR: JOSE MANUEL NIETO GOMEZ
-//    OBJETIVO: FUNCION DE CLICK SOBRE BOTON PANTALLA COMPLETA PARA EXPANDIR EL TAMAÑO DEL CONTENIDO
-    $("#pantallaCompleta").click(function(event){
-        muestraPlantilla();
-    });
-    
     trazaEnConsola('------------------Fin eventosDeSustitucion', 4);
 
 }
@@ -1077,15 +1088,15 @@ function cargaBotoneria()
     $('#botonSiguiente').attr("src", template_path + "/" + tipo_elemento + "/botonSiguiente-a.png");
     $('#botonVolumen').attr("src", template_path + "/" + tipo_elemento + "/botonVolumen-a.png");
     $('#botonSalir').attr("src", template_path + "/" + tipo_elemento + "/botonSalir-a.png");
-    
+
 //    CONTROL DE CAMBIOS 1.1.1
 //    AUTOR: JOSE MANUEL NIETO GOMEZ
 //    FECHA: 07/10/2014
 //    OBJETIVO: AGREGAR BOTON PARA EXPANDIR EL CONTENIDO OCUPANDO TODA LA PANTALLA
     $('#pantallaCompleta').attr("src", template_path + "/" + tipo_elemento + "/pantallaCompleta-a.png");
     $('#cerrarPantallaCompleta').attr("src", template_path + "/pestana.png");
-    
-    
+
+
 //    $('#btnMapa').attr("href", "mapa/mapaUnidad.php?idUnidad=" + idUnidad + '&idRelCursoGrupo=' + idRelCursoGrupo);
 
     //Asignación de rutas a los href de los recursos por unidad de la class btnRecurso
@@ -1345,15 +1356,15 @@ function ocultaPlantilla() {
     $("#contenido").animate({
         top: "0%",
         left: "0%",
-        width: "100%",
-        height: "100%",
+        width: $("body").width(),
+        height: $("body").height(),
         "z-index": 99999
-    }, 2000, function () {
+    }, 1000, function () {
         //Animation Complete
         //Se muestra la pestaña para mostrar la plantilla
         $("#cerrarPantallaCompleta").animate({
-           left: "0px"
-        }, 2000, function(){
+            left: "0px"
+        }, 2000, function () {
             trazaEnConsola("Pantalla completa", 4);
         });
     });
@@ -1367,15 +1378,17 @@ function muestraPlantilla() {
     $("#contenido").animate({
         top: "10.5%",
         left: "6.7%",
-        width: "91.7%",
-        height: "76.7%",
+//        width: "91.7%",
+//        height: "76.7%",
+        width: $("body").width() * 0.917,
+        height: $("body").height() * 0.767,
         "z-index": 0
-    }, 2000, function () {
+    }, 1000, function () {
         //Animation Complete 
         //Se oculta la pestaña para mostrar la plantilla
         $("#cerrarPantallaCompleta").animate({
-           left: "-20%"
-        }, 2000, function(){
+            left: "-20%"
+        }, 2000, function () {
             trazaEnConsola("Propiedades originales de plantilla", 4);
         });
     });
