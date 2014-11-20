@@ -87,7 +87,7 @@ function arreglaAlResize()
         $(".smBotonL").css("width", "60%");
         $(".smBotonL").css("margin-left", "13%");
         $(".smBotonL").css("margin-top", "25%");
-//        $("#pantallaCompleta").css("float", "right");
+//        $("#pantallaCompleta").css("float", "right");        
 
     }
     else
@@ -107,8 +107,7 @@ function arreglaAlResize()
         $(".smBotonL").css("margin-left", "35%");
         $(".smBotonL").css("margin-top", "35%");
 //        $("#pantallaCompleta").css("float", "right");
-
-
+        muestraPlantilla();
     }
     $(".smBotonL").height($(".smBotonL").width());
 }
@@ -403,11 +402,11 @@ function eventosBotones()
     $("#pantallaCompleta").click(function (event) {
         ocultaPlantilla();
     });
-    
-    $("#cerrarPantallaCompleta").click(function(event){
+
+    $("#cerrarPantallaCompleta").click(function (event) {
         muestraPlantilla();
     })
-    
+
     trazaEnConsola('------------------Fin eventosBotones', 4);
 }
 function tiempo(objB) {
@@ -1392,5 +1391,29 @@ function muestraPlantilla() {
             trazaEnConsola("Propiedades originales de plantilla", 4);
         });
     });
+}
+
+/**
+ * Asigna calificacion de forma silenciosa sin emitir logro obtenido
+ * @param {type} calif
+ * @returns {undefined}
+ */
+function asignarCalificacionSilenciosa(calif, callback)
+{
+    debugConsole('Dentro de la función asignarCalificacion Silenciosa');
+
+    if (alumno === "si") {
+        var idElemento = idElementoDeIndiceActual();
+        $.post("../sources/ControladorPlantilla.php", {ins: "asignarCalificacion", idAlumno: idAlumno, idElemento: idElemento, calificacion: calif}, function (respuesta) {
+            registraIntento(calif);
+            debugConsole(respuesta);
+            debugConsole("Calificacion asignada de forma silenciosa:"+calif);
+            callback();
+        });
+    }else{
+        debugConsole("Calificacion asignada de forma silenciosa, modo preview:"+calif);
+        callback();
+    }
+   
 }
 

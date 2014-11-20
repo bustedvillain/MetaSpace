@@ -25,7 +25,7 @@
 define("DB_NAME_MOD","softmeta");
 define("USER_MOD","softmeta");
 define("PASS_MOD","ems20140818");
-define("HOST_MOD","192.168.100.150");
+define("HOST_MOD","200.66.87.58");
 define("PORT_MOD","5432");
 
 
@@ -33,10 +33,10 @@ define("PORT_MOD","5432");
 define("DB_NAME_SG","softmeta_sgi");
 define("USER_SG","softmeta");
 define("PASS_SG","ems20140818");
-define("HOST_SG","192.168.100.150");
+define("HOST_SG","200.66.87.58");
 define("PORT_SG","5432");
 
-define ("IP_SERVER_PUBLIC",'http://192.168.100.150/');
+define ("IP_SERVER_PUBLIC",'http://200.66.87.58/');
 
 //Confuración de la plantilla
 define("UNIDADES_PATH", "/var/www/html/storage/unidades");
