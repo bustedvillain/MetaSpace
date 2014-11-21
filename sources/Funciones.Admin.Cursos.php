@@ -407,7 +407,7 @@ function imprimeTopicosFechas($idCurso) {
     $query->sql = <<<SQL
             SELECT id_unidad, no_unidad, nombre_unidad, descripcion, url_unidad, status, id_curso
             FROM unidades 
-            WHERE id_curso=$idCurso and status=1 order by no_unidad;
+            WHERE id_curso=$idCurso order by no_unidad;
 SQL;
 
     $resultado = $query->select("obj");
