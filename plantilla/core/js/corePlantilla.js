@@ -1363,7 +1363,7 @@ function ocultaPlantilla() {
         //Se muestra la pestaña para mostrar la plantilla
         $("#cerrarPantallaCompleta").animate({
             left: "0px"
-        }, 2000, function () {
+        }, 1000, function () {
             trazaEnConsola("Pantalla completa", 4);
         });
     });
@@ -1387,7 +1387,7 @@ function muestraPlantilla() {
         //Se oculta la pestaña para mostrar la plantilla
         $("#cerrarPantallaCompleta").animate({
             left: "-20%"
-        }, 2000, function () {
+        }, 1000, function () {
             trazaEnConsola("Propiedades originales de plantilla", 4);
         });
     });
