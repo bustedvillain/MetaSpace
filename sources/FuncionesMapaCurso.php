@@ -21,12 +21,18 @@
 function arregloIdUnidadesMC($alumno, $idRelCursoGrupo, $idCurso, $idAlumno, $tipoEjecucion) {
     require_once 'Query.php';
     $sql = new Query("SG");
+    
+    /**
+     * Change control 1.1.1
+     * Autor: José Manuel Nieto Gömez
+     * Fecha de modificación: 21/1/14
+     * Objetivo: La carga de unidaes de curso, no hacía distinción por curso abierto, y se ocacionaba problema
+     * cuando habian varias pubicaciones del mismo curso
+     */
     if ($alumno == "no") {
         $sql->sql = <<<hhh
-        select u.id_unidad as "idUnidad", to_char(f.fecha_inicio,'YYYY-MM-DD') as "fechaInicio", to_char(f.fecha_fin,'YYYY-MM-DD') as "fechaFin"
+        select u.id_unidad as "idUnidad"
         from unidades u 
-        left join fechas_unidades_cursos f
-                on f.id_unidad = u.id_unidad
         where u.id_curso = $idCurso
                 and u.status = 1
         order by u.no_unidad
