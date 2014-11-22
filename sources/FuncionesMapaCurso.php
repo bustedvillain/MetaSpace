@@ -21,17 +21,19 @@
 function arregloIdUnidadesMC($alumno, $idRelCursoGrupo, $idCurso, $idAlumno, $tipoEjecucion) {
     require_once 'Query.php';
     $sql = new Query("SG");
-//    $sql->sql = <<<hhh
-//        select u.id_unidad as "idUnidad", to_char(f.fecha_inicio,'YYYY-MM-DD') as "fechaInicio", to_char(f.fecha_fin,'YYYY-MM-DD') as "fechaFin"
-//        from unidades u 
-//        left join fechas_unidades_cursos f
-//                on f.id_unidad = u.id_unidad
-//        where u.id_curso = $idCurso
-//                and u.status = 1
-//        order by u.no_unidad
-//hhh;
-    //Corrección de consulta
-     $sql->sql = <<<hhh
+    if ($alumno == "no") {
+        $sql->sql = <<<hhh
+        select u.id_unidad as "idUnidad", to_char(f.fecha_inicio,'YYYY-MM-DD') as "fechaInicio", to_char(f.fecha_fin,'YYYY-MM-DD') as "fechaFin"
+        from unidades u 
+        left join fechas_unidades_cursos f
+                on f.id_unidad = u.id_unidad
+        where u.id_curso = $idCurso
+                and u.status = 1
+        order by u.no_unidad
+hhh;
+    } else {
+        //Corrección de consulta
+        $sql->sql = <<<hhh
         select u.id_unidad as "idUnidad", to_char(f.fecha_inicio,'YYYY-MM-DD') as "fechaInicio", to_char(f.fecha_fin,'YYYY-MM-DD') as "fechaFin"
         from unidades u 
         join fechas_unidades_cursos f
@@ -42,7 +44,8 @@ function arregloIdUnidadesMC($alumno, $idRelCursoGrupo, $idCurso, $idAlumno, $ti
                 and u.status = 1
 	order by u.no_unidad
 hhh;
-     
+    }
+
     $unidades = $sql->select("obj");
     $arrIdUnidades = "[";
     $cont = 0;
