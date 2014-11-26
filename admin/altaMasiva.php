@@ -26,6 +26,7 @@ verificarSesionAdmnistrador();
                 right: -1000px;
                 top: -1000px;
                 cursor: pointer;
+                
             }
         </style>
 

@@ -114,6 +114,8 @@ OBJETIVO: AJUSTES ESTETICOS-->
                             <li><a href="nivel_escolar.php">Nivel Educativo</a></li> 
                             <li><a href="grado_escolar.php">Grado Escolar</a></li>                                    
                             <li><a href="nacionalidad.php">Nacionalidad</a></li>
+                            <li class="divider"></li>                                    
+                            <li><a target="_blank" href="<?=URL_BIBLIOTECA_ADMIN?>">Biblioteca Virtual</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">

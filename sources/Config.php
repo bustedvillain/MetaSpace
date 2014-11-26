@@ -78,4 +78,10 @@ define("AUTOEVALUACION", "AUE");
 //Objetivo: Cambios esteticos
 define("VERSION", "v1.1.0");
 
+//Biblioteca Virtual
+define("BASE_URL_BIBLIOTECA", "http://200.66.87.58/BibliotecaVirtual");
+define("TOKEN_BIBLIOTECA", "bf391c8b7d72b6d6");
+define("URL_BIBLIOTECA_ALUMNO", BASE_URL_BIBLIOTECA . "/middleware/");
+define("URL_BIBLIOTECA_ADMIN", BASE_URL_BIBLIOTECA . "/dashboard/?token=".TOKEN_BIBLIOTECA);
+
 ?>
