@@ -25,7 +25,7 @@ function arregloIdUnidadesMC($alumno, $idRelCursoGrupo, $idCurso, $idAlumno, $ti
     /**
      * Change control 1.1.1
      * Autor: José Manuel Nieto Gömez
-     * Fecha de modificación: 21/1/14
+     * Fecha de modificación: 21/11/14
      * Objetivo: La carga de unidaes de curso, no hacía distinción por curso abierto, y se ocacionaba problema
      * cuando habian varias pubicaciones del mismo curso
      */

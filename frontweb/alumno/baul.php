@@ -1,7 +1,14 @@
 <?php
 include '../../sources/Funciones.php';
-include '../../template/validacionesBaul.php';
+
 verificarSesionAlumno();
+
+if (isset($_GET['noUnidad']))
+    $noUnidad = intval ($_GET['noUnidad']);
+else
+    $noUnidad = 1; 
+
+$noUnidadesTotales = 6;
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -52,13 +59,15 @@ verificarSesionAlumno();
                 </div>
 
                 <?php
-                if (tieneCursosAsignados(obtenerIDTabla())) {
+               
                     ?>
                     <div id="baul">
                         <div id="baul_nav">
                             <ul>
                                 <?php
-                                generarBloques($noUnidadesTotales, $noUnidad);
+                                 if (tieneCursosAsignados(obtenerIDTabla()) || tieneCursosAsignadosScorm(obtenerIDTabla())) {
+                                    generarBloques($noUnidadesTotales, $noUnidad);
+                                 }
                                 ?>
 
                             </ul>
@@ -66,16 +75,22 @@ verificarSesionAlumno();
                         <div id="baul_tab">
 
                             <?php
-                            generarCursoAsignadosBaul(obtenerIDTabla(), $noUnidad)
+                            
+                            if(tieneCursosAsignados(obtenerIDTabla()) ){
+                                generarCursoAsignadosBaul(obtenerIDTabla(), $noUnidad);
+                            }
+                            
+                            if(tieneCursosAsignadosScorm(obtenerIDTabla())){
+                                generarCursoAsignadosBaulScorm(obtenerIDTabla(), $noUnidad);
+                            }
+                            
                             ?>
 
                         </div>
 
                     </div>
 
-                    <?php
-                }
-                ?>
+                   
             </div>
             <div id="footer">
                 <div id="legal">

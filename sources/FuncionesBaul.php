@@ -47,7 +47,7 @@ function generarCursoAsignadosBaul($idAlumno, $noUnidad)
  */
 function tieneCursosAsignados($idAlumno)
 {
-    $arrayCursosPILA = @getArraysIdsRelCursoGrupo($idAlumno);
+    $arrayCursosPILA = getArraysIdsRelCursoGrupo($idAlumno);
     $arrayCursos     = array_pop($arrayCursosPILA);
     
     //echo count( $arrayCursosPILA );
