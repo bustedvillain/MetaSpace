@@ -45,7 +45,12 @@ function ligasBotonesMc()
         //NUEVO CODIGO: RECORRE LAS UNIDADES, VALIDA SI ESTA DEFINIDO EL ID DE CURSO PARA HABILITAR EL BOTON 
         for (i = 0; i < 6; i++) {
             if (typeof (arrIdUnidades[i]) !== "undefined" && arrIdUnidades[i] !== '-' && arrIdUnidades[i] !== null) {
-                $("#mcl" + (i + 1)).attr("href", '../plantilla/index.php?alumno=no&idRelCursoGrupo=' + idRelCursoGrupo + '&idUnidad=' + arrIdUnidades[i]);
+//                $("#mcl" + (i + 1)).attr("href", '../plantilla/index.php?alumno=no&idRelCursoGrupo=' + idRelCursoGrupo + '&idUnidad=' + arrIdUnidades[i]);
+                if (frontweb === true) {
+                        $("#mcl" + (i + 1)).attr("href", '../../plantilla/index.php?alumno=no&idRelCursoGrupo=' + idRelCursoGrupo + '&idUnidad=' + arrIdUnidades[i]);
+                    } else {
+                        $("#mcl" + (i + 1)).attr("href", '../plantilla/index.php?alumno=no&idRelCursoGrupo=' + idRelCursoGrupo + '&idUnidad=' + arrIdUnidades[i]);
+                    }
                 $("#mcl" + (i + 1)).attr("class", 'fancyy');
                 $("#mc" + (i + 1)).attr("src", rutaCompMapaCurso + "/" + (i + 1) + "-a.png");
 
