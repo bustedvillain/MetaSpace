@@ -56,6 +56,7 @@ cabecera;
                         alumno = "no";
                         idCurso=$idCurso;
                         rutaCompMapaCurso = "$baseStorage/" + idCurso + "/mapa";
+                        frontweb = false;
                     </script>
 cabecera;
             } else {
