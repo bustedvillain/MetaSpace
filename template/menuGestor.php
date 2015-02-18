@@ -17,14 +17,20 @@ OBJETIVO: AJUSTES ESTETICOS-->
                 <ul class="nav">
                     <li><a href="index.php"><i class="icon-home icon-white"></i> Inicio</a></li>
                     <li class="dropdown">
-                        <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-book icon-white"></i> Cursos<b class="caret"></b></a>
+                        <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-book"></i> Curso<b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li><a href="nuevoCurso.php"><i class="icon-upload"></i> Vincular</a></li>
+                            <li class="dropdown-submenu">
+                                <a href="javascript:void(0)"><i class="icon-upload"></i> Vincular</a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="nuevoCurso.php"><i class="icon-upload"></i> Curso MetaSpace</a></li>
+                                    <li><a href="nuevoCursoScorm.php"><i class="icon-upload"></i> Curso SCORM</a></li>
+                                </ul>
+                            </li>                                
                             <li><a href="cursos.php"><i class="icon-search"></i> Ver</a></li>
                             <li><a href="cursosAbiertos.php"><i class="icon-random"></i> Asignar Grupos</a></li>
                         </ul>
                     </li>
-                    <li><a href="#verEditarPerfilModal" role="button" data-toggle="modal" onclick="verPerfilPropio(<?php echo obtenerIdDatosPersonales();?>)"><i class="icon-info-sign icon-white"></i> Perfil</a></li>
+                    <li><a href="#verEditarPerfilModal" role="button" data-toggle="modal" onclick="verPerfilPropio(<?php echo obtenerIdDatosPersonales(); ?>)"><i class="icon-info-sign icon-white"></i> Perfil</a></li>
                     <li><a href="#" role="button" data-toggle="modal" onclick="javascript:document.formMoodle.submit();"><i class="icon-share icon-white"></i> Recursos</a></li>
                 </ul>
                 <p class="navbar-text pull-right">
@@ -34,5 +40,5 @@ OBJETIVO: AJUSTES ESTETICOS-->
         </div>
     </div>
 </div>
-<?php include '../template/formularioMoodle.php';?>
+<?php include '../template/formularioMoodle.php'; ?>
 <?php include("../senior/verEditarPerfil.php"); ?>

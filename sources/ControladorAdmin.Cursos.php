@@ -23,6 +23,8 @@ if($_POST){
             break;
         case "consultaInfoCursoAbierto":
             echo consultaCursoAbiertoJSON($atributo);
+        case "consultaTopicosCursoScormMoodleUpdate":
+            echo consultaTopicosCursoScormMoodleUpdate($atributo);
     }
     
 }

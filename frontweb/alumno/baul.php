@@ -80,7 +80,7 @@ $noUnidadesTotales = 6;
                                 generarCursoAsignadosBaul(obtenerIDTabla(), $noUnidad);
                             }
                             
-                            if(tieneCursosAsignadosScorm(obtenerIDTabla())){
+                             if(tieneCursosAsignadosScorm(obtenerIDTabla())){
                                 generarCursoAsignadosBaulScorm(obtenerIDTabla(), $noUnidad);
                             }
                             

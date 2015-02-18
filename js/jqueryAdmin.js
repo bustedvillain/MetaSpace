@@ -1463,6 +1463,13 @@ $(document).ready(function() {
         var datos = getDatosCursoJSON(idAtributo, "editar");
     });
 
+    $(".editaCursoSco").click(function(event) {
+        $(".cargando").html("<h4><b>Cargando datos...</b><img src='../img/loading.gif' width='30'></h4>");
+        debugConsole("editaCursoSco");
+        var idAtributo = $(this).attr("name");
+        debugConsole("Getting datos personales:" + idAtributo);
+        var datos = getDatosCursoJSON(idAtributo, "editarSco");
+    });
     function getDatosCursoJSON(idAtributo, tipo_funcion) {
         debugConsole("getDatosCusoJSON");
         var datos;
@@ -1478,6 +1485,9 @@ $(document).ready(function() {
                         break;
                     case "editar":
                         setEditarDatosCurso(datos);
+                        break;
+                    case "editarSco":
+                        setEditarDatosCursoSco(datos);
                         break;
                 }
             }
@@ -1515,8 +1525,11 @@ $(document).ready(function() {
             $("#ver_tipo_ejecucion").html("Desconocido").text();
         }        
 //        /CHANGE CONTROL 1.1.1
-
-        $("#probar_curso").html("<a href='../mapaCurso/index.php?alumno=no&idCurso=" + datos.id_curso + "' target='_blank'>Probar Curso</a>");
+         if (datos.nombre_curso.toLowerCase().indexOf("scorm")!=-1){
+            $("#probar_curso").html("<a href='../mapaCurso/mapaSco.php?alumno=no&idCurso=" + datos.id_curso + "' target='_blank'>Probar Curso</a>");
+        }else{
+            $("#probar_curso").html("<a href='../mapaCurso/index.php?alumno=no&idCurso=" + datos.id_curso + "' target='_blank'>Probar Curso</a>");
+        }
 
         $("#ver_topicos").html("");
         for (i = 0; i < datos.topicos.length; i++) {
@@ -1647,6 +1660,229 @@ $(document).ready(function() {
 
         }
 
+    }
+
+    function setEditarDatosCursoSco(datos) {
+        $(".cargando").html("");
+        debugConsole("setEditarDatosCursoSco");
+//        (Encoder.htmlDecode(datos.nombre_usuario)
+        $("#id_curso2").val(datos.id_curso);
+        $("#courseId").val(datos.id_curso_moodle);
+        $("#ver_curso_moodle2_sco").html(datos.curso_moodle).text();
+
+        $("#edita_clave_curso_sco").val(Encoder.htmlDecode(datos.clave_curso));
+        $("#edita_nombre_curso_sco").val(Encoder.htmlDecode(datos.nombre_curso));
+        $("#edita_nombre_corto_sco").val(Encoder.htmlDecode(datos.nombre_corto));
+        $("#edita_categoria option[value=" + datos.id_categoria + "]").attr("selected", true);
+        $("#edita_asignatura option[value=" + datos.id_asignatura + "]").attr("selected", true);
+//        $("#comboGradoEscolares option[value=" + datos.id_grado_escolar + "]").attr("selected", true);
+//        $("#comboGradoEscolares").change();
+
+        $("#comboNivelEscolarSco option[value=" + datos.id_nivel + "]").attr("selected", true);
+//        debugConsole("ID NIVEL ESCOLAR SCORM: "+ datos.id_nivel);
+        cambioGrado = true;
+        idGradoEscolar = datos.id_grado;
+        $("#comboNivelEscolarSco").change();
+//        $("#comboGradoEscolares option[value=" + datos.grado + "]").attr("selected", true);
+        debugConsole('el grado es' + datos.grado);
+        
+        /**
+         * CHANGE CONTROL 1.1.0
+         * AUTOR: JOSE MANUEL NIETO GOMEZ
+         * FECHA DE MODIFICACIÓN: 20 DE JUNIO DE 2014
+         * OBJETIVO: PRESENTACION DE CAMPO "tipo_ejecucion"
+         */
+        $("#edita_tipo_ejecucion option[value=" + datos.tipo_ejecucion + "]").attr("selected", true);              
+//        /CHANGE CONTROL 1.1.1
+
+        $("#edita_contenido_sco").html("");
+        $.post("../sources/ControladorAdmin.Cursos.php", {consulta: "consultaTopicosCursoScormMoodleUpdate", atributo: datos.id_curso_moodle}, function(resultado) {
+            $("#edita_contenido_sco").html(resultado);
+        }).success(function(){
+            editaScorm();
+            $(".ajax-upload-dragdrop").css("width","350px");
+        });
+    }
+
+
+    function editaScorm(){
+        
+        var modulo= $("#modulo").val();
+        var curso= $("#courseId").val();
+    	$("#divforma1").uploadFile({
+            url:"client.php",
+            allowedTypes:"zip",
+            formData: {
+                "idCurso" : curso,
+                "idSeccion" : 1,
+                "nombreActividad" : function(){ return $("#nombre_unidad_1").val();},
+                "modulo": function(){ return $("#modulo1").val();},
+                "launch": function(){ return $("#launch1").val();},
+                "instance": function(){ return $("#instance1").val();}
+            },
+            dragDropStr:"<span><b>Arrastra hasta esta zona el archivo zip</b></span>",
+            onSubmit:function(files)
+            {
+                if($("#nombre_unidad_1").val()==""){
+                    alert("debes de poner  nombre a la actividad 1");
+                    return false;
+                }
+            },
+            onSuccess:function(files,data,xhr)
+            {
+                $("#divforma1").hide("slow");
+                //$("#resultado1").html(JSON.stringify(data) + "<br>");	
+            },
+            maxFileCount: 1,
+            maxFileCountErrorStr: "ya has cargado un archivo",
+            cancelStr: "Aceptar",
+            uploadErrorStr: "Es necesario primero agregar un nombre y descripción al bloque"
+    	});
+        $("#divforma2").uploadFile({
+            url:"client.php",
+            allowedTypes:"zip",
+            formData: {
+                "idCurso" : curso,
+                "idSeccion" : 2,
+                "nombreActividad" : function(){ return $("#nombre_unidad_2").val()},
+                "modulo": function(){ return $("#modulo2").val();},
+                "launch": function(){ return $("#launch2").val();},
+                "instance": function(){ return $("#instance2").val();}
+            },
+            dragDropStr:"<span><b>Arrastra hasta esta zona el archivo zip</b></span>",
+            onSubmit:function(files)
+            {
+                if($("#nombre_unidad_2").val()==""){
+                    alert("debes de poner  nombre a la actividad 2");
+                    return false;
+                }
+            },
+            onSuccess:function(files,data,xhr)
+            {
+                $("#divforma2").hide("slow");
+                //$("#resultado2").html(JSON.stringify(data) + "<br>");	
+            },
+            maxFileCount: 1,
+            maxFileCountErrorStr: "ya has cargado un archivo",
+            cancelStr: "Aceptar",
+            uploadErrorStr: "Es necesario primero agregar un nombre y descripción al bloque"
+    	});
+        $("#divforma3").uploadFile({
+            url:"client.php",
+            allowedTypes:"zip",
+            formData: {
+                "idCurso" : curso,
+                "idSeccion" : 3,
+                "nombreActividad" : function(){ return $("#nombre_unidad_3").val()},
+                "modulo": function(){ return $("#modulo3").val();},
+                "launch": function(){ return $("#launch3").val();},
+                "instance": function(){ return $("#instance3").val();}
+            },
+            dragDropStr:"<span><b>Arrastra hasta esta zona el archivo zip</b></span>",
+            onSubmit:function(files)
+            {
+                if($("#nombre_unidad_3").val()==""){
+                    alert("debes de poner  nombre a la actividad 3");
+                    return false;
+                }
+            },
+            onSuccess:function(files,data,xhr)
+            {
+                $("#divforma3").hide("slow");
+                //$("#resultado3").html(JSON.stringify(data) + "<br>");	
+            },
+            maxFileCount: 1,
+            maxFileCountErrorStr: "ya has cargado un archivo",
+            cancelStr: "Aceptar",
+            uploadErrorStr: "Es necesario primero agregar un nombre y descripción al bloque"
+    	});
+        $("#divforma4").uploadFile({
+            url:"client.php",
+            allowedTypes:"zip",
+            formData: {
+                "idCurso" : curso,
+                "idSeccion" : 4,
+                "nombreActividad" : function(){ return $("#nombre_unidad_4").val()},
+                "modulo": function(){ return $("#modulo4").val();},
+                "launch": function(){ return $("#launch4").val();},
+                "instance": function(){ return $("#instance4").val();}
+            },
+            dragDropStr:"<span><b>Arrastra hasta esta zona el archivo zip</b></span>",
+            onSubmit:function(files)
+            {
+                if($("#nombre_unidad_4").val()==""){
+                    alert("debes de poner  nombre a la actividad 5");
+                    return false;
+                }
+            },
+            onSuccess:function(files,data,xhr)
+            {
+                $("#divforma4").hide("slow");
+                //$("#resultado4").html(JSON.stringify(data) + "<br>");	
+            },
+            maxFileCount: 1,
+            maxFileCountErrorStr: "ya has cargado un archivo",
+            cancelStr: "Aceptar",
+            uploadErrorStr: "Es necesario primero agregar un nombre y descripción al bloque"
+    	});
+        $("#divforma5").uploadFile({
+            url:"client.php",
+            allowedTypes:"zip",
+            formData: {
+                "idCurso" : curso,
+                "idSeccion" : 5,
+                "nombreActividad" : function(){ return $("#nombre_unidad_5").val()},
+                "modulo": function(){ return $("#modulo5").val();},
+                "launch": function(){ return $("#launch5").val();},
+                "instance": function(){ return $("#instance5").val();}
+            },
+            dragDropStr:"<span><b>Arrastra hasta esta zona el archivo zip</b></span>",
+            onSubmit:function(files)
+            {
+                if($("#nombre_unidad_5").val()==""){
+                    alert("debes de poner  nombre a la actividad 5");
+                    return false;
+                }
+            },
+            onSuccess:function(files,data,xhr)
+            {
+                $("#divforma5").hide("slow");
+                //$("#resultado5").html(JSON.stringify(data) + "<br>");	
+            },
+            maxFileCount: 1,
+            maxFileCountErrorStr: "ya has cargado un archivo",
+            cancelStr: "Aceptar",
+            uploadErrorStr: "Es necesario primero agregar un nombre y descripción al bloque"
+    	});
+        $("#divforma6").uploadFile({
+            url:"client.php",
+            allowedTypes:"zip",
+            formData: {
+                "idCurso" : curso,
+                "idSeccion" : 6,
+                "nombreActividad" : function(){ return $("#nombre_unidad_6").val()},
+                "modulo": function(){ return $("#modulo6").val();},
+                "launch": function(){ return $("#launch6").val();},
+                "instance": function(){ return $("#instance6").val();}
+            },
+            dragDropStr:"<span><b>Arrastra hasta esta zona el archivo zip</b></span>",
+            onSubmit:function(files)
+            {
+                if($("#nombre_unidad_6").val()==""){
+                    alert("debes de poner  nombre a la actividad 6");
+                    return false;
+                }
+            },
+            onSuccess:function(files,data,xhr)
+            {
+                $("#divforma6").hide("slow");
+                //$("#resultado6").html(JSON.stringify(data) + "<br>");	
+            },
+            maxFileCount: 1,
+            maxFileCountErrorStr: "ya has cargado un archivo",
+            cancelStr: "Aceptar",
+            uploadErrorStr: "Es necesario primero agregar un nombre y descripción al bloque"
+    	});
     }
 
     $("#editarCurso").submit(function(event) {

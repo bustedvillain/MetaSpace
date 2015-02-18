@@ -26,6 +26,12 @@ verificarSesionAdminOGestor();
  * MODIFICACION EN VENTANA MODAL PARA VER EL CURSO AGREGANDO EL CAMPO DE TIPO DE EJECUCION
  * MODIFICACION EN VENTANA MODAL PARA EDITAR EL CURSO AGREGANDO EL CAMPO DE TIPO DE EJECUCION PARA SU MODIFICACION
  */
+/**
+ * CHANGE CONTROL 1.2.0
+ * AUTOR: JOSÉ MANUEL NIETO GÓMEZ
+ * FECHA MODIFICACION: 12 DE FEBRERO DE 2015
+ * OBJETIVO: INTEGRACION DE VENTANA MODAL PARA EDITAR CURSOS SCORM
+ */
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -232,6 +238,103 @@ verificarSesionAdminOGestor();
             </div>
             <!--/Editar modal-->
 
+
+            <!-- Editar Modal Scorm-->
+            <div id="editarModalSco" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h3 id="myModalLabel">Editar Curso SCORM</h3>
+                </div>
+                <form id="editarCurso" action="gdaEditarCursoSco.php" method="POST" enctype="multipart/form-data">
+                    <div class="modal-body">                    
+                        <table class="table table-hover table-bordered">
+                            <tr>
+                                <td>Curso:</td>
+                                <td><b class="text-info" id="ver_curso_moodle2_sco"></b></td>
+                            </tr>
+                            <tr>
+                                <td>Clave del curso:</td>
+                                <td><input type="text" name="cursos/clave_curso" value="" id="edita_clave_curso_sco" required></td>
+                            </tr>
+                            <tr>
+                                <td>Nombre del Curso:</td>
+                                <td><input type="text" name="cursos/nombre_curso" value="" id="edita_nombre_curso_sco" required></td>
+                            </tr>
+                            <tr>
+                                <td>Nombre corto:</td>
+                                <td><input type="text" name="cursos/nombre_corto" id="edita_nombre_corto_sco" required></td>
+                            </tr>
+                            <tr>
+                                <td>Categor&iacute;a:</td>
+                                <td>
+                                    <select name="cursos/id_categoria" id="edita_categoria_sco" required>
+                                        <?php comboCategorias(); ?>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Asignatura:</td>
+                                <td>
+                                    <select name="cursos/id_asignatura" id="edita_asignatura" required>
+                                        <?php comboAsignaturas(); ?>
+                                    </select>
+                                </td>
+                            </tr>
+                            <!--inicia control de cambios #6-->
+                            <tr>
+                                <td>Nivel Escolar:</td>
+                                <td>
+<!--                                    <select id="comboNivelEscolar" id="edita_nivel_escolar">-->
+                                    <select id="comboNivelEscolarSco"  required>
+                                        <?php comboNivelesEducativos(); ?>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Grado Escolar:</td>
+                                <td>
+                                    <!--<select name="cursos/id_grado_escolar" id="comboGradoEscolares" id="edita_nivel_escolar">-->
+                                    <select name="cursos/id_grado_escolar" id="comboGradoEscolaresSco" required>
+                                        <?php comboGradoEscolar(); ?>
+                                    </select>
+                                </td>
+                            </tr>
+                            <!--termina control de cambios #6-->
+                            <!--CONTROL DE CAMBIOS 1.1.0-->
+                            <tr>
+                                <td>Tipo de Ejecuci&oacute;n:</td>
+                                <td>
+                                    <select name="cursos/tipo_ejecucion" id="edita_tipo_ejecucion" required>
+                                        <option value="0">Aut&oacute;noma/Libre</option>
+                                        <option value="1">Seriaci&oacute;n de bloques</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <!--CONTROL DE CAMBIOS 1.1.1-->
+                            <tr>
+                                <td>Iconograf&iacute;a del curso:</td>
+                                <td><input type="file" name="plantillaSco" accept="application/zip" class="contenido"/></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><b>Contenido del Curso</b></td>
+                            </tr>
+                            <tbody id="edita_contenido_sco">
+
+                            </tbody>
+                            <input type="hidden" name="cursos/id_curso" id="id_curso2" value="" />
+                            <input type="hidden" name="cursos/id_curso_moodle" id="courseId" value="" />
+
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="cargando"></div>  
+                        <button id="cancelarUPFile" class="btn" data-dismiss="modal" aria-hidden="true" onclick="location.reload();">Cancelar</button>
+                        <button class="btn btn-primary" >Guardar</button>
+                    </div>
+                </form>
+            </div>
+            <!--/Editar modal Scorm-->
+
             <!-- Modal -->
             <div id="error" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-header">
@@ -313,7 +416,10 @@ verificarSesionAdminOGestor();
         <!-- Placed at the end of the document so the pages load faster -->
         <?php include("../template/bootstrapAssets.php"); ?>
         <?php include("../template/scriptsDatatables.php"); ?>
-
+        <!-- Plugin Carga SCORM-->
+        <link href="http://hayageek.github.io/jQuery-Upload-File/uploadfile.min.css" rel="stylesheet"/>
+        <script src="http://hayageek.github.io/jQuery-Upload-File/jquery.uploadfile.min.js"></script>        
+        <!-- Plugin carga SCORM-->
         <!--Validacion de zips-->
         <script type="text/javascript" src="../js/zip.js"></script>
         <script type="text/javascript" src="../js/workUnzip.js"></script>

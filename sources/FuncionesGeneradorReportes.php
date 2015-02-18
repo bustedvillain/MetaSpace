@@ -179,6 +179,37 @@ function generaListadoTipoReportes()
     return $html;
 }
 
+
+/**
+ * Genera el listado de tipo de reportes
+ * @return string
+ */ 
+function generaListadoTipoReportesScorm()
+{
+    $sql = "SELECT id_tipo_reporte_scorm, 
+                nombre 
+            FROM tipo_reportes_scorm
+            WHERE status = 1
+            ORDER BY nombre ASC";
+    
+    $consultaTiposReportes= new Query("SG");
+    $consultaTiposReportes->sql=$sql;
+    $resultadoConsulta = $consultaTiposReportes->select("obj");
+    $html =" ";
+    
+    if($resultadoConsulta)
+    {
+        
+        foreach ($resultadoConsulta as $res) 
+        {
+            $html .= '<option value='.$res->id_tipo_reporte_scorm.'>'.$res->nombre.'</option>';
+        }
+        
+        
+    }
+    return $html;
+}
+
 /**
  * @author  HMP
  * Funcion que verifica la extension del Archivo
@@ -517,6 +548,84 @@ HTML;
     
 }
 
+
+/**
+ * Genera el listado de reportes scorm ya generados
+ * Se basa en el mÃ©todo obtenerIDTabla() y esAdministrador()
+ */
+function generarListadoReportesScorm()
+{
+    $from  = "FROM rel_curso_grupo  r_c_g ";
+    $sqlC = "SELECT DISTINCT rep.id_rel_curso_grupo,
+                            rep.id as id,
+                            rep.fecha_subida as fecha,
+                            rep.descripcion as desc,
+                            url_reporte as url,
+                            t_r.nombre as nombre,
+                             gp.nombre_grupo, rep.id_alumno,
+			    ca.nombre_curso_abierto
+            ".$from."
+            JOIN reportes_scorm rep
+                    ON rep.id_rel_curso_grupo =  r_c_g.id_rel_curso_grupo
+            JOIN tipo_reportes_scorm t_r
+                    ON t_r.id_tipo_reporte_scorm = rep.id_tipo_reporte_scorm
+            JOIN grupo gp
+		    ON gp.id_grupo = r_c_g.id_grupo
+            JOIN cursos_abiertos ca
+		   ON ca.id_curso_abierto = r_c_g.id_curso_abierto ";
+    
+     $sql =  new Query("SG");
+     $sql->sql=$sqlC;
+     
+     $resultadoConsulta =  $sql->select("obj");
+     
+     
+     if($resultadoConsulta)
+     {
+         $IP=IP_SERVER_PUBLIC;
+         $al= new Query("SG");
+         foreach ($resultadoConsulta as $reporte)
+         {
+            $nombreAlumno="No aplica";
+          if($reporte->id_alumno!=""){
+            $al->sql="select dp.nombre_pila, dp.primer_apellido,dp.segundo_apellido from alumnos a
+                inner join datos_personales dp on dp.id_datos_personales=a.id_datos_personales
+                where id_alumno=$reporte->id_alumno";
+            $resultado= $al->select("arr");
+            foreach($resultado as $alumno){
+                $nombreAlumno= $alumno["nombre_pila"]." ".$alumno["primer_apellido"]." ".$alumno["segundo_apellido"];
+            }
+          }  
+           echo <<<HTML
+            <tr>
+             <td>$reporte->id</td>
+                   
+             <td>$reporte->fecha
+             </td>
+             <td>$reporte->nombre_curso_abierto 
+             </td>
+              <td>$reporte->nombre_grupo
+             </td>
+             <td>$reporte->nombre
+             </td>
+             <td>$reporte->desc</td>
+             <td>$nombreAlumno </td>
+             
+             
+                 <td>
+                    <a class = " icon-file" href="$reporte->url.xls" target="_blank"   role = "button" data-toggle = "modal" title = "Descargar Excel"></a>      
+                 </td>
+                 <td>  
+                    <a class = " icon-file" href="$reporte->url.pdf" target="_blank"   role = "button" data-toggle = "modal" title = "Descargar PDF"></a>      
+                 </td>
+            </tr>
+HTML;
+             
+         }
+         
+     }
+    
+}
 
 /**
  * Genera reporte AutoEvaluación

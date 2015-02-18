@@ -391,7 +391,7 @@ function actualizaEscuela($idInstitucion, $escuela, $idEscuela) {
 function actualizaGradoEscolar($idGradoEscolar, $gradoEscolar, $idNivel) {
     //Limpiando cadena 
     $gradoEscolar = __($gradoEscolar);
-    
+
     //Valida si existe otra atributo con este nombre
     if (!validaInsercionGradoEscolar($gradoEscolar, $idNivel, $idGradoEscolar)) {
         //Crea objeto para realizar consultas de sistema de gestion
@@ -423,19 +423,19 @@ function comboNivelesEducativos($tipo = null) {
     $niveles = $query->select("obj");
 
     if ($niveles) {
-        if(!isset($tipo)){
+        if (!isset($tipo)) {
             echo <<<combo
             <option value="">Seleccione un nivel educativo</option>
 combo;
         }
-        
+
         foreach ($niveles as $nivel) {
             $nombre = ($nivel->nombre);
             echo <<<HTML
                 <option value="$nivel->id_nivel">$nombre</option>
 HTML;
         }
-    }else{
+    } else {
         echo <<<combo
             <option value="">No hay niveles educativos</option>
 combo;
@@ -459,12 +459,11 @@ function comboCategorias() {
                 <option value="$categoria->id_categoria">$nombre</option>
 HTML;
         }
-    }else{
+    } else {
         echo <<<html
             <option value="">No hay categoias</option>
 html;
     }
-    
 }
 
 /**
@@ -483,7 +482,7 @@ function comboAsignaturas() {
                 <option value="$asignatura->id_asignatura">$nombre</option>
 HTML;
         }
-    }else{
+    } else {
         echo <<<html
             <option value="">No hay asignaturas</option>
 html;
@@ -510,7 +509,7 @@ combo;
                 <option value="$grado->id_grado_escolar">$nombre</option>
 HTML;
         }
-    }else{
+    } else {
         echo <<<combo
             <option value="">No hay grados escolares</option>
 combo;
@@ -538,7 +537,7 @@ HTML;
             <select name="idInstitucion" id="$idSelect">
 HTML;
     }
-    
+
     if ($tabla) {
         foreach ($tabla as $atributo) {
             $nombre = ($atributo->nombre_institucion);
@@ -583,17 +582,17 @@ function getEscuelasJSON($idInstitucion) {
  * Funcion que imprime una tabla con los grados y niveles
  * educativos activos
  */
-function consultaGradosEscolares(){
+function consultaGradosEscolares() {
     $query = new Query("SG");
-    $query->sql= <<<select
+    $query->sql = <<<select
         SELECT ge.id_grado_escolar, ge.nombre_grado, ne.nombre nivel_escolar 
         FROM grado_escolar ge, nivel_escolar ne 
         WHERE ge.status=1 and ne.status=1 and ge.id_nivel = ne.id_nivel
 select;
-   
+
     $resultSet = $query->select();
-    if($resultSet){
-        foreach($resultSet as $result){
+    if ($resultSet) {
+        foreach ($resultSet as $result) {
             $nombreGrado = ($result->nombre_grado);
             $nombreNivel = ($result->nivel_escolar);
             echo <<<HTML
@@ -608,7 +607,6 @@ select;
 HTML;
         }
     }
-    
 }
 
 /**
@@ -616,9 +614,10 @@ HTML;
  * @param type $idGrado
  * @return null
  */
-function consultaGradoEscolar($idGrado){
-    $query = new Query("SG");
-    $query->sql = <<<select
+function consultaGradoEscolar($idGrado) {
+    if (isset($idGrado) && !empty($idGrado) && $idGrado != "") {
+        $query = new Query("SG");
+        $query->sql = <<<select
         SELECT ge.id_grado_escolar, ge.nombre_grado, ne.nombre nivel_escolar, ne.id_nivel 
         FROM grado_escolar ge, nivel_escolar ne 
         WHERE ge.status=1 
@@ -626,14 +625,17 @@ function consultaGradoEscolar($idGrado){
           and ge.id_nivel = ne.id_nivel
           and ge.id_grado_escolar = $idGrado
 select;
-    
-    $resultSet = $query->select();
-    
-    if($resultSet){
-        foreach($resultSet as $result){
-            return $result;
+
+        $resultSet = $query->select();
+
+        if ($resultSet) {
+            foreach ($resultSet as $result) {
+                return $result;
+            }
+        } else {
+            return null;
         }
-    }else{
+    } else {
         return null;
     }
 }
@@ -644,7 +646,7 @@ select;
  * @param type $idGrado
  * @return type
  */
-function consultaGradoEscolarJSON($idGrado){
+function consultaGradoEscolarJSON($idGrado) {
     return json_encode(consultaGradoEscolar($idGrado));
 }
 
@@ -683,28 +685,26 @@ function insertaGradoEscolar($gradoEscolar, $idNivel) {
  * @param type $idNivel
  * @return boolean
  */
-function validaInsercionGradoEscolar($gradoEscolar, $idNivel, $idGradoEscolar = NULL){
+function validaInsercionGradoEscolar($gradoEscolar, $idNivel, $idGradoEscolar = NULL) {
     $query = new Query("SG");
-    if(isset($idGradoEscolar)){
-                    $query->sql = <<<sql
+    if (isset($idGradoEscolar)) {
+        $query->sql = <<<sql
             Select * FROM grado_escolar WHERE nombre_grado = '$gradoEscolar' and id_nivel = $idNivel and id_grado_escolar != $idGradoEscolar
 sql;
-    }else{
-            $query->sql = <<<sql
+    } else {
+        $query->sql = <<<sql
             Select * FROM grado_escolar WHERE nombre_grado = '$gradoEscolar' and id_nivel = $idNivel
 sql;
     }
 
 
     $resultSet = $query->select();
-    
-    if($resultSet){
+
+    if ($resultSet) {
         return true;
-    }else{
+    } else {
         return false;
     }
-    
-}   
-
+}
 
 ?>

@@ -1,4 +1,5 @@
 <?php
+
 //Control de cambios #5
 //26-dic-2013
 //Correcciones de acentos
@@ -348,6 +349,7 @@ SQL;
         }
     }
 }
+
 //Inicia control de cambios #6
 /**
  * 
@@ -364,9 +366,10 @@ function getGradosDeNivelJSON($idNivel) {
  * @return type
  */
 function getGradosDeNivel($idNivel) {
-    $query = new Query("SG");
+    if (isset($idNivel) && !empty($idNivel) && $idNivel != "") {
+        $query = new Query("SG");
 
-    $query->sql = <<<SQL
+        $query->sql = <<<SQL
             SELECT *
             FROM grado_escolar
             where id_nivel = $idNivel
@@ -374,12 +377,16 @@ function getGradosDeNivel($idNivel) {
             order by nombre_grado
 SQL;
 
-    $resultado = $query->select("obj");
+        $resultado = $query->select("obj");
 
-    if ($resultado) {
-        return $resultado;
+        if ($resultado) {
+            return $resultado;
+        }
+    }else{
+        return null;
     }
 }
+
 /**
  * 
  * @param type $idNivel
@@ -417,6 +424,7 @@ SQL;
         return $resultado;
     }
 }
+
 /**
  * 
  * @param type $idNivel
@@ -455,16 +463,16 @@ function getTablaPorGrupo($idGrupo) {
         where ga.id_grupo = $idGrupo
 tabla;
 //    getArrIdsAlumno($idGrupo);
-    
+
     $resultado = $query->select("obj");
-    $tipo="even";
+    $tipo = "even";
     $final = "";
     $req = "";
     if ($resultado) {
-        foreach($resultado as $r){
-            if($tipo == "even"){
+        foreach ($resultado as $r) {
+            if ($tipo == "even") {
                 $tipo = "odd";
-            }else{
+            } else {
                 $tipo = "even";
             }
             $req = <<<req
@@ -481,11 +489,12 @@ tabla;
                         <td>$r->segundo_apellido</td>
                     </tr>
 req;
-            $final=$final.$req;
+            $final = $final . $req;
         }
         return $final;
     }
 }
+
 //termina control de cambios #6
 /**
  * funcion que retorna la información de un grupo a partir del id de este
@@ -628,7 +637,7 @@ function comboAlumnos($tipo_grupo, $idLugar, $cuales = "todos", $idGrupo = NULL)
     } else if ($tipo_grupo == "Empresa") {
         $alumnos = getAlumnosEmpresa($idLugar, $cuales, $idGrupo);
     }
-    
+
     foreach ($alumnos as $alumno) {
         echo <<<COMBO
                 <option value="$alumno->id_alumno">$alumno->nombre_pila $alumno->primer_apellido $alumno->segundo_apellido</option>
@@ -651,7 +660,7 @@ COMBO;
 function consultaNombreGrupo($nombreGrupo, $idGrupo = NULL) {
 
     $query = new Query("SG");
-    $nombreGrupo=__($nombreGrupo);
+    $nombreGrupo = __($nombreGrupo);
 
     if ($idGrupo != NULL) {
         $query->sql = <<<SQL
@@ -681,8 +690,8 @@ SQL;
 function consultaClaveGrupo($claveGrupo, $idGrupo = NULL) {
 
     $query = new Query("SG");
-   
-    $claveGrupo=__($claveGrupo);
+
+    $claveGrupo = __($claveGrupo);
 
     if ($idGrupo != NULL) {
         $query->sql = <<<SQL
@@ -725,7 +734,7 @@ SQL;
  * @param type $idCursoAbierto
  */
 function eliminaGrupoDeCurso($arrGrupos, $idCursoAbierto) {
-    foreach ($arrGrupos as $idGrupo){
+    foreach ($arrGrupos as $idGrupo) {
         $idRelCursoGrupo = getidRelCursoGrupo2($idCursoAbierto, $idGrupo);
         borraProgresoPorIdRelCursoGrupo($idRelCursoGrupo);
         borraRelCursoGrupo($idCursoAbierto, $idGrupo);
@@ -738,7 +747,7 @@ function eliminaGrupoDeCurso($arrGrupos, $idCursoAbierto) {
  * @param type $idGrupo
  * @return boolean
  */
-function borraRelCursoGrupo($idCursoAbierto, $idGrupo){
+function borraRelCursoGrupo($idCursoAbierto, $idGrupo) {
     $query = new Query("SG");
     if ($query->delete("rel_curso_grupo", "id_curso_abierto = $idCursoAbierto and id_grupo = $idGrupo")) {
         return true;
@@ -753,15 +762,15 @@ function borraRelCursoGrupo($idCursoAbierto, $idGrupo){
  * @param type $idGrupo
  * @return type
  */
-function getidRelCursoGrupo2($idCursoAbierto, $idGrupo){
-        $query = new Query("SG");
+function getidRelCursoGrupo2($idCursoAbierto, $idGrupo) {
+    $query = new Query("SG");
     $query->sql = <<<SQL
             SELECT id_rel_curso_grupo
             FROM rel_curso_grupo
             WHERE id_curso_abierto = $idCursoAbierto and id_grupo = $idGrupo
 SQL;
     $resultados = $query->select("obj");
-    foreach ($resultados as $r){
+    foreach ($resultados as $r) {
         return $r->id_rel_curso_grupo;
     }
 }
@@ -771,7 +780,7 @@ SQL;
  * @param type $idRelCursoGrupo
  * @return boolean
  */
-function borraProgresoPorIdRelCursoGrupo($idRelCursoGrupo){
+function borraProgresoPorIdRelCursoGrupo($idRelCursoGrupo) {
     $query = new Query("SG");
     if ($query->delete("progreso_alumno", "id_rel_curso_grupo=$idRelCursoGrupo")) {
         return true;
@@ -919,12 +928,12 @@ SQL;
  * @param type $idGrupo
  * @return boolean|null
  */
-function eliminaGrupo($idGrupo){
-    if( !is_numeric($idGrupo) )
+function eliminaGrupo($idGrupo) {
+    if (!is_numeric($idGrupo))
         return NULL;
-    
+
     $sql = new Query('SG');
-    $sql->delete("grupo","id_grupo = ".$idGrupo);
+    $sql->delete("grupo", "id_grupo = " . $idGrupo);
     return true;
 }
 

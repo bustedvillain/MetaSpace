@@ -7,10 +7,15 @@ include '../../sources/Funciones.php';
 verificarSesionAlumno();
 $idAlumno = $_SESSION['idPorTabla'];
 $arrAmbos = @getArraysIdsRelCursoGrupo($idAlumno);
+$arrAmbosSco = @getArraysIdsRelCursoGrupoScorm($idAlumno);
 $arrIdsCurso = array_pop($arrAmbos);
+$arrIdsCursoSco = array_pop($arrAmbosSco);
 $arrIdsRelCursoGrupo = array_pop($arrAmbos);
+$arrIdsRelCursoGrupoSco = array_pop($arrAmbosSco);
 $rutaCursos = BASE_STORAGE . "cursos/";
+$rutaCursosSco = PLAYER_SCORM;
 $cantidad = count($arrIdsCurso);
+$cantidadSco = count($arrIdsCursoSco);
 //var_dump($arrIdsCurso);
 //echo 'cant='.$cantidad;
 ?>
@@ -163,6 +168,8 @@ $cantidad = count($arrIdsCurso);
                 </div>
                 <?php
                 $arrayEventos = imprimeCajas($arrIdsCurso, $arrIdsRelCursoGrupo, $rutaCursos, $cantidad);
+                $arrayEventosSco = imprimeCajasScorm($arrIdsCursoSco, $arrIdsRelCursoGrupoSco, $rutaCursos, $cantidadSco);
+                $arrayEventosSco= array_unique($arrayEventosSco);
                 ?>
                 <script language="JavaScript">
                     window.onload = function() {/*hace que se cargue la función lo que predetermina que div estará oculto hasta llamar a la función nuevamente*/
@@ -170,6 +177,10 @@ $cantidad = count($arrIdsCurso);
 ///Imprimiendo los valores de eso
 foreach ($arrayEventos as $a) {
     echo "muestra_oculta('$a');";
+}
+// muestra oculta para scorm
+foreach ($arrayEventosSco as $b) {
+    echo "muestra_oculta('$b');";
 }
 ?>
                     }

@@ -26,6 +26,10 @@ define("DB_NAME_MOD","softmeta");
 define("USER_MOD","softmeta");
 define("PASS_MOD","ems20140818");
 define("HOST_MOD","200.66.87.58");
+//define("DB_NAME_MOD","moodle");
+//define("USER_MOD","postgres");
+//define("PASS_MOD","912303");
+//define("HOST_MOD","localhost");
 define("PORT_MOD","5432");
 
 
@@ -37,6 +41,7 @@ define("HOST_SG","200.66.87.58");
 define("PORT_SG","5432");
 
 define ("IP_SERVER_PUBLIC",'http://200.66.87.58/');
+//define ("IP_SERVER_PUBLIC",'http://localhost/');
 
 //Confuración de la plantilla
 define("UNIDADES_PATH", "/var/www/html/storage/unidades");
@@ -46,15 +51,16 @@ define("MENSAJE_DESBLOQUEO","Tu cuenta ha sido bloqueada durante las siguientes 
 //define("UNIDADES_PATH", "../../storage/unidades");
 
 define("RUTA_MOODLE",IP_SERVER_PUBLIC. 'moodle/login/index.php');
+//define("RUTA_MOODLE",'http://localhost:80/moodle/login/index.php');
 
 define("BASE_STORAGE", IP_SERVER_PUBLIC. "storage/");
 
 define("CUENTA_CORREO", "registro@metaspace.mx");
 
-//define("TOKEN_WEBSERVICE", "40e0c625c0dc4e15dc9d58cb243d681b");
 define("TOKEN_WEBSERVICE", obtenerToken());
 
 define("SERVER_URL", IP_SERVER_PUBLIC. "moodle/webservice/soap/server.php?wsdl=1&wstoken=".TOKEN_WEBSERVICE);
+//define("SERVER_URL", "http://localhost:80/moodle/webservice/soap/server.php?wsdl=1&wstoken=".TOKEN_WEBSERVICE);
   
 //Roles
 define("ROL_ALUMNO", "alumno");
@@ -71,17 +77,24 @@ define("EVALUACION_DESEMPEÑO", "EDE");
 define("AUTOEVALUACION", "AUE");
 
 //Version del software
-//define("VERSION", "v1.0.4");
-
-//Cambio de version Miercoles 21/05/2014
-//Autor: Jose Manue Nieto Gómez
-//Objetivo: Cambios esteticos
-define("VERSION", "v1.1.0");
+define("VERSION", "v1.2.0");
 
 //Biblioteca Virtual
 define("BASE_URL_BIBLIOTECA", "http://200.66.87.58/BibliotecaVirtual");
 define("TOKEN_BIBLIOTECA", "bf391c8b7d72b6d6");
 define("URL_BIBLIOTECA_ALUMNO", BASE_URL_BIBLIOTECA . "/middleware/");
 define("URL_BIBLIOTECA_ADMIN", BASE_URL_BIBLIOTECA . "/dashboard/?token=".TOKEN_BIBLIOTECA);
+
+//Webservice Scorm moodle
+
+//token webservice
+define("TOKEN_WEBSERVICE_SCORM", obtenerToken());
+//domain name moodle
+define("DOMAIN_NAME_MOODLE", IP_SERVER_PUBLIC . "moodle");
+//define("DOMAIN_NAME_MOODLE", "http://localhost/" . "moodle");
+define("DOMAIN_FILE_MOODLE", DOMAIN_NAME_MOODLE ."/upfiles/");
+define("PLAYER_SCORM", DOMAIN_NAME_MOODLE. "/mod/scorm/player.php");
+define("UPLOAD_DIR_MOODLE","/var/www/html/moodle/upfiles/");
+define("META_DOMAIN", IP_SERVER_PUBLIC . "MetaSpace/");
 
 ?>

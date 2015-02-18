@@ -671,6 +671,67 @@ SQL;
     return $resultado;
 }
 
+
+/**
+ * Crea el objeto para la tabla de reportes
+ * @param type $idTutor
+ * @return type
+ */
+function objParaTablaReportesScorm($idTutor) {
+    $predicado = "";
+    if (isset($idTutor)) {
+        $from = "from rel_curso_tutor rct
+                    left join rel_curso_grupo rcg
+                            on rct.id_rel_curso_grupo = rcg.id_rel_curso_grupo";
+
+        $predicado = " AND rct.id_tutor = " . $idTutor;
+    } else {
+        $from = "FROM rel_curso_grupo rcg";
+    }
+
+    $query = new Query("SG");
+    $query->sql = <<<SQL
+        select i.nombre_institucion as "institucion", es.nombre_escuela as "escuela", em.nombre_empresa as "empresa", c.nombre_curso as "curso", c.id_curso as "idCurso", ca.id_curso_abierto as "idCursoAbierto",
+                ca.nombre_curso_abierto as "cursoAbierto", g.id_grupo as "idGrupo", g.nombre_grupo as "grupo"
+              $from
+        left join grupo g
+                on rcg.id_grupo = g.id_grupo
+        left join escuelas es
+                on es.id_escuela = g.id_escuela
+        left join instituciones i
+                on i.id_institucion = es.id_institucion
+        left join empresa em
+                on em.id_empresa = g.id_empresa
+        left join cursos_abiertos ca
+                on rcg.id_curso_abierto = ca.id_curso_abierto
+        left join cursos c
+                on ca.id_curso = c.id_curso
+        
+        WHERE g.status=1
+        AND es.status=1
+        AND i.status=1
+        AND (em.status=1
+        OR em.status is null)
+        AND ca.status=1
+        AND c.status=1
+        and c.nombre_curso like '%SCORM%' or c.nombre_curso like '%Scorm%' or c.nombre_curso like '%scorm%'
+        $predicado
+                
+        GROUP by i.nombre_institucion,
+        es.nombre_escuela,
+        em.nombre_empresa,
+        c.nombre_curso,
+        c.id_curso,
+        ca.id_curso_abierto,
+        ca.nombre_curso_abierto,
+        g.id_grupo,
+        g.nombre_grupo
+        
+SQL;
+    $resultado = $query->select("obj");
+    return $resultado;
+}
+
 /**
  * CHANGE CONTROL 1.1.0
  * FECHA DE MODIFICACION: 22 DE MAYO DEL 2014
@@ -717,6 +778,48 @@ html;
         </table>
 html;
 }
+
+
+/**
+ * Crea la tabla para la subida de reportes SCORM
+ * @param type $idTutor
+ */
+function tablaParaReportesScorm($idTutor) {
+    echo <<<html
+        <table cellpadding="0" cellspacing="0" border="0" class="display" id="example">
+            <thead>
+                <tr>
+                    <th>Instituci&oacute;n</th>
+                    <th>Escuela</th>
+                    <th>Empresa</th>
+                    <th>Curso</th>
+                    <th>Curso Publicado</th>
+                    <th>Grupo</th>
+                    <th>Tipo Reporte</th>
+                    <th>Generar</th>
+                </tr>
+            </thead>
+            <tbody>
+html;
+    trParaReportesScorm($idTutor);
+    echo <<<html
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>Instituci&oacute;n</th>
+                    <th>Escuela</th>
+                    <th>Empresa</th>
+                    <th>Curso</th>
+                    <th>Curso Publicado</th>
+                    <th>Grupo</th>
+                    <th>Tipo Reporte</th>
+                    <th>Subir/Generar</th>
+                </tr>
+            </tfoot>
+        </table>
+html;
+}
+
 /**
  * tr para la tabla de reportes de un tutor
  * @param type $idTutor
@@ -762,6 +865,59 @@ HTML;
                     </select>
                 </td>
                 <td><button class="btn btn-primary" type="submit" >Subir/Generar</button></td>  
+            </form>
+            </tr>
+HTML;
+        }
+    }
+}
+
+
+/**
+ * tr para la tabla de reportes de un tutor
+ * @param type $idTutor
+ */
+function trParaReportesScorm($idTutor) {
+    $arrayDatos = objParaTablaReportesScorm($idTutor);
+    if ($arrayDatos) {
+        foreach ($arrayDatos as $grupo) {
+            $institucion = ($grupo->institucion);
+            $escuela = ($grupo->escuela);
+            $empresa = ($grupo->empresa);
+            $curso = ($grupo->curso);
+            $idGrupo = $grupo->idGrupo;
+            $idCurso = ($grupo->idCurso);
+            $idCursoAbierto = ($grupo->idCursoAbierto);
+            $cursoAbierto = ($grupo->cursoAbierto);
+            $grupo = ($grupo->grupo);
+
+
+
+
+//            if ($grupo->tipoGrupo == 0) {
+//                $tipoGrupo = "Escuela";
+//            } else {
+//                $tipoGrupo = "Empresa";
+//            }
+
+
+            echo <<<HTML
+            <tr>
+            <form action="reportesScorm_2.php" method = "GET">
+                <td>$institucion</td>
+                <td>$escuela</td>
+                <td>$empresa</td>
+                <td>$curso <input type="hidden" name="idCurso" value = "$idCurso" /></td>
+                <td>$cursoAbierto <input type="hidden" name="idCursoAbierto" value = "$idCursoAbierto" /></td>
+                <td>$grupo <input type="hidden" name="idGrupo" value = "$idGrupo" /></td>
+                <td>
+                    <select name="tipoReporte" id="tipo_reporte">
+HTML;
+            echo generaListadoTipoReportesScorm();
+            echo <<<HTML
+                    </select>
+                </td>
+                <td><button class="btn btn-primary" type="submit" >Generar</button></td>  
             </form>
             </tr>
 HTML;

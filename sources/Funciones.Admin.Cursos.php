@@ -1,5 +1,4 @@
 <?php
-
 //Control de cambios #&
 //Autor:Omar Nava
 //Objetivo: ALta cursos
@@ -17,7 +16,6 @@
  * OBJEVITO: ENROLAR USUARIOS EN CURSO/GRUPO DE MOODLE
  * Consulta que retorna los ids de tutores en un curso grupo
  */
-
 /**
  * CHANGE CONTROL 1.1.0
  * AUTOR: JOSE MANUEL NIETO GOMEZ
@@ -45,6 +43,33 @@ function consultaCursosMoodle() {
                         <td>$curso->fullname</td>
                         <td>$curso->shortname</td>
                         <td><a href="nuevoCurso_1.php?id=$curso->id&fullname=$curso->fullname&shortname=$curso->shortname">Vincular</a></td>
+                    </tr>
+HTML;
+            }
+        }
+    }
+}
+
+/**
+ * Funcion que consulta los cursos en formato de Moodle, mostrando solo
+ * lo que no han sido vinculados al sistema de gestiÃ³n
+ */
+function consultaCursosScormMoodle() {
+    //Crea objeto para realizar consultas a moodle
+    $query = new Query("MOD");
+    //Query a Moodle
+    $query->sql = "SELECT id, fullname, shortname, format from mdl_course where lower(fullname) like '%scorm%'";
+    $resultado = $query->select("obj");
+
+    foreach ($resultado as $curso) {
+        if ($curso->format == "topics") {
+            if (!validaIdCursoMoodle($curso->id)) {
+                echo <<<HTML
+                    <tr>
+                        <td>$curso->id</td>
+                        <td>$curso->fullname</td>
+                        <td>$curso->shortname</td>
+                        <td><a href="nuevoCursoScorm_1.php?id=$curso->id&fullname=$curso->fullname&shortname=$curso->shortname">Vincular</a></td>
                     </tr>
 HTML;
             }
@@ -141,6 +166,174 @@ HTML;
 }
 
 /**
+ * Consulta los topicos que tiene un curso scorm en Moodle
+ * @param type $idCursoMoodle
+ */
+function consultaTopicosCursoScormMoodle($idCursoMoodle) {
+    //Crea objeto para realizar consultas al sistema de gestion
+
+    ini_set('display_errors', 1);
+    error_reporting(-1);
+    $query = new Query("MOD");
+    //Query a Moodle
+    $query->sql = "SELECT section.section, section.name, section.summary from mdl_course course, mdl_course_sections section where course.id=$idCursoMoodle and course.id=section.course order by section.section";
+    $resultado = $query->select("obj");
+    if ($resultado) {
+        $z = 0;
+        foreach ($resultado as $topico) {
+            $nombre = ($topico->name) ? strip_tags($topico->name) : "";
+            $descripcion = ($topico->summary != "") ? strip_tags($topico->summary) : "";
+            if ($topico->section > 0) {
+                ?>
+                <div class="input-append">
+                    <label>Nombre del Bloque:</label>
+                    <input type="text" name="nombre_unidad[]" placeholder="" id="nombre_unidad_<?php echo $z; ?>" value="<?php echo $nombre; ?>"/>
+                </div>
+                <div class="input-append">
+                    <label>Descripci&oacute;n:</label>
+                    <input type="text" name="descripcion[]" placeholder="" id="descripcion_<?php echo $z; ?>" value="<?php echo $descripcion; ?>"/>
+                </div>
+                <div id="divforma<?php echo $z; ?>">Subir Scorm <?php echo $z; ?></div>
+                <div id="resultado<?php echo $z; ?>"></div>
+
+                <?php
+            }
+            $z++;
+        }
+    } else {
+        echo "<h3 class='text-warning'>No hay t&oacute;picos en este curso.</h3>";
+    }
+    ?>
+
+    <?php
+}
+
+/**
+ * Consulta los topicos que tiene un curso scorm en Moodle para su ediciÃ³n
+ * @param type $idCursoMoodle
+ */
+function consultaTopicosCursoScormMoodleUpdate($idCursoMoodle) {
+    //Crea objeto para realizar consultas al sistema de gestion
+    ini_set('display_errors', 1);
+    error_reporting(-1);
+    $query = new Query("MOD");
+    $queryMoodle = new Query("MOD");
+    $query2 = new Query("SG");
+    //Query a Moodle
+    $query->sql = "SELECT section.section, section.name, section.summary from mdl_course course, mdl_course_sections section where course.id=$idCursoMoodle and course.id=section.course order by section.section";
+    $resultado = $query->select("obj");
+    if ($resultado) {
+        $z = 0;
+        //foreach ($resultado as $topico) {
+        for ($i = 0; $i <= 6; $i++) {
+            //$nombre = ($topico->name) ? strip_tags($topico->name) : "";
+            //$descripcion = ($topico->summary != "") ? strip_tags($topico->summary) : "";
+            $nombre = "Agregar nombre";
+            $descripcion = "agregar descripciÃ³n";
+            if ($i > 0) {
+
+                $queryMoodle->sql = "select launch,m.id,s.name,s.intro,s.reference,m.instance from mdl_grade_items gi
+                                                inner join mdl_scorm s on s.course=gi.courseid
+                                                inner join mdl_course_modules m on m.course=s.course
+                                                inner join mdl_course_sections cs on cs.course= m.course
+                                                where courseid= $idCursoMoodle and itemtype='mod' and gi.iteminstance= s.id and m.section= cs.id
+                                                and m.instance=s.id and gi.itemname not like '' and s.name not like '' and cs.section=$i";
+                $cursos = $queryMoodle->select("obj");
+                if ($cursos) {
+                    foreach ($cursos as $scorm) {
+                        $query2->sql = "select id_unidad,u.status from unidades u
+                                        inner join cursos c on c.id_curso= u.id_curso
+                                        where id_curso_moodle=$idCursoMoodle and no_unidad= $z";
+                        $unidad = $query2->select("obj");
+                        foreach ($unidad as $unidades) {
+                            $idUnidad = $unidades->id_unidad;
+                            $estatus = $unidades->status;
+                        }
+                        ?>
+                        <tr>
+                            <td colspan="2"><strong>Bloque <?php echo $z ?></strong></td>
+                        </tr>
+                        <tr>
+                            <td><label>Nombre del Bloque:</label></td>
+                            <td><input type="text" name="nombre_unidad[]" placeholder="" id="nombre_unidad_<?php echo $z; ?>" value="<?php echo $scorm->name; ?>"/></td>
+                        </tr>
+                        <tr>
+                            <td><label>Descripci&oacute;n:</label></td>
+                            <td><input type="text" name="descripcion[]" placeholder="" id="descripcion_<?php echo $z; ?>" value="<?php echo strip_tags($scorm->intro); ?>"/>
+                                <input type="hidden" value="<?php echo $scorm->id ?>" id="modulo<?php echo $z; ?>" />
+                                <input type="hidden" value="<?php echo $scorm->launch ?>" id="launch<?php echo $z; ?>" name="launch[]" />
+                                <input type="hidden" value="<?php echo $scorm->instance ?>" id="instance<?php echo $z; ?>" />
+                                <input type="hidden" value="<?php echo $idUnidad; ?>" name="id_unidad[]" id="id_unidad_<?php echo $z; ?>" /></td>
+                        </tr>
+                        <tr>
+                            <td><label>Estatus:</label></td>
+                            <td><select name="status[]">
+                                    <option <?php if ($estatus == 1) {
+                            echo 'selected="selected"';
+                        } ?> value="1">Activo</option>
+                                    <option <?php if ($estatus == 0) {
+                            echo 'selected="selected"';
+                        } ?> value="0">Inactivo</option>
+                                </select></td>                        
+                        </tr>
+                        <tr>
+                            <td colspan="2"><div id="divforma<?php echo $z; ?>">Reemplazar SCORM</div>
+                                <div id="resultado<?php echo $z; ?>"></div><br /></td>
+                        </tr>
+                        <?php
+                    }
+                } else {
+                    $query2->sql = "select id_unidad,u.status from unidades u
+                                    inner join cursos c on c.id_curso= u.id_curso
+                                    where id_curso_moodle=$idCursoMoodle and no_unidad= $z";
+                    $unidad = $query2->select("obj");
+                    foreach ($unidad as $unidades) {
+                        $idUnidad = $unidades->id_unidad;
+                        $estatus = $unidades->status;
+                    }
+                    ?>
+                    <tr>
+                        <td colspan="2"><strong>Bloque <?php echo $z ?></strong></td>
+                    </tr>
+                    <tr>
+                        <td><label>Nombre del Bloque:</label></td>
+                        <td><input type="text" name="nombre_unidad[]" placeholder="Agregar Nombre" id="nombre_unidad_<?php echo $z; ?>" value=""/></td>
+                    </tr>
+                    <tr>
+                        <td><label>Descripci&oacute;n:</label></td>
+                        <td><input type="text" name="descripcion[]" placeholder="Agregar DescripciÃ³n" id="descripcion_<?php echo $z; ?>" value=""/>
+                            <input type="hidden" value="<?php echo $idUnidad; ?>" name="id_unidad[]" id="id_unidad_<?php echo $z; ?>" />
+                    </tr>
+                    <tr>
+                        <td><label>Estatus:</label></td>
+                        <td><select name="status[]">
+                                <option <?php if ($estatus == 1) {
+                        echo 'selected="selected"';
+                    } ?> value="1">Activo</option>
+                                <option <?php if ($estatus == 0) {
+                        echo 'selected="selected"';
+                    } ?> value="0">Inactivo</option>
+                            </select></td>                        
+                    </tr>
+                    <tr>
+                        <td colspan="2"><div id="divforma<?php echo $z; ?>">Agregar SCORM</div>
+                            <div id="resultado<?php echo $z; ?>"></div><br /></td>
+                    </tr>
+
+                    <?php
+                }
+            }
+            $z++;
+        }
+    } else {
+        echo "<h3 class='text-warning'>No hay t&oacute;picos en este curso.</h3>";
+    }
+    ?>
+
+    <?php
+}
+
+/**
  * Funcion que valida la existencia de un curso y la regresa en un objeto JSON
  * @param type $clave_curso
  * @return type boolean, true si si existe
@@ -232,12 +425,21 @@ function catalogoCursos() {
 
     if ($resultado) {
         foreach ($resultado as $reg) {
+            $link="";
+            $clase="";
+            if(strpos(strtolower($reg->nombre_curso),"scorm")!==FALSE){
+                $link="#editarModalSco";
+                $clase= "editaCursoSco";
+            }else{
+                $link="#editarModal";
+                $clase="editaCurso";
+            }
             echo <<<TABLA
                 <tr>
                     <td>
                         <a class="icon-eye-open verCurso" href="#verModal" role="button" data-toggle="modal" name="$reg->id_curso" title="Ver"></a>                            
-                        <a class="icon-edit editaCurso" href="#editarModal" role="button" data-toggle="modal" name="$reg->id_curso" title="Editar"></a>
-                        <a class="icon-trash" href="borrarCurso.php?id=$reg->id_curso" onClick="return confirm('¿Está seguro?');" title="Borrar"></a>
+                        <a class="icon-edit $clase" href="$link" role="button" data-toggle="modal" name="$reg->id_curso" title="Editar"></a>
+                        <a class="icon-trash" href="borrarCurso.php?id=$reg->id_curso" onClick="return confirm('Â¿EstÃ¡ seguro?');" title="Borrar"></a>
                     </td>
                     <td>$reg->id_curso</td>
                     <td>$reg->nombre_curso</td>
@@ -302,12 +504,12 @@ SQL;
     if ($resultado) {
         foreach ($resultado as $res) {
             $cursoMoodle = consultaCursoMoodle($res->id_curso_moodle);
-            
+
             //Valida el campo tipo de ejecucion. Si es nulo le asigna un 0 (Autonoma por default)
-            if(($tipo_ejecucion = $res->tipo_ejecucion) == null){
+            if (($tipo_ejecucion = $res->tipo_ejecucion) == null) {
                 $tipo_ejecucion = 0;
             }
-            
+
             $curso = array("id_curso" => $res->id_curso,
                 "clave_curso" => $res->clave_curso,
                 "nombre_curso" => $res->nombre_curso,
@@ -434,7 +636,7 @@ HTML;
 
             $i++;
         }
-    }else{
+    } else {
         imprimeError("No hay bloques activos.");
     }
 }
@@ -1002,9 +1204,9 @@ SQL;
 
     $result = $query->select("obj");
     if ($result) {
-        foreach($result as $r){
+        foreach ($result as $r) {
             $idRelCursoGrupo = $r->id_rel_curso_grupo;
-        }        
+        }
     } else {
         $idRelCursoGrupo = insertarDatos("rel_curso_grupo", "id_curso_abierto, id_grupo", "$idCursoAbierto, $idGrupo");
 //        var_dump($arrIdAlumnos);
@@ -1537,12 +1739,12 @@ function enrolarMoodle($idCursoAbierto, $ids, $idGrupo, $rol, $idGrupoMoodle = N
  */
 function crearGrupoMoodle($idCursoAbierto, $idGrupo, $ids, $rol, $idGrupoMoodle = NULL) {
     $courseid = consultaIdMoodle($idCursoAbierto);
-    
+
     //Crear grupo
     if (!isset($idGrupoMoodle)) {
         //Info de grupo
         $grupo = consultaUnGrupo($idGrupo);
-        
+
         if (($idGrupoTest = verificaGrupoMoodle($grupo->nombre_grupo, $courseid)) == NULL) {
             $functionname = 'core_group_create_groups';
             $group = new stdClass();
@@ -1553,14 +1755,14 @@ function crearGrupoMoodle($idCursoAbierto, $idGrupo, $ids, $rol, $idGrupoMoodle 
             $params = array($group);
 
             try {
-                $client = new SoapClient(SERVER_URL);                
+                $client = new SoapClient(SERVER_URL);
             } catch (SoapFault $e) {
                 return "Error al crear cliente soap: $e";
             }
 
             try {
                 $resp = $client->__soapCall($functionname, array($params));
-                $idGrupoMoodle = $resp[0]["id"];                
+                $idGrupoMoodle = $resp[0]["id"];
             } catch (exception $e) {
                 echo "<br>Error al crear grupo en moodle<br>";
                 var_dump($e);
@@ -1571,10 +1773,10 @@ function crearGrupoMoodle($idCursoAbierto, $idGrupo, $ids, $rol, $idGrupoMoodle 
             $idGrupoMoodle = $idGrupoTest;
         }
     }
-    
+
     //id del rol en moodle
     $idRol = get_assignable_roles($rol);
-    
+
     //id de enrolamiento en moodle    
     $enrolid = get_enrol_id($courseid);
 
@@ -1587,12 +1789,12 @@ function crearGrupoMoodle($idCursoAbierto, $idGrupo, $ids, $rol, $idGrupoMoodle 
             $correo = obtenerCorreoUsuarioTutor($id)->correo;
         }
         //Concatenacion de user id's
-        if($correo != ""){
-            $moodle_user =get_moodle_user($correo);
-            if($moodle_user != ""){
-                $userid .=  "$moodle_user,";
+        if ($correo != "") {
+            $moodle_user = get_moodle_user($correo);
+            if ($moodle_user != "") {
+                $userid .= "$moodle_user,";
             }
-        }        
+        }
     }
 
     return array(
@@ -1774,21 +1976,21 @@ html;
  * @param type $idCurso
  * @return int
  */
-function consultaTipoEjecucionCurso($idCurso){
+function consultaTipoEjecucionCurso($idCurso) {
     $query = new Query("SG");
 
     $query->sql = "SELECT tipo_ejecucion from cursos where id_curso = $idCurso";
     $tipoEjecucion = $query->select("obj");
-    
-    if($tipoEjecucion){
-        foreach($tipoEjecucion as $tipo){
+
+    if ($tipoEjecucion) {
+        foreach ($tipoEjecucion as $tipo) {
             //Valida el campo tipo de ejecucion. Si es nulo le asigna un 0 (Autonoma por default)
-            if(($tipo_ejecucion = $tipo->tipo_ejecucion) == null){
+            if (($tipo_ejecucion = $tipo->tipo_ejecucion) == null) {
                 $tipo_ejecucion = 0;
             }
             return $tipo_ejecucion;
         }
-    }else{
+    } else {
         return 0;
     }
 }

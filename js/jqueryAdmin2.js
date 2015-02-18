@@ -62,7 +62,7 @@ $(document).ready(function() {
         if ($("#comboGrupos").length) {
             llenaComboGrupos();
         }
-    });
+    });   
     $("#comboGrupos").change(function() {
         $("#btnDescargar").attr("href", "descargaDatos.php?tipo=grupo" + "&idGrupo=" + $("#comboGrupos").val() + "&formato=" + $("#formatoDescarga").val());
         muestraTablaDescarga();
@@ -76,7 +76,14 @@ $(document).ready(function() {
         $("#btnDescargar").attr("href", "descargaDatos.php?tipo=grupo" + "&idGrupo=" + $("#comboGrupos").val() + "&formato=" + $("#formatoDescarga").val());
     });
 
-
+    //Combo de niveles educativos para edición de cursos scorm
+    $("#comboNivelEscolarSco").change(function() {
+        var idNivel = $("#comboNivelEscolarSco").val();
+        llenaComboGradoEscolarSco(idNivel);
+        if ($("#comboGrupos").length) {
+            llenaComboGrupos();
+        }
+    });
 
 
 });
@@ -183,6 +190,35 @@ function llenaComboGradoEscolar(idNivel) {
         } else {
             $("#comboGradoEscolares").empty();
             $("#comboGradoEscolares").append("<option>Sin grados disponibles</option>");
+        }
+
+    });
+}
+
+/**
+ * Funcion que recibe como parÃ¡metro un nivel y carga en el combo los niveles disponibles
+ * @param {type} idNivel
+ * @returns {undefined}
+ */
+function llenaComboGradoEscolarSco(idNivel) {
+    debugConsole("En actualizaComboGradoEscolar");
+    $.post("../sources/Controlador.Admin.Usuarios.php", {consulta: "combosGradoEscolar", atributo: idNivel}, function(respuesta) {
+        if (respuesta !== "null") {
+            debugConsole(respuesta);
+            var datos = jQuery.parseJSON(respuesta);
+            debugConsole(datos.valueOf());
+            $("#comboGradoEscolaresSco").empty();
+            for (i = 0; i < datos.length; i++) {
+                $("#comboGradoEscolaresSco").append("<option value='" + Encoder.htmlDecode(datos[i].id_grado_escolar + "'>" + datos[i].nombre_grado) + "</option>");
+            }
+            if (cambioGrado) {
+                debugConsole('Cambiando grado escolar' + idGradoEscolar);
+                $("#comboGradoEscolaresSco option[value=" + idGradoEscolar + "]").attr("selected", true);
+                cambioGrado = false;
+            }
+        } else {
+            $("#comboGradoEscolaresSco").empty();
+            $("#comboGradoEscolaresSco").append("<option>Sin grados disponibles</option>");
         }
 
     });
